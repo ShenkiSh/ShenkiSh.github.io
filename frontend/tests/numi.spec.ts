@@ -1,30 +1,28 @@
 import { expect, test } from "./fixtures";
 
-test("NUMI uses the finished case study, has real media, and navigates five memories by keyboard", async ({ page }) => {
+test("memory previews enlarge with keyboard and return focus to the selected memory", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/numi");
   await expect(page).toHaveTitle("NUMI | Shani Shlomov");
-  await expect(page.getByRole("heading", { name: "NUMI", exact: true })).toBeVisible();
-  await expect(page.getByText(/placeholder|coming soon/i)).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Play in browser", exact: true })).toBeVisible();
-  const tabs = page.getByRole("tablist", { name: "Five playable memories" });
-  await tabs.getByRole("tab", { name: "Childhood", exact: true }).focus();
-  await page.keyboard.press("ArrowRight");
-  await expect(page.getByRole("heading", { name: "Teenage Years", exact: true })).toBeVisible();
-  await expect(tabs.getByRole("tab", { name: "Teenage Years" })).toBeFocused();
-  await expect(page.getByRole("tabpanel").getByRole("img")).toHaveAttribute("src", /memory-2\.jpg$/);
-  await page.keyboard.press("End");
-  await expect(page.getByRole("heading", { name: "Seventies", exact: true })).toBeVisible();
-  await page.getByRole("button", { name: "Next memory", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Childhood", exact: true })).toBeVisible();
+  const memories = page.getByRole("list", { name: "Five playable memories" });
+  for (const [name, file] of [["Childhood", "memory-1.jpg"], ["Seventies", "memory-5.jpg"]]) {
+    const opener = memories.getByRole("button", { name: `Enlarge ${name} memory`, exact: true });
+    await opener.focus();
+    await page.keyboard.press("Enter");
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByRole("img")).toHaveAttribute("src", new RegExp(`${file}$`));
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    await expect(opener).toBeFocused();
+  }
   const chapters = page.getByRole("navigation", { name: "NUMI sections" });
-  await chapters.getByRole("link", { name: "Playtesting", exact: true }).click();
-  await expect(chapters.getByRole("link", { name: "Playtesting", exact: true })).toHaveAttribute("aria-current", "location");
+  await chapters.getByRole("link", { name: "UX/UI · Unity", exact: true }).click();
+  await expect(chapters.getByRole("link", { name: "UX/UI · Unity", exact: true })).toHaveAttribute("aria-current", "location");
   await expect(page.locator("#testing video")).toHaveCount(2);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test("hero plays one trailer inline and Play the game scrolls to the playable section", async ({ page }) => {
+test("hero plays one trailer inline and Play the Childhood demo scrolls to the playable section", async ({ page }) => {
   const gameRequests: string[] = [];
   page.on("request", request => { if (request.url().includes("/games/numi/")) gameRequests.push(request.url()); });
   await page.goto("/#/numi");
@@ -42,7 +40,7 @@ test("hero plays one trailer inline and Play the game scrolls to the playable se
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(.1);
   await player.getByRole("button", { name: "Unmute", exact: true }).click();
   await expect(video).toHaveJSProperty("muted", false);
-  const playGame = page.getByRole("link", { name: "Play the game", exact: true });
+  const playGame = page.getByRole("link", { name: "Play the Childhood demo", exact: true });
   await playGame.focus();
   await page.keyboard.press("Enter");
   await expect(page.locator("#first-memory")).toBeFocused();
@@ -56,7 +54,7 @@ test("hero plays one trailer inline and Play the game scrolls to the playable se
 test("full childhood film opens in its dialog and restores focus and scroll", async ({ page }) => {
   await page.goto("/#/numi");
   await page.evaluate(() => document.fonts.ready);
-  await page.getByRole("link", { name: "Play the game", exact: true }).click();
+  await page.getByRole("link", { name: "Play the Childhood demo", exact: true }).click();
   await expect(page.locator("#first-memory")).toBeFocused();
   const opener = page.getByRole("button", { name: "Watch full Childhood playthrough · 7:33", exact: true });
   await opener.focus();
@@ -101,41 +99,27 @@ test("only one inline player runs and each video retains working sound controls"
   await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement))).toBe(false);
 });
 
-test("all five Childhood thumbnails play their clip in one shared frame", async ({ page }) => {
+test("the two bridge moments play independently and keep the comparison in place", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/numi");
-  const sequence = page.getByRole("group", { name: "Childhood level sequence" });
-  const video = page.locator("#level-preview video");
-  await expect(video).toHaveJSProperty("paused", true);
-  const steps = [
-    { caption: "Explore the space", file: "level-explore", duration: "0:11" },
-    { caption: "Adapt to the collapsing bridge", file: "bridge-collapse", duration: "0:11" },
-    { caption: "Roll the wheel into place", file: "level-wheel", duration: "0:11" },
-    { caption: "Combine movement and objects", file: "level-combine", duration: "0:12" },
-    { caption: "Cross safely to the bicycle", file: "safe-crossing", duration: "0:11" },
-  ];
-  await expect(sequence.getByRole("button")).toHaveCount(steps.length);
-  for (const [index, step] of steps.entries()) {
-    const thumbnail = sequence.getByRole("button", { name: `Play: ${step.caption}`, exact: true });
-    await expect(thumbnail).toHaveText(step.duration);
-    if (index === 0) {
-      await thumbnail.focus();
-      await page.keyboard.press("Enter");
-    } else await thumbnail.click();
-    await expect(thumbnail).toHaveAttribute("aria-pressed", "true");
-    await expect(sequence.locator('[aria-pressed="true"]')).toHaveCount(1);
-    await expect(page.getByRole("dialog")).toHaveCount(0);
-    await expect(video).toHaveCount(1);
-    await expect(video).toHaveAttribute("src", new RegExp(`${step.file}\\.mp4$`));
-    await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(.1);
-    await expect.poll(() => page.evaluate(() => [...document.querySelectorAll("video")].filter(video => !video.paused).length)).toBe(1);
-  }
+  const section = page.locator("#design");
+  const collapse = section.getByRole("group", { name: "The collapsing hand bridge video player", exact: true });
+  const crossing = section.getByRole("group", { name: "A safe crossing video player", exact: true });
+  await collapse.getByRole("button", { name: "Play The collapsing hand bridge", exact: true }).click();
+  await expect.poll(() => collapse.locator("video").evaluate((video: HTMLVideoElement) => video.currentTime)).toBeGreaterThan(.1);
+  await crossing.getByRole("button", { name: "Play A safe crossing", exact: true }).click();
+  await expect.poll(() => crossing.locator("video").evaluate((video: HTMLVideoElement) => video.currentTime)).toBeGreaterThan(.1);
+  await expect(collapse.locator("video")).toHaveJSProperty("paused", true);
+  await expect(collapse.locator("video")).toHaveAttribute("src", /bridge-collapse\.mp4$/);
+  await expect(crossing.locator("video")).toHaveAttribute("src", /safe-crossing\.mp4$/);
+  await expect(page.getByRole("dialog")).toHaveCount(0);
 });
 
 test("an unavailable clip can be retried from its frame", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.route("**/numi/resize.mp4", route => route.fulfill({ status: 200, contentType: "video/mp4", body: "invalid video" }));
   await page.goto("/#/numi");
+  await page.locator("#mechanics > summary").click();
   const player = page.getByRole("group", { name: "Resize video player", exact: true });
   await player.getByRole("button", { name: "Play Resize", exact: true }).click();
   await expect(player.getByRole("alert")).toContainText("This video could not load.");
@@ -145,10 +129,28 @@ test("an unavailable clip can be retried from its frame", async ({ page }) => {
   await expect.poll(() => player.locator("video").evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(.1);
 });
 
+test("closing the interaction examples pauses their film and reopening keeps it paused", async ({ page }) => {
+  await page.goto("/#/numi");
+  const summary = page.locator("#mechanics > summary");
+  await summary.click();
+  const player = page.getByRole("group", { name: "Resize video player", exact: true });
+  const video = page.locator('#mechanics video[src$="/resize.mp4"]');
+  await player.getByRole("button", { name: "Play Resize", exact: true }).click();
+  await expect.poll(() => video.evaluate((node: HTMLVideoElement) => node.currentTime)).toBeGreaterThan(.1);
+  await summary.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#mechanics")).not.toHaveAttribute("open");
+  await expect(video).toHaveJSProperty("paused", true);
+  await page.keyboard.press("Enter");
+  await expect(player).toBeVisible();
+  await expect(video).toHaveJSProperty("paused", true);
+});
+
 test("touch controls can be revealed after hiding and remain usable on finger release", async ({ page, isMobile }) => {
   test.skip(!isMobile, "Requires a touch viewport");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/numi");
+  await page.locator("#mechanics > summary").click();
   const player = page.getByRole("group", { name: "Resize video player", exact: true });
   await player.getByRole("button", { name: "Play Resize", exact: true }).tap();
   await expect.poll(() => player.locator("video").evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(.1);

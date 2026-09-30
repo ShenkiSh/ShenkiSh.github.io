@@ -1,6 +1,6 @@
 import { CaseChapterNavigation } from "../CaseChapterNavigation";
 
-const chapters = [["overview", "Game"], ["memories", "Memories"], ["design", "Level Design"], ["unity", "UX/UI · Unity"], ["testing", "Playtesting"], ["visual", "Visual"]] as const;
+const chapters = [["overview", "The Idea"], ["design", "Level Design"], ["unity", "UX/UI · Unity"], ["players", "Players & Credits"]] as const;
 
 export function NumiChapterNavigation() {
   return <CaseChapterNavigation label="NUMI sections" chapters={chapters} />;

@@ -512,3 +512,11 @@ The full recording preserves tutorial, opening story, gameplay and ending. Video
 load on interaction; the case-study players retain sound/seek/fullscreen/retry and
 exclusive playback. The Home card keeps the existing silent hover behavior and
 static reduced-motion/touch fallback. The original three-film Home hero is unchanged.
+
+## NUMI case-study comparison poster — September 30
+
+`numi/prompts-before.jpg` is the complete 1280 × 720 frame at 4.2 seconds in
+`numi/icons-before.mp4`. It shows the original simultaneous Hold/Scale prompts,
+so the before/after comparison is understandable before playing either clip.
+It is a JPEG frame extraction without cropping or artwork changes; the original
+video and existing posters are preserved.

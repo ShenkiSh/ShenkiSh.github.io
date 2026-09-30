@@ -309,65 +309,61 @@ gameplay media. Provenance and encoding details are in `frontend/public/assets/R
 
 ### NUMI case study
 
-`/#/numi` implements the current NUMI Figma frame `1160:9463` in the same
-Portfolio file, with its black background, lavender/white typography, 12-column
-desktop grid, rounded media and responsive layout. The homepage is unchanged.
-The page includes the narrative sequence, personal origin, five manually selected
-memory images, Childhood level progression, mechanics, memory HUD, interaction
-feedback, controller-prompt iteration, visual development, public playtesting and
-Channel 10 interview. Chapter links stay below the site header while scrolling.
-Body copy and captions keep their final two words together; headings use balanced
-wrapping. The text/media columns stack below 1024 px so narrower screens do not
-force single-word heading endings. The homepage typography is unchanged.
-NUMI headings and the next-project title consistently use `#C3BCCB`.
-The shared project footer links back to Work and forward to We Live Happily Here.
+`/#/numi` presents five connected parts: a compact introduction with Shani's role
+and trailer; the personal origin and five memory worlds; the Childhood level;
+HUD and prompt iteration; and public presentation with credits and optional depth.
+It retains the black/lavender palette, Anta/Satoshi fonts, rounded media and the
+shared project footer. The homepage and other project pages are unchanged.
 
-Shani's nine edited films are installed, including the 48-second trailer, three
-mechanics, both hand-bridge moments, old/new prompts and the 7:33 Childhood film
-including its story. NUMI's shared player uses small lavender controls for seeking,
-play/pause, sound/mute and fullscreen, with keyboard access and retry on load failure.
-Poster frames show a play icon and duration. Controls appear on pointer movement,
-keyboard focus or a tap while playing, and hide after inactivity. Paused controls
-remain visible. Native fullscreen is retained as a fallback for iOS video playback.
-Films begin muted; only one plays at a time, and offscreen/background players pause.
-The NUMI hero contains one 48-second trailer with its poster and an explicit Play
-control; it starts paused. **Play the game** scrolls to the playable First Memory
-section without downloading or launching Unity. The old 10-second preview and
-separate trailer button are no longer shown in this case study. The full playthrough
-opens a large dialog with Escape/close, focus restoration and preserved page position.
-The trailer and short clips play inline. All five Childhood thumbnails show a play/duration badge
-and start their corresponding clip in the shared main frame. Exploration, rolling
-the wheel and combining movement with objects use 11–12-second excerpts from the
-full Childhood recording, alongside the two supplied bridge clips. Selecting another
-step stops the previous clip; the sequence starts paused. The event photo also
-enlarges on click.
+The introduction groups the title, description, role and **Play the Childhood demo**
+link alongside the paused 48-second trailer. The link scrolls to the compact demo
+entry without downloading Unity. Memory previews form one labeled strip; on narrow
+screens it scrolls horizontally. Each preview opens its full image and description
+in a dialog with keyboard dismissal and focus restoration.
 
-**Play the First Memory** opens the separate Unity browser export on desktop.
-The game downloads only on request, in a large dialog with loading/retry, fullscreen,
-mouse close and Shift+X to return to the case study. Escape inside the game keeps
-its pause/controls action; closing restores focus and page position. Touch-only
-visitors receive a desktop-play note and the full Childhood film instead of loading
-the game. The film is also available as a secondary action on desktop.
+The Childhood section compares the collapsing hand bridge and safe hand crossing
+with an explanation beside each clip. The three manipulation examples are available
+under **Explore the three interactions**. The HUD shows explicitly labeled 0/4, 1/4
+and 4/4 states. Interaction feedback and playtesting form one before/after account:
+simultaneous Hold/Scale prompts changed to a contextual sequence. Its poster exposes
+the original simultaneous prompts before playback. This documents the design change;
+no unverified playtest metrics or improved outcomes are claimed.
 
-The export includes the original main menu, opening story with a 1.2-second hold skip,
-complete Childhood scene, bicycle memory and its fade, followed by a completion
-screen with Back to Menu. Stage 2 is excluded from this edition. Keyboard/controller
-input and Shani's contextual key artwork are retained; mouse scrolling is an optional
-resize input. The full Unity project and its later stages remain available separately.
-`frontend/public/games/numi/README.md` records the player/export arrangement. Keep its
-installed Build, StreamingAssets and manifest files with the site's public assets.
+Four sticky chapter links lead to the idea, level design, UX/UI and players/credits.
+The previous section anchors remain available. Main text/media columns stack below
+1024 px; comparisons stack on phones. The full 7:33 Childhood film and expandable
+story/visual-development gallery are secondary material near the end of the page.
+The public showcase image still enlarges, and the Channel 10 interview is retained.
+The project footer returns to Work or continues to We Live Happily Here.
 
-The interaction-feedback row uses actual Hold/Scale captures and an inline recording
-of the interaction. Its text describes Shani's UX/UI and Unity integration, while
-crediting programming collaboration. The iteration section documents the confirmed
-change from simultaneous prompts to one contextual prompt at a time; no playtest
-metrics have been invented.
+Shared video controls retain seek, play/pause, sound and fullscreen, keyboard/touch
+access, loading/retry and reduced-motion behavior. Films start paused and muted;
+only one plays at a time, and offscreen/background players pause. The full film
+opens a dialog with Escape/close, focus restoration and preserved page position.
 
-If showing the Figma → Unity process later, supply genuine editor captures before
-replacing or supplementing the current in-game feedback evidence.
+**Play in browser** opens the existing Unity browser export on desktop. It downloads
+only on request, with loading/retry, fullscreen, mouse close and Shift+X to return
+to the case study. Touch-only visitors receive a desktop-play note and the full
+Childhood film instead. The export and its controls are unchanged: original menu,
+opening story with hold-to-skip, Childhood scene, bicycle memory and completion
+screen. Later stages remain in the full Unity project. See
+`frontend/public/games/numi/README.md` for the export arrangement and
+`frontend/public/assets/README.md` for media provenance.
 
-NUMI media provenance and source filenames are recorded in
-`frontend/public/assets/README.md`. Original footage and Figma designs are untouched.
+#### Backup and isolated redesign
+
+`backup/portfolio-before-numi-2026-09-30` preserves commit `6265b56`, including the
+previously uncommitted homepage refinements and original NUMI page. It is pushed to
+GitHub. The original `Portfolio website` working folder remains on that branch;
+its preview remains at `http://127.0.0.1:5173/#/numi`.
+
+The NUMI redesign lives on `codex/numi-case-study-refinement` in the sibling
+`Portfolio website-numi-refinement` worktree. Start its preview from `frontend/`
+with `npm run dev -- --port 5174 --strictPort`, then open
+`http://127.0.0.1:5174/#/numi`. Reopen the original folder/preview to return to the
+saved design without discarding the new work. The backup remains available as a
+Git starting point for a later restoration. Neither branch triggers deployment;
+the public GitHub Pages site remains on the previously published version.
 
 ### TENKI case study
 

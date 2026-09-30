@@ -20,7 +20,7 @@ export const films = {
   resize: { id: "resize", title: "Resize", duration: "0:16", poster: "resize.jpg" },
   move: { id: "move", title: "Grab & Move", duration: "0:16", poster: "move.jpg" },
   rotate: { id: "rotate", title: "Rotate", duration: "0:16", poster: "rotate.jpg" },
-  before: { id: "icons-before", title: "Before — simultaneous controller prompts", duration: "0:13", poster: "icons-before.jpg" },
+  before: { id: "icons-before", title: "Before — simultaneous controller prompts", duration: "0:13", poster: "prompts-before.jpg" },
   after: { id: "icons-after", title: "After — one prompt at a time", duration: "0:11", poster: "icons-after.jpg" },
 } satisfies Record<string, NumiFilm>;
 
