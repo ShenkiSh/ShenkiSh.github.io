@@ -309,9 +309,10 @@ gameplay media. Provenance and encoding details are in `frontend/public/assets/R
 
 ### NUMI case study
 
-`/#/numi` presents five connected parts: a compact introduction with Shani's role
-and trailer; the personal origin and five memory worlds; the Childhood level;
-HUD and prompt iteration; and public presentation with credits and optional depth.
+`/#/numi` groups Shani's introduction and trailer, personal origin and five memory
+worlds, visible visual development, Childhood level, HUD/prompt iteration, and
+public presentation with credits. Section titles and their explanations sit
+together directly above the related media; comparisons group clips and captions.
 It retains the black/lavender palette, Anta/Satoshi fonts, rounded media and the
 shared project footer. The homepage and other project pages are unchanged.
 
@@ -329,10 +330,14 @@ simultaneous Hold/Scale prompts changed to a contextual sequence. Its poster exp
 the original simultaneous prompts before playback. This documents the design change;
 no unverified playtest metrics or improved outcomes are claimed.
 
-Four sticky chapter links lead to the idea, level design, UX/UI and players/credits.
-The previous section anchors remain available. Main text/media columns stack below
-1024 px; comparisons stack on phones. The full 7:33 Childhood film and expandable
-story/visual-development gallery are secondary material near the end of the page.
+Five sticky chapter links lead to the idea, visual design, level design, UX/UI
+and players/credits. The previous section anchors remain available. The visual
+section is always visible, with character, environment, object and narrative
+studies, rather than a collapsed appendix. Character/environment studies and
+comparisons stack on phones. A prominent **Watch the full Childhood playthrough**
+button with its 7:33 duration sits alongside **Play in browser** in the demo area.
+Decorative diagonal arrows have been removed from NUMI's images and actions;
+the approved hero layout and its existing navigation remain unchanged.
 The public showcase image still enlarges, and the Channel 10 interview is retained.
 The project footer returns to Work or continues to We Live Happily Here.
 

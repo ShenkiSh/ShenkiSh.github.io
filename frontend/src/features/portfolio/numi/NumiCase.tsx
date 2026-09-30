@@ -4,7 +4,7 @@ import { NumiChapterNavigation } from "./NumiChapterNavigation";
 import { NumiMemories } from "./NumiMemories";
 import { NumiLevelDesign } from "./NumiLevelDesign";
 import { NumiFeedback } from "./NumiFeedback";
-import { NumiExtras } from "./NumiExtras";
+import { NumiVisualDevelopment } from "./NumiVisualDevelopment";
 import { NumiVideo } from "./NumiVideo";
 import { useExclusiveCaseMedia } from "../useExclusiveCaseMedia";
 import { NumiMediaDialog, type NumiOverlay } from "./NumiMediaDialog";
@@ -33,20 +33,18 @@ export function NumiCase() {
     <div className={styles.container}>
       <section className={styles.section} id="overview" aria-labelledby="game-heading">
         <div className={styles.sectionIntro}>
-          <div className={styles.copy}><p className={styles.eyebrow}>01 / The idea &amp; the world</p><h2 id="game-heading">A life told<br />through memories.</h2></div>
-          <div className={styles.copy}>
-            <p>Inspired by my grandmother and my family’s experience with Alzheimer’s, I created a fictional story about memory and identity.</p>
-            <p className={styles.small}>Play as NUMI, a fragment of Naomi’s identity. Family interactions lead into memories from childhood to age 70, each with its own landscape and emotional tone.</p>
-          </div>
+          <h2 id="game-heading">A life told through memories.</h2>
+          <p>Inspired by my grandmother and my family’s experience with Alzheimer’s, I created a fictional story about memory and identity. As NUMI, a fragment of Naomi’s identity, the player explores five worlds from childhood to age 70.</p>
         </div>
         <NumiMemories onEnlarge={(file, title) => setMedia({ kind: "image", file, title })} />
       </section>
+      <NumiVisualDevelopment />
       <NumiLevelDesign onWatch={watchPlaythrough} />
       <NumiFeedback />
       <section className={`${styles.section} ${styles.closing}`} id="players" aria-labelledby="players-heading">
         <div className={styles.playersGrid}>
-          <div className={styles.copy}><p className={styles.eyebrow}>04 / The project meets players</p><h2 id="players-heading">From screen<br />to players.</h2><p>Players of different ages completed all five memories at Animatheque, Tel Aviv Cinematheque.</p>
-            <a className={styles.textLink} href="https://youtu.be/jpuC4LFZNx4" target="_blank" rel="noreferrer">Channel 10 interview <span aria-hidden="true">↗</span></a>
+          <div className={styles.copy}><h2 id="players-heading">From screen to players.</h2><p>Players of different ages completed all five memories at Animatheque, Tel Aviv Cinematheque.</p>
+            <a className={styles.textLink} href="https://youtu.be/jpuC4LFZNx4" target="_blank" rel="noreferrer">Channel 10 interview</a>
           </div>
           <figure><button className={styles.photoButton} onClick={() => setMedia({ kind: "image", file: "imgSourceArtworkGroup1100.png", title: "NUMI at Animatheque, Tel Aviv Cinematheque" })} aria-label="Enlarge public playtesting photo"><img src={numiAsset("imgSourceArtworkGroup1100.png")} alt="Visitors playing NUMI with a controller at the public showcase" loading="lazy" width="1104" height="548" /></button><figcaption>NUMI at Animatheque, Tel Aviv Cinematheque.</figcaption></figure>
         </div>
@@ -54,8 +52,6 @@ export function NumiCase() {
           <div><dt>My contribution</dt><dd>Game &amp; Level Design · Narrative Design · Game UX/UI · Visual Development · Unity Implementation</dd></div>
           <div><dt>Collaborators</dt><dd>Freelance Programmer · Music Composer</dd></div>
         </dl>
-        <div className={styles.further}><p className={styles.small}>Stay a little longer</p><button className={styles.textLink} type="button" onClick={watchPlaythrough} aria-label="Watch full Childhood playthrough · 7:33">Watch the full Childhood playthrough <span>7:33 ↗</span></button></div>
-        <NumiExtras />
       </section>
     </div>
     {media ? <NumiMediaDialog media={media} onClose={() => setMedia(null)} /> : null}

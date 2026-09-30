@@ -67,7 +67,7 @@ export function NumiGameDialog({ onClose, onWatch }: NumiGameDialogProps) {
     </header>
     {touchOnly ? <div className={styles.mobileMessage}>
       <p>Play on a computer with a keyboard or&nbsp;controller.</p>
-      <button type="button" onClick={onWatch}>Watch the full playthrough <span aria-hidden="true">→</span></button>
+      <button type="button" onClick={onWatch}>Watch the full playthrough</button>
     </div> : <iframe ref={frame} className={styles.frame} src={asset("games/numi/index.html")} title="Play NUMI — First Memory" allow="autoplay; fullscreen; gamepad" />}
     <footer className={styles.footer}>
       <span>{fullscreenError ? "Fullscreen is unavailable. You can keep playing here." : "Keyboard or controller · Headphones recommended"}</span>

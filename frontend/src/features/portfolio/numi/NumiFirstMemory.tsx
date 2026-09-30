@@ -9,7 +9,10 @@ export function NumiFirstMemory({ onWatch }: { onWatch: () => void }) {
       <h3 id="first-memory-heading">Step into the Childhood memory</h3>
       <p className={styles.small}>Playable demo · Desktop · Keyboard or controller</p>
     </div>
-    <button className={styles.primary} type="button" onClick={() => setPlaying(true)}>Play in browser <span aria-hidden="true">↗</span></button>
+    <div className={styles.playActions}>
+      <button className={styles.primary} type="button" onClick={() => setPlaying(true)}>Play in browser</button>
+      <button className={styles.watchButton} type="button" onClick={onWatch} aria-label="Watch full Childhood playthrough · 7:33">Watch the full Childhood playthrough <span>7:33</span></button>
+    </div>
     {playing && <NumiGameDialog onClose={() => setPlaying(false)} onWatch={() => { setPlaying(false); onWatch(); }} />}
   </div>;
 }
