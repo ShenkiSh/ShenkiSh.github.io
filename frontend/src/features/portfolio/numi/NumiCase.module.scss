@@ -41,10 +41,8 @@
 .section { padding-block: var(--numi-section); border-bottom: 1px solid var(--numi-rule); }
 .sectionIntro { display: grid; gap: 16px; max-width: 780px; margin-bottom: 32px; }
 .sectionIntro > p { max-width: 68ch; }
-.memories { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.25vw, 24px); list-style: none; padding: 0; margin: 0; }
-.memoryImage { position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; border-radius: var(--numi-radius); overflow: hidden; }
-.memoryImage img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-.memoryImage:hover img { filter: brightness(1.12); }
+.memories { display: grid; grid-template-columns: repeat(5, minmax(220px, 1fr)); gap: clamp(12px, 1.25vw, 24px); list-style: none; padding: 4px 0 12px; margin: 0; overflow-x: auto; scrollbar-width: thin; }
+.memories > li { min-width: 0; }
 .memories h3 { display: flex; align-items: baseline; gap: 8px; margin-top: 14px; font-size: clamp(15px, 1.042vw, 20px); font-weight: 500; color: var(--home-text); }
 .memoryNumber { color: var(--home-footer-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
 .memories p { margin-top: 6px; font-size: clamp(12px, .833vw, 16px); line-height: 1.5; color: var(--home-footer-muted); }
@@ -107,8 +105,7 @@
   .heroGrid, .playersGrid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .heroCopy { max-width: 60ch; }
   .heroDescription { max-width: 40ch; }
-  .memories { grid-template-columns: repeat(5, minmax(180px, 1fr)); overflow-x: auto; padding-block: 4px 12px; scrollbar-width: thin; }
-  .memories > li { min-width: 0; }
+  .memories { grid-template-columns: repeat(5, minmax(260px, 1fr)); }
   .hudRow { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .hudSequence { max-width: 640px; }
 }

@@ -318,9 +318,11 @@ shared project footer. The homepage and other project pages are unchanged.
 
 The introduction groups the title, description, role and **Play the Childhood demo**
 link alongside the paused 48-second trailer. The link scrolls to the compact demo
-entry without downloading Unity. Memory previews form one labeled strip; on narrow
-screens it scrolls horizontally. Each preview opens its full image and description
-in a dialog with keyboard dismissal and focus restoration.
+entry without downloading Unity. The five memory previews are inline gameplay videos
+with their existing posters, play badges and durations. They form one labeled strip;
+on narrow screens it scrolls horizontally, keeping each player's controls usable.
+Each starts paused and muted, downloads on demand and supports keyboard playback,
+seek, sound and fullscreen. Playing another preview pauses the previous one.
 
 The Childhood section compares the collapsing hand bridge and safe hand crossing
 with an explanation beside each clip. The three manipulation examples are available

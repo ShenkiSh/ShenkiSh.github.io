@@ -36,7 +36,7 @@ export function NumiCase() {
           <h2 id="game-heading">A life told through memories.</h2>
           <p>Inspired by my grandmother and my family’s experience with Alzheimer’s, I created a fictional story about memory and identity. As NUMI, a fragment of Naomi’s identity, the player explores five worlds from childhood to age 70.</p>
         </div>
-        <NumiMemories onEnlarge={(file, title) => setMedia({ kind: "image", file, title })} />
+        <NumiMemories />
       </section>
       <NumiVisualDevelopment />
       <NumiLevelDesign onWatch={watchPlaythrough} />

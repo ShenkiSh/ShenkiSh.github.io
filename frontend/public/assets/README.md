@@ -214,6 +214,12 @@ in the 1280×720 copy, resized to 960×540). `feedback-result.jpg` uses 4.5 s.
 
 `memory-1.jpg` through `memory-5.jpg` are 1600-pixel-wide copies of Shani's chosen
 `5 תמונות מתוך 5 השלבים/שלב 1.png` through `שלב 5.png` in the same source folder.
+The five-memory strip now uses those images as video posters. Childhood reuses
+`level-explore.mp4`, Twenties `rotate.mp4`, Motherhood `resize.mp4`, and Seventies
+`move.mp4`, each from the corresponding stage. `memory-teenage.mp4` is a continuous
+nine-second excerpt (00:06.500–00:15.500) of `טיזר.mp4`, showing the Teenage Years
+fence and movable platforms. It uses the same 1280×720 H.264/AAC, CRF 22,
+yuv420p, 30 fps and fast-start encoding, retaining the source audio and speed.
 `level-orient.jpg`, `level-wheel.jpg` and `level-combine.jpg` reuse the actual gameplay
 captures prepared for the existing Figma level-design strip.
 

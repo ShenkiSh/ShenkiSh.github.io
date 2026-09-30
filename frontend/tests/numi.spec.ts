@@ -1,24 +1,36 @@
 import { expect, test } from "./fixtures";
 
-test("memory previews enlarge with keyboard and return focus to the selected memory", async ({ page }) => {
+test("all five memory previews play inline with keyboard and support fullscreen without simultaneous playback", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/numi");
   await expect(page).toHaveTitle("NUMI | Shani Shlomov");
   const memories = page.getByRole("list", { name: "Five playable memories" });
-  for (const [name, file] of [["Childhood", "memory-1.jpg"], ["Seventies", "memory-5.jpg"]]) {
-    const opener = memories.getByRole("button", { name: `Enlarge ${name} memory`, exact: true });
+  await expect(memories.locator("video")).toHaveCount(5);
+  for (const video of await memories.locator("video").all()) {
+    await expect(video).toHaveJSProperty("paused", true);
+    await expect(video).toHaveJSProperty("autoplay", false);
+    await expect(video).toHaveAttribute("preload", "none");
+  }
+  for (const name of ["Childhood", "Teenage Years", "Twenties", "Motherhood", "Seventies"]) {
+    const player = memories.getByRole("group", { name: `${name} — gameplay preview video player`, exact: true });
+    const opener = player.getByRole("button", { name: `Play ${name} — gameplay preview`, exact: true });
     await opener.focus();
     await page.keyboard.press("Enter");
-    const dialog = page.getByRole("dialog");
-    await expect(dialog.getByRole("img")).toHaveAttribute("src", new RegExp(`${file}$`));
-    await page.keyboard.press("Escape");
-    await expect(dialog).toHaveCount(0);
-    await expect(opener).toBeFocused();
+    await expect.poll(() => player.locator("video").evaluate((video: HTMLVideoElement) => video.currentTime)).toBeGreaterThan(.1);
+    await expect(player.getByRole("button", { name: "Pause", exact: true })).toBeVisible();
+    expect(await page.locator("video").evaluateAll((videos: HTMLVideoElement[]) => videos.filter(video => !video.paused).length)).toBe(1);
   }
+  const lastPlayer = memories.getByRole("group", { name: "Seventies — gameplay preview video player", exact: true });
+  await lastPlayer.getByRole("button", { name: "Fullscreen", exact: true }).click();
+  await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement))).toBe(true);
+  await lastPlayer.getByRole("button", { name: "Exit fullscreen", exact: true }).click();
+  await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement))).toBe(false);
+  await expect(page.getByRole("dialog")).toHaveCount(0);
   const chapters = page.getByRole("navigation", { name: "NUMI sections" });
   await chapters.getByRole("link", { name: "UX/UI · Unity", exact: true }).click();
   await expect(chapters.getByRole("link", { name: "UX/UI · Unity", exact: true })).toHaveAttribute("aria-current", "location");
   await expect(page.locator("#testing video")).toHaveCount(2);
+  await expect(lastPlayer.locator("video")).toHaveJSProperty("paused", true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 

@@ -12,6 +12,7 @@ export interface NumiFilm {
 export const films = {
   trailer: { id: "trailer", title: "NUMI — Gameplay Trailer", duration: "0:48", poster: "trailer.jpg" },
   childhood: { id: "childhood-full", title: "Childhood — Story & Full Playthrough", duration: "7:33", poster: "imgNumiChildhoodPlayableEntryPoster.png" },
+  teenage: { id: "memory-teenage", title: "Teenage Years — gameplay preview", duration: "0:09", poster: "memory-2.jpg" },
   explore: { id: "level-explore", title: "Explore the space", duration: "0:11", poster: "level-orient.jpg" },
   collapse: { id: "bridge-collapse", title: "The collapsing hand bridge", duration: "0:11", poster: "bridge-collapse.jpg" },
   wheel: { id: "level-wheel", title: "Roll the wheel into place", duration: "0:11", poster: "level-wheel.jpg" },
@@ -25,11 +26,11 @@ export const films = {
 } satisfies Record<string, NumiFilm>;
 
 export const memories = [
-  { name: "Childhood", description: "Age 5. Movement and object manipulation introduce a search for stability and safety in an increasingly unstable environment." },
-  { name: "Teenage Years", description: "Restricted routes and contextual interactions make boundaries and personal space tangible." },
-  { name: "Twenties", description: "Platforms and water shift the experience toward support and protection." },
-  { name: "Motherhood", description: "Domestic objects become traversal paths and puzzles, expressing care and love through the environment." },
-  { name: "Seventies", description: "Age 70. Exploration and memory collection express a fragmented sense of identity." },
+  { name: "Childhood", film: films.explore, description: "Age 5. Movement and object manipulation introduce a search for stability and safety in an increasingly unstable environment." },
+  { name: "Teenage Years", film: films.teenage, description: "Restricted routes and contextual interactions make boundaries and personal space tangible." },
+  { name: "Twenties", film: films.rotate, description: "Platforms and water shift the experience toward support and protection." },
+  { name: "Motherhood", film: films.resize, description: "Domestic objects become traversal paths and puzzles, expressing care and love through the environment." },
+  { name: "Seventies", film: films.move, description: "Age 70. Exploration and memory collection express a fragmented sense of identity." },
 ];
 
 export const narrative = [
