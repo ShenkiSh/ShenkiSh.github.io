@@ -336,7 +336,10 @@ Five sticky chapter links lead to the idea, visual design, level design, UX/UI
 and players/credits. The previous section anchors remain available. The visual
 section is always visible, with character, environment, object and narrative
 studies, rather than a collapsed appendix. Character/environment studies and
-comparisons stack on phones. A prominent **Watch the full Childhood playthrough**
+comparisons stack on phones. Visual-study captions use a consistent smaller type
+scale and shorter descriptions. Object captions share the exact width and left edge
+of their artwork; on phones each small asset sits beside its label in a single row.
+A prominent **Watch the full Childhood playthrough**
 button with its 7:33 duration sits alongside **Play in browser** in the demo area.
 Decorative diagonal arrows have been removed from NUMI's images and actions;
 the approved hero layout and its existing navigation remain unchanged.

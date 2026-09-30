@@ -83,12 +83,15 @@
 .storyboard { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
 .storyboard img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--numi-radius); }
 .storyboard figcaption { font-size: 12px; }
-.visualGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px; align-items: start; }
+.visualGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 16px 24px; align-items: start; }
+.visualGrid > figure { display: grid; grid-template-rows: subgrid; grid-row: span 2; min-width: 0; }
 .visualGrid img, .assetStrip img { width: 100%; height: auto; display: block; border-radius: var(--numi-radius); }
 .environments { display: grid; gap: 12px; align-content: start; }
-.environments figcaption { padding-top: 2px; }
-.assetStrip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
-.assetStrip img { max-height: 200px; object-fit: contain; }
+.visualGrid figcaption { padding-top: 0; max-width: 44ch; font-size: clamp(14px, .833vw, 16px); line-height: 1.6; }
+.visualGrid figcaption strong { margin-bottom: 4px; font-size: clamp(15px, .885vw, 17px); line-height: 1.45; }
+.assetStrip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 36px; }
+.assetStrip > figure { width: 100%; max-width: 352px; justify-self: center; }
+.assetStrip figcaption { padding-top: 12px; font-size: clamp(14px, .833vw, 16px); line-height: 1.5; }
 .storySequence { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--numi-rule); }
 .storySequence .sectionIntro { gap: 10px; margin-bottom: 24px; }
 .anchor { display: block; height: 0; }
@@ -128,9 +131,11 @@
   .credits { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .storyboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .visualGrid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .visualGrid > figure { grid-template-rows: auto auto; grid-row: auto; gap: 14px; }
   .characterStudy { max-width: 280px; }
-  .assetStrip { gap: 12px; }
-  .assetStrip figcaption { font-size: 12px; }
+  .assetStrip { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 28px; }
+  .assetStrip > figure { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 16px; align-items: center; max-width: none; }
+  .assetStrip figcaption { padding-top: 0; }
   .environments { gap: 8px; }
   .dialog { max-width: calc(100vw - 20px); width: calc(100vw - 20px); }
   .dialogHeader { gap: 12px; }
