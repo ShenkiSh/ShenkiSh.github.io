@@ -5,7 +5,7 @@ import styles from "./HomeFooter.module.scss";
 export function HomeFooter() {
   return <footer id="contact" className={styles.footer} aria-labelledby="contact-title">
     <div className={styles.container}>
-      <h2 id="contact-title">Want to work together?</h2>
+      <h2 id="contact-title">Let’s connect</h2>
       <nav className={styles.contactLinks} aria-label="Contact links">
         <PortfolioLink href="contact.html#email">Email</PortfolioLink>
         <PortfolioLink href={contactDetails.linkedIn} target="_blank" rel="noopener noreferrer">LinkedIn</PortfolioLink>

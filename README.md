@@ -48,8 +48,10 @@ hover/focus stay consistent across all three hero videos.
 Hero indicators follow the updated Figma export: solid purple for the current video,
 27%-opacity lavender for the other two, no black outline, and the smaller dot size
 and tighter spacing from frame `1051:4863`. Touch targets remain larger than the dots.
-The Home About paragraph reads: “I turn visual ideas into playable experiences
-from interface and interaction to Unity.”
+The Home About heading reads “Hi, I’m Shani.” and its paragraph reads:
+“Game UX/UI & Game Designer turning visual ideas into playable experiences
+from interface and interaction to Unity.” A **More about me →** button below the
+paragraph opens the About page.
 Its smaller fluid type, relaxed line height and wider text measure sit beside the
 waving character on desktop and stack below it on mobile; the section grows with text.
 

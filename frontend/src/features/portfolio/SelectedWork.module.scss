@@ -2,7 +2,7 @@
 .work { padding-top: calc(32 * var(--home-unit)); }
 .feature { position: relative; isolation: isolate; padding-bottom: calc(74 * var(--home-unit)); }
 .feature::before { content: ""; position: absolute; inset: calc(47 * var(--home-unit)) 0 0; background: var(--home-feature); z-index: -1; }
-.heading { font-size: clamp(32px, 3.90625vw, 90px); font-weight: 500; line-height: 1.082; letter-spacing: -.026em; color: var(--home-heading); }
+.heading { font-size: clamp(32px, 2.8515625vw, 65.7px); font-weight: 500; line-height: 1.082; letter-spacing: -.026em; color: var(--home-heading); }
 .featureGrid { display: grid; grid-template-columns: minmax(0, 1131fr) minmax(0, 495fr); gap: calc(56 * var(--home-unit)); margin-top: calc(16 * var(--home-unit)); align-items: start; }
 .featureMedia { --preview-corners: var(--home-feature-corners); position: relative; display: block; aspect-ratio: 1131 / 619; border-radius: var(--preview-corners); }
 .featureCopy { position: relative; top: calc(-23 * var(--home-unit)); display: flex; flex-direction: column; align-items: flex-start; gap: calc(20 * var(--home-unit)); }
