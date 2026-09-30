@@ -1,0 +1,29 @@
+using System.Runtime.InteropServices;
+using UnityEngine;
+using UnityEngine.Scripting;
+
+[Preserve]
+public class HopWebBridge : MonoBehaviour
+{
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [DllImport("__Internal")] private static extern void HopClose();
+#endif
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void Create()
+    {
+        var bridge = new GameObject("HopWebBridge");
+        DontDestroyOnLoad(bridge);
+        bridge.AddComponent<HopWebBridge>();
+#if UNITY_WEBGL && !UNITY_EDITOR
+        WebGLInput.captureAllKeyboardInput = false;
+#endif
+    }
+    [Preserve]
+    public void SetMuted(string value) { AudioListener.volume = value == "1" ? 0f : 1f; }
+    public static void CloseToPortfolio()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        HopClose();
+#endif
+    }
+}

@@ -1,0 +1,5 @@
+mergeInto(LibraryManager.library, {
+  HopClose: function () {
+    window.parent.postMessage({ type: 'hop-close' }, window.location.origin);
+  }
+});

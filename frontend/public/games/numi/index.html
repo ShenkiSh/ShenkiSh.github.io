@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NUMI — First Memory</title>
+  <link rel="stylesheet" href="player.css" />
+</head>
+<body>
+  <main>
+    <canvas id="game" width="1280" height="720" tabindex="0" aria-label="NUMI game. Use a keyboard or controller."></canvas>
+    <section id="loading" aria-label="Loading NUMI">
+      <p class="wordmark">NUMI</p>
+      <p id="status" role="status">Loading the first memory…</p>
+      <progress id="progress" max="1" value="0" aria-label="Game loading progress"></progress>
+      <p class="quiet">Keyboard or controller · Headphones recommended</p>
+    </section>
+    <section id="failure" hidden role="alert">
+      <p>NUMI couldn’t load.</p>
+      <p class="quiet">Check your connection and try again.</p>
+      <button id="retry" type="button">Try again</button>
+    </section>
+  </main>
+  <script src="player.js" defer></script>
+</body>
+</html>

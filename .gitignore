@@ -1,0 +1,23 @@
+node_modules/
+.venv/
+.env
+.env.*
+!.env.example
+!.env.*.example
+dist/
+build/
+# Unity browser exports are published website assets, including their Build folders.
+!frontend/public/games/**/Build/
+!frontend/public/games/**/Build/**
+.DS_Store
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+test-results/
+playwright-report/
+*.tsbuildinfo
+# Original recordings are published without re-encoding by the portfolio-media repo.
+frontend/public/assets/hop/full-game.mp4
+frontend/public/assets/redream/full-experience-hd.mp4

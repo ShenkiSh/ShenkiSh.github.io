@@ -1,0 +1,5 @@
+.footer { background: var(--home-background); color: var(--home-heading); font-family: Satoshi, Arial, sans-serif; line-height: 1.5; }
+.container { width: min(1680px, 87.5%); margin-inline: auto; border-top: 1px solid var(--home-rule); }
+@media (max-width: 700px) {
+  .container { width: calc(100% - 40px); }
+}

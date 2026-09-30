@@ -1,0 +1,94 @@
+@font-face { font-family: HappilyRubik; src: url("/assets/fonts/Rubik-Light.ttf") format("truetype"); font-weight: 300; font-display: swap; }
+@font-face { font-family: HappilyRubik; src: url("/assets/fonts/Rubik-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: HappilyRubik; src: url("/assets/fonts/Rubik-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: HappilyRubik; src: url("/assets/fonts/Rubik-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+.screen {
+  --app-outline: #154875;
+  --app-heading: #385f82;
+  --app-button: #c9e6ff;
+  --app-action: #83c5ff;
+  --app-selected: #fff;
+  position: absolute; left: 0; top: 0; width: 412px; height: 917px; transform-origin: top left; isolation: isolate; overflow: hidden; color: #000; background: linear-gradient(#88c8ff, #c7e5ff); font: 400 16px/normal HappilyRubik, Arial, sans-serif; color-scheme: light;
+  button, input { font-family: inherit; }
+  button { cursor: pointer; touch-action: manipulation; }
+  button:disabled { cursor: default; }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--app-outline); outline-offset: 4px; }
+  h3, h4 { letter-spacing: 0; }
+  h3:focus { outline: none; }
+}
+.artwork { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.cloud { position: absolute; max-width: none; }
+.cloudBase { position: absolute; background: #fff; }
+.wifi, .battery, .signal { position: absolute; overflow: hidden; }
+.wifi img, .battery img, .signal img { position: absolute; max-width: none; }
+.wifi { left: 63.316px; top: 13.146px; width: 13.95px; height: 10.529px; img { width: 454.35%; height: 401.29%; left: -319.89%; top: -137.8%; } }
+.battery { left: 20.143px; top: 12.18px; width: 24.191px; height: 13.672px; img { width: 342.67%; height: 404.21%; left: -119.85%; top: -144.68%; } }
+.signal { left: 47.399px; top: 12.769px; width: 13.408px; height: 11.361px; transform: scaleX(-1); img { width: 472.71%; height: 371.93%; left: -32.7%; top: -123.83%; } }
+.clock { position: absolute; left: 356.679px; top: 12.849px; width: 35px; height: 13px; }
+.brand { position: absolute; inset: 0; pointer-events: none; text-align: center; color: var(--app-heading); }
+.brand > img { position: absolute; width: 93px; height: 77px; left: 160.4px; top: 61.1px; }
+.brand > p { position: absolute; top: 143.187px; left: 0; width: 100%; font-size: 16px; line-height: 19px; }
+.brand > h3 { position: absolute; top: 189.187px; left: 0; width: 100%; font: 700 24px/28px HappilyRubik, Arial, sans-serif; }
+.brand > .subtitle { top: 217.839px; font-size: 20px; line-height: 24px; }
+.primary, .smallButton { position: absolute; padding: 0; border: 1.261px solid var(--app-outline); border-radius: 62.189px; background: var(--app-action); color: #000; box-shadow: inset 0 -9.362px 4.681px rgb(0 0 0 / .1); font-size: 21.941px; font-weight: 500; line-height: 26px; width: 188.844px; height: 69.741px; left: 112.476px; }
+.primary[data-ready="true"], .primary:active:not(:disabled), .smallButton:active { background: var(--app-selected); }
+.newGame { top: 268.839px; }
+.familyTitle, .conflictTitle { position: absolute; left: 0; width: 100%; text-align: center; font-size: 21px; font-weight: 500; line-height: 25px; margin: 0; }
+.familyTitle { top: 365.58px; }
+.player { position: absolute; width: 132.292px; height: 91.487px; direction: rtl; }
+.portrait { display: block; position: relative; overflow: hidden; }
+.portrait img { position: absolute; display: block; max-width: none; }
+.portrait[data-portrait="yuval"] { width: 46.736px; height: 70.94px; img { width: 628.85%; height: 310.72%; left: -53.99%; top: -114.92%; } }
+.portrait[data-portrait="dani"] { width: 48.798px; height: 71.641px; img { width: 603.57%; height: 308.34%; left: -319.43%; top: -71.01%; } }
+.portrait[data-portrait="tohar"] { width: 49.966px; height: 77.498px; img { width: 510.2%; height: 246.71%; left: -86.1%; top: -29.77%; } }
+.portrait[data-portrait="dad"] { width: 60.307px; height: 90.014px; img { width: 370.37%; height: 186.1%; left: -157.78%; top: -54.09%; } }
+.portrait[data-portrait="mom"] { width: 51.366px; height: 89.994px; img { width: 797.87%; height: 341.55%; left: -351.5%; top: -118.79%; } }
+.avatar { position: absolute; }
+.choice { position: absolute; left: 0; top: 37.57px; display: grid; place-items: center; width: 132.292px; height: 46.049px; padding: 0; border: 1.348px solid var(--app-outline); border-radius: 83.598px; background: var(--app-button); color: #000; box-shadow: inset 0 -8.989px 2.247px rgb(0 0 0 / .1); font-size: 20.708px; line-height: 25px; font-weight: 400; }
+.choice[aria-pressed="true"] { background: var(--app-selected); }
+.check { position: absolute; left: 4.81px; top: 14.7px; width: 13.943px; height: 13.943px; }
+.count, .quote { position: absolute; left: 26.92px; top: 72.65px; display: grid; place-items: center; width: 78.445px; height: 18.836px; white-space: nowrap; border: .899px solid var(--app-outline); border-radius: 83.598px; background: var(--app-button); font-size: 10.5px; line-height: 12px; font-weight: 400; pointer-events: none; }
+.availability { position: absolute; z-index: 1; isolation: isolate; display: grid; place-items: center; left: 97.38px; top: 25.57px; width: 27.655px; height: 27.05px; font-size: 9px; line-height: 11px; pointer-events: none; }
+.availability img { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.player[data-player="mom"] { left: 109.918px; top: 417.58px; width: 193.96px; height: 125.537px;
+  .avatar { left: 72.53px; top: 2.08px; }
+  .choice { top: 44.17px; width: 193.96px; height: 69.068px; font-size: 27.128px; line-height: 32px; box-shadow: inset 0 -8.989px 3.596px rgb(0 0 0 / .1); }
+  .check { left: 6.64px; top: 22.4px; width: 21.574px; height: 21.574px; }
+  .count { left: 39.74px; top: 96.34px; width: 114.483px; height: 29.194px; font-size: 12.453px; line-height: 15px; }
+  .availability { left: 156.06px; top: 32.65px; width: 37.896px; height: 37.066px; font-size: 10.874px; line-height: 13px; }
+}
+.player[data-player="yuval"] { left: 64.106px; top: 570.117px; .avatar { left: 34.146px; top: -1.88px; } }
+.player[data-player="dad"] { left: 217.398px; top: 570.117px;
+  .avatar { left: 38.82px; top: -9.04px; }
+  .choice { top: 36.26px; }
+  .count { top: 71.34px; }
+  .availability { left: 99.48px; top: 25.26px; }
+}
+.player[data-player="tohar"], .player[data-player="dani"] { top: 688.604px;
+  .choice { top: 30.934px; }
+  .count { top: 66.018px; }
+  .availability { top: 19.68px; }
+}
+.player[data-player="tohar"] { left: 64.106px; .avatar { left: 41.16px; top: -11.48px; } .availability { left: 96.26px; top: 20.84px; } }
+.player[data-player="dani"] { left: 217.398px; .avatar { left: 37.5px; top: -1.03px; } .availability { left: 97.8px; } }
+.smallButton { width: 109.134px; height: 37.988px; top: 800.45px; left: 228.977px; border-width: 1.387px; border-radius: 68.964px; font-weight: 400; font-size: 17.056px; line-height: 20px; box-shadow: inset 0 -7.415px 1.854px rgb(0 0 0 / .1); }
+.addButton { left: 75.684px; padding-left: 13px; img { position: absolute; left: 6px; top: 11px; width: 12.8px; height: 12.8px; } }
+.pair { position: absolute; left: 61.5px; top: 268.839px; display: flex; direction: ltr; gap: 24.5px; }
+.pair > div { position: relative; width: 132.292px; height: 84px; }
+.pair .portrait { position: absolute; left: 40px; top: 0; }
+.pair > [data-player="dad"] .portrait { top: -14px; }
+.pair > [data-player="mom"] .portrait { top: -14px; }
+.pairLabel { position: absolute; left: 0; top: 38.43px; display: grid; place-items: center; width: 132.292px; height: 46.049px; border: 1.348px solid var(--app-outline); border-radius: 83.598px; background: var(--app-selected); box-shadow: inset 0 -8.989px 2.247px rgb(0 0 0 / .1); font-size: 20.708px; line-height: 25px; }
+.pairLabel img { position: absolute; left: 4px; width: 13.943px; height: 13.943px; }
+.conflictTitle { top: 380.271px; }
+.conflictGrid { position: absolute; inset: 0; }
+.conflictGrid > div { position: absolute; width: 134.27px; height: 53.922px; }
+.conflictGrid .choice { top: 0; width: 132.292px; }
+.conflictGrid .quote { top: 35.53px; height: 18.836px; left: 27.98px; font-size: 10px; }
+.send { top: 714.146px; left: 111.578px; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.fullScreenArtwork { position: absolute; inset: 0; width: 412px; height: 917px; }
+.notification { position: absolute; top: 329px; left: 17px; width: 378px; height: 87px; border: 0; border-radius: 16px; background: transparent; }
+.notification:active { background: rgb(255 255 255 / .15); }
+.parentNotification { position: absolute; top: 330.24px; left: 12.772px; width: 386.457px; height: 90.788px; border: 0; border-radius: 38px; background: transparent; }
+.parentNotification:active { background: rgb(255 255 255 / .15); }

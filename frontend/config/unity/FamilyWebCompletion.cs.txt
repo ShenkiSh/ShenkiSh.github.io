@@ -1,0 +1,22 @@
+using System.Runtime.InteropServices;
+using UnityEngine;
+using UnityEngine.UI;
+
+// Bound only to the final summary's Finish button in the isolated web export.
+public sealed class FamilyWebCompletion : MonoBehaviour
+{
+    private bool reported;
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [DllImport("__Internal")] private static extern void FamilyGameCompleted();
+#endif
+
+    public void NotifyFinished()
+    {
+        var button = GetComponent<Button>();
+        if (reported || button == null || !button.isActiveAndEnabled || !button.IsInteractable()) return;
+        reported = true;
+#if UNITY_WEBGL && !UNITY_EDITOR
+        FamilyGameCompleted();
+#endif
+    }
+}

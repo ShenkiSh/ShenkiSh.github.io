@@ -1,0 +1,19 @@
+.dialog { width: min(1600px, 96vw); height: min(96dvh, 1040px); max-width: 100vw; max-height: 100dvh; padding: 0; border: 1px solid var(--home-rule); border-radius: var(--home-radius); color: var(--home-text); background: var(--home-background); }
+.dialog[open] { display: flex; flex-direction: column; }
+.dialog::backdrop { background: rgb(0 0 0 / .94); }
+.surface { display: flex; flex-direction: column; width: 100%; height: 100%; min-height: 0; background: var(--home-background); }
+.surface:fullscreen { width: 100vw; height: 100dvh; }
+.header { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 20px; border-bottom: 1px solid var(--home-rule); }
+.header h2 { margin: 0; color: var(--home-heading); font-size: clamp(16px, 1.25vw, 22px); font-weight: 500; }
+.controls { display: flex; gap: 8px; }
+.controls button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 6px; color: var(--home-text); background: transparent; }
+.controls button:hover { background: var(--home-panel); }
+.frame { display: block; flex: 1; min-height: 0; width: 100%; border: 0; background: var(--home-background); }
+.footer { display: flex; flex-shrink: 0; justify-content: space-between; gap: 16px; padding: 10px 20px; color: var(--home-footer-muted); font-size: 12px; }
+.mobileMessage { display: grid; align-content: center; justify-items: center; flex: 1; gap: 24px; padding: 28px; text-align: center; }
+.mobileMessage p { max-width: 25ch; font-size: 22px; line-height: 1.5; }
+.mobileMessage button { padding: 14px 20px; border: 1px solid var(--home-heading); border-radius: 7px; color: var(--home-background); background: var(--home-heading); }
+@media (max-width: 600px) {
+  .header { padding: 8px 12px; }
+  .footer { flex-direction: column; gap: 4px; padding: 10px 12px; }
+}

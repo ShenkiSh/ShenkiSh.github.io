@@ -1,0 +1,8 @@
+mergeInto(LibraryManager.library, {
+  FamilyGameCompleted: function () {
+    window.parent.postMessage({
+      type: "family-complete",
+      game: new URLSearchParams(window.location.search).get("game")
+    }, window.location.origin);
+  }
+});

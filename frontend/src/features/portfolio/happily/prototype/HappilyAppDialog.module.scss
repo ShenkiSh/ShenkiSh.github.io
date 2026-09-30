@@ -1,0 +1,24 @@
+.dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--home-text); overflow: hidden; }
+.dialog::backdrop { background: rgb(0 0 0 / .96); }
+.surface {
+  --prototype-device-width: min(412px, calc((100vw - 112px) / 2), calc((100dvh - 152px) * 412 / 917));
+  height: 100%; display: grid; place-items: center; padding: 16px 24px 24px;
+}
+.workspace { width: max-content; max-width: 100%; }
+.toolbar { height: 44px; display: flex; align-items: center; margin-bottom: 12px; }
+.close { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; margin-left: auto; border: 0; border-radius: 50%; color: var(--home-text); background: transparent; cursor: pointer; }
+.close:hover { background: var(--home-panel); }
+.close:focus-visible, .viewSwitch button:focus-visible { outline: 2px solid var(--home-text); outline-offset: -4px; }
+.devices { display: grid; grid-template-columns: repeat(2, var(--prototype-device-width)); gap: 64px; align-items: start; }
+.viewSwitch { display: none; }
+
+@media (max-width: 700px) {
+  .surface { --prototype-device-width: min(412px, calc(100vw - 32px), calc((100dvh - 128px) * 412 / 917)); padding: 8px 16px 16px; }
+  .workspace { width: var(--prototype-device-width); }
+  .toolbar { margin-bottom: 8px; }
+  .devices { grid-template-columns: var(--prototype-device-width); gap: 0; }
+  .viewSwitch { display: flex; gap: 8px; }
+  .viewSwitch button { display: flex; align-items: center; gap: 6px; padding: 8px 12px; min-height: 44px; border: 0; border-radius: 6px; background: transparent; color: var(--home-muted); cursor: pointer; font-size: 15px; }
+  .viewSwitch button[aria-pressed="true"] { background: var(--home-panel); color: var(--home-text); }
+  .unread { width: 6px; height: 6px; border-radius: 50%; background: var(--home-accent); }
+}

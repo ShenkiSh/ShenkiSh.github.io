@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play My Bunny</title>
+  <link rel="stylesheet" href="player.css" />
+</head>
+<body>
+  <main>
+    <canvas id="game" width="720" height="1280" tabindex="0" aria-label="My Bunny game. Drag items to Bunny with a mouse or touch. Press Escape to close."></canvas>
+    <section id="loading" aria-label="Loading My Bunny">
+      <p class="wordmark">My Bunny</p>
+      <p role="status">Getting Bunny ready…</p>
+      <progress id="progress" max="1" value="0" aria-label="Game loading progress"></progress>
+      <p class="quiet">Feed · Clean · Play</p>
+    </section>
+    <section id="failure" hidden role="alert">
+      <p>My Bunny couldn’t load.</p>
+      <p class="quiet">Check your connection and try again.</p>
+      <button id="retry" type="button">Try again</button>
+    </section>
+  </main>
+  <script src="player.js" defer></script>
+</body>
+</html>

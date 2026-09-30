@@ -1,0 +1,8 @@
+{
+  "loader": "Build/FirstMemoryRelease.loader.js",
+  "data": "Build/FirstMemoryRelease.data.unityweb",
+  "framework": "Build/FirstMemoryRelease.framework.js.unityweb",
+  "code": "Build/FirstMemoryRelease.wasm.unityweb",
+  "version": "6b56adf03861",
+  "probe": false
+}

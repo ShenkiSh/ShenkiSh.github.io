@@ -1,0 +1,52 @@
+.back { position: absolute; top: 47px; left: 19px; border: 1.3px solid var(--app-outline); border-radius: 50%; width: 26px; height: 26px; padding: 0; display: grid; place-items: center; background: transparent; color: var(--app-outline); font-size: 21px; line-height: 22px; }
+.title { position: absolute; top: 71.5px; left: 0; width: 100%; text-align: center; font: 700 21px/25px HappilyRubik, Arial, sans-serif; }
+.subtitle { position: absolute; top: 98.506px; left: 0; width: 100%; text-align: center; font-size: 16px; line-height: 19px; }
+.tabs { position: absolute; top: 144.5px; left: 44px; width: 324px; height: 38.3px; display: flex; direction: ltr; border: 1px solid var(--app-outline); border-radius: 14px; overflow: hidden; }
+.tabs button { width: 33.333%; border: 0; border-inline-end: 1px solid var(--app-outline); color: #000; background: var(--app-button); padding: 0; font-size: 20px; line-height: 24px; }
+.tabs button:last-child { border: 0; }
+.tabs button[aria-pressed="true"] { background: #fff; }
+.quickTitle, .playersTitle { position: absolute; left: 0; width: 100%; margin: 0; text-align: center; font-size: 21px; font-weight: 500; line-height: 25px; }
+.quickTitle { top: 210.711px; }
+.playersTitle { top: 437.634px; }
+.metrics { position: absolute; left: 63px; top: 262.712px; display: grid; grid-template-columns: 132.292px 132.292px; gap: 41.612px 21px; direction: ltr; }
+.metrics > div, .metrics > button { position: relative; display: grid; place-items: center; width: 132.292px; height: 46.049px; border: 1.348px solid var(--app-outline); border-radius: 83.598px; background: #fff; color: #000; box-shadow: inset 0 -8.989px 2.247px rgb(0 0 0 / .1); padding: 0; font-size: 20.708px; line-height: 25px; }
+.metrics > button { background: var(--app-action); }
+.metrics small { position: absolute; top: 35px; left: 26px; display: grid; place-items: center; border: .899px solid var(--app-outline); border-radius: 83px; background: inherit; width: 78px; height: 25px; font-size: 15px; }
+.statusPlayers { position: absolute; inset: 0; pointer-events: none; button { pointer-events: auto; } }
+.statusPlayers > div { transform: translate(-.897px, 72.054px); }
+.profile { position: absolute; top: 207px; left: 140px; width: 132.292px; height: 120px; }
+.profile > span:first-child { position: absolute; top: -2.895px; left: 34.055px; }
+.toharProfile { width: 73.066px; height: 109.599px; overflow: hidden; }
+.toharProfile img { position: absolute; max-width: none; width: 498.79%; height: 249.4%; left: -56.42%; top: -39.04%; }
+.profileName { position: absolute; top: 63px; left: 0; width: 132.292px; height: 46.049px; display: grid; place-items: center; background: #fff; border: 1.348px solid var(--app-outline); box-shadow: inset 0 -8.989px 2.247px rgb(0 0 0 / .1); border-radius: 84px; font-size: 20.708px; }
+.profileName small { position: absolute; top: 35px; left: 25px; width: 83px; height: 20px; display: grid; place-items: center; background: var(--app-button); border: .899px solid var(--app-outline); border-radius: 30px; font-size: 9.182px; }
+.previous, .next { position: absolute; top: 68px; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--app-outline); font-size: 30px; display: grid; place-items: center; }
+.previous { left: -66px; }.next { right: -66px; }
+.report { position: absolute; top: 354.105px; left: 42.101px; width: 327.799px; height: 497.947px; border-radius: 40px; text-align: center; background: var(--app-button); }
+.report h4 { margin: 0; font-size: 21px; font-weight: 500; line-height: 25px; }
+.report p { font-size: 16px; line-height: 18px; font-weight: 300; }
+.cooperationLabel, .quickLabel, .reportLabel { position: absolute; left: 18.399px; width: 291px; }
+.cooperationLabel { top: 22.974px; }.quickLabel { top: 107.051px; }
+.meter { position: absolute; top: 75.974px; left: 18.508px; width: 290.782px; height: 21.077px; background: #9fbbd2; border-radius: 15px; overflow: hidden; direction: ltr; }
+.meter span { display: block; height: 100%; border-radius: inherit; background: var(--app-outline); }
+.reportValue { position: absolute; left: 18.399px; width: 291px; height: 44.8px; display: grid; place-items: center; background: #fff; border-radius: 30px; font-size: 16px; }
+.activity[data-profile="true"] { .title, .subtitle { transform: translateY(-6.605px); } .tabs { transform: translate(-1.899px, -6.606px); } }
+.form { position: absolute; inset: 0; }
+.nameLabel, .phoneLabel { position: absolute; left: 0; width: 100%; text-align: center; font-size: 21px; font-weight: 500; line-height: 25px; }
+.nameLabel { top: 268.839px; }.phoneLabel { top: 411.888px; }
+.nameLabel small, .phoneLabel small { display: block; font-size: 16px; line-height: 18px; font-weight: 300; }
+.nameInput, .phoneInput { position: absolute; border: 1.348px solid #28532b; border-radius: 83.598px; background: var(--app-button); box-shadow: inset 0 -8.989px 2.247px rgb(0 0 0 / .1); color: #000; height: 46.049px; padding: 8px 18px; font-size: 20.708px; line-height: 25px; }
+.nameInput { left: 140.752px; top: 338.839px; width: 132.292px; text-align: center; padding-inline: 8px; }
+.nameInput::placeholder { color: rgb(0 0 0 / .16); opacity: 1; }
+.phoneInput { left: 64.106px; top: 483.918px; width: 285.583px; }
+.save { top: 594.776px; left: 118.141px; width: 175.72px; height: 63.539px; }
+.responsibleTitle, .registrationTitle { position: absolute; left: 0; width: 100%; text-align: center; margin: 0; font-size: 21px; font-weight: 500; line-height: 25px; }
+.responsibleTitle { top: 268.839px; }.registrationTitle { top: 427px; }
+.responsible { position: absolute; top: 321px; left: 109px; width: 194px; height: 69px; display: grid; place-items: center; border: 1.348px solid var(--app-outline); border-radius: 84px; background: var(--app-button); box-shadow: inset 0 -8.989px 3.596px rgb(0 0 0 / .1); font-size: 27px; }
+.responsible small { position: absolute; top: 52px; left: 39px; width: 114px; height: 29px; display: grid; place-items: center; border: .899px solid var(--app-outline); border-radius: 84px; background: var(--app-button); font-size: 12px; }
+.registrationHint { position: absolute; left: 0; top: 456px; width: 100%; text-align: center; line-height: 20px; }
+.registrationPlayers { position: absolute; top: 523px; left: 63px; width: 286px; display: grid; grid-template-columns: repeat(2, 132.292px); gap: 27px 21px; direction: ltr; }
+.registrationPlayers span, .registeredPlayer { display: grid; place-items: center; position: relative; height: 46.049px; background: var(--app-button); border: 1.348px solid var(--app-outline); border-radius: 84px; box-shadow: inset 0 -8.989px 2.247px rgb(0 0 0 / .1); font-size: 20px; }
+.registrationPlayers img { position: absolute; left: 5px; width: 14px; height: 14px; }
+.registeredPlayer { position: absolute; top: 669px; left: 140px; width: 132.292px; }
+.registerSend { top: 775.94px; }

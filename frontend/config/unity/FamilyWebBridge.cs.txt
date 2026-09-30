@@ -1,0 +1,16 @@
+using UnityEngine;
+using UnityEngine.Scripting;
+
+[Preserve]
+public sealed class FamilyWebBridge : MonoBehaviour
+{
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void Initialize()
+    {
+        var host = new GameObject("FamilyWebBridge");
+        DontDestroyOnLoad(host);
+        host.AddComponent<FamilyWebBridge>();
+    }
+
+    [Preserve] public void SetMuted(string value) { AudioListener.volume = value == "1" ? 0f : 1f; }
+}

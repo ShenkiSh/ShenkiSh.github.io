@@ -1,0 +1,57 @@
+.page {
+  width: min(1680px, 87.5%);
+  margin-inline: auto;
+  padding-block: clamp(40px, 3.333vw, 64px) clamp(56px, 5vw, 96px);
+  color: var(--home-text);
+  font-synthesis: none;
+}
+.heading { display: grid; gap: 16px; margin-bottom: clamp(48px, 4.583vw, 88px); }
+.heading h1 {
+  color: var(--home-heading);
+  font-size: clamp(38px, 3.333vw, 64px);
+  font-weight: 400;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.heading p { font-size: clamp(20px, 1.458vw, 28px); line-height: 1.4; }
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 528fr) minmax(0, 1104fr);
+  gap: clamp(32px, 2.5vw, 48px);
+  align-items: start;
+}
+.portrait { width: min(100%, 360px); justify-self: center; }
+.copy {
+  display: grid;
+  align-self: stretch;
+  align-content: space-between;
+  justify-items: start;
+  gap: clamp(40px, 4.167vw, 80px);
+  min-width: 0;
+  width: 100%;
+  font-size: clamp(20px, 1.25vw, 24px);
+  line-height: 1.65;
+}
+.bio { display: grid; gap: 32px; max-width: 48ch; text-wrap: pretty; }
+.details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px clamp(24px, 2.083vw, 40px); width: 100%; margin: 0; font-size: clamp(17px, 1.042vw, 20px); }
+.details > div { display: grid; align-content: start; gap: 14px; }
+.details dt { color: var(--home-heading); font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; }
+.details dd { margin: 0; text-wrap: pretty; }
+@media (max-width: 1100px) {
+  .details { grid-template-columns: minmax(0, 1fr); }
+  .copy { align-content: start; }
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
+  .copy { font-size: 18px; }
+}
+@media (max-width: 700px) {
+  .page { width: calc(100% - 40px); padding-block: 32px 48px; }
+  .heading { margin-bottom: 32px; }
+  .heading h1 { font-size: clamp(32px, 8.5vw, 44px); }
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .portrait { width: min(58vw, 230px); }
+  .copy { gap: 40px; }
+  .bio { gap: 28px; }
+}

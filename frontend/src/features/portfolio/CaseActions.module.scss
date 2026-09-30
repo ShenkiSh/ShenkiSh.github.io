@@ -1,0 +1,25 @@
+.primary, .secondary, .back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 44px;
+  border: 1px solid var(--home-heading);
+  border-radius: 7px;
+  padding: 14px 24px;
+  font: inherit;
+  font-size: clamp(14px, .938vw, 18px);
+  line-height: 1.55;
+  text-decoration: none;
+  transition: background 160ms ease;
+  img { flex-shrink: 0; width: 24px; height: 24px; }
+}
+.primary { background: var(--home-heading); color: var(--home-background); }
+.primary:hover { background: var(--home-text); }
+.primary:active { background: var(--home-accent); }
+.secondary, .back { background: transparent; color: var(--home-text); }
+.secondary:hover, .back:hover { background: var(--home-feature); }
+.back { padding: 10px 16px; }
+@media (prefers-reduced-motion: reduce) {
+  .primary, .secondary, .back { transition: none; }
+}

@@ -1,0 +1,49 @@
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEditor.Build.Reporting;
+using UnityEngine;
+
+public static class HopWebBuild
+{
+    public static void Build()
+    {
+        if (Path.GetFileName(Path.GetDirectoryName(Application.dataPath)) != "HopWebExport")
+            throw new InvalidOperationException("Build only from the isolated HopWebExport project.");
+        var scenes = new[] {
+            "Assets/[=Main Scenes=]/MeinMEnu.unity",
+            "Assets/[=Main Scenes=]/TimeLineMenu.unity",
+            "Assets/[=Main Scenes=]/TopDown2Frog.unity"
+        };
+        PlayerSettings.productName = "Hop! It's the Chef!";
+        PlayerSettings.companyName = "Shani Shlomov";
+        PlayerSettings.defaultWebScreenWidth = 1280;
+        PlayerSettings.defaultWebScreenHeight = 720;
+        PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
+        PlayerSettings.WebGL.decompressionFallback = true;
+        PlayerSettings.WebGL.initialMemorySize = 256;
+        PlayerSettings.WebGL.maximumMemorySize = 1024;
+        PlayerSettings.WebGL.dataCaching = true;
+        PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
+        PlayerSettings.WebGL.template = "APPLICATION:Minimal";
+        PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.WebGL, ScriptingImplementation.IL2CPP);
+        PlayerSettings.SetManagedStrippingLevel(UnityEditor.Build.NamedBuildTarget.WebGL, ManagedStrippingLevel.Low);
+        PlayerSettings.runInBackground = false;
+        AssetDatabase.SaveAssets();
+        var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
+            scenes = scenes, locationPathName = "Builds/Hop", target = BuildTarget.WebGL,
+            options = BuildOptions.DetailedBuildReport
+        });
+        Directory.CreateDirectory("BuildReports");
+        File.WriteAllText("BuildReports/release.json", JsonUtility.ToJson(new Summary {
+            result = report.summary.result.ToString(), errors = report.summary.totalErrors,
+            warnings = report.summary.totalWarnings, bytes = report.summary.totalSize,
+            seconds = report.summary.totalTime.TotalSeconds, scenes = scenes
+        }, true));
+        if (report.summary.result != BuildResult.Succeeded) throw new Exception("Hop web build failed.");
+    }
+    [Serializable] private class Summary {
+        public string result; public int errors, warnings; public ulong bytes;
+        public double seconds; public string[] scenes;
+    }
+}

@@ -1,0 +1,102 @@
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEditor.Build.Reporting;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+public static class FamilyWebBuild
+{
+    public static void Build()
+    {
+        string project = Path.GetFileName(Path.GetDirectoryName(Application.dataPath));
+        if (project != "FunFamilyWebExport" && project != "FunFamilyStageTwoWebExport")
+            throw new InvalidOperationException("Use an isolated family-game export workspace.");
+        bool second = project == "FunFamilyStageTwoWebExport";
+        string scene = second ? "Assets/FunFamilyPart2/Scenes/Game.unity" : "Assets/Game/Scenes/GameOne/GameOne.unity";
+        if (!second) PrepareCartTexture();
+        EditorSceneManager.OpenScene(scene);
+        PrepareBrowserArtwork(second);
+        BindCompletionButton(second);
+        EditorSceneManager.SaveOpenScenes();
+        PlayerSettings.productName = second ? "Objects" : "Personal Space";
+        PlayerSettings.companyName = "Shani Shlomov";
+        PlayerSettings.defaultWebScreenWidth = 540;
+        PlayerSettings.defaultWebScreenHeight = 960;
+        PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
+        PlayerSettings.WebGL.decompressionFallback = true;
+        PlayerSettings.WebGL.initialMemorySize = 128;
+        PlayerSettings.WebGL.maximumMemorySize = 512;
+        PlayerSettings.WebGL.dataCaching = true;
+        PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
+        PlayerSettings.WebGL.template = "APPLICATION:Minimal";
+        PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.WebGL, ScriptingImplementation.IL2CPP);
+        PlayerSettings.SetManagedStrippingLevel(UnityEditor.Build.NamedBuildTarget.WebGL, ManagedStrippingLevel.Low);
+        PlayerSettings.runInBackground = false;
+        AssetDatabase.SaveAssets();
+        const string output = "Builds/Web";
+        var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
+            scenes = new[] {scene}, locationPathName = output, target = BuildTarget.WebGL,
+            options = BuildOptions.DetailedBuildReport
+        });
+        Directory.CreateDirectory("BuildReports");
+        File.WriteAllText("BuildReports/release.json", JsonUtility.ToJson(new Summary {
+            result = report.summary.result.ToString(), errors = report.summary.totalErrors,
+            warnings = report.summary.totalWarnings, bytes = report.summary.totalSize,
+            seconds = report.summary.totalTime.TotalSeconds, scene = scene
+        }, true));
+        if (report.summary.result != BuildResult.Succeeded) throw new Exception("Family game web export failed.");
+    }
+    private static void BindCompletionButton(bool second)
+    {
+        string name = second ? "FinishGameButton" : "FinishButton";
+        var matches = Array.FindAll(UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Button>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None), button => button.name == name);
+        if (matches.Length != 1) throw new InvalidOperationException("Expected exactly one final summary button: " + name);
+        var button = matches[0];
+        var completion = button.GetComponent<FamilyWebCompletion>() ?? button.gameObject.AddComponent<FamilyWebCompletion>();
+        for (int i = button.onClick.GetPersistentEventCount() - 1; i >= 0; i--)
+            if (button.onClick.GetPersistentTarget(i) == completion)
+                UnityEditor.Events.UnityEventTools.RemovePersistentListener(button.onClick, i);
+        UnityEditor.Events.UnityEventTools.AddPersistentListener(button.onClick, completion.NotifyFinished);
+        EditorUtility.SetDirty(button);
+        Debug.Log("Family completion bound to final summary: " + name);
+    }
+    private static void PrepareBrowserArtwork(bool second)
+    {
+        if (second)
+        {
+            // Built-in fonts rely on desktop fallback for Hebrew. Bundle the project's Rubik.
+            var font = AssetDatabase.LoadAssetAtPath<Font>("Assets/WebExportFonts/Rubik-Medium.ttf");
+            if (font == null) throw new InvalidOperationException("Copy Rubik-Medium.ttf from FunFamily into Assets/WebExportFonts before exporting Objects.");
+            foreach (var behaviour in UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+                if (behaviour.GetType().Name == "GamePanelFlowController")
+                    behaviour.SendMessage("EnsureCenterCountdownText", SendMessageOptions.RequireReceiver);
+            foreach (var text in UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                text.font = font;
+                EditorUtility.SetDirty(text);
+            }
+        }
+        EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+    }
+    private static void PrepareCartTexture()
+    {
+        // The source sheet is 9600px wide; headless/browser GPUs support at most 8192.
+        const string path = "Assets/Game/Scenes/GameOne/Art/Sprites/Characters/Player/PlayerSheet.png";
+        var importer = (TextureImporter)AssetImporter.GetAtPath(path);
+        importer.maxTextureSize = 4096;
+        var settings = importer.GetPlatformTextureSettings("WebGL");
+        settings.overridden = true;
+        settings.maxTextureSize = 4096;
+        settings.format = TextureImporterFormat.RGBA32;
+        importer.SetPlatformTextureSettings(settings);
+        importer.SaveAndReimport();
+        if (AssetDatabase.LoadAllAssetsAtPath(path).Length < 2)
+            throw new InvalidOperationException("The animated cart sprite sheet did not import.");
+    }
+    [Serializable] private class Summary {
+        public string result; public int errors, warnings; public ulong bytes;
+        public double seconds; public string scene;
+    }
+}

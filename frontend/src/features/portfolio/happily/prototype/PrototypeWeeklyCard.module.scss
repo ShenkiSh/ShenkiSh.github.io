@@ -1,0 +1,10 @@
+.weekly { position: absolute; inset: 0; }
+.weekly > img { display: block; width: 412px; height: 917px; }
+.selector { position: absolute; left: 82.948px; top: 364.478px; width: 247.726px; height: 127.986px; }
+.previous, .next, .dismissAward, .sendAward, .printAward { position: absolute; border: 0; padding: 0; background: transparent; border-radius: 30px; }
+.previous, .next { top: 23.803px; width: 43px; height: 43px; }
+.previous { left: 0; }.next { right: 0; }
+.dismissAward { left: 306px; top: 183px; width: 44px; height: 44px; }
+.sendAward { left: 76px; top: 642px; width: 120px; height: 38px; }
+.sendAward[aria-pressed="true"] { border: 2px solid var(--app-outline); background: rgb(255 255 255 / .35); }
+.printAward { left: 217px; top: 642px; width: 120px; height: 38px; }

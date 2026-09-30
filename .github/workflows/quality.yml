@@ -1,0 +1,24 @@
+name: Quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - run: python3 scripts/bootstrap.py
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Restore original recordings for media regression tests
+        run: |
+          curl --fail --retry 3 --location https://shenkish.github.io/portfolio-media/assets/hop/full-game.mp4 --output frontend/public/assets/hop/full-game.mp4
+          curl --fail --retry 3 --location https://shenkish.github.io/portfolio-media/assets/redream/full-experience-hd.mp4 --output frontend/public/assets/redream/full-experience-hd.mp4
+      - run: python3 scripts/check.py
+      - run: npm run smoke

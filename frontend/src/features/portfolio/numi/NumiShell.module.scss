@@ -1,0 +1,12 @@
+.shell { --paper: var(--home-background); --ink: var(--home-text); --home-header-height: max(68px, min(98px, 5.104vw)); min-height: 100svh; background: var(--home-background); color: var(--home-text); color-scheme: dark; font-family: Satoshi, Arial, sans-serif; }
+.header { background: var(--home-background); border: 0; font-family: Satoshi, Arial, sans-serif; :focus-visible { outline-color: var(--home-heading); } }
+.headerInner { width: min(1760px, 91.667%); min-height: max(68px, min(98px, 5.104vw)); }
+.brand { font-family: Anta, Arial, sans-serif; font-weight: 400; font-size: clamp(12px, .914vw, 18px); color: var(--home-heading); letter-spacing: .12em; }
+.navigation { gap: clamp(24px, 2.61vw, 52px); }
+.navigation a { font-size: clamp(14px, 1.0445vw, 20px); color: var(--home-nav-text); font-weight: 500; }
+.menu { background: transparent; border-color: var(--home-heading); color: var(--home-text); }
+@media (max-width: 600px) {
+  .headerInner { width: calc(100% - 40px); }
+  .navigation { background: var(--home-background); }
+  .navigation a { font-size: 16px; }
+}

@@ -1,0 +1,15 @@
+.device { width: var(--prototype-device-width); min-width: 0; }
+.header { display: flex; align-items: center; gap: 12px; height: 40px; margin-bottom: 12px; color: var(--home-text); }
+.header h2 { margin: 0; font-size: 18px; line-height: 24px; font-weight: 500; }
+.status { color: var(--home-accent); font-size: 13px; line-height: 18px; }
+.header button { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; margin-right: auto; border: 0; border-radius: 50%; color: var(--home-text); background: transparent; font-size: 24px; cursor: pointer; }
+.header button:hover { background: var(--home-panel); }
+.header button:focus-visible { outline: 2px solid var(--home-text); outline-offset: -4px; }
+.viewport { position: relative; width: 100%; aspect-ratio: 412 / 917; }
+.clip { position: absolute; inset: 0; overflow: hidden; border-radius: 12px; }
+
+@media (max-width: 700px) {
+  .device[data-active="false"] { display: none; }
+  .header { margin-bottom: 8px; }
+  .header h2 { font-size: 16px; }
+}

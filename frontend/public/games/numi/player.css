@@ -1,0 +1,13 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; color: #c3bccb; background: #000; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+main { display: grid; place-items: center; width: 100%; height: 100%; }
+canvas { display: block; width: min(100vw, 177.777vh); height: min(56.25vw, 100vh); background: #000; outline: none; }
+section { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; background: #000; text-align: center; }
+[hidden] { display: none; }
+p { margin: 0 0 20px; }
+.wordmark { font-size: clamp(40px, 7vw, 80px); letter-spacing: .12em; }
+.quiet { color: #b6b0bd; font-size: 13px; }
+progress { width: min(320px, 75vw); height: 5px; margin: 4px 0 28px; accent-color: #c3bccb; }
+button { min-height: 44px; padding: 12px 24px; border: 1px solid #c3bccb; border-radius: 7px; font: inherit; color: #000; background: #c3bccb; cursor: pointer; }
+button:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }

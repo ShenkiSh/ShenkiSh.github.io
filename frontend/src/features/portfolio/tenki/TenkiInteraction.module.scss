@@ -1,0 +1,21 @@
+.demo, .mapFigure { min-width: 0; margin: 0; width: min(100%, 316px); }
+.demo { width: min(100%, var(--tenki-demo-width, 316px)); }
+.demoVideo { display: block; width: 100%; height: auto; aspect-ratio: 280 / 593; object-fit: contain; border-radius: var(--home-radius); background: var(--home-background); }
+.demoCaption { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+.demoCaption button { background: transparent; border: 1px solid var(--home-rule); border-radius: 5px; padding: 8px 12px; min-height: 44px; font-size: 13px; color: var(--home-heading); }
+.demoCaption button:hover { border-color: var(--home-heading); background: var(--home-feature); }
+.mapFigure { width: min(100%, 300px); }
+.mapPhone { position: relative; width: 100%; aspect-ratio: 412 / 917; border-radius: var(--home-radius); background: var(--home-feature); }
+.mapViewport { position: absolute; inset: 0; overflow: auto; border-radius: inherit; touch-action: none; cursor: grab; user-select: none; scrollbar-width: none; overscroll-behavior: contain; }
+.mapViewport::-webkit-scrollbar { display: none; }
+.mapViewport[data-dragging="true"] { cursor: grabbing; }
+.mapViewport .mapArt { display: block; width: calc(100% * 1771 / 412); max-width: none; height: auto; pointer-events: none; }
+.mapReset { position: absolute; left: 6.5%; top: 1%; width: 44px; height: 44px; padding: 8px; border: 0; background: transparent; }
+.mapReset img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.mapReset:hover, .mapChoose:hover { filter: brightness(.88); }
+.mapReset:active, .mapChoose:active { filter: brightness(.75); }
+.mapChoose { position: absolute; left: 44.417%; top: 5.453%; width: 52.184%; }
+.mapChoose img { display: block; width: 100%; height: auto; }
+.error { padding: 16px; font-size: 14px; color: var(--home-text); background: var(--home-feature); }
+.mapPhone > .error { position: absolute; inset: 0; display: grid; place-content: center; gap: 16px; border-radius: inherit; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>We Live Happily Here — Play</title>
+  <link rel="stylesheet" href="player.css" />
+</head>
+<body>
+  <main>
+    <canvas id="game" width="540" height="960" tabindex="0" aria-label="Unity game. Use arrow keys or touch controls. Escape closes the game."></canvas>
+    <section id="loading" aria-label="Loading game">
+      <p class="wordmark" id="title">We Live Happily Here</p>
+      <p role="status">Loading game…</p>
+      <progress id="progress" max="1" value="0" aria-label="Game loading progress"></progress>
+    </section>
+    <section id="failure" hidden role="alert">
+      <p>The game couldn’t load.</p>
+      <p class="quiet">Check your connection and try again.</p>
+      <button id="retry" type="button">Try again</button>
+    </section>
+  </main>
+  <script src="player.js" defer></script>
+</body>
+</html>

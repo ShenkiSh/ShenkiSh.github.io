@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hop! It’s the Chef!</title>
+  <link rel="stylesheet" href="player.css" />
+</head>
+<body>
+  <main>
+    <canvas id="game" width="1280" height="720" tabindex="0" aria-label="Hop! It’s the Chef! Move with WASD or arrow keys, jump with Space, use E at the towel."></canvas>
+    <section id="loading" aria-label="Loading Hop">
+      <p class="wordmark">Hop! It’s the Chef!</p>
+      <p id="status" role="status">Loading the kitchen…</p>
+      <progress id="progress" max="1" value="0" aria-label="Game loading progress"></progress>
+      <p class="quiet">Keyboard required · WASD / arrows · Space to jump</p>
+    </section>
+    <section id="failure" hidden role="alert">
+      <p>Hop couldn’t load.</p>
+      <p class="quiet">Check your connection and try again.</p>
+      <button id="retry" type="button">Try again</button>
+    </section>
+  </main>
+  <script src="player.js" defer></script>
+</body>
+</html>

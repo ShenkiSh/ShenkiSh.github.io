@@ -1,0 +1,48 @@
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEditor.Build.Reporting;
+using UnityEngine;
+
+public static class MyBunnyWebBuild
+{
+    public static void Build()
+    {
+        if (Path.GetFileName(Path.GetDirectoryName(Application.dataPath)) != "MyBunnyWebExport")
+            throw new InvalidOperationException("Build only from the isolated MyBunnyWebExport project.");
+        MyBunnyPresentationSetup.Apply();
+        var scenes = new[] { "Assets/Bunny_Game/My_Bunny_Game/Scenes/MyBunny.unity" };
+        PlayerSettings.productName = "My Bunny";
+        PlayerSettings.companyName = "Shani Shlomov";
+        PlayerSettings.defaultWebScreenWidth = 720;
+        PlayerSettings.defaultWebScreenHeight = 1280;
+        PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
+        PlayerSettings.WebGL.decompressionFallback = true;
+        PlayerSettings.WebGL.initialMemorySize = 128;
+        PlayerSettings.WebGL.maximumMemorySize = 512;
+        PlayerSettings.WebGL.dataCaching = true;
+        PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
+        PlayerSettings.WebGL.template = "APPLICATION:Minimal";
+        PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.WebGL, ScriptingImplementation.IL2CPP);
+        PlayerSettings.SetManagedStrippingLevel(UnityEditor.Build.NamedBuildTarget.WebGL, ManagedStrippingLevel.Low);
+        PlayerSettings.runInBackground = false;
+        AssetDatabase.SaveAssets();
+        const string output = "Builds/MyBunny";
+        var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
+            scenes = scenes, locationPathName = output, target = BuildTarget.WebGL,
+            options = BuildOptions.DetailedBuildReport
+        });
+        Directory.CreateDirectory("BuildReports");
+        File.WriteAllText("BuildReports/release.json", JsonUtility.ToJson(new Summary {
+            result = report.summary.result.ToString(), errors = report.summary.totalErrors,
+            warnings = report.summary.totalWarnings, bytes = report.summary.totalSize,
+            seconds = report.summary.totalTime.TotalSeconds, scenes = scenes
+        }, true));
+        if (report.summary.result != BuildResult.Succeeded) throw new Exception("My Bunny web build failed.");
+    }
+
+    [Serializable] private class Summary {
+        public string result; public int errors, warnings; public ulong bytes;
+        public double seconds; public string[] scenes;
+    }
+}

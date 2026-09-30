@@ -1,0 +1,35 @@
+.lobby {
+  --lobby-background: #464c54;
+  --lobby-heading: #ebf2eb;
+  --lobby-text: #fff;
+  position: absolute;
+  inset: 0;
+  background: var(--lobby-background);
+  color: var(--lobby-text);
+}
+.background { position: absolute; inset: 0; width: 412px; height: 917px; }
+.heading { position: absolute; top: 108px; left: 33.5px; width: 345px; margin: 0; color: var(--lobby-heading); font-size: 24px; line-height: 28px; font-weight: 700; text-align: center; }
+.cart { position: absolute; left: 90.642px; top: 163px; width: 215.239px; height: 184.17px; }
+.leafGroup { position: absolute; left: 0; top: 132.967px; width: 215.239px; height: 51.202px; filter: drop-shadow(0 6px 2.4px rgb(0 0 0 / .32)); }
+.leaf { position: absolute; left: 0; top: .398px; width: 215.093px; height: 50.804px; transform: matrix(.999998, -.001849, .002888, .999996, 0, 0); transform-origin: top left; }
+.shadow { position: absolute; left: 26.24px; top: 9.063px; width: 160.762px; height: 26.033px; }
+.characters { position: absolute; left: 34.819px; top: 0; width: 158.507px; height: 155.746px; }
+.players { position: absolute; left: 62.164px; top: 374.17px; display: flex; gap: 47.457px; direction: ltr; }
+.player { position: relative; width: 120.215px; height: 77.665px; direction: rtl; }
+.board { position: absolute; left: 0; top: 0; width: 120.215px; height: 58.665px; overflow: hidden; }
+.board img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; max-width: none; }
+.board[data-ready="false"] img { left: -192.98%; top: -922.43%; width: 482.49%; height: 1398.53%; }
+.badge { position: absolute; left: 78.058px; top: 17.105px; width: 23.343px; height: 24.454px; overflow: hidden; }
+.badge img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; max-width: none; }
+.badge[data-ready="false"] { left: 76.26px; img { left: -534.3%; top: -985.82%; width: 1884.47%; height: 1289.65%; } }
+.name { position: absolute; right: 48.276px; top: 16.832px; max-width: 65px; font-size: 20.708px; font-weight: 400; line-height: 25px; white-space: nowrap; }
+.waiting { position: absolute; top: 58.665px; left: -10px; width: 140px; text-align: center; white-space: nowrap; font-size: 16px; line-height: 19px; font-weight: 300; }
+.description { position: absolute; top: 478.835px; left: 50px; width: 312px; text-align: center; }
+.description p { margin: 0; font-size: 21px; font-weight: 500; line-height: 25px; }
+.description p + p { margin-top: 1px; font-size: 20px; font-weight: 400; line-height: 24px; }
+.ready { position: absolute; top: 592.397px; left: 89px; width: 234.367px; height: 114.166px; padding: 0; border: 0; background: transparent; color: var(--lobby-text); }
+.buttonArtwork { position: absolute; top: 1.555px; left: .734px; width: 232.899px; height: 111.056px; overflow: hidden; transform: rotate(.77deg); filter: drop-shadow(0 5px 2.1px rgb(0 0 0 / .35)); }
+.buttonArtwork img { position: absolute; top: -902%; left: -180.65%; width: 460.74%; height: 1366.76%; max-width: none; }
+.buttonLabel { position: absolute; top: 40.132px; left: 0; width: 100%; text-align: center; font-size: 21.941px; line-height: 26px; font-weight: 500; }
+.lobby .ready:focus-visible { outline: 3px solid var(--lobby-text); outline-offset: 4px; border-radius: 20px; }
+.ready:active { transform: translateY(2px); }

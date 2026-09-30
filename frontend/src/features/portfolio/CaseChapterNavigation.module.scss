@@ -1,0 +1,11 @@
+.nav { position: sticky; top: var(--home-header-height, 76px); z-index: 15; padding-block: 18px; background: var(--home-background); box-shadow: 0 -1px 0 var(--home-background); border-bottom: 1px solid var(--numi-rule); }
+.withoutDivider { border-bottom: 0; }
+.links { width: min(1680px, 87.5%); margin-inline: auto; display: flex; justify-content: space-between; gap: 24px; overflow-x: auto; scrollbar-width: thin; }
+.links a { flex-shrink: 0; padding-block: 6px; color: var(--home-heading); text-decoration: none; border-bottom: 2px solid transparent; font-size: clamp(14px, .938vw, 18px); }
+.links a[aria-current] { color: var(--home-text); border-color: var(--home-accent); }
+.links a:hover { color: var(--home-text); }
+.links a:focus-visible { outline-offset: -2px; }
+@media (max-width: 760px) {
+  .nav { padding-block: 8px; }
+  .links { width: calc(100% - 40px); gap: 28px; padding-bottom: 4px; }
+}

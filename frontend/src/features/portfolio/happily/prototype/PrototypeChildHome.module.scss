@@ -1,0 +1,33 @@
+.brand { position: absolute; inset: 0; text-align: center; color: var(--app-heading); pointer-events: none; }
+.brand img { position: absolute; left: 160.65px; top: 60.6px; width: 93px; height: 77px; }
+.brand p { position: absolute; left: 0; top: 142.75px; width: 100%; font-size: 16px; line-height: 19px; }
+.brand h3 { position: absolute; left: 64px; top: 188.75px; width: 286px; font-size: 21px; line-height: 25px; font-weight: 500; }
+.prompt { position: absolute; left: 64px; top: 240.75px; width: 286px; text-align: center; }
+.prompt h4 { margin: 0; font-size: 21px; line-height: 25px; font-weight: 500; }
+.prompt p { font-size: 16px; line-height: 19px; font-weight: 300; }
+.player { position: absolute; left: 110.02px; top: 310.75px; width: 193.96px; height: 69.068px; display: grid; place-items: center; border: 1.348px solid var(--app-outline); border-radius: 83.598px; background: var(--app-button); box-shadow: inset 0 -8.989px 3.596px rgb(0 0 0 / .1); font-size: 27.128px; }
+.player[data-saved="true"] { background: var(--app-selected); }
+.player > img { position: absolute; left: 7.99px; top: 23.75px; width: 21.574px; height: 21.574px; }
+.player > small { position: absolute; left: 39.738px; top: 52.175px; width: 114.483px; height: 29.194px; display: grid; place-items: center; background: var(--app-button); border: .899px solid var(--app-outline); border-radius: 83.598px; font-size: 12.453px; line-height: 15px; }
+.editor { position: absolute; left: 78.442px; top: 419.119px; width: 257.115px; height: 255.762px; }
+.cloud { position: absolute; left: 56.494px; top: 79.468px; width: 144.126px; height: 50.053px; }
+.shadow { position: absolute; left: 90.138px; top: 91.168px; width: 71.806px; height: 23.522px; }
+.character, .accessory { position: absolute; }
+.previous, .next { position: absolute; top: 29.667px; width: 43px; height: 43px; padding: 0; border: 0; background: transparent; }
+.previous { left: 0; }
+.next { left: 214.115px; }
+.previous img, .next img { display: block; width: 43px; height: 43px; }
+.previous img { transform: rotate(90deg); }
+.next img { transform: rotate(-90deg); }
+.save { position: absolute; top: 140.059px; left: 79.182px; width: 98.75px; height: 36.469px; padding: 0; border: .659px solid var(--app-outline); border-radius: 32.52px; background: var(--app-action); box-shadow: inset 0 -4.895px 2.448px rgb(0 0 0 / .1); color: #000; font-size: 11.474px; font-weight: 500; }
+.save[aria-pressed="true"] { background: var(--app-selected); }
+.tabs { position: absolute; top: 194.945px; left: 20.537px; display: flex; direction: ltr; width: 216.041px; height: 27.47px; border-bottom: 1.5px solid var(--app-outline); }
+.tabs button { width: 50%; height: 27.47px; padding: 0 0 2px; border: 0; border-bottom: 2px solid transparent; background: transparent; font-size: 21px; line-height: 25px; font-weight: 500; color: #fff; }
+.tabs button[aria-pressed="true"] { color: var(--app-outline); border-bottom-color: var(--app-outline); }
+.colors { position: absolute; top: 233.12px; left: 25.487px; display: flex; justify-content: space-between; direction: ltr; width: 206.143px; }
+.colors button, .colors span { display: block; flex-shrink: 0; width: 18.919px; height: 18.919px; border-radius: 50%; border: 2px solid transparent; padding: 0; }
+.colors button[aria-pressed="true"] { border-color: var(--app-outline); }
+.accessories { position: absolute; top: 225.783px; left: 20.768px; width: 216.577px; display: flex; justify-content: space-between; direction: ltr; }
+.accessories button { display: grid; place-items: center; width: 28.721px; height: 28.721px; border: 1.5px solid transparent; border-radius: 50%; padding: 0; background: #fff; }
+.accessories button[aria-pressed="true"] { border-color: var(--app-outline); }
+.accessoryIcon { display: block; position: relative; }

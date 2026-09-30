@@ -1,0 +1,7 @@
+{
+  "loader": "Build/MyBunny.loader.js",
+  "data": "Build/MyBunny.data.unityweb",
+  "framework": "Build/MyBunny.framework.js.unityweb",
+  "code": "Build/MyBunny.wasm.unityweb",
+  "version": "63986fe5c219"
+}

@@ -1,0 +1,133 @@
+@media (max-width: 600px) {
+.home-page .header-inner { min-height: 68px; }
+.home-page .brand { font-size: 12px; }
+.home-page .site-nav { background: #211e28; }
+.home-page .site-nav a { font-size: 16px; }
+.home-page .reel-hero { min-height: 860px; }
+.home-page .reel-identity h1 { font-size: clamp(37px, 9.7vw, 56px); letter-spacing: -.04em; }
+.home-page .reel-role { font-size: 23px; margin-top: 20px; }
+.home-page .reel-disciplines { font-size: 13px; }
+.home-page .reel-actions a { font-size: 14px; }
+.home-page h2 { font-size: 38px; }
+.home-page .selected-grid { gap: 58px; }
+.home-page .selected-grid .card-media { height: auto; }
+.home-page .project-card--numi .card-media { aspect-ratio: 1.22; }
+.home-page .project-card--numi h3 { font-size: 46px; margin-top: 25px; }
+.home-page .project-card--happily { margin-top: 16px; }
+.home-page .project-card--happily .card-media { aspect-ratio: 1.14; }
+.home-page .project-card--ikko .card-media { aspect-ratio: 1.4; }
+.home-page .project-card--frogette .card-media { aspect-ratio: 1.4; }
+.home-page .project-card h3 { font-size: 27px; }
+.home-page .project-card .tags { font-size: 14px; margin-right: 24px; }
+.home-page .project-arrow { font-size: 26px; bottom: 35px; }
+.home-page .playground-section h2 { font-size: clamp(31px, 8.1vw, 42px); }
+.home-page .playground-section .section-heading { margin-bottom: 35px; }
+.home-page .playground-section .section-heading p { font-size: 16px; }
+.home-page .playground-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; }
+.home-page [data-piece="world"] { grid-column: 1 / -1; }
+.home-page [data-piece="selection"] { grid-column: 1 / 2; margin-top: 20px; }
+.home-page [data-piece="character"] { grid-column: 2 / 3; margin-top: 0; }
+.home-page [data-piece="weather"] { grid-column: 1 / -1; margin: 0 18% 0 0; }
+.home-page [data-piece="results"] { grid-column: 1 / 2; margin-top: 20px; }
+.home-page [data-piece="map"] { grid-column: 2 / 3; margin-top: 0; }
+.home-page .tile-caption h3 { font-size: 15px; }
+.home-page .tile-caption p { font-size: 12px; }
+.home-page .more-grid { gap: 52px; }
+.home-page .about-preview { grid-template-columns: 1fr; gap: 30px; }
+.home-page .about-intro { padding-bottom: 0; }
+.home-page .about-preview h2 { font-size: 40px; }
+.home-page .about-art { width: 80px; height: 100px; margin: 20px 20px 0 auto; }
+.home-page .about-copy p { font-size: 23px; }
+.home-page .footer-top h2 { font-size: 39px; }
+}
+.home-page .home-about { padding-block: 110px; }
+.home-page .about-intro { display: flex; align-items: center; gap: 26px; padding-bottom: 0; }
+.home-page .about-intro h2 { flex: 1; min-width: 0; }
+.home-page .about-art { flex: 0 0 95px; width: 95px; height: 125px; margin: 0; }
+@media (max-width: 600px) {
+.home-page .reel-hero { min-height: 820px; }
+.home-page .home-about { padding-block: 76px; }
+.home-page .about-intro { gap: 18px; }
+.home-page .about-art { flex-basis: 74px; width: 74px; height: 98px; }
+.home-page .about-preview h2 { font-size: 36px; }
+}
+.home-page { --home-header-height: 79px; scroll-padding-top: 0; }
+.home-page :is(main, section, footer, h1, h2)[id] { scroll-margin-top: calc(var(--home-header-height) + 24px); }
+.home-page [data-piece] { scroll-margin-block: calc(var(--home-header-height) + 24px) 24px; }
+.home-page { --paper: #18181b; --soft: #1c1c20; background: var(--paper); }
+.home-page .site-header { background: #18181b; border-color: #323237; }
+.home-page h1, .home-page h2, .home-page .reel-identity h1 { font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: -.025em;
+  line-height: 1.04; }
+.home-page .reel-identity h1 { font-size: clamp(66px, 7.05vw, 108px); line-height: .91; }
+.home-page h2 { font-size: clamp(48px, 5.1vw, 78px); }
+.home-page .about-preview h2 { font-size: clamp(52px, 5.4vw, 82px); }
+.home-page .footer-top h2 { font-size: clamp(48px, 5.7vw, 88px); }
+.home-page .media-dialog h2 { font: 600 28px/1.2 Manrope, sans-serif; letter-spacing: -.025em; }
+.home-page .section-heading { border: 0; padding-bottom: 0; margin-bottom: 62px; }
+.home-page .reel-hero, .home-page .home-section, .home-page .site-footer { border: 0; }
+.home-page .reel-hero { --reel-rgb: 24 24 27; --ambient-rgb: 151 129 186; background: #18181b; }
+.home-page .reel-hero[data-project="we-live-happily-here"] { --reel-rgb: 24 24 27; --ambient-rgb: 116 171 198; }
+.home-page .reel-hero[data-project="ikko"] { --reel-rgb: 24 24 27; --ambient-rgb: 183 151 102; }
+.home-page .reel-hero[data-project="le-frogette"] { --reel-rgb: 24 24 27; --ambient-rgb: 130 159 109; }
+.home-page [id="work"] { background:
+    radial-gradient(ellipse 55% 32% at 20% 28%, rgb(151 129 186 / .06), transparent),
+    radial-gradient(ellipse 40% 30% at 87% 32%, rgb(116 171 198 / .05), transparent),
+    radial-gradient(ellipse 40% 26% at 17% 83%, rgb(183 151 102 / .055), transparent),
+    radial-gradient(ellipse 50% 30% at 79% 80%, rgb(130 159 109 / .055), transparent), #18181b; }
+.home-page .playground-section { background: radial-gradient(ellipse 65% 42% at 30% 25%, rgb(151 129 186 / .045), transparent), #1a1a1d; }
+.home-page [id="more-work"] { background: #18181b; }
+.home-page .home-about { background: radial-gradient(ellipse at 14% 55%, rgb(151 129 186 / .04), transparent 65%), #1a1a1d; }
+.home-page .site-footer { background: #18181b; }
+.home-page .playground-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 36px 28px; }
+.home-page [data-piece="world"] { grid-column: 1 / 9; grid-row: 1; margin: 0; }
+.home-page [data-piece="weather"] { grid-column: 10 / 13; grid-row: 1; margin: 110px 0 0; }
+.home-page [data-piece="character"] { grid-column: 1 / 4; grid-row: 2; margin: 40px 0 0; }
+.home-page [data-piece="results"] { grid-column: 4 / 7; grid-row: 2; margin: 125px 0 0; }
+.home-page [data-piece="selection"] { grid-column: 7 / 11; grid-row: 2; margin: -12px 0 0; }
+.home-page [data-piece="map"] { grid-column: 11 / 13; grid-row: 2; margin: -130px 0 0; }
+.home-page [data-piece="world"] .tile-visual { aspect-ratio: 2.05; }
+.home-page [data-piece="selection"] .tile-visual { aspect-ratio: 640 / 680; }
+.home-page [data-piece="selection"] .tile-visual img { object-fit: contain; }
+.home-page [data-piece="results"] .tile-visual { aspect-ratio: 424 / 600; }
+.home-page [data-piece="results"] .tile-visual img { object-fit: contain; }
+.home-page .playground-tile .tile-visual::before { inset: -5px 4px 5px -4px; transform: rotate(-1deg); opacity: .6; }
+.home-page [data-piece="world"] .tile-visual::before, .home-page [data-piece="weather"] .tile-visual::before, .home-page [data-piece="map"] .tile-visual::before { content: none; }
+.home-page .playground-tile .tile-visual { background: transparent; }
+.home-page .about-copy p { font-size: clamp(22px, 1.85vw, 28px); line-height: 1.55; }
+@media (max-width: 1100px) {
+.home-page .reel-identity h1 { font-size: clamp(61px, 7vw, 78px); }
+.home-page .playground-grid { gap: 28px 22px; }
+.home-page [data-piece="weather"] { margin-top: 80px; }
+.home-page [data-piece="results"] { margin-top: 85px; }
+.home-page [data-piece="map"] { margin-top: -80px; }
+}
+@media (max-width: 900px) {
+.home-page .reel-identity h1 { font-size: clamp(62px, 8.5vw, 78px); }
+.home-page .playground-section h2 { font-size: clamp(48px, 6.7vw, 62px); }
+.home-page .playground-grid { gap: 38px 26px; }
+.home-page [data-piece="world"] { grid-column: 1 / 9; }
+.home-page [data-piece="weather"] { grid-column: 10 / 13; margin-top: 60px; }
+.home-page [data-piece="character"] { grid-column: 1 / 5; grid-row: 2; margin-top: 25px; }
+.home-page [data-piece="results"] { grid-column: 7 / 12; grid-row: 2; margin-top: 80px; }
+.home-page [data-piece="selection"] { grid-column: 3 / 9; grid-row: 3; margin-top: 0; }
+.home-page [data-piece="map"] { grid-column: 10 / 13; grid-row: 3; margin-top: 15px; }
+}
+@media (max-width: 600px) {
+.home-page { --home-header-height: 69px; }
+.home-page .reel-identity h1 { font-size: clamp(51px, 13vw, 72px); letter-spacing: -.02em; }
+.home-page h2, .home-page .playground-section h2 { font-size: clamp(42px, 10.8vw, 60px); }
+.home-page .about-preview h2 { font-size: clamp(44px, 11.5vw, 56px); }
+.home-page .footer-top h2 { font-size: clamp(46px, 12vw, 64px); }
+.home-page .section-heading { margin-bottom: 44px; }
+.home-page .playground-grid { gap: 34px 14px; }
+.home-page [data-piece="world"] { grid-column: 1 / 13; grid-row: 1; }
+.home-page [data-piece="weather"] { grid-column: 5 / 13; grid-row: 2; margin: 0; }
+.home-page [data-piece="character"] { grid-column: 1 / 6; grid-row: 3; margin-top: 0; }
+.home-page [data-piece="results"] { grid-column: 7 / 13; grid-row: 3; margin-top: 55px; }
+.home-page [data-piece="selection"] { grid-column: 1 / 9; grid-row: 4; margin-top: 0; }
+.home-page [data-piece="map"] { grid-column: 10 / 13; grid-row: 4; margin-top: 60px; }
+.home-page .about-copy p { font-size: 22px; }
+}

@@ -1,0 +1,64 @@
+$colors: (
+  background: #f5f7fb,
+  surface: #ffffff,
+  text: #121826,
+  text-muted: #596174,
+  border: #dce1ea,
+  accent: #5b5cf0,
+  accent-strong: #3e3fc8,
+  accent-contrast: #ffffff,
+  success: #12805c,
+  danger: #c83c4d,
+);
+
+$shadows: (
+  panel: 0 1.2rem 3rem rgb(25 32 56 / 9%),
+);
+
+$radii: (
+  control: 0.65rem,
+  panel: 1rem,
+);
+
+$spacing: (
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  6: 1.5rem,
+);
+
+$layout: (
+  content-width: 76rem,
+  page-gutter: clamp(1rem, 4vw, 2.5rem),
+);
+
+$motion: (
+  fast: 160ms ease,
+);
+
+$breakpoints: (
+  compact: 52rem,
+);
+
+$portfolio: (
+  home-background: #000, home-feature: #251f2f, home-panel: #342b42,
+  home-heading: #c3bccb, home-text: #f2f0e9, home-muted: #b4b4b4,
+  home-nav-text: #d5d0db, home-nav-active: #fff, home-footer-nav: #bdb6bb, home-footer-muted: #b6b0bd,
+  home-action-background: rgb(24 24 27 / .42), home-action-hover: rgb(122 82 167 / .28),
+  home-rule: #47414e, home-accent: #a89ab4, home-radius: 14px,
+  numi-rule: #222222,
+  tenki-sakura: #d155b8,
+  bunny-panel: #302839,
+  lollipop-blue: #29a6ff, lollipop-pink: #ff2fa3, lollipop-purple: #b247ff,
+  lollipop-green: #39c647, lollipop-orange: #ff7023,
+  headease-cream: #f9f6f1, headease-mint: #a9d0bf, headease-sky: #aed1eb,
+  headease-lavender: #d2d3f0, headease-rose: #e9b7b7, headease-rule: #323237,
+  // Figma corner radii / source-frame dimensions: preserve the curves at every size.
+  home-feature-corners: "1.237842617152962% / 2.2617124394184165%",
+  home-card-corners: "1.7948717948717947% / 3.190883190883191%",
+  home-carousel-corners: "5.73434385170585% / 10.194389409000095%",
+  home-carousel-side-corners: "7.167929143651801% / 12.742985276809215%",
+  paper: #fff, ink: #242424, muted: #626262, line: #c8c8c8, soft: #f5f5f5,
+  media: #e6e6e6, media-dark: #d7d7d7, width: 1200px,
+  gutter: clamp(20px, 5vw, 72px), section: clamp(56px, 7vw, 100px),
+);
