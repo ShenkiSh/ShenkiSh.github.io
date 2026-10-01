@@ -1,17 +1,15 @@
 @use "../../../styles/abstracts/case-hero" as caseHero;
+@use "../../../styles/abstracts/case-type" as caseType;
 
 .page {
+  @include caseType.hierarchy;
   --tenki-gap: clamp(24px, 3.333vw, 64px);
   --tenki-section-space: clamp(48px, 4.167vw, 80px);
   --tenki-forecast-paper: #e0d0b2;
   font-family: Satoshi, Arial, sans-serif;
-  font-size: clamp(16px, .938vw, 18px);
-  line-height: 1.65;
   color: var(--home-text);
   font-synthesis: none;
   h2, h3 { color: var(--home-heading); text-wrap: balance; }
-  h2 { font-size: clamp(28px, 2.083vw, 40px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; }
-  h3 { font-size: clamp(17px, 1.042vw, 20px); font-weight: 500; line-height: 1.45; letter-spacing: -.01em; }
   p, figcaption { text-wrap: pretty; }
   img { display: block; max-width: 100%; height: auto; }
   figcaption { padding-top: 14px; color: var(--home-footer-muted); font-size: clamp(14px, .833vw, 16px); line-height: 1.6; }
@@ -24,7 +22,7 @@
 .identity h1 { font: 400 clamp(48px, 4.167vw, 80px)/1.083 Anta, Arial, sans-serif; color: var(--home-heading); }
 .label { color: var(--home-footer-muted); font-size: clamp(13px, .833vw, 16px); line-height: 1.5; }
 .heroCopy { @include caseHero.copy; }
-.introduction { max-width: 32ch; font-size: clamp(22px, 1.5625vw, 30px); line-height: 1.45; text-wrap: balance; }
+.introduction { @include caseType.lead; }
 .muted { color: var(--home-footer-muted); }
 .heroActions { display: flex; flex-wrap: wrap; gap: 16px; }
 .heroArtwork { margin-top: 8px; grid-column: 1 / -1; }
@@ -33,8 +31,7 @@
 .chapter { padding-block: var(--tenki-section-space); }
 .chapter, .concept, .chapterHeading { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
 .ideaGrid, .concept { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tenki-gap); align-items: start; }
-.chapterHeading { display: grid; gap: 12px; justify-items: start; max-width: 720px; margin-bottom: 32px; }
-.chapterHeading > p { max-width: 56ch; color: var(--home-footer-muted); }
+.chapterHeading { @include caseType.introduction; }
 .copy { display: grid; align-content: start; gap: 14px; min-width: 0; }
 .copy h2 { max-width: 24ch; }
 .copy > p { max-width: 46ch; color: var(--home-footer-muted); }
@@ -42,7 +39,7 @@
 .references img { width: 100%; object-fit: contain; }
 .references figcaption { padding-top: 12px; text-align: center; }
 .credit { margin-top: 16px; color: var(--home-footer-muted); font-size: clamp(12px, .729vw, 14px); text-align: center; }
-.concept { margin-top: 48px; align-items: center; }
+.concept { margin-top: 48px; }
 .concept .copy { gap: 12px; }
 .concept .copy p { color: var(--home-footer-muted); }
 .conceptIcons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
@@ -90,7 +87,6 @@
   .heroArtwork { margin-top: 8px; }
   .heroActions { gap: 12px; }
   .heroActions a { padding-inline: 16px; }
-  .chapterHeading { gap: 10px; margin-bottom: 24px; }
   .concept { margin-top: 36px; }
   .conceptIcons { gap: 12px; }
   .references { gap: 20px; }

@@ -27,6 +27,13 @@ The shared `styles/abstracts/_case-hero.scss` mixins keep the layout and copy
 spacing consistent, with a 760px maximum text width. Project typography and
 media retain their own identity. This layout applies on desktop, tablet and phone.
 
+NUMI, We Live Happily Here, TENKI, My Bunny, Hop and HeadEase also share the
+`styles/abstracts/_case-type.scss` reading hierarchy: lighter section headings,
+consistent body text and hero leads, and compact introductions up to 720px wide.
+Happily's chapter descriptions sit below their titles. Copy beside media aligns
+at the top, with captions kept close to their images. This typography pass
+preserves all existing wording and media.
+
 All project pages share one compact black ending: secondary **Back to Work**
 on the left, **Next Project** and the destination title on the right, followed by a
 quiet signature/copyright row. The layout stacks on phones and keeps safe side

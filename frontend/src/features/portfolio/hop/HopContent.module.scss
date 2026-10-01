@@ -1,18 +1,15 @@
 @use "../../../styles/abstracts/case-hero" as caseHero;
+@use "../../../styles/abstracts/case-type" as caseType;
 
 .page {
+  @include caseType.hierarchy;
   --hop-gap: clamp(24px, 3.333vw, 64px);
   --hop-space: clamp(48px, 4.167vw, 80px);
   font-family: Satoshi, Arial, sans-serif;
-  font-size: clamp(16px, .938vw, 18px);
-  font-weight: 400;
   font-synthesis: none;
-  line-height: 1.65;
   color: var(--home-text);
   h1, h2, h3, p, figure { margin: 0; }
   h2, h3 { color: var(--home-heading); text-wrap: balance; }
-  h2 { font-size: clamp(28px, 2.083vw, 40px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; }
-  h3 { font-size: clamp(17px, 1.042vw, 20px); font-weight: 500; line-height: 1.45; letter-spacing: -.01em; }
   p, figcaption { text-wrap: pretty; }
   figure { min-width: 0; }
   figcaption { padding-top: 14px; color: var(--home-footer-muted); font-size: clamp(14px, .833vw, 16px); line-height: 1.6; }
@@ -26,7 +23,7 @@
 .identity h1 { font: 400 clamp(48px, 4.167vw, 80px)/1.083 Anta, Arial, sans-serif; color: var(--home-heading); }
 .subtitle, .role { font-size: clamp(13px, .833vw, 16px); color: var(--home-footer-muted); line-height: 1.5; }
 .heroCopy { @include caseHero.copy; }
-.hook { max-width: 30ch; font-size: clamp(22px, 1.5625vw, 30px); line-height: 1.45; text-wrap: balance; }
+.hook { @include caseType.lead; }
 .muted { color: var(--home-footer-muted); }
 .actions { display: flex; flex-wrap: wrap; gap: 16px; }
 .hero > .heroMedia { margin-top: 8px; }
@@ -38,8 +35,7 @@
 .still { display: block; width: 100%; height: auto; object-fit: contain; border-radius: var(--home-radius); }
 .section { padding-block: var(--hop-space); }
 .section, .story, .introduction, .introduction p, .moment, .twoColumns, .development, .credit { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
-.introduction { display: grid; gap: 12px; max-width: 720px; margin-bottom: 32px; }
-.introduction p { max-width: 58ch; color: var(--home-footer-muted); }
+.introduction { @include caseType.introduction; }
 .moments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; align-items: start; }
 .moment { min-width: 0; }
 .playArea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); align-items: start; gap: var(--hop-gap); }
@@ -64,7 +60,6 @@
   .actions > * { padding-inline: 16px; }
   .story { padding-top: 16px; }
   .storyFrames { gap: 24px 16px; }
-  .introduction { gap: 10px; margin-bottom: 24px; }
   .twoColumns { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .development { margin-top: 36px; }
 }

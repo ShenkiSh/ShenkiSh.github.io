@@ -1,4 +1,4 @@
-.interview, .event { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); gap: var(--numi-gap); align-items: center; }
+.interview, .event { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); gap: var(--numi-gap); align-items: start; }
 .interview > *, .event > * { min-width: 0; }
 .event { margin-top: var(--numi-section); padding-top: 36px; border-top: 1px solid var(--numi-rule); }
 .event p { max-width: 42ch; font-size: clamp(14px, .938vw, 18px); }

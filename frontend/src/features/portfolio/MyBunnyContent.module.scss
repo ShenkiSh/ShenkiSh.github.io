@@ -1,17 +1,15 @@
 @use "../../styles/abstracts/case-hero" as caseHero;
+@use "../../styles/abstracts/case-type" as caseType;
 
 .page {
+  @include caseType.hierarchy;
   --bunny-gap: clamp(24px, 3.333vw, 64px);
   --bunny-section-space: clamp(48px, 4.167vw, 80px);
   --bunny-art-background: #5a2268;
   font-family: Satoshi, Arial, sans-serif;
-  font-size: clamp(16px, .938vw, 18px);
-  line-height: 1.65;
   font-synthesis: none;
   color: var(--home-text);
   h2, h3 { color: var(--home-heading); text-wrap: balance; }
-  h2 { font-size: clamp(28px, 2.083vw, 40px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; }
-  h3 { font-size: clamp(17px, 1.042vw, 20px); font-weight: 500; line-height: 1.45; letter-spacing: -.01em; }
   p, figcaption { text-wrap: pretty; }
   img { display: block; max-width: 100%; height: auto; }
   figcaption { padding-top: 14px; color: var(--home-footer-muted); font-size: clamp(14px, .833vw, 16px); line-height: 1.6; }
@@ -24,20 +22,19 @@
 .identity h1 { font: 400 clamp(48px, 4.167vw, 80px)/1.083 Anta, Arial, sans-serif; color: var(--home-heading); }
 .subtitle, .role { font-size: clamp(13px, .833vw, 16px); color: var(--home-footer-muted); line-height: 1.5; }
 .heroCopy { @include caseHero.copy; }
-.hook { max-width: 32ch; font-size: clamp(22px, 1.5625vw, 30px); line-height: 1.45; text-wrap: balance; }
+.hook { @include caseType.lead; }
 .muted { color: var(--home-footer-muted); }
 .heroActions { display: flex; flex-wrap: wrap; gap: 16px; }
 .heroArtwork { margin-top: 8px; grid-column: 1 / -1; display: block; width: 100%; padding: 0; border: 0; border-radius: var(--home-radius); overflow: hidden; background: transparent; cursor: zoom-in; }
 .heroArtwork img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
 .section { padding-block: var(--bunny-section-space); }
 .section, .sectionIntro { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
-.sectionIntro { display: grid; gap: 12px; justify-items: start; max-width: 720px; margin-bottom: 32px; }
-.sectionIntro > p { max-width: 56ch; color: var(--home-footer-muted); }
+.sectionIntro { @include caseType.introduction; }
 .stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--bunny-gap); }
 .stages figure { min-width: 0; width: min(100%, 315px); }
 .feedback { display: grid; grid-template-columns: minmax(0, 315px) minmax(0, 1fr); gap: var(--bunny-gap); align-items: start; }
 .feedbackScreen { width: 100%; }
-.feedbackCopy { display: grid; gap: 32px; max-width: 44ch; padding-top: 8px; }
+.feedbackCopy { display: grid; gap: 24px; max-width: 48ch; }
 .feedbackCopy h3 { margin-bottom: 8px; }
 .feedbackCopy p { color: var(--home-footer-muted); }
 .visualSystem { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bunny-gap); }
@@ -64,7 +61,6 @@
   .heroArtwork { margin-top: 8px; }
   .heroActions { gap: 12px; }
   .heroActions > * { padding-inline: 16px; }
-  .sectionIntro { gap: 10px; margin-bottom: 24px; }
   .stages { grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 24px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; padding-bottom: 16px; }
   .stages figure { scroll-snap-align: start; }
   .feedback { grid-template-columns: minmax(0, 1fr); gap: 24px; }

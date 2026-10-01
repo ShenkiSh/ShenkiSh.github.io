@@ -1,20 +1,18 @@
 @use "../../../styles/abstracts/case-hero" as caseHero;
+@use "../../../styles/abstracts/case-type" as caseType;
 
 .page {
+  @include caseType.hierarchy;
   --numi-gap: clamp(24px, 3.333vw, 64px);
   --numi-section: clamp(48px, 4.167vw, 80px);
   --numi-radius: var(--home-radius);
   color: var(--home-text);
   font-family: Satoshi, Arial, sans-serif;
-  font-size: clamp(16px, 1.042vw, 20px);
-  line-height: 1.6;
   font-synthesis: none;
   p, dd, figcaption { text-wrap: pretty; }
-  h2, h3 { text-wrap: balance; }
+  h2, h3 { color: var(--home-heading); text-wrap: balance; }
   :focus-visible { outline-color: var(--home-heading); }
-  h2 { font-size: clamp(30px, 2.5vw, 48px); font-weight: 400; line-height: 1.2; letter-spacing: -.025em; color: var(--home-heading); }
-  h3 { font-size: clamp(20px, 1.355vw, 26px); font-weight: 500; line-height: 1.385; color: var(--home-heading); }
-  figcaption { padding-top: 14px; font-size: clamp(13px, .938vw, 18px); line-height: 1.5; color: var(--home-footer-muted); }
+  figcaption { padding-top: 14px; font-size: clamp(14px, .833vw, 16px); line-height: 1.6; color: var(--home-footer-muted); }
   figcaption strong { display: block; margin-bottom: 6px; color: var(--home-text); font-weight: 500; }
   figcaption span { display: block; }
   button { font-family: inherit; }
@@ -28,7 +26,7 @@
 .identity { display: grid; gap: 16px; }
 .identity h1 { font: 400 clamp(48px, 4.167vw, 80px)/1.083 Anta, Arial, sans-serif; letter-spacing: 0; color: var(--home-heading); }
 .identity p { color: var(--home-footer-muted); font-size: clamp(12px, .833vw, 16px); line-height: 1.5; letter-spacing: .04em; text-transform: uppercase; }
-.heroDescription { font-size: clamp(22px, 1.66vw, 32px); line-height: 1.4; text-wrap: balance; }
+.heroDescription { @include caseType.lead; }
 .heroRole { color: var(--home-footer-muted); line-height: 1.6; }
 .heroActions { display: flex; flex-wrap: wrap; gap: 16px; }
 .heroFilm { margin-top: 8px; grid-column: 1 / -1; }
@@ -36,11 +34,11 @@
 .primary { display: inline-flex; justify-content: center; align-items: center; gap: 16px; width: fit-content; border: 1px solid var(--home-heading); border-radius: 8px; padding: 14px 20px; font-size: clamp(14px, .938vw, 18px); line-height: 1.55; text-decoration: none; transition: background 160ms ease; }
 .primary { background: var(--home-heading); color: var(--home-background); }
 .primary:hover { background: var(--home-text); }
-.copy { display: grid; justify-items: start; align-content: start; gap: 16px; }
+.copy { display: grid; justify-items: start; align-content: start; gap: 12px; }
+.copy > p { max-width: 56ch; color: var(--home-footer-muted); }
 .small { font-size: clamp(14px, .938vw, 18px); line-height: 1.6; color: var(--home-footer-muted); }
 .section { padding-block: var(--numi-section); border-bottom: 1px solid var(--numi-rule); }
-.sectionIntro { display: grid; gap: 16px; max-width: 780px; margin-bottom: 32px; }
-.sectionIntro > p { max-width: 68ch; }
+.sectionIntro { @include caseType.introduction; }
 .memories { display: grid; grid-template-columns: repeat(5, minmax(220px, 1fr)); gap: clamp(12px, 1.25vw, 24px); list-style: none; padding: 4px 0 12px; margin: 0; overflow-x: auto; scrollbar-width: thin; }
 .memories > li { min-width: 0; }
 .memories h3 { display: flex; align-items: baseline; gap: 8px; margin-top: 14px; font-size: clamp(15px, 1.042vw, 20px); font-weight: 500; color: var(--home-text); }
@@ -61,7 +59,7 @@
 .disclosure > summary > span { font-size: 24px; line-height: 1; transition: transform 160ms ease; }
 .disclosure[open] > summary > span { transform: rotate(45deg); }
 .disclosure > .threeMedia { padding-block: 8px 28px; }
-.hudRow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); align-items: center; gap: var(--numi-gap); padding: 28px; background: color-mix(in srgb, var(--home-feature) 50%, var(--home-background)); border-radius: var(--numi-radius); }
+.hudRow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); align-items: start; gap: var(--numi-gap); padding: 28px; background: color-mix(in srgb, var(--home-feature) 50%, var(--home-background)); border-radius: var(--numi-radius); }
 .hudSequence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .hud { overflow: hidden; position: relative; aspect-ratio: 1; border-radius: var(--numi-radius); }
 .hud img { position: absolute; max-width: none; width: 125%; height: 125%; left: -20%; top: -5%; }
@@ -113,7 +111,6 @@
   .heroActions { gap: 12px; }
   .heroActions a { padding-inline: 16px; }
   .identity h1 { font-size: clamp(46px, 9.5vw, 64px); }
-  .sectionIntro { margin-bottom: 24px; }
   .twoMedia, .threeMedia { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .playStrip { padding: 20px; }
   .playActions { flex-direction: column; align-items: stretch; }

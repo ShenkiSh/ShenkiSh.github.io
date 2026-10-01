@@ -1,18 +1,15 @@
 @use "../../../styles/abstracts/case-hero" as caseHero;
+@use "../../../styles/abstracts/case-type" as caseType;
 
 .page {
+  @include caseType.hierarchy;
   --headease-gap: clamp(24px, 3.333vw, 64px);
   --headease-space: clamp(48px, 4.167vw, 80px);
   font-family: Satoshi, Arial, sans-serif;
-  font-size: clamp(16px, .938vw, 18px);
-  font-weight: 400;
   font-synthesis: none;
-  line-height: 1.65;
   color: var(--home-text);
   h1, h2, h3, p, figure { margin: 0; }
   h1, h2, h3 { color: var(--home-heading); text-wrap: balance; }
-  h2 { font-size: clamp(28px, 2.083vw, 40px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; }
-  h3 { font-size: clamp(17px, 1.042vw, 20px); font-weight: 500; line-height: 1.45; letter-spacing: -.01em; }
   p, figcaption { text-wrap: pretty; }
   figure { min-width: 0; }
   figcaption { padding-top: 16px; color: var(--home-footer-muted); font-size: clamp(14px, .833vw, 16px); line-height: 1.6; }
@@ -27,7 +24,7 @@
 .subtitle, .role { font-size: clamp(13px, .833vw, 16px); color: var(--home-footer-muted); line-height: 1.5; }
 .label, .note { font-size: clamp(13px, .833vw, 16px); color: var(--home-footer-muted); }
 .heroCopy { @include caseHero.copy; }
-.hook { max-width: 30ch; font-size: clamp(22px, 1.5625vw, 30px); line-height: 1.45; text-wrap: balance; }
+.hook { @include caseType.lead; }
 .muted { color: var(--home-footer-muted); }
 .actions { display: flex; flex-wrap: wrap; gap: 16px; }
 .heroArtwork { margin-top: 8px; }
@@ -39,8 +36,7 @@
 .deviceRoles p { max-width: 52ch; color: var(--home-footer-muted); font-size: clamp(14px, .833vw, 16px); }
 .section { padding-block: var(--headease-space); }
 .section, .hero, .deviceRoles, .introduction, .page figure, .prototype { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
-.introduction { display: grid; gap: 12px; max-width: 740px; margin-bottom: 32px; }
-.introduction p { max-width: 62ch; color: var(--home-footer-muted); }
+.introduction { @include caseType.introduction; }
 .journey { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; gap: clamp(16px, 2.083vw, 40px); }
 .journey figure { width: 100%; max-width: 260px; }
 .journey h3 { font-size: clamp(16px, .938vw, 18px); }
@@ -64,9 +60,9 @@
 .typeSample img { display: block; width: min(200px, 55%); height: auto; }
 .controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; justify-items: start; gap: 12px 20px; }
 .controls img { display: block; width: auto; height: auto; max-width: 100%; max-height: clamp(32px, 2.5vw, 48px); object-fit: contain; }
-.prototype { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 420px); justify-content: center; align-items: center; gap: var(--headease-gap); }
+.prototype { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 420px); justify-content: center; align-items: start; gap: var(--headease-gap); }
 .demo { min-width: 0; }
-.prototypeCopy { display: grid; justify-items: start; gap: 20px; }
+.prototypeCopy { display: grid; justify-items: start; gap: 12px; }
 .prototypeCopy > p { color: var(--home-footer-muted); }
 @media (max-width: 1023px) {
   .journey { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; }
@@ -81,7 +77,6 @@
   .deviceRoles { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .actions { gap: 12px; }
   .actions > * { padding-inline: 16px; }
-  .introduction { gap: 10px; margin-bottom: 24px; }
   .journey { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
   .decisions { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .screenPair { gap: 20px; }
