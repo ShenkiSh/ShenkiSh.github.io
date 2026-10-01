@@ -458,9 +458,11 @@ art/iteration, and playing/watching. Three short recordings show warning/attack,
 plate destruction and shelter. They share one equal-width row on desktop, with a
 short title and explanation directly below each video. On tablets and phones the
 three figures stack, keeping each explanation attached to its footage.
-The original drawings, refined artwork, earlier/current comparison and Unity
-Timeline remain visible. Legacy story, level-design, chef, hazards, safety,
-feedback, iteration and unity anchors remain usable within the consolidated page.
+The original drawings, refined artwork and earlier/current comparison remain
+visible. A short Unity implementation and AI-assistance credit sits beside the
+playable game; the separate production section and Timeline screenshot are removed.
+Legacy story, level-design, chef, hazards, safety, feedback and iteration anchors
+remain usable. The `unity` anchor now leads to the credit beside the game.
 The earlier-game comparison uses a clear frame from 1:23 in the original recording,
 preserving the complete image and keeping its caption aligned with the rebuilt version.
 The rebuilt comparison uses the full 1920 × 1080 frame at 2:47 in the current

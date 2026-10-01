@@ -27,7 +27,6 @@ export const hopImages = {
   drawing: "Shani's original illustration of Robert's family in the swamp",
   refined: "The refined swamp illustration preserves the original frogs, lily pads and parasol",
   old: "Robert and Gaspard in the original kitchen, with the green health bar, potion inventory and food obstacles clearly visible",
-  unity: "The actual Unity project showing story, subtitle and audio tracks in Timeline",
 } as const;
 export type HopImageName = keyof typeof hopImages;
 export interface HopCard {

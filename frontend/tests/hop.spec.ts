@@ -36,7 +36,9 @@ test("frog chapter navigation supports keyboard, deep links and return to Work",
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/le-frogette.html#unity");
   await expect(page).toHaveURL(/#\/le-frogette#unity$/);
-  await expect(page.getByRole("heading", { name: "Built in Unity", exact: true })).toBeInViewport();
+  await expect(page.locator("#unity")).toBeFocused();
+  await expect(page.locator("#unity")).toBeInViewport();
+  await expect(page.locator("#unity")).toContainText("AI support for scripting and debugging");
   const chapters = page.getByRole("navigation", { name: "Hop! It’s the Chef! sections" });
   await expect(chapters).toHaveCSS("position", "sticky");
   const art = chapters.getByRole("link", { name: "Art & iteration", exact: true });

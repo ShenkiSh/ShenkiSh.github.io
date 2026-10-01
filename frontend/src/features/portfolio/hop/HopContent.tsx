@@ -100,14 +100,6 @@ export function HopContent() {
             <Card image="rebuilt" title="Rebuilt version" copy="Hearts show health, a warning marks the next strike, and the strainer offers shelter." />
           </div>
         </div>
-        <div id="unity" className={styles.production}>
-          <div className={styles.productionCopy}>
-            <h3>Built in Unity</h3>
-            <p>I brought the chase, checkpoints, tutorial and story sequences into one playable experience.</p>
-            <p className={styles.credit}>AI-assisted development supported scripting, debugging and system implementation. Game design, visual direction, iteration and Unity decisions remained under my direction.</p>
-          </div>
-          <figure><Still name="unity" /><figcaption>Story, subtitle and audio tracks in the Unity project.</figcaption></figure>
-        </div>
       </section>
       <section id="watch" className={styles.section} aria-labelledby="watch-heading">
         <div className={styles.playArea}>
@@ -116,6 +108,7 @@ export function HopContent() {
             <p>Play the escape, or watch the complete journey from the tutorial to the ending.</p>
             <button className={actions.primary} type="button" onClick={() => setGameOpen(true)}>Play the game</button>
             <p className={styles.credit}>Unity · PC · Keyboard<br />WASD or arrows to move · Space to jump · E at the towel</p>
+            <p id="unity" className={styles.credit}>I designed and built the game in Unity, with AI support for scripting and debugging.</p>
           </div>
           <figure>
             <CaseVideo ref={recording} film={{ src: asset("assets/hop/full-game.mp4"), poster: asset("assets/hop/gameplay-poster.webp"), title: "Hop full playthrough", duration: "12:19" }} defaultMuted={false} />
