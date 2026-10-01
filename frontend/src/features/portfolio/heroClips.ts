@@ -4,9 +4,9 @@ export interface HeroClip {
   revision: string;
 }
 
-// Original files from Shani's Desktop / עמוד בית / הירו. Keep this approved order.
+// Keep the approved order. Hop uses the September 29 rebuilt-game recording.
 export const heroClips: readonly HeroClip[] = [
   { project: "we-live-happily-here", title: "We Live Happily Here", revision: "2aa5f73eca" },
-  { project: "le-frogette", title: "Le Frogette", revision: "807756928c" },
+  { project: "le-frogette", title: "Hop! It’s the Chef!", revision: "b40610c538" },
   { project: "numi", title: "NUMI", revision: "338a6d70b4" },
 ];

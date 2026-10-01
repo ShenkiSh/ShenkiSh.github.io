@@ -2,7 +2,7 @@ import { expect, test } from "./fixtures";
 
 const clips = [
   ["we-live-happily-here", "We Live Happily Here", "2aa5f73eca"],
-  ["le-frogette", "Le Frogette", "807756928c"],
+  ["le-frogette", "Hop! It’s the Chef!", "b40610c538"],
   ["numi", "NUMI", "338a6d70b4"],
 ] as const;
 
@@ -28,7 +28,7 @@ test("navigation follows both scroll directions, restores transparency, and View
   await expect(page.getByRole("link", { name: /^Play$/ })).toHaveCount(0);
 });
 
-test("approved original hero clips retain order, pause position, and keyboard switching", async ({ page, isMobile }) => {
+test("hero clips use the current frog game and retain order, pause position, and keyboard switching", async ({ page, isMobile }) => {
   await page.goto("/");
   const hero = page.locator("#home");
   await expect(hero).toHaveAttribute("data-playback", "playing");
@@ -61,9 +61,9 @@ test("approved original hero clips retain order, pause position, and keyboard sw
   await page.keyboard.press("ArrowRight");
   await expect(hero).toHaveAttribute("data-project", clips[1][0]);
   await page.getByRole("button", { name: "Play hero videos" }).click();
-  await expect(hero.locator('video[src*="807756928c"]')).toHaveJSProperty("muted", true);
-  await expect.poll(() => hero.locator('video[src*="807756928c"]').evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(.1);
-  await hero.locator('video[src*="807756928c"]').evaluate((v: HTMLVideoElement) => { v.currentTime = v.duration - .05; });
+  await expect(hero.locator('video[src*="b40610c538"]')).toHaveJSProperty("muted", true);
+  await expect.poll(() => hero.locator('video[src*="b40610c538"]').evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(.1);
+  await hero.locator('video[src*="b40610c538"]').evaluate((v: HTMLVideoElement) => { v.currentTime = v.duration - .05; });
   await expect(hero).toHaveAttribute("data-project", "numi");
   await expect(hero.locator('video[src*="338a6d70b4"]')).toHaveJSProperty("muted", true);
 });

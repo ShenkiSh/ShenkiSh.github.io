@@ -1,5 +1,5 @@
 import { expect, test } from "./fixtures";
-import { test as failureTest } from "@playwright/test";
+import { test as failureTest, type Locator } from "@playwright/test";
 
 test("Hop loads films on play and supports the complete recording, sound and seeking", async ({ page, isMobile }) => {
   let requests = 0;
@@ -46,4 +46,23 @@ failureTest("Hop recording offers retry after a failed download", async ({ page 
   await full.getByRole("button", { name: "Try again", exact: true }).click();
   await expect.poll(() => full.locator("video").evaluate((video: HTMLVideoElement) => video.currentTime)).toBeGreaterThan(.1);
   await expect(full.getByRole("alert")).toHaveCount(0);
+});
+
+test("Hop design examples play current footage on demand and pause other media", async ({ page }) => {
+  const requested: string[] = [];
+  page.on("request", request => { if (/\/assets\/hop\/.*-demo\.mp4/.test(request.url())) requested.push(request.url()); });
+  await page.goto("/#/le-frogette");
+  expect(requested).toHaveLength(0);
+  const films = ["Hop warning and attack", "Hop changing the route", "Hop shelter and recovery"];
+  let previous: Locator | undefined;
+  for (const title of films) {
+    const player = page.getByRole("group", { name: `${title} video player`, exact: true });
+    await player.getByRole("button", { name: `Play ${title}`, exact: true }).click();
+    const video = player.locator("video");
+    await expect.poll(() => video.evaluate((node: HTMLVideoElement) => node.currentTime)).toBeGreaterThan(.1);
+    await expect(video).toHaveJSProperty("videoWidth", 1920);
+    if (previous) await expect(previous).toHaveJSProperty("paused", true);
+    previous = video;
+  }
+  expect(new Set(requested).size).toBe(3);
 });

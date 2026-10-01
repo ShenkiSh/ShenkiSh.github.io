@@ -1,6 +1,6 @@
 export const hopChapters = [
-  ["story", "Story"], ["gameplay", "Gameplay"], ["level-design", "Level design"],
-  ["onboarding", "Onboarding"], ["art", "Art & iteration"], ["watch", "Watch gameplay"],
+  ["gameplay", "Gameplay"], ["onboarding", "Learning the game"],
+  ["art", "Art & iteration"], ["watch", "Play & watch"],
 ] as const;
 
 export const hopImages = {
@@ -37,34 +37,15 @@ export interface HopCard {
 }
 
 export const storyCards: readonly HopCard[] = [
-  { image: "swamp", title: "01 / Swamp" }, { image: "captured", title: "02 / Captured" },
-  { image: "cage", title: "03 / Cage" }, { image: "escape", title: "04 / Escape" },
+  { image: "swamp", title: "Life in the swamp" }, { image: "captured", title: "Taken to the kitchen" },
+  { image: "cage", title: "A way out of the cage" }, { image: "escape", title: "The chase begins" },
 ];
-export const coreLoop = ["Move Forward", "Read the Warning", "Dodge the Hazard", "Find Cover", "Reach a Checkpoint", "Keep Moving"] as const;
-export const levelStages: readonly HopCard[] = [
-  { image: "tutorial", title: "Learn the space", copy: "Basic movement" },
-  { image: "warning", title: "First chef attack", copy: "Read the warning / dodge" },
-  { image: "cover", title: "Hide", copy: "Use strainers as cover" },
-  { image: "steam", title: "New hazards", copy: "Steam, soup, bananas, bottles" },
-  { image: "destruction", title: "Destruction", copy: "Broken plates open routes" },
-  { image: "towel", title: "Escape", copy: "Reach the towel / E / slide" },
-];
-export const chefSequence: readonly HopCard[] = [
-  { image: "warning", title: "01 / Warning marker" },
-  { image: "hand", title: "02 / Chef hand attack" },
-  { image: "reaction", title: "03 / Player reaction" },
-  { image: "destruction", title: "04 / Environmental consequence" },
-];
-export const hazards: readonly HopCard[] = [
-  { image: "hand", title: "Chef Hand" }, { image: "soup", title: "Soup Splash" },
-  { image: "banana", title: "Banana Peel" }, { image: "knife", title: "Falling Knife" },
-  { image: "bottle", title: "Rolling Bottle" }, { image: "steam", title: "Steam Jet" },
-];
-export const feedback: readonly HopCard[] = [
-  { image: "hero", title: "Three hearts", copy: "A visible health state." },
-  { image: "warning", title: "Read the warning", copy: "Time to react before impact." },
-  { image: "cover", title: "Checkpoint & recovery", copy: "Safety, saved progress and refilled hearts." },
-  { image: "defeat", title: "Failure screen", copy: "A clear way back into the chase." },
-  { image: "prompt", title: "Press E", copy: "A contextual action at the towel." },
-  { image: "gaspard", title: "Tutorial dialogue", copy: "Short guidance inside the story." },
-];
+
+export const chaseMoments = [
+  { id: "chef", file: "warning-demo", title: "A warning before the strike", videoTitle: "Hop warning and attack", duration: "0:08",
+    copy: "I show where the chef will strike before the hand lands. The warning gives the player a cue to move while keeping the chase in motion." },
+  { id: "destruction", file: "destruction-demo", title: "A threat that changes the route", videoTitle: "Hop changing the route", duration: "0:10",
+    copy: "The chef can break the plates that block the worktable. An attack changes the space, giving the player a new route through the kitchen." },
+  { id: "safety", file: "shelter-demo", title: "A pause inside the chase", videoTitle: "Hop shelter and recovery", duration: "0:08",
+    copy: "Each new strainer is a hiding place and a checkpoint that refills hearts. Transparent cover keeps Robert visible while the player takes a moment to recover." },
+] as const;

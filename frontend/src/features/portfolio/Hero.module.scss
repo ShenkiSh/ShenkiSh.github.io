@@ -9,7 +9,7 @@
 .home-page .reel-hero .reel-poster, .home-page .reel-hero .reel-video { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; }
 .home-page .reel-hero .reel-slide[data-project="we-live-happily-here"] > * { inset: -4.403659% auto auto 0; width: 100%; height: 105.365854%; }
 .home-page .reel-hero .reel-slide[data-project="numi"] > * { inset: -3.140839% auto auto -.434549%; width: 100.869068%; height: 106.28156%; }
-.home-page .reel-hero .reel-slide[data-project="le-frogette"] > * { inset: -1.562683% auto auto 0; width: 107.431185%; height: 101.562683%; }
+.home-page .reel-hero .reel-slide[data-project="le-frogette"] > * { inset: 0; width: 100%; height: 100%; }
 .home-page .reel-hero .reel-video { opacity: 0; }
 .home-page .reel-hero .reel-video.is-ready { opacity: 1; }
 .home-page .reel-hero .reel-overlay { background: linear-gradient(90deg, rgb(24 24 27 / .93) 0%, rgb(24 24 27 / .76) 25%, rgb(24 24 27 / .25) 47%, transparent 70%),

@@ -555,7 +555,7 @@ cropping, upscaling or frame interpolation is applied.
 The full recording preserves tutorial, opening story, gameplay and ending. Videos
 load on interaction; the case-study players retain sound/seek/fullscreen/retry and
 exclusive playback. The Home card keeps the existing silent hover behavior and
-static reduced-motion/touch fallback. The original three-film Home hero is unchanged.
+static reduced-motion/touch fallback. The October 1 refinement below updates only the frog slot in the Home hero.
 
 ## NUMI case-study comparison poster — September 30
 
@@ -597,3 +597,24 @@ photo `66:986` and phone UI `66:987`, preserving their transforms in a 1920×108
 Presentation navigation and Back to Summary are excluded at export, without retouching
 or generating artwork. A temporary export frame was removed after download; the
 original Figma slide was left unchanged. PNG export converted to WebP quality 88.
+
+## Hop case refinement and Home hero — October 1, 2026
+
+All new footage is extracted from Shani's September 29 source recording,
+`סרטון מלא של המשחק החדש.mp4`, with the complete 1920×1080 frame at 30 fps.
+The source, original artwork and archived videos remain untouched.
+
+| New asset | Source interval/frame | Export |
+| --- | --- | --- |
+| `hop/warning-demo.mp4` | 3:10–3:18 | H.264 CRF 20, AAC 128 kbps, fast start |
+| `hop/destruction-demo.mp4` | 3:47–3:57 | Same, 10 seconds |
+| `hop/shelter-demo.mp4` | 3:19–3:27 | Same, 8 seconds |
+| Matching `hop/*-demo.jpg` posters | 3:13, 3:52, 3:23 respectively | Full-frame JPEG, quality 2 |
+| `videos/le-frogette-hero-b40610c538.mp4` | 2:58–3:08 | H.264 CRF 20, no audio, fast start |
+| `images/le-frogette-hero-b40610c538.jpg` | 3:00 | Full-frame JPEG, quality 2 |
+
+The three case clips load on request and retain explicit playback controls.
+The Home hero retains its established pause/resume, keyboard, reduced-motion and
+background-tab behavior; only the frog media, poster, accessible project title
+and its old media zoom adjustment change. The revision is the first ten characters
+of the MP4 SHA-256. The prior clip is retained for restoration.

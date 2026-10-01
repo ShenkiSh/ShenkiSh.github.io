@@ -448,26 +448,40 @@ Feature pushes do not deploy the public site.
 `1641:5288` in Portfolio (`NNjB6Gey6DtLbO1ZzQV51g`). The original route and
 `le-frogette.html` redirect remain valid. Its Home project card uses the new title
 and current kitchen capture; TENKI/Ikko's next-project link carries the same title.
-The original Home hero reel remains unchanged.
+The Home hero frog slot now uses the rebuilt game recording.
 
-The case follows the approved 1680px grid, Satoshi typography, black/lavender
-palette and full-width section introductions: story, core loop, escalating level,
-chef threat, hazards, cover/checkpoints, onboarding, feedback, original/refined art,
-earlier/current comparison, Unity implementation and gameplay recording area.
-Desktop galleries become fewer columns and then stack on phones; source images
-are contained without cropping. Six sticky chapter links support keyboard use,
-active-section tracking and deep links. The shared divided footer leads to ReDream Labs.
+The refined case uses the same 1680px container, paired hero introduction, Anta
+project title and restrained Satoshi text hierarchy as the other refined projects.
+The opening joins a current 20-second gameplay preview to four original story
+illustrations. Four chapters follow: gameplay decisions, learning the game,
+art/iteration, and playing/watching. Three short recordings show warning/attack,
+plate destruction and shelter. Each sits beside the design decision it illustrates.
+The original drawings, refined artwork, earlier/current comparison and Unity
+Timeline remain visible. Legacy story, level-design, chef, hazards, safety,
+feedback, iteration and unity anchors remain usable within the consolidated page.
 
-The 24 source captures and illustrations used in Figma are self-hosted as lossless
-WebP in `assets/hop/`, with the complete source pixels verified after conversion.
-Text remains native selectable HTML. Gallery images load lazily.
-The September 29 recording, `סרטון מלא של המשחק החדש.mp4`, now supplies the full
-12:19 playthrough and a 20-second gameplay preview (source 2:58–3:18). Both keep
-1920×1080, audio, on-demand loading, sound/seek/fullscreen controls and failure retry.
-Starting one pauses the other. The Home card uses a silent 1280×720 conversion of
-the same excerpt, with the existing hover/focus/reset and reduced-motion behavior.
-The Home hero reel remains unchanged. Remaining gallery captures are labeled as stills.
-Illustration and AI-assisted development credits follow the approved case copy.
+The source captures and illustrations are self-hosted as lossless WebP in
+`assets/hop/`; original files remain available even where repeated examples
+have been removed from the reading sequence. Images retain their complete frames.
+Text stays native HTML with bounded line lengths. Galleries and media/copy rows
+stack on small screens; section numbers, duplicate labels and rules are removed.
+
+The September 29 recording, `סרטון מלא של המשחק החדש.mp4`, supplies the full
+12:19 playthrough, the 20-second project preview (2:58–3:18), and three 8–10 second
+examples. All retain 1920×1080 and sound/seek/fullscreen/retry controls. They load
+only on request and pause other case media when played. The final area groups the
+game button with the full recording. Illustration and AI-assisted development
+credits preserve the distinction between Shani's design and tool assistance.
+
+The Home hero's frog slot now uses a silent 10-second excerpt (2:58–3:08) from the
+same current recording, with a matching poster and versioned filenames. The frog
+media fits the updated 16:9 source without the old capture's zoom adjustment.
+The other hero clips, order, typography and layout remain unchanged. The Home
+project card retains its current-game hover preview.
+
+Work lives on `codex/hop-case-study-refinement`, based on `59c8d14` from
+`codex/my-bunny-case-study-refinement`. The prior branch remains the backup;
+feature-branch pushes do not deploy the public site.
 
 **Play the game** loads the Unity WebGL export in `public/games/hop/` only after
 an explicit click. The original menu, interactive How to Play, opening story and
