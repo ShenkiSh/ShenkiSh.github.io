@@ -81,7 +81,8 @@ test("the enlarged gallery supports horizontal swipes on touch screens", async (
   await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: x - 90, y }] });
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await expect(image).toHaveAttribute("src", /event-03\.jpg$/);
-  await cdp.detach();
+  // Keep touch emulation attached through the final tap as well as the swipe.
   await dialog.getByRole("button", { name: "Close media", exact: true }).tap();
   await expect(dialog).toHaveCount(0);
+  await cdp.detach();
 });
