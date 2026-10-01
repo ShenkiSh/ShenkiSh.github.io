@@ -81,7 +81,7 @@ export function HappilyCase() {
             <h3>One vehicle. Two points of view.</h3>
             <p>“That’s my space” becomes a shared route. In the cooperative design, one child controls up and down, and the other left and right. Progress depends on coordinating their directions.</p>
             <p>The same pair plays three short stages. Times, mistakes and a cooperation indicator come together in one shared summary.</p>
-            <PortfolioLink className={styles.textLink} href="#unity-game-01">Explore the Personal Space prototype</PortfolioLink>
+            <PortfolioLink className={`${actions.secondary} ${styles.prototypeAction}`} href="#unity-game-01">Explore the Personal Space prototype</PortfolioLink>
           </div>
           <div className={styles.deepPhones}>
             <figure><img src={happilyAsset(personalSpaceMedia.gameplay)} alt="Current Personal Space game: shared vehicle, swamp water and slippery mud" width="1080" height="1920" loading="lazy" /><figcaption>Navigate the swamp together</figcaption></figure>

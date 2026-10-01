@@ -58,7 +58,7 @@
 .deepPhones figure { min-width: 0; }
 .deepPhones img { width: 100%; aspect-ratio: 9 / 16; object-fit: contain; border-radius: var(--home-radius); }
 .deepPhones figcaption { margin-top: 16px; font-size: clamp(14px, .938vw, 18px); color: var(--home-footer-muted); line-height: 1.5; }
-.textLink, .gameLinks a { color: var(--home-heading); text-underline-offset: 5px; }
+.prototypeAction { justify-self: start; max-width: 100%; text-align: center; }
 .visualBoard { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--happily-gap); }
 .characterStory, .rewardStory { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 24px; min-width: 0; }
 .characters { display: grid; grid-template-columns: minmax(0, 456fr) minmax(0, 360fr); gap: 24px; align-items: center; }
@@ -69,14 +69,12 @@
 .rewardMedia { min-height: 340px; display: grid; place-items: center; padding: 24px; border-radius: var(--home-radius); background: var(--home-panel); }
 .rewardMedia img { width: 200px; max-height: 340px; object-fit: contain; }
 .caption { display: grid; gap: 12px; max-width: 58ch; }
-.gameLinks { display: flex; flex-wrap: wrap; gap: 24px; }
-.gameLinks a { display: inline-flex; min-height: 44px; align-items: center; }
+.gameLinks { display: flex; flex-wrap: wrap; gap: 12px; }
 .experienceBody { display: grid; gap: 40px; }
 .appExperience { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; border-radius: var(--home-radius); background: var(--home-panel); padding: 28px; }
 .appExperience .copy { flex: 1 1 280px; gap: 12px; }
-.appActions { display: grid; gap: 8px; justify-items: center; }
+.appActions { display: grid; gap: 12px; justify-items: stretch; }
 .appActions button { cursor: pointer; }
-.figmaLink { display: flex; min-height: 44px; align-items: center; font-size: 14px; color: var(--home-footer-muted); text-underline-offset: 4px; }
 .gamePlayers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
 .gamePlayer { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 16px; min-width: 0; }
 .gameViewport { --game-recording-height: clamp(520px, 33.333vw, 640px); display: grid; place-items: center; height: var(--game-recording-height); padding: 24px; background: var(--home-panel); border-radius: var(--home-radius); }
