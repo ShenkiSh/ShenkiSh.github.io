@@ -567,34 +567,44 @@ navigation and the reel's playback controls and retry are covered by Playwright.
 
 ### HeadEase case study
 
-`/#/headease` implements Figma case-study frame `1608:5285` in Portfolio,
-replacing the former placeholder page. It presents the wearable and app concept,
-research insights, detection-to-relief sequence, eight-step user journey,
-measurements, session controls, additional symptoms, two-interface responsibilities,
-final screens, visual language and prototype/testing copy supplied in the brief.
+`/#/headease` presents the wearable and companion-app concept in five parts:
+introduction, five-stage app flow, two UX decisions, visual language and an
+interactive-prototype area. It uses the original app artwork from Portfolio
+frame `1608:5285` and the user's mockups from page `970:590`.
 
-The page reuses the shared header, sticky chapter navigation and project footer.
-Its eight chapter links support keyboard navigation, deep links and browser back.
-The Home carousel enters the project directly; the footer continues to My Bunny.
-Both prototype buttons and the final preview screens open the original HeadEase
-Figma flow in a separate tab, starting at `1601:543`. The app itself remains the
-original external prototype. No new medical results or test metrics are added.
+The dark desk composition opens the case as one 1920 × 1080 image. The two-watch
+mockup sits beside a compact panel of the original palette, Blender typography
+and controls. The tan desktop mockup remains in Figma; its small devices and
+repeated measurement screen add little to the main reading sequence.
 
-Body copy uses the existing self-hosted Satoshi font. Original app screens retain
-their Blender typography as sharp 1080 × 2400 exports, lazy-loaded below the hero.
-The existing wearable mockup is reused exactly. Desktop grids adapt to smaller
-screens without stretching or cropping the phone artwork. Asset provenance is in
+Nine screen presentations replace the previous 26. The only repeated screen is
+the heart-rate reading, used deliberately beside its expanded explanation. The
+second UX example pairs symptom reporting with the no-improvement follow-up.
+Captions stay beside their corresponding imagery; the case no longer has long
+columns of screens opposite isolated introductory text. All original app assets
+remain available, and the Figma prototype retains the full flow.
+
+Mockups and individual app screens open in an accessible native dialog with
+Escape, a visible close button and restored keyboard focus. Portrait screens can
+be scrolled at a readable size. The final area pairs the existing 1:05 app
+recording with a prominent prototype button. The video loads on request, includes
+playback/seek/fullscreen controls and retry, and pauses when scrolled out of view.
+Both prototype buttons open the original Figma flow at `1601:543` in a new tab.
+
+Four sticky chapter links support keyboard navigation, deep links and browser
+back. Previous `need`, `system`, `flow`, `dashboard`, `control`, `safety`,
+`interfaces` and `final` anchors remain on their corresponding content. The Home
+carousel and footer links are unchanged. The page uses the portfolio's existing
+Satoshi typography, buttons, rounded media and container. The main flow adapts
+from five columns to three and then two; phone artwork retains its 9:20 ratio.
+
+Copy describes an interaction concept. Unsupported generic research/testing
+claims and claims of working detection or treatment have been removed; no new
+findings or medical outcomes are invented. Asset provenance is documented in
 `frontend/public/assets/README.md`.
 
-The layout follows NUMI's 1680px container, exact 4/8 column proportions, column
-gaps and section spacing. The hero and section headings share the same text column,
-with artwork and content aligned on the right. Sections stack below 1024px, with
-20px side margins at 760px and below.
-Phone artwork is capped at 216px; narrow layouts use two phone columns. Headings,
-body copy and supporting labels use the portfolio's separate color tokens.
-Prototype buttons use compact 44px controls matching the Home page. Decorative
-slashes, arrows and body-section rules are omitted. HeadEase's compact project
-footer retains the shared top divider; the original app artwork is unchanged.
+The refinement is isolated on `codex/headease-case-study-refinement`, based on
+`a66531e`. The preceding site remains on `codex/hop-case-study-refinement`.
 
 ### My Bunny case study
 

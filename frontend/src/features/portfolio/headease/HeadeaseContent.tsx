@@ -1,166 +1,144 @@
-import type { ReactNode } from "react";
+import { useState } from "react";
 import { asset } from "@/shared/utils/asset";
 import { CaseChapterNavigation } from "../CaseChapterNavigation";
+import { CaseVideo } from "../CaseVideo";
+import { PortfolioLink } from "../PortfolioLink";
+import { HeadeaseArtworkDialog, type HeadeaseArtwork } from "./HeadeaseArtworkDialog";
 import actions from "../CaseActions.module.scss";
 import styles from "./HeadeaseContent.module.scss";
 
 const prototype = "https://www.figma.com/proto/NNjB6Gey6DtLbO1ZzQV51g/Portfolio?page-id=1600%3A435&node-id=1601-543&scaling=scale-down&content-scaling=fixed";
-const chapters = [["need", "Overview"], ["system", "System"], ["journey", "Journey"], ["dashboard", "Dashboard"], ["control", "Control"], ["safety", "Safety"], ["final", "Interface"], ["prototype", "Prototype"]] as const;
+const chapters = [["journey", "App flow"], ["decisions", "UX decisions"], ["visual", "Visual language"], ["prototype", "Try it"]] as const;
 const screens = {
   notification: "HeadEase notification asking how the user feels",
-  sync: "HeadEase synchronizing the latest body measurements",
-  heart: "Heart-rate measurement with a status explanation and relief controls",
-  explanation: "A short explanation of the heart-rate reading",
-  pressure: "Blood-pressure measurement with the same status and action layout",
-  temperature: "Body-temperature measurement and next actions",
-  duration: "Relief duration selector with plus, minus and start controls",
-  active: "Active relief session showing a ten-minute countdown and stop control",
-  dizziness: "Additional-symptom check asking the user to rate dizziness",
-  nausea: "Additional-symptom check asking the user to rate nausea",
+  heart: "Heart-rate reading with an explanation control and next actions",
+  explanation: "An explanation opened over the heart-rate reading",
+  duration: "Session duration selector with plus, minus and start controls",
+  active: "Active session showing a ten-minute countdown and stop control",
   followup: "Follow-up asking whether the user feels better",
+  dizziness: "Additional-symptom check asking the user to rate dizziness",
   contact: "Follow-up offering contact with a doctor when the user is not feeling better",
-  history: "HeadEase history of symptoms recorded over previous days",
-  dashboard: "Daily measurements dashboard with four pastel-colored tiles",
-  summary: "Session summary with options to contact a doctor or activate the wearable",
 } as const;
 type ScreenName = keyof typeof screens;
-const journey: { screen: ScreenName; title: string; copy: string }[] = [
-  { screen: "notification", title: "Notice", copy: "A notification invites the user to check in." },
-  { screen: "sync", title: "Open", copy: "HeadEase synchronizes the latest measurements." },
-  { screen: "heart", title: "Review", copy: "The user reviews the body measurements." },
-  { screen: "explanation", title: "Understand", copy: "A short explanation gives the reading context." },
-  { screen: "duration", title: "Choose", copy: "Set the duration before starting relief." },
-  { screen: "active", title: "Start", copy: "Follow the session and stop when needed." },
-  { screen: "dizziness", title: "Check", copy: "Report additional symptoms." },
-  { screen: "followup", title: "Follow up", copy: "Reflect on how the user feels after the session." },
+const journey: { screen: ScreenName; title: string; copy: string; id?: string }[] = [
+  { screen: "notification", title: "Check in", copy: "A notification asks how the user feels." },
+  { screen: "heart", title: "Review a reading", copy: "One measurement and the available next actions." },
+  { screen: "duration", title: "Choose the duration", copy: "The user sets the time before starting." },
+  { screen: "active", title: "Stay in control", copy: "A visible countdown and an option to stop.", id: "control" },
+  { screen: "followup", title: "Check back", copy: "The next step starts with how the user feels." },
 ];
-const process = [
-  ["MONITOR", "Body signals are monitored."], ["DETECT", "The system identifies an unusual change."],
-  ["NOTIFY", "The app communicates what was detected."], ["RESPOND", "The user chooses a response and activates relief."],
-  ["TRACK", "The experience is recorded for later review."], ["ESCALATE", "Additional symptoms can lead to guidance or contact with a doctor."],
-] as const;
-const palette = [["Cream", "#F9F6F1", "cream"], ["Mint", "#A9D0BF", "mint"], ["Sky", "#AED1EB", "sky"], ["Lavender", "#D2D3F0", "lavender"], ["Rose", "#E9B7B7", "rose"]] as const;
+const inUse: HeadeaseArtwork = { file: "in-use.webp", title: "HeadEase in use", alt: "HeadEase on a watch beside the app on a phone, on a dark desk", width: 1920, height: 1080 };
+const watches: HeadeaseArtwork = { file: "watches.webp", title: "HeadEase on the wrist", alt: "Two watches showing the HeadEase identity and a single activation button", width: 1920, height: 1080 };
+const palette = [["Cream", "cream"], ["Mint", "mint"], ["Sky", "sky"], ["Lavender", "lavender"], ["Rose", "rose"]] as const;
 
-function Screen({ name, eager = false }: { name: ScreenName; eager?: boolean }) {
-  return <img className={styles.screen} data-headease-screen src={asset(`assets/headease/${name}.png`)} alt={screens[name]} width={1080} height={2400} loading={eager ? "eager" : "lazy"} decoding="async" />;
+function Artwork({ artwork, eager = false, onOpen }: { artwork: HeadeaseArtwork; eager?: boolean; onOpen: (artwork: HeadeaseArtwork) => void }) {
+  return <button type="button" className={styles.artwork} aria-label={`Enlarge ${artwork.title}`} onClick={() => onOpen(artwork)}>
+    <img src={asset(`assets/headease/${artwork.file}`)} alt={artwork.alt} width={artwork.width} height={artwork.height}
+      loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : "auto"} decoding="async" />
+  </button>;
 }
-function ScreenCard({ name, title, children }: { name: ScreenName; title: string; children?: ReactNode }) {
-  return <figure className={styles.screenCard}><Screen name={name} /><figcaption><span>{title}</span>{children ? <p>{children}</p> : null}</figcaption></figure>;
-}
-function Wearable({ eager = false }: { eager?: boolean }) {
-  return <img className={styles.wearable} src={asset("assets/home/headease.png")} alt="HeadEase wearable on the user's wrist connected to the mobile app on their desk" width={759} height={427} loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : "auto"} decoding="async" />;
+function Screen({ name, title, onOpen }: { name: ScreenName; title: string; onOpen: (artwork: HeadeaseArtwork) => void }) {
+  return <button type="button" className={`${styles.artwork} ${styles.screen}`} aria-label={`Enlarge ${title} screen`}
+    onClick={() => onOpen({ file: `${name}.png`, title, alt: screens[name], width: 1080, height: 2400 })}>
+    <img data-headease-screen src={asset(`assets/headease/${name}.png`)} alt={screens[name]} width={1080} height={2400} loading="lazy" decoding="async" />
+  </button>;
 }
 function PrototypeLink() {
-  return <a className={`${actions.secondary} ${styles.prototypeLink}`} href={prototype} target="_blank" rel="noopener noreferrer">Open prototype</a>;
-}
-function Section({ id, title, intro, children }: { id: string; title: string; intro?: string; children: ReactNode }) {
-  return <section id={id} className={`${styles.container} ${styles.section}`} aria-labelledby={`${id}-heading`}>
-    <div className={styles.sectionHeading}><h2 id={`${id}-heading`}>{title}</h2>{intro ? <p>{intro}</p> : null}</div>
-    <div className={styles.sectionBody}>{children}</div>
-  </section>;
+  return <a className={actions.primary} href={prototype} target="_blank" rel="noopener noreferrer">Try the prototype</a>;
 }
 
 export function HeadeaseContent() {
+  const [artwork, setArtwork] = useState<HeadeaseArtwork | null>(null);
   return <article className={styles.page}>
-    <header className={`${styles.container} ${styles.hero}`}>
-      <div className={styles.heroCopy}>
-        <div className={styles.identity}><h1>HeadEase</h1><p className={styles.subtitle}>Smart Headache Relief System</p></div>
-        <div className={styles.heroSummary}>
-          <p className={styles.label}>Connected health · Concept project</p>
-          <p className={styles.hook}>A wearable and mobile-app concept that connects biometric monitoring, headache detection and on-demand relief in one continuous experience.</p>
-          <PrototypeLink />
-        </div>
-        <dl className={styles.credits}>
-          <div><dt>MY CONTRIBUTION</dt><dd>Research · Concept · UX/UI · Visual Design · Prototype</dd></div>
-          <div><dt>PRODUCT</dt><dd>Wearable + Mobile App</dd></div><div><dt>TOOL</dt><dd>Figma</dd></div>
-        </dl>
+    <header className={`${styles.container} ${styles.hero}`} id="need" aria-label="HeadEase introduction">
+      <div className={styles.identity}>
+        <h1>HeadEase</h1><p className={styles.subtitle}>Wearable &amp; Companion App</p>
+        <p className={styles.label}>Connected health · Concept project</p>
       </div>
-      <div className={styles.heroMedia}>
-        <figure><Wearable eager /><figcaption className={styles.label}>Wearable and mobile app</figcaption></figure>
-        <Screen name="heart" eager /><Screen name="duration" eager />
+      <div className={styles.heroCopy}>
+        <p className={styles.hook}>A clearer next step during a headache.</p>
+        <p className={styles.muted}>I designed a wearable and app concept that brings body readings, session controls and symptom check-ins into one experience.</p>
+        <p className={styles.role}>Concept · UX/UI · Visual design · Figma prototype</p>
+        <div className={styles.actions}><PrototypeLink /><PortfolioLink className={actions.secondary} href="#journey">Explore the flow</PortfolioLink></div>
+      </div>
+      <div className={styles.heroArtwork}><Artwork artwork={inUse} eager onOpen={setArtwork} /></div>
+      <div className={styles.deviceRoles} id="system">
+        <div><h3>On the wrist</h3><p>A single activation action keeps the wearable interaction brief.</p></div>
+        <div><h3>In the app</h3><p>Readings, duration, symptom check-ins and history give the experience more context.</p></div>
       </div>
     </header>
     <CaseChapterNavigation label="HeadEase sections" chapters={chapters} showDivider={false} />
-    <Section id="need" title="Understanding the Need" intro="Recurring headaches can interrupt everyday life with little warning. In my research, users described the need for a more immediate way to understand what is happening and respond without relying only on medication.">
-      <div className={styles.threeColumns}>
-        <div className={styles.copy}><h3>Recurring pain</h3><p>Headaches interrupt everyday routines.</p></div>
-        <div className={styles.copy}><h3>Limited immediate feedback</h3><p>Users need a clearer picture of what is happening.</p></div>
-        <div className={styles.copy}><h3>An alternative response</h3><p>An option beyond relying only on medication.</p></div>
-      </div>
-    </Section>
-    <Section id="system" title="One System, Two Connected Products">
-      <div className={styles.system}>
-        <div className={styles.role}><p className={styles.label}>WEARABLE</p><h3>Sense &amp; respond</h3><ul><li>Monitors body signals</li><li>Detects changes</li><li>Enables manual activation</li><li>Delivers the relief response in the project concept</li></ul></div>
-        <div className={styles.role}><p className={styles.label}>MOBILE APP</p><h3>Understand &amp; control</h3><ul><li>Explains detected changes</li><li>Displays measurements</li><li>Controls the relief session</li><li>Tracks symptoms and offers a medical contact option</li></ul></div>
-      </div>
-    </Section>
-    <Section id="flow" title="From Detection to Relief">
-      <ol className={styles.process}>{process.map(([title, copy]) => <li key={title}><h3>{title}</h3><p>{copy}</p></li>)}</ol>
-    </Section>
-    <Section id="journey" title="A Headache in Real Time" intro="The journey connects a detected change to a clear next step, from the first notification to the follow-up check.">
-      <div className={styles.journey}>{journey.map(step => <ScreenCard key={step.screen} name={step.screen} title={step.title}>{step.copy}</ScreenCard>)}</div>
-    </Section>
-    <Section id="dashboard" title="Making Body Data Understandable" intro="The interface translates body measurements into a simple status the user can understand quickly during discomfort.">
-      <div className={styles.measurements}>
-        <div className={styles.detailCopy}><h3>Data, status and action</h3><p>Heart rate, blood pressure and temperature share a consistent structure: one measurement, a clear status and the next action.</p></div>
-        <Screen name="heart" /><Screen name="pressure" /><Screen name="temperature" />
-      </div>
-    </Section>
-    <Section id="control" title="Giving the User Control" intro="The app gives the user direct control over the relief session, including when to start, how long it runs and when to stop.">
-      <div className={`${styles.threeColumns} ${styles.controls}`}>
-        <ScreenCard name="duration" title="Set the duration">Choose how long the session runs.</ScreenCard>
-        <ScreenCard name="active" title="Start, follow and stop">A countdown keeps the current state visible.</ScreenCard>
-        <ScreenCard name="followup" title="Check in">The follow-up keeps the response personal.</ScreenCard>
-      </div>
-    </Section>
-    <Section id="safety" title="Beyond the Headache" intro="The experience includes a path for additional symptoms, with a check-in and an option to seek further help.">
-      <div className={styles.safety}>
-        <div className={styles.safetyCopy}>
-          <h3>Additional symptoms?</h3>
-          <div className={styles.copy}><h4>No additional symptoms</h4><p>Continue with the current experience.</p></div>
-          <div className={styles.copy}><h4>Additional symptoms</h4><p>Report symptoms such as dizziness or nausea.</p></div>
-          <div className={styles.copy}><h4>Medical contact option</h4><p>The flow offers a way to contact a doctor.</p></div>
+    <div className={styles.container}>
+      <section className={styles.section} id="journey" aria-labelledby="journey-heading">
+        <div className={styles.introduction} id="flow">
+          <h2 id="journey-heading">One step at a time.</h2>
+          <p>The main flow moves from a check-in to a follow-up, with one question or action at each stage.</p>
         </div>
-        <Screen name="dizziness" /><Screen name="nausea" /><Screen name="contact" />
-      </div>
-    </Section>
-    <Section id="interfaces" title="Designing Across Two Interfaces">
-      <div className={styles.interfaces}>
-        <div className={styles.role}><p className={styles.label}>ON THE WEARABLE</p><Wearable /><p className={styles.interfaceCaption}>Quick status · Immediate activation · Minimal interaction</p></div>
-        <div className={styles.appRole}><Screen name="history" /><div className={styles.role}><p className={styles.label}>IN THE APP</p><ul><li>Details</li><li>Measurements</li><li>Session control</li><li>Symptom check</li><li>History and further actions</li></ul></div></div>
-      </div>
-    </Section>
-    <Section id="final" title="Final Experience">
-      <div className={styles.finalScreens}>
-        <ScreenCard name="dashboard" title="Daily measurements" /><ScreenCard name="heart" title="Body status" />
-        <ScreenCard name="active" title="Relief session" /><ScreenCard name="summary" title="Next steps" />
-      </div>
-    </Section>
-    <Section id="visual" title="Visual Language" intro="A soft palette, clear hierarchy and recognizable controls make the interface feel calm and approachable.">
-      <div className={styles.visual}>
-        <div className={styles.specimen}><h3 className={styles.label}>PALETTE</h3><ul className={styles.palette}>{palette.map(([name, hex, color]) => <li key={name}><span className={styles[color]} aria-hidden="true" /><span>{name}</span><small>{hex}</small></li>)}</ul></div>
-        <div className={styles.specimen}><h3 className={styles.label}>BLENDER TYPOGRAPHY</h3>
-          <div className={`${styles.sample} ${styles.typeSample}`}><img src={asset("assets/headease/blender-type.png")} alt="Original Blender Hebrew typography specimen: משך כמה זמן" width={312} height={52} loading="lazy" decoding="async" /></div>
-          <p>A clear Hebrew interface with a calm, approachable tone.</p>
+        <div className={styles.journey}>
+          {journey.map(step => <figure key={step.screen} id={step.id}>
+            <Screen name={step.screen} title={step.title} onOpen={setArtwork} />
+            <figcaption><h3>{step.title}</h3><p>{step.copy}</p></figcaption>
+          </figure>)}
         </div>
-        <div className={styles.specimen}><h3 className={styles.label}>ICONOGRAPHY</h3>
-          <div className={`${styles.sample} ${styles.iconsSample}`}><img src={asset("assets/headease/bottom-nav.png")} alt="Original HeadEase home, history, measurements and settings navigation icons" width={400} height={85} loading="lazy" decoding="async" /></div>
-          <p>Simple symbols support quick recognition.</p>
+      </section>
+      <section className={styles.section} id="decisions" aria-labelledby="decisions-heading">
+        <div className={styles.introduction}>
+          <h2 id="decisions-heading">Make room for what the user needs.</h2>
+          <p>Details appear when requested, and the flow leaves room for symptoms beyond the initial reading.</p>
         </div>
-      </div>
-      <div className={styles.threeColumns}>
-        <div className={styles.specimen}><h3 className={styles.label}>PRIMARY ACTION</h3><div className={styles.sample}><img src={asset("assets/headease/start-button.png")} alt="Original activate-wearable button" width={274} height={60} loading="lazy" decoding="async" /></div></div>
-        <div className={styles.specimen}><h3 className={styles.label}>SECONDARY ACTION</h3><div className={styles.sample}><img src={asset("assets/headease/symptom-button.png")} alt="Original additional-symptoms button" width={274} height={60} loading="lazy" decoding="async" /></div></div>
-        <div className={styles.specimen}><h3 className={styles.label}>DURATION CONTROL</h3><div className={`${styles.sample} ${styles.durationSample}`}><img src={asset("assets/headease/timer-control.png")} alt="Original relief-duration selector" width={222} height={69} loading="lazy" decoding="async" /></div></div>
-      </div>
-    </Section>
-    <Section id="prototype" title="Prototype & Testing">
-      <div className={styles.prototype}>
-        <div className={styles.detailCopy}><p className={styles.testing}>The interactive prototype was tested with users to evaluate clarity, navigation and understanding of the core concept.</p><p>Explore the original flow: notification, measurements, relief controls and follow-up.</p><PrototypeLink /></div>
-        <a href={prototype} target="_blank" rel="noopener noreferrer" aria-label="Open HeadEase prototype from the notification screen"><Screen name="notification" /></a>
-        <a href={prototype} target="_blank" rel="noopener noreferrer" aria-label="Open HeadEase prototype from the measurement preview"><Screen name="explanation" /></a>
-      </div>
-    </Section>
-    <div className={`${styles.container} ${styles.grid} ${styles.closing}`}><p>HeadEase explores how a wearable and mobile interface can work together to make headache monitoring and response feel more immediate, understandable and personal.</p></div>
+        <div className={styles.decisions}>
+          <figure id="dashboard">
+            <div className={styles.screenPair}>
+              <div><Screen name="heart" title="Reading" onOpen={setArtwork} /><p>Reading</p></div>
+              <div><Screen name="explanation" title="Explanation" onOpen={setArtwork} /><p>Explanation</p></div>
+            </div>
+            <figcaption><h3>Context without crowding the screen</h3><p>The explanation opens over the reading when needed. The main view keeps the measurement and actions in focus.</p></figcaption>
+          </figure>
+          <figure id="safety">
+            <div className={styles.screenPair}>
+              <div><Screen name="dizziness" title="Additional symptoms" onOpen={setArtwork} /><p>Additional symptoms</p></div>
+              <div><Screen name="contact" title="A different next step" onOpen={setArtwork} /><p>No improvement</p></div>
+            </div>
+            <figcaption><h3>A path for a different answer</h3><p>Users can report additional symptoms. If they do not feel better, the follow-up offers a contact option instead of ending the flow.</p></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section className={styles.section} id="visual" aria-labelledby="visual-heading">
+        <div className={styles.introduction}>
+          <h2 id="visual-heading">A quieter visual language.</h2>
+          <p>Soft colors, simple illustrations and a shared set of controls connect the app to the wearable.</p>
+        </div>
+        <div className={styles.visual}>
+          <figure id="interfaces"><Artwork artwork={watches} onOpen={setArtwork} /><figcaption><h3>One action on the wrist</h3><p>The HeadEase identity and activation button carry across both watch mockups.</p></figcaption></figure>
+          <figure>
+            <div className={styles.designPanel}>
+              <ul className={styles.palette} aria-label="HeadEase color palette">{palette.map(([name, color]) => <li key={name}><span className={styles[color]} /><span>{name}</span></li>)}</ul>
+              <div className={styles.typeSample}><img src={asset("assets/headease/blender-type.png")} alt="Original Blender Hebrew typography specimen" width={312} height={52} loading="lazy" decoding="async" /><span>Blender · Hebrew interface</span></div>
+              <div className={styles.controls}>
+                <img src={asset("assets/headease/start-button.png")} alt="Original activate-wearable button" width={274} height={60} loading="lazy" decoding="async" />
+                <img src={asset("assets/headease/symptom-button.png")} alt="Original additional-symptoms button" width={274} height={60} loading="lazy" decoding="async" />
+                <img src={asset("assets/headease/timer-control.png")} alt="Original session-duration selector" width={222} height={69} loading="lazy" decoding="async" />
+                <img src={asset("assets/headease/bottom-nav.png")} alt="Original home, history, measurements and settings navigation icons" width={400} height={85} loading="lazy" decoding="async" />
+              </div>
+            </div>
+            <figcaption><h3>A consistent interface</h3><p>One typeface, a restrained palette and recognizable controls keep the screens connected.</p></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section className={styles.section} id="prototype" aria-labelledby="prototype-heading">
+        <div className={styles.prototype} id="final">
+          <div className={styles.demo}>
+            <CaseVideo film={{ src: asset("assets/videos/headease-hover-clean.mp4"), poster: asset("assets/headease/flow-poster.jpg"), title: "HeadEase app flow", duration: "1:05" }} aspectRatio="340 / 754" posterLabel="Watch the app flow" />
+          </div>
+          <div className={styles.prototypeCopy}>
+            <h2 id="prototype-heading">Explore the experience.</h2>
+            <p>Watch the original app recording or try the Figma prototype, from the first notification to the follow-up.</p>
+            <PrototypeLink />
+            <p className={styles.note}>An interaction concept exploring how a wearable and an app work together.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    {artwork && <HeadeaseArtworkDialog artwork={artwork} onClose={() => setArtwork(null)} />}
   </article>;
 }

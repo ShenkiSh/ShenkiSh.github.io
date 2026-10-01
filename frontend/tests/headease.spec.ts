@@ -1,6 +1,6 @@
 import { expect, test } from "./fixtures";
 
-test("HeadEase replaces the placeholder page with complete, sharp original artwork", async ({ page }) => {
+test("HeadEase presents a focused case with complete, sharp original artwork", async ({ page }) => {
   await page.goto("/#/headease");
   await expect(page).toHaveTitle("HeadEase | Shani Shlomov");
   await expect(page.getByRole("heading", { name: "HeadEase", exact: true })).toBeVisible();
@@ -21,7 +21,9 @@ test("HeadEase replaces the placeholder page with complete, sharp original artwo
       expect(geometry.width / geometry.height).toBeCloseTo(9 / 20, 3);
     }
   }
-  await expect(page.locator("#journey figure")).toHaveCount(8);
+  await expect(page.locator("#journey figure")).toHaveCount(5);
+  await expect(page.locator("article [data-headease-screen]")).toHaveCount(9);
+  await expect(page.locator("article")).not.toContainText("tested with users");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
@@ -30,7 +32,7 @@ test("HeadEase chapters support keyboard access, deep links, reload and browser 
   await page.goto("/#/headease#control");
   await expect(page.locator("#control")).toBeFocused();
   const nav = page.getByRole("navigation", { name: "HeadEase sections" });
-  for (const [label, id] of [["Overview", "need"], ["System", "system"], ["Journey", "journey"], ["Dashboard", "dashboard"], ["Control", "control"], ["Safety", "safety"], ["Interface", "final"], ["Prototype", "prototype"]]) {
+  for (const [label, id] of [["App flow", "journey"], ["UX decisions", "decisions"], ["Visual language", "visual"], ["Try it", "prototype"]]) {
     const link = nav.getByRole("link", { name: label, exact: true });
     await link.focus();
     await page.keyboard.press("Enter");
@@ -43,9 +45,9 @@ test("HeadEase chapters support keyboard access, deep links, reload and browser 
     expect((await section.boundingBox())!.y).toBeGreaterThanOrEqual(navBox.y + navBox.height - 1);
   }
   await page.goBack();
-  await expect(page.locator("#final")).toBeFocused();
+  await expect(page.locator("#visual")).toBeFocused();
   await page.reload();
-  await expect(page.locator("#final")).toBeFocused();
+  await expect(page.locator("#visual")).toBeFocused();
   await page.getByRole("link", { name: "Back to Work", exact: true }).click();
   await expect(page).toHaveURL(/#\/#work$/);
 });
@@ -58,7 +60,7 @@ test("the carousel enters HeadEase directly, and its prototype and next-project 
   await expect(page).toHaveURL(/#\/headease$/);
   await expect(page.getByRole("heading", { name: "HeadEase", exact: true })).toBeVisible();
   await expect(page.getByRole("dialog")).toHaveCount(0);
-  const link = page.getByRole("link", { name: "Open prototype", exact: true }).first();
+  const link = page.getByRole("link", { name: "Try the prototype", exact: true }).first();
   const href = (await link.getAttribute("href"))!;
   expect(new URL(href).searchParams.get("node-id")).toBe("1601-543");
   await expect(link).toHaveAttribute("rel", "noopener noreferrer");
@@ -72,4 +74,52 @@ test("the carousel enters HeadEase directly, and its prototype and next-project 
   await expect(page).toHaveURL(/#\/headease$/);
   await page.getByRole("link", { name: "Next project: My Bunny", exact: true }).click();
   await expect(page).toHaveURL(/#\/my-bunny$/);
+});
+
+
+test("HeadEase original mockups and interface details enlarge with keyboard and restore focus", async ({ page }) => {
+  await page.goto("/#/headease");
+  for (const name of ["Enlarge HeadEase in use", "Enlarge Explanation screen", "Enlarge HeadEase on the wrist"]) {
+    const opener = page.getByRole("button", { name, exact: true });
+    await opener.scrollIntoViewIfNeeded();
+    await opener.focus();
+    await page.keyboard.press("Enter");
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await expect.poll(() => dialog.locator("img").evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true);
+    await expect(dialog.getByRole("button", { name: "Close artwork" })).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    await expect(opener).toBeFocused();
+  }
+});
+
+test("HeadEase recording starts on request, supports seeking, and pauses offscreen", async ({ page }) => {
+  await page.goto("/#/headease#prototype");
+  const player = page.getByRole("group", { name: "HeadEase app flow video player" });
+  const video = player.locator("video");
+  await expect(video).toHaveAttribute("preload", "none");
+  expect(await video.evaluate((node: HTMLVideoElement) => node.paused)).toBe(true);
+  await player.getByRole("button", { name: "Play HeadEase app flow", exact: true }).click();
+  await expect.poll(() => video.evaluate((node: HTMLVideoElement) => !node.paused && node.currentTime > 0)).toBe(true);
+  const seek = player.getByRole("slider", { name: "Seek video" });
+  await seek.fill("25");
+  await expect.poll(() => video.evaluate((node: HTMLVideoElement) => node.currentTime)).toBeGreaterThanOrEqual(25);
+  await player.getByRole("button", { name: "Pause", exact: true }).click();
+  expect(await video.evaluate((node: HTMLVideoElement) => node.paused)).toBe(true);
+  await player.getByRole("button", { name: "Play", exact: true }).click();
+  await page.getByRole("navigation", { name: "HeadEase sections" }).getByRole("link", { name: "App flow", exact: true }).click();
+  await expect.poll(() => video.evaluate((node: HTMLVideoElement) => node.paused)).toBe(true);
+});
+
+test("HeadEase recording can recover from a failed media load", async ({ page }) => {
+  await page.route("**/videos/headease-hover-clean.mp4", route => route.fulfill({ status: 200, contentType: "video/mp4", body: "invalid video" }));
+  await page.goto("/#/headease#prototype");
+  const player = page.getByRole("group", { name: "HeadEase app flow video player" });
+  await player.getByRole("button", { name: "Play HeadEase app flow", exact: true }).click();
+  await expect(player.getByRole("alert")).toContainText("This video could not load.");
+  await page.unroute("**/videos/headease-hover-clean.mp4");
+  await player.getByRole("button", { name: "Try again" }).click();
+  await expect.poll(() => player.locator("video").evaluate((node: HTMLVideoElement) => !node.paused && node.currentTime > 0)).toBe(true);
+  await expect(player.getByRole("alert")).toHaveCount(0);
 });

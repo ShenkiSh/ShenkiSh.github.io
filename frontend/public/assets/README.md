@@ -449,9 +449,10 @@ existing Satoshi font, with the following artwork exceptions:
 The HeadEase page follows Portfolio frame `1608:5285` in Figma file
 `NNjB6Gey6DtLbO1ZzQV51g`. Assets were downloaded from that frame's design context.
 `home/headease.png` is an exact SHA-256 match for its 759 × 427 wearable mockup
-(`5b6069d05294d8924c96d6dfa6b9a1e735ba3fc1`); it is reused in both original slots.
+(`5b6069d05294d8924c96d6dfa6b9a1e735ba3fc1`). It remains the Home thumbnail;
+the refined case uses the full-resolution export documented below.
 
-`headease/` contains 20 original PNGs. Fifteen complete app screens are 1080 × 2400,
+`headease/` retains 20 original PNGs. Fifteen complete app screens are 1080 × 2400,
 rendered at 3× from the original 360 × 800 frames on `Original headache app`
 (page `1600:435`). They preserve Blender typography and are displayed without
 cropping or changing their 9:20 ratio:
@@ -628,3 +629,24 @@ at native 1918×968, quality 2, without cropping, retouching or resizing. Robert
 Gaspard, health and the kitchen remain visible without a foreground hit effect.
 The previous `old.webp` is preserved. A shared 16:9 media area keeps comparison
 captions aligned while each image retains its own proportions and rounded corners.
+
+
+## HeadEase case refinement — October 1, 2026
+
+The new images come from the user's original compositions on Portfolio page
+`970:590`, “תיק עבודות חדש - אתר”, file `NNjB6Gey6DtLbO1ZzQV51g`:
+
+| Asset | Source | Treatment |
+| --- | --- | --- |
+| `headease/in-use.webp` | Slide 16:9 - 84, `970:2990` | Original 1920 × 1080 artwork; source presentation text and Back to Summary control hidden on a temporary clone for export. The clone was removed and the original was not edited. |
+| `headease/watches.webp` | Slide 16:9 - 93, `970:2944` | Complete original 1920 × 1080 watch composition. |
+| `headease/flow-poster.jpg` | First frame of `videos/headease-hover-clean.mp4` | Native 340 × 754 poster for the existing 65.23-second recording. |
+
+The two Figma PNG exports were converted to lossless WebP without resizing,
+retouching or generating new artwork. Slide 16:9 - 92 (`970:3568`), the tan desk
+composition, remains intact in Figma but is omitted from the main case to avoid
+repeating the same device pairing at a smaller scale.
+
+The case reuses `videos/headease-hover-clean.mp4`, derived from the user's
+`אפליקציה לכאבי ראש.mp4`; it is not a newly simulated app. Home's preview asset
+and behavior are unchanged. All original screen and component PNGs are retained.
