@@ -97,7 +97,7 @@ export function HopContent() {
           </div>
           <div className={styles.twoColumns}>
             <Card image="old" title="Earlier version" copy="The original kitchen, food obstacles and health bar." />
-            <Card image="hero" title="Rebuilt version" copy="Three hearts show health; Gaspard gives the next action; the strainer marks a place to hide and recover." />
+            <Card image="rebuilt" title="Rebuilt version" copy="Hearts show health, a warning marks the next strike, and the strainer offers shelter." />
           </div>
         </div>
         <div id="unity" className={styles.production}>

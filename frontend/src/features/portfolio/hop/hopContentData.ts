@@ -4,7 +4,7 @@ export const hopChapters = [
 ] as const;
 
 export const hopImages = {
-  hero: "Robert on the kitchen worktable beside his open cage, Gaspard, cookware and a three-heart health display",
+  rebuilt: "Robert on the worktable beside a strainer shelter, with three hearts, the chef's hands, an attack warning and a banana peel",
   swamp: "Robert and his frog family relaxing among water lilies in the swamp",
   captured: "The chef catches Robert in a net and carries him away from the swamp",
   cage: "Robert unlocks his cage with his tongue while the chef faces away",

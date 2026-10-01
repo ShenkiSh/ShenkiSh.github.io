@@ -552,6 +552,7 @@ cropping, upscaling or frame interpolation is applied.
 | `gameplay-preview.mp4` | 2:58–3:18 | 1920 × 1080, x264 CRF 18, original AAC audio copied |
 | `hover-preview.mp4` | Same 20-second excerpt | 1280 × 720, x264 CRF 20, no audio track |
 | `gameplay-poster.webp` | Source 3:00 | Full-resolution frame, lossless WebP |
+| `rebuilt.webp` | Source 2:47 | Full 1920 × 1080 gameplay frame, lossless WebP; replaces the preparation capture in the earlier/rebuilt comparison. |
 
 The full recording preserves tutorial, opening story, gameplay and ending. Videos
 load on interaction; the case-study players retain sound/seek/fullscreen/retry and

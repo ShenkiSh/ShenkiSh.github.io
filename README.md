@@ -463,6 +463,9 @@ Timeline remain visible. Legacy story, level-design, chef, hazards, safety,
 feedback, iteration and unity anchors remain usable within the consolidated page.
 The earlier-game comparison uses a clear frame from 1:23 in the original recording,
 preserving the complete image and keeping its caption aligned with the rebuilt version.
+The rebuilt comparison uses the full 1920 × 1080 frame at 2:47 in the current
+game recording, replacing the preparation capture with a black strip along its
+left edge. The caption describes the health, warning and shelter visible in that frame.
 
 The source captures and illustrations are self-hosted as lossless WebP in
 `assets/hop/`; original files remain available even where repeated examples
