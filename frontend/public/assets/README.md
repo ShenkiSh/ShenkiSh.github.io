@@ -303,7 +303,7 @@ Portfolio (`NNjB6Gey6DtLbO1ZzQV51g`), page `תיק עבודות חדש - אתר`
 - `happily/hurt-bridge.png`: `1521:4941`, the revised bridge game.
 - `happily/competition-roots.png`: `1521:4857`, “משחק 5 חדש”.
 
-The introductory characters reuse `happily/raccoon.gif` and `happily/bear.gif`
+The visual-language section reuses `happily/raccoon.gif` and `happily/bear.gif`
 from original Figma nodes `1452:5259` and `1452:5260`, with their static PNGs
 for reduced motion and paused playback. Original artwork files remain intact.
 
@@ -550,3 +550,12 @@ the thumbnail strips. The original event cover remains on the page.
 | `event-03.jpg` | `IMG-20260804-WA0053 1.png` |
 | `event-04.jpg` | `IMG-20260804-WA0315 1.png` |
 | `event-05.jpg` | `IMG_2964 1.png` |
+
+## Family-app photographic hero — October 1
+
+`happily/family-app-mockup.webp` is the existing prepared phone mockup from Portfolio
+`NNjB6Gey6DtLbO1ZzQV51g`, frame `66:714` (slide 18). The export combines the original
+photo `66:986` and phone UI `66:987`, preserving their transforms in a 1920×1080 frame.
+Presentation navigation and Back to Summary are excluded at export, without retouching
+or generating artwork. A temporary export frame was removed after download; the
+original Figma slide was left unchanged. PNG export converted to WebP quality 88.

@@ -1,6 +1,6 @@
 import { expect, test } from "./fixtures";
 
-test("Happily hero opens the app directly and keeps keyboard links to both Unity games", async ({ page }) => {
+test("Happily opens the app directly and keeps keyboard links to both Unity games", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/we-live-happily-here");
   await expect(page.getByRole("heading", { name: "We Live Happily Here", exact: true })).toBeVisible();
@@ -32,7 +32,7 @@ test("Happily hero opens the app directly and keeps keyboard links to both Unity
   await expect(app.getByRole("link", { name: "Original Figma prototype" })).toHaveAttribute("href", /figma\.com\/proto\/NNjB6Gey6DtLbO1ZzQV51g\/Portfolio\?page-id=1457-5110/);
   await expect(app.getByRole("link", { name: "Original Figma prototype" })).toHaveAttribute("target", "_blank");
   expect(await page.locator("#two-users").evaluate(el => Boolean(el.compareDocumentPosition(document.getElementById("try-it")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
-  expect(await page.locator("#try-it").evaluate(el => Boolean(el.compareDocumentPosition(document.getElementById("game-ui")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+  expect(await page.locator("#game-ui").evaluate(el => Boolean(el.compareDocumentPosition(document.getElementById("try-it")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
@@ -40,7 +40,7 @@ test("Happily original artwork loads and chapter navigation keeps its target vis
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/we-live-happily-here");
   const navigation = page.getByRole("navigation", { name: "We Live Happily Here sections" });
-  for (const name of ["Conflicts", "Cooperation", "Try it", "Game UI"]) {
+  for (const name of ["The idea", "Family flow", "Game design", "Visual language", "Try it"]) {
     const link = navigation.getByRole("link", { name, exact: true });
     await link.click();
     await expect(link).toHaveAttribute("aria-current", "location");
@@ -54,10 +54,11 @@ test("Happily original artwork loads and chapter navigation keeps its target vis
   await expect(page).toHaveURL(/#\/tenki$/);
 });
 
-test("Happily shows complete hero screens and equally prominent previews for both games", async ({ page, isMobile }) => {
+test("Happily shows the complete original mockup and equally prominent previews for both games", async ({ page, isMobile }) => {
   await page.goto("/#/we-live-happily-here");
+  await page.evaluate(() => document.fonts.ready);
   const heroImages = page.locator("article > header img");
-  await expect(heroImages).toHaveCount(2);
+  await expect(heroImages).toHaveCount(1);
   for (const img of await heroImages.all()) {
     await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)).toBe(true);
     const dimensions = await img.evaluate((el: HTMLImageElement) => ({
@@ -102,7 +103,7 @@ test("Happily shows complete hero screens and equally prominent previews for bot
   }
 });
 
-for (const variant of ["introduction", "character"]) test(`Happily ${variant} GIFs respect reduced motion, keyboard pause and leaving the viewport`, async ({ page }) => {
+for (const variant of ["character"]) test(`Happily ${variant} GIFs respect reduced motion, keyboard pause and leaving the viewport`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/we-live-happily-here");
   const characters = page.locator("[data-animations]").filter({ has: page.getByRole("button", { name: new RegExp(`${variant} animations$`) }) });
@@ -123,10 +124,10 @@ for (const variant of ["introduction", "character"]) test(`Happily ${variant} GI
   await expect(characters).toHaveAttribute("data-animations", "paused");
 });
 
-test("Happily UI artwork stays inside its row with captions below the complete images", async ({ page, isMobile }) => {
+test("Happily family flow keeps complete screens and aligned captions", async ({ page, isMobile }) => {
   await page.goto("/#/we-live-happily-here");
-  await page.getByRole("navigation", { name: "We Live Happily Here sections" }).getByRole("link", { name: "Game UI", exact: true }).click();
-  const examples = page.locator("#game-ui figure");
+  await page.getByRole("navigation", { name: "We Live Happily Here sections" }).getByRole("link", { name: "Family flow", exact: true }).click();
+  const examples = page.locator("#how-it-works figure");
   await expect(examples).toHaveCount(4);
   const positions = [];
   for (const example of await examples.all()) {
@@ -157,7 +158,7 @@ test("Happily UI artwork stays inside its row with captions below the complete i
 
 test("Happily cooperation keeps current game captures complete, equal-sized and separate from captions", async ({ page, isMobile }) => {
   await page.goto("/#/we-live-happily-here");
-  const link = page.getByRole("navigation", { name: "We Live Happily Here sections" }).getByRole("link", { name: "Cooperation", exact: true });
+  const link = page.getByRole("link", { name: "Game design", exact: true });
   await link.focus();
   await page.keyboard.press("Enter");
   const captures = page.locator("#cooperation figure");
@@ -191,4 +192,15 @@ test("Happily cooperation keeps current game captures complete, equal-sized and 
     expect(positions[1].captionTop).toBeCloseTo(positions[0].captionTop, 0);
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+
+test("Happily visual language captions share a baseline on desktop", async ({ page, isMobile }) => {
+  test.skip(isMobile, "Visual stories stack on phones");
+  await page.goto("/#/we-live-happily-here");
+  await page.getByRole("link", { name: "Visual language", exact: true }).click();
+  const titles = page.locator("#game-ui h3");
+  await expect(titles).toHaveCount(2);
+  const tops = await titles.evaluateAll(elements => elements.map(el => el.getBoundingClientRect().top));
+  expect(tops[0]).toBeCloseTo(tops[1], 0);
 });

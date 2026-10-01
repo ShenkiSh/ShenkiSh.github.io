@@ -32,8 +32,8 @@ export const unityGames: readonly FamilyGame[] = [
 ];
 export const appPrototype = "https://www.figma.com/proto/NNjB6Gey6DtLbO1ZzQV51g/Portfolio?page-id=1457-5110&node-id=1457-6048&starting-point-node-id=1457-6048&scaling=scale-down&content-scaling=fixed";
 export const chapters = [
-  ["overview", "Overview"], ["how-it-works", "How it works"], ["conflicts", "Conflicts"],
-  ["cooperation", "Cooperation"], ["try-it", "Try it"], ["game-ui", "Game UI"],
+  ["overview", "The idea"], ["how-it-works", "Family flow"], ["conflicts", "Game design"],
+  ["game-ui", "Visual language"], ["try-it", "Try it"],
 ] as const;
 export const conflicts = [
   ["Personal Space", personalSpaceMedia.gameplay, "“Get out of my room.” / “That’s my side.”"],
@@ -42,7 +42,9 @@ export const conflicts = [
   ["Hurt", "hurt-bridge.png", "Insults, teasing and embarrassment."],
   ["Competition", "competition-roots.png", "“I’m better.” / “I go first.”"],
 ] as const;
-export const systemSteps = [
-  "Identify a conflict", "Select the children", "Choose the conflict type", "Send a game invitation",
-  "Join the same game", "Play three short stages", "See the shared summary", "Update the parent",
+export const familyFlow = [
+  { title: "Choose & invite", role: "Parent", file: "setup-screen.png", size: [412, 917], caption: "Choose the children and the conflict to send a relevant game invitation." },
+  { title: "Join each other", role: "Children", file: "hero-lobby.png", size: [412, 917], caption: "See who is playing and confirm that both players are ready." },
+  { title: "Play together", role: "Children", file: "gameplay-ui.png", size: [396, 720], caption: "Short instructions and a shared HUD keep attention on the same goal." },
+  { title: "Close the loop", role: "Parent", file: "parent-ui.png", size: [350, 705], caption: "The shared result returns to family activity, where the parent can respond." },
 ] as const;

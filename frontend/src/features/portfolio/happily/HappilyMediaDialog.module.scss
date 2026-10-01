@@ -1,0 +1,8 @@
+.dialog { width: min(1440px, 94vw); max-width: 94vw; max-height: 94dvh; margin: auto; padding: 0; border: 1px solid var(--home-rule); border-radius: var(--home-radius); color: var(--home-text); background: var(--home-background); }
+.dialog::backdrop { background: rgb(0 0 0 / .88); }
+.inner { padding: clamp(16px, 2vw, 32px); }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+.heading h2 { font-size: clamp(20px, 1.5vw, 26px); }
+.heading button { min-height: 44px; padding: 8px 16px; border: 1px solid var(--home-rule); border-radius: 8px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.inner > img { display: block; width: 100%; height: auto; max-height: 74dvh; object-fit: contain; }
+.dialog video { max-height: 74dvh; }

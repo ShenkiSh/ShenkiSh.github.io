@@ -147,35 +147,27 @@ start paused when reduced motion is enabled. Anta is self-hosted with its OFL li
 
 ### We Live Happily Here case study
 
-`/#/we-live-happily-here` implements Figma case frame `1396:4920` in Portfolio
-(`NNjB6Gey6DtLbO1ZzQV51g`), on `תיק עבודות חדש - אתר`. It follows the shared
-header, Anta/Satoshi typography, content widths, chapter navigation, buttons and
-signature. The story covers a parent-initiated reset, five conflict types, split
-controls, parent/child roles and UI across the experience. The interactive work
-appears directly after The Full App Flow, before Game UI System. The project
-explanation film appears near the start, immediately after A Short Reset, Not a
-Lecture and before How It Works, so visitors see the project concept before the details.
+`/#/we-live-happily-here` uses the shared Anta/Satoshi typography, content widths,
+chapter navigation and buttons. The case is organized into five chapters: The idea,
+Family flow, Game design, Visual language and Try it. A clean original photographic
+phone mockup leads the hero; clicking it opens an enlarged view. Four complete screens
+connect the parent invitation, child lobby, shared gameplay and parent feedback.
+The five conflict concepts occupy the full content width, with Personal Space and
+Objects clearly identified as the two playable Unity prototypes. A focused Personal
+Space example explains the split-control design and shared result. Characters,
+customization and weekly rewards appear together once, with aligned captions.
 
-The case follows NUMI’s 1680px content container and 4/8 column split. Section
-headings and copy share a left column; films, galleries and interactive previews
-start on the same right-column line. Both explanation films fill that content
-column. NUMI’s column gap, section spacing and 1024px stacking breakpoint are
-retained, with 20px side margins at 760px and below. Complete phone artwork and
-recordings keep their original proportions and separate captions.
+The 20-second overview stays inline. A clearly labeled **Watch the full app flow**
+button opens the complete 4:24 recording in a keyboard-accessible dialog, with sound,
+seeking, fullscreen and retry. The film is not mounted or requested before opening;
+closing removes it and restores focus without scrolling. The app and two equally
+prominent Unity players close the case, followed by a brief systems-design reflection.
+The existing `two-users`, `cooperation`, `game-ui` and game anchors remain available.
+The emotional reset is presented as design intent, not a validated therapeutic result.
 
-The hero uses complete native parent/lobby screen exports, without the cropped
-backgrounds of the older phone mockups. It links to the interactive app and two equally
-prominent playable Unity areas: Personal Space and Objects, each with its own
-game recording and a separate Play Game action. They sit side by side on desktop
-and stack on narrow screens. Repeated arrows in calls to action and process copy
-are removed; actual movement controls retain their directional cues.
-The Full App Flow replaces the former Two Users, One System screen comparison.
-It shows the complete parent/child recording after Cooperation and before Try the
-App & Play the Games, in the same aligned, responsive content column as the short explainer.
-The existing `two-users` anchor is retained for links to that position.
-The Setup UI example uses the complete original conflict-selection frame
-(`1457:6343`), without a phone bezel or surrounding mockup background. Its rounded
-screen fits the shared UI row, with the caption kept below the artwork.
+The refinement lives on `codex/happily-case-study-refinement`, based on the completed
+NUMI branch. The NUMI branch and `backup/portfolio-before-numi-2026-09-30` remain intact;
+feature pushes do not deploy the public site.
 
 **Try the App**, in both the hero and the interactive-app section, opens the same
 coded React prototype directly inside the case study. Parent and child appear
@@ -279,22 +271,18 @@ app: hero screens `1457:6048` / `1457:5970` and the second game `1457:6877`.
 It includes complete phone screens and composed game previews. The original
 raccoon/bear GIFs come from nodes `1452:5259` and `1452:5260`. They animate only
 while visible, offer a compact pause control and honor reduced motion/data saving.
-The same original character animations introduce “A Short Reset, Not a Lecture”
-in place of the static vehicle, with independent playback controls. The three
-remaining conflict concepts use Shani’s September 24 cauldron, bridge and roots
-artwork. All five conflict drawings share the same visible height, with aligned
-captions and complete, undistorted artwork. Game UI examples preserve every complete image inside equal-height
-frames, with a separate caption row; four desktop columns become two on tablets
-and one on phones. **How the Project Works** shows the original 20-second project
-explainer. **The Full App Flow** shows Shani's separate complete 4:24 recording
-(`הסרטון המלא של האפליקציה  copy 2.mp4`) in place of the former parent/child diagram.
+The characters appear once in Visual language. The remaining conflict concepts use
+Shani’s September 24 cauldron, bridge and roots artwork. All five drawings share the
+same visible height, with aligned captions and complete, undistorted artwork. The
+four family-flow screens use equal-height frames: four desktop columns, two on tablets,
+and one on narrow phones. The photographic hero is exported from the original photo
+and phone layers of Portfolio frame `66:714`, without the presentation controls.
 
 Each game's portrait player shows its complete supplied recording: Personal Space
-uses `In Boat 1.mp4` (2:33), and Objects uses `stuff.mp4` (2:11). All four films
-preserve the full frame and soundtrack, start paused and load only after Play.
-They use the shared sound, seek, fullscreen and retry controls. Only one film plays
-at a time, and opening the app or a Unity game pauses recordings. The separate
-Play Game actions continue to launch the actual games.
+uses `In Boat 1.mp4` (2:33), and Objects uses `stuff.mp4` (2:11). Inline films preserve
+the full frame and soundtrack and load only after Play. The full app film starts on
+opening its dialog. Only one film plays at a time, and opening the app or a Unity game
+pauses recordings. Separate Play Game actions continue to launch the actual games.
 
 Personal Space gameplay shares one current Unity capture across the conflict
 gallery and cooperation section, showing the swamp and

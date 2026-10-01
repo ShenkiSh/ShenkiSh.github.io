@@ -2,7 +2,6 @@ import { expect, test } from "./fixtures";
 
 const recordings = [
   { section: "project-overview", title: "How We Live Happily Here works", file: "we-live-happily-here-full", duration: 19.967 },
-  { section: "two-users", title: "We Live Happily Here — Full App Flow", file: "app-full-flow", duration: 263.6 },
   { section: "unity-game-01", title: "Personal Space — Gameplay Recording", file: "personal-space-recording", duration: 153.033 },
   { section: "unity-game-02", title: "Objects — Gameplay Recording", file: "objects-recording", duration: 130.867 },
 ] as const;
@@ -23,7 +22,7 @@ test("Happily puts the complete recordings in their sections and loads them only
   }
   expect(requests).toEqual([]);
   expect(await page.locator("#project-overview").evaluate(el => Boolean(el.compareDocumentPosition(document.getElementById("how-it-works")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
-  expect(await page.locator("#cooperation").evaluate(el => Boolean(el.compareDocumentPosition(document.getElementById("two-users")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+  expect(await page.locator("#two-users").evaluate(el => Boolean(el.compareDocumentPosition(document.getElementById("cooperation")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
   expect(await page.locator("#two-users").evaluate(el => Boolean(el.compareDocumentPosition(document.getElementById("try-it")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
   await expect(page.locator("#two-users img, #two-users ol")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Two Users, One System", exact: true })).toHaveCount(0);
