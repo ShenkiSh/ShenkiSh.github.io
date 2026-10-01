@@ -419,6 +419,13 @@ rules. The shared 1680px container, Anta/Satoshi type, black/lavender palette an
 rounded imagery match the other refined cases. The flow scrolls within its own
 row on narrow screens; the rest of the content stacks.
 
+TENKI's text uses a restrained hierarchy: 28–40px section headings, 17–20px
+subheadings, 16–18px body copy and 14–16px captions. Section explanations sit
+directly below their headings, without repeated uppercase chapter labels. Shorter
+captions align with their imagery; the five-screen row shares title/body tracks
+so descriptions stay aligned when a title wraps. Hero and explanatory copy have
+bounded line lengths, while all artwork and interactive controls remain available.
+
 The forecast comparison uses actual material from the `איקו מקורי` and `TENKI - App`
 pages in Portfolio: the original row and the updated selected-day highlight.
 It explains the visible change without claiming user testing or measured results.

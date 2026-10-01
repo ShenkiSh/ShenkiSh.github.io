@@ -13,9 +13,9 @@ const chapters = [
   ["graphic-language", "Graphic language"], ["prototype", "Try it"],
 ] as const;
 const flowCaptions = [
-  "I placed a picnic suggestion on the home screen to connect the forecast to something the user can do next.",
-  "Compare the week and pick a day to go out.",
-  "Weather and the map share one screen, keeping the forecast in view while the user explores places to go.",
+  "A picnic suggestion on the home screen turns the forecast into a next step.",
+  "Compare the week and choose a day.",
+  "Weather stays beside the map, giving each location its seasonal context.",
   "Explore nearby parks and choose a destination.",
   "See the route and walking time before setting out.",
 ];
@@ -46,8 +46,7 @@ export function TenkiCase() {
       <section className={styles.chapter} id="artist" aria-labelledby="artist-heading">
         <div className={styles.ideaGrid}>
           <div className={styles.copy}>
-            <p className={styles.label}>The idea</p>
-            <h2 id="artist-heading">An artist’s language.<br />A seasonal idea.</h2>
+            <h2 id="artist-heading">An artist’s language. A seasonal idea.</h2>
             <p>The brief was to translate an artist’s work into a digital product. I chose Ikko Tanaka for his bold geometry, color and connection to Japanese culture.</p>
           </div>
           <div>
@@ -73,7 +72,7 @@ export function TenkiCase() {
 
       <section className={styles.chapter} id="product-flow" aria-labelledby="flow-heading">
         <div className={styles.chapterHeading} id="final-interface">
-          <div className={styles.copy}><p className={styles.label}>App flow</p><h2 id="flow-heading">From forecast to outing.</h2></div>
+          <h2 id="flow-heading">From forecast to outing.</h2>
           <p>Follow the journey from forecast to picnic. Select a screen to view it larger.</p>
         </div>
         <ol className={styles.flow} aria-label="The five screens of the TENKI app" tabIndex={0}>
@@ -88,19 +87,19 @@ export function TenkiCase() {
 
       <section className={styles.chapter} id="translation" aria-labelledby="translation-heading">
         <div className={styles.chapterHeading}>
-          <div className={styles.copy}><p className={styles.label}>Visual design</p><h2 id="translation-heading">From poster to interface.</h2></div>
+          <h2 id="translation-heading">From poster to interface.</h2>
           <p>Repeated symbols connect the forecast, navigation and map.</p>
         </div>
         <div className={styles.principles}>
-          <figure><div className={styles.principleArt}><Artwork file="sun.svg" alt="TENKI’s geometric sun symbol" width={243} height={244} /></div><figcaption><h3>One symbol across the forecast</h3><p>I reused the geometric sun in the daily and weekly views to connect the two scales of the forecast.</p></figcaption></figure>
-          <figure><div className={styles.principleArt}><Artwork file="map-art.png" alt="TENKI’s complete illustrated map, organized into contrasting color fields" width={1771} height={1183} /></div><figcaption><h3>Places within the landscape</h3><p>Park names and location pins sit over the colored map, marking specific places to explore and choose.</p></figcaption></figure>
-          <figure><div className={styles.principleArt}><Artwork file="navigation-icons.svg" alt="Custom location, home and calendar icons" width={480} height={115} /></div><figcaption><h3>Familiar actions, custom shapes</h3><p>Location, home and calendar keep familiar meanings within the same geometric style.</p></figcaption></figure>
+          <figure><div className={styles.principleArt}><Artwork file="sun.svg" alt="TENKI’s geometric sun symbol" width={243} height={244} /></div><figcaption><h3>A shared weather symbol</h3><p>One geometric sun connects the daily and weekly forecasts.</p></figcaption></figure>
+          <figure><div className={styles.principleArt}><Artwork file="map-art.png" alt="TENKI’s complete illustrated map, organized into contrasting color fields" width={1771} height={1183} /></div><figcaption><h3>Places on the map</h3><p>Park names and pins mark the places you can explore and choose.</p></figcaption></figure>
+          <figure><div className={styles.principleArt}><Artwork file="navigation-icons.svg" alt="Custom location, home and calendar icons" width={480} height={115} /></div><figcaption><h3>Familiar navigation</h3><p>Location, home and calendar keep familiar meanings in a shared geometric style.</p></figcaption></figure>
         </div>
       </section>
 
       <section className={styles.chapter} id="graphic-language" aria-labelledby="graphic-language-heading">
         <div className={styles.chapterHeading}>
-          <div className={styles.copy}><p className={styles.label}>Graphic language</p><h2 id="graphic-language-heading">One language.<br />On and off screen.</h2></div>
+          <h2 id="graphic-language-heading">One language. On and off screen.</h2>
           <p>Custom numerals, icons and color blocks connect the interface to a wider visual identity.</p>
         </div>
         <div className={styles.graphicLanguage}>
@@ -110,14 +109,14 @@ export function TenkiCase() {
               <Artwork file="numeral-29.svg" alt="Custom 29-degree numeral" width={216} height={143} />
               <Artwork file="numeral-24.svg" alt="Custom geometric temperature numeral" width={216} height={140} />
             </div>
-            <figcaption><h3>Weather with its own character</h3><p>Temperature becomes part of the identity through custom geometric numerals.</p></figcaption>
+            <figcaption><h3>Custom weather numerals</h3><p>Geometric numerals make temperature part of the visual identity.</p></figcaption>
           </figure>
           <figure>
             <div className={styles.selectionComparison}>
               <figure><div className={`${styles.rowArtwork} ${styles.originalRow}`}><Artwork file="weekly-row-original.png" alt="The original Sunday forecast row on its beige background" width={347} height={120} /></div><figcaption>Original row</figcaption></figure>
               <figure><div className={styles.rowArtwork}><Artwork file="weekly-row-selected.png" alt="The updated Sunday forecast row with a blue background marking the selected day" width={364} height={155} /></div><figcaption>Selected day</figcaption></figure>
             </div>
-            <figcaption><h3>Making the selected day visible</h3><p>The original list used the same background for every row. The updated prototype highlights the chosen day, connecting the weekly list to the forecast above.</p></figcaption>
+            <figcaption><h3>The selected day, made clear</h3><p>A color block now marks the chosen day, connecting the weekly list to the forecast above.</p></figcaption>
           </figure>
         </div>
         <figure className={styles.brandWorld}>
@@ -130,7 +129,7 @@ export function TenkiCase() {
 
       <section className={styles.chapter} id="prototype" aria-labelledby="prototype-heading">
         <div className={styles.chapterHeading}>
-          <div className={styles.copy}><p className={styles.label}>Try it</p><h2 id="prototype-heading">See the idea in motion.</h2></div>
+          <h2 id="prototype-heading">See the idea in motion.</h2>
           <p>Watch the app flow and explore the map here. Open the Figma prototype to try the full journey.</p>
         </div>
         <div className={styles.tryGrid}>
