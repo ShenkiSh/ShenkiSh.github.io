@@ -408,9 +408,32 @@ visual changes. JPEG payloads were given `.jpg` extensions.
   scenes while avoiding upscaled/compressed preview images before playback.
 
 The original recordings and Figma file are unchanged. Animated examples start paused
-and use the shared accessible player. The production example is accurately labelled
-as a still from the VR recording; it is not presented as a separate playable clip.
-Manrope reuses the existing local font and OFL license in `fonts/`.
+and use the shared accessible player. The September 27 production example used a still from the VR recording. The October 1
+revision below replaces it with an actual excerpt; older source assets remain available.
+Manrope remains available with its OFL license in `fonts/`; the refined page uses Satoshi.
+
+### ReDream refinement — October 1, 2026
+
+The new media comes directly from the same user-supplied
+`דברים לאתר לתיק עבודות /ReDraemLabSHANIandDARIA.mp4` recording. No generated images,
+color adjustments, crops or upscaling were used. Original source files are unchanged.
+
+- `dream-scan-hd.mp4`: 78–101 seconds; the After Effects scan animation and messages
+  inside the VR scene. Poster `dream-scan-poster-hd.jpg` is at 85 seconds.
+- `inside-exam-hd.mp4`: 146–164 seconds; the user handles the exam in the classroom.
+  Poster `inside-exam-poster-hd.jpg` is at 155 seconds.
+- `leaving-classroom-hd.mp4`: 176–200 seconds; the classroom empties and the user
+  enters the back room. Poster `leaving-classroom-poster-hd.jpg` is at 183 seconds.
+- All three excerpts use native 2560 × 1440, 30 fps, H.264 CRF 18, fast preset,
+  yuv420p, no audio and faststart. They load on request; the complete recording
+  retains its original audio. The older four-second examples are no longer shown.
+- `entry-scene-hd.jpg`, `exam-scene-hd.jpg`, `back-room-scene-hd.jpg` and
+  `reveal-scene-hd.jpg`: native frames at 70.016667, 155, 197 and 241 seconds.
+  The reveal reads “Donation confirmed. Original consciousness may now exit.”
+  It replaces the successful-exit image previously labelled System Failure.
+- `hero-poster-hd.jpg`: updated to the classroom view at 135 seconds so the room is
+  visible before playback. The 30-second montage itself is unchanged.
+- All new posters and scene stills use FFmpeg JPEG quality 2 at 2560 × 1440.
 
 ## Lollipop case study — September 28, 2026
 

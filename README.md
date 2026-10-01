@@ -524,37 +524,34 @@ Versioned browser filenames keep cached copies from hiding new releases.
 
 ### ReDream Labs case study
 
-`/#/redream` implements Figma frame `1541:5256` in Portfolio
-(`NNjB6Gey6DtLbO1ZzQV51g`), including the September 27 chapter bar and confirmed
-After Effects example. Select ReDream Lab in the Home More Projects carousel and
-click its card to enter the project directly. It follows the premise, research, four-scene journey,
-spatial storytelling, narrative reveal, production and recorded-playthrough sections.
-The layout retains Figma's Manrope typography, black/lavender colors, original media,
-and the shared site header, sticky chapter navigation and project footer.
+`/#/redream` refines the original Portfolio Figma frame `1541:5256`
+(`NNjB6Gey6DtLbO1ZzQV51g`) into a concise case study. The October 1 revision lives
+on `codex/redream-case-study-refinement`; the preceding site remains on
+`codex/project-hero-consistency`. Home and other project pages are unchanged.
 
-ReDream uses the shared stacked hero introduction above a full-width preview.
-Its body sections retain the 1680px container, 4/8 column split, column gaps and
-section spacing. Titles and introductions align on the left; the scene gallery,
-production examples and full recording align on the right. The four scenes use
-two rows so each landscape image stays readable. The colored narrative section
-keeps the same inner grid. Columns stack below 1024px, with 20px side margins at
-760px and below. The original Manrope typography, films and production credits remain.
+The shared stacked hero presents the project, Shani's Unity and After Effects work,
+and a **Watch the full experience** button before the 30-second preview. Body text
+uses the same Satoshi typography, heading hierarchy and spacing as the six refined
+case studies. The premise and interview-based starting point share one section;
+four larger, paired scene stills explain the journey. The final reveal now shows the
+actual “Donation confirmed” message, replacing the mismatched System Failure label
+and successful-exit still. The repeated narrative banner and tool lists are removed.
 
-Production & Tools shows the dream-scan still with explicit credit for Shani's video
-scenes and transitions in After Effects. Personal, partner and shared contributions
-remain distinct. All five videos use 2560 × 1440 at 30 fps. The full 4:27 VR recording
-retains its original audio stream and loads only on request (approximately 227 MB).
-The 30-second hero and three four-second spatial examples
-retain the Figma edits, rebuilt from the original recording at 2560 × 1440 and
-30 fps. They replace the low-resolution GIF previews. All five player posters now
-use matching 2560 × 1440 frames extracted from the original recording.
-All players start paused, use the shared accessible controls and retry state, play
-one at a time, and pause offscreen or in background tabs. **Watch Full Experience**
-starts the full recording from the beginning with sound. The After Effects example
-remains the still image approved in Figma.
+Making it presents three excerpts from the original recording: the 23-second dream
+scan, 18 seconds of exam interaction and 24 seconds of the classroom-to-back-room
+transition. After Effects work is shown in motion; captions identify Shani's work.
+The full 4:27 recording and separate personal, partner and shared credits close the
+page. Partner lighting and AI-assisted character/voice production stay explicit.
+The black/lavender palette, original VR imagery, shared site header and footer remain.
 
-Sections stack on mobile; the chapter bar scrolls horizontally and supports keyboard,
-direct section links and browser back. The project footer leads to NUMI.
+The four chapter links support keyboard, direct links and browser back. Previous
+`#research`, `#narrative` and `#vr-design` links still target the relevant content.
+Scene and example grids stack below 761px; the featured video stacks below 1024px.
+All five films retain 2560 × 1440 playback and load only when requested. Shared
+controls support sound, seeking, retry, exclusive playback and offscreen pausing.
+The hero action scrolls to the full player and starts from the beginning with sound.
+Its original 4:27 audio and separately hosted source remain unchanged. The footer
+leads to NUMI; Home's More Projects card still enters this page directly.
 Media provenance is recorded in `frontend/public/assets/README.md`.
 
 ### Lollipop case study
