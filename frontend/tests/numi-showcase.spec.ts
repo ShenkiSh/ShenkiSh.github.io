@@ -81,8 +81,13 @@ test("the enlarged gallery supports horizontal swipes on touch screens", async (
   await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: x - 90, y }] });
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await expect(image).toHaveAttribute("src", /event-03\.jpg$/);
-  // Keep touch emulation attached through the final tap as well as the swipe.
-  await dialog.getByRole("button", { name: "Close media", exact: true }).tap();
+  // Finish the gesture sequence in the same CDP input session, with each touch
+  // acknowledged before the next one, rather than switching touch drivers.
+  const close = dialog.getByRole("button", { name: "Close media", exact: true });
+  await expect(close).toBeInViewport({ ratio: 1 });
+  const closeBox = (await close.boundingBox())!;
+  await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: closeBox.x + closeBox.width / 2, y: closeBox.y + closeBox.height / 2 }] });
+  await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await expect(dialog).toHaveCount(0);
   await cdp.detach();
 });
