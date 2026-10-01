@@ -163,7 +163,8 @@ The 20-second overview stays inline. A clearly labeled **Watch the full app flow
 button opens the complete 4:24 recording in a keyboard-accessible dialog, with sound,
 seeking, fullscreen and retry. The film is not mounted or requested before opening;
 closing removes it and restores focus without scrolling. The app and two equally
-prominent Unity players close the case, followed by a brief systems-design reflection.
+prominent Unity players close the case, followed by a short closing reflection with
+its heading and first-person summary grouped in one column.
 Try it groups the app actions in a quiet inset and pairs each complete portrait recording
 with its game title, short description and named Play button. The game previews sit
 directly on the page, without oversized colored panels or duplicate jump buttons.

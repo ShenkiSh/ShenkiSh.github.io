@@ -106,7 +106,10 @@ export function HappilyCase() {
         </div>
       </section>
       <HappilyExperience onOpenApp={() => setAppOpen(true)} />
-      <div className={styles.reflection}><p className={styles.label}>Connecting the system</p><p>This project brought together the decisions between screens: who starts, what each player needs next, and how a game’s result returns to the family experience.</p></div>
+      <section className={styles.reflection} aria-labelledby="happily-reflection-title">
+        <h2 id="happily-reflection-title">Designing for the whole family</h2>
+        <p>I connected the parent’s invitation, the children’s game and the shared feedback into one experience.</p>
+      </section>
     </div>
     {media && <HappilyMediaDialog media={media} onClose={() => setMedia(null)} />}
     {appOpen && <HappilyAppDialog onClose={gameId => {
