@@ -5,9 +5,8 @@ test("chapter links reach visible headings and follow manual scrolling on both l
   await page.goto("/#/tenki");
   const navigation = page.getByRole("navigation", { name: "TENKI sections" });
   const chapters = [
-    ["Research", "artist"], ["Concept", "concept"], ["User Flow", "product-flow"],
-    ["Visual Design", "translation"], ["Final UI", "final-interface"],
-    ["Graphic Language", "graphic-language"], ["Map", "prototype"],
+    ["The idea", "artist"], ["App flow", "product-flow"],
+    ["Visual design", "translation"], ["Graphic language", "graphic-language"], ["Try it", "prototype"],
   ] as const;
   for (const [label, id] of chapters) {
     const link = navigation.getByRole("link", { name: label, exact: true });
@@ -29,7 +28,7 @@ test("chapter links reach visible headings and follow manual scrolling on both l
     expect(sectionBox.y).toBeGreaterThanOrEqual(navBox.y + navBox.height);
   }
   await page.locator("#product-flow").evaluate(section => section.scrollIntoView());
-  const flowLink = navigation.getByRole("link", { name: "User Flow", exact: true });
+  const flowLink = navigation.getByRole("link", { name: "App flow", exact: true });
   await expect(flowLink).toHaveAttribute("aria-current", "location");
   await expect.poll(() => flowLink.evaluate(link => {
     const bounds = link.getBoundingClientRect();
@@ -44,12 +43,12 @@ test("direct section links and browser back preserve chapter position", async ({
   await page.goto("/#/ikko#graphic-language");
   const navigation = page.getByRole("navigation", { name: "TENKI sections" });
   await expect(page.locator("#graphic-language")).toBeFocused();
-  await expect(navigation.getByRole("link", { name: "Graphic Language", exact: true })).toHaveAttribute("aria-current", "location");
-  await navigation.getByRole("link", { name: "Map", exact: true }).click();
+  await expect(navigation.getByRole("link", { name: "Graphic language", exact: true })).toHaveAttribute("aria-current", "location");
+  await navigation.getByRole("link", { name: "Try it", exact: true }).click();
   await expect(page.locator("#prototype")).toBeFocused();
   await page.goBack();
   await expect(page.locator("#graphic-language")).toBeFocused();
-  await expect(navigation.getByRole("link", { name: "Graphic Language", exact: true })).toHaveAttribute("aria-current", "location");
+  await expect(navigation.getByRole("link", { name: "Graphic language", exact: true })).toHaveAttribute("aria-current", "location");
 });
 
 test("TENKI and its legacy project link show complete screens and original graphic assets", async ({ page }) => {
@@ -58,7 +57,7 @@ test("TENKI and its legacy project link show complete screens and original graph
   await expect(page).toHaveTitle("TENKI | Shani Shlomov");
   await expect(page.getByRole("heading", { name: "TENKI", exact: true })).toBeVisible();
   await expect(page.getByText(/placeholder|coming soon/i)).toHaveCount(0);
-  const flow = page.getByRole("region", { name: "From Forecast to Outing" });
+  const flow = page.getByRole("region", { name: "From forecast to outing." });
   const screens = flow.getByRole("img");
   await expect(screens).toHaveCount(5);
   for (const screen of await screens.all()) {
@@ -115,9 +114,11 @@ test("the silent demo respects reduced motion and can be played and paused expli
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/tenki");
   const video = page.getByLabel("TENKI app demonstration");
-  await expect(page.locator('header[aria-label="TENKI introduction"] video')).toHaveCount(1);
+  await page.getByRole("link", { name: "Explore the app", exact: true }).click();
+  await expect(page.locator("#prototype")).toBeFocused();
+  await expect(page.locator('header[aria-label="TENKI introduction"] video')).toHaveCount(0);
   await expect(page.locator("article video")).toHaveCount(1);
-  await expect(page.locator("#prototype video")).toHaveCount(0);
+  await expect(page.locator("#prototype video")).toHaveCount(1);
   await expect(page.locator("#prototype").getByRole("region", { name: "Interactive TENKI map" })).toHaveCount(1);
   await video.scrollIntoViewIfNeeded();
   await expect(video).toHaveJSProperty("paused", true);
@@ -126,7 +127,7 @@ test("the silent demo respects reduced motion and can be played and paused expli
   await expect(video).toHaveJSProperty("muted", true);
   await page.getByRole("button", { name: "Pause TENKI demo" }).click();
   await expect(video).toHaveJSProperty("paused", true);
-  await page.getByRole("heading", { name: "Explore the Map", exact: true }).scrollIntoViewIfNeeded();
+  await page.getByRole("heading", { name: "TENKI", exact: true }).scrollIntoViewIfNeeded();
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await video.scrollIntoViewIfNeeded();
   await expect(video).toHaveJSProperty("paused", true);
@@ -155,4 +156,41 @@ test("an unavailable animation offers the working prototype link", async ({ page
   await page.getByRole("button", { name: "Play TENKI demo" }).click();
   await expect(page.getByRole("status")).toContainText("The demo could not play.");
   await expect(page.getByRole("link", { name: "Try TENKI in Figma" })).toHaveAttribute("href", /figma.com\/proto\/NNjB6Gey6DtLbO1ZzQV51g/);
+});
+
+test("original TENKI mockups stay complete and enlarge with keyboard focus restoration", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/#/tenki");
+  await page.evaluate(() => document.fonts.ready);
+  for (const [label, title] of [["Enlarge the seasonal app mockup", "TENKI seasonal app"], ["Enlarge TENKI brand applications", "TENKI beyond the screen"]]) {
+    const launch = page.getByRole("button", { name: label, exact: true });
+    await launch.scrollIntoViewIfNeeded();
+    const image = launch.getByRole("img");
+    await expect.poll(() => image.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth === 1920)).toBe(true);
+    const box = (await image.boundingBox())!;
+    expect(box.width / box.height).toBeCloseTo(16 / 9, 2);
+    expect(await image.evaluate(el => getComputedStyle(el).objectFit)).toBe("contain");
+    await launch.focus();
+    const scroll = await page.evaluate(() => scrollY);
+    await page.keyboard.press("Enter");
+    const dialog = page.getByRole("dialog", { name: title, exact: true });
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Close artwork" })).toBeFocused();
+    await expect(dialog.getByRole("button", { name: "Close artwork" })).toBeInViewport();
+    await expect.poll(() => dialog.getByRole("img").evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth === 1920)).toBe(true);
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    await expect(launch).toBeFocused();
+    expect(await page.evaluate(() => scrollY)).toBeCloseTo(scroll, 0);
+  }
+});
+
+test("consolidated chapters preserve earlier concept and interface deep links", async ({ page }) => {
+  for (const anchor of ["concept", "seasons", "final-interface"]) {
+    await page.goto(`/#/tenki#${anchor}`);
+    const target = page.locator(`#${anchor}`);
+    await expect(target).toBeFocused();
+    await expect(target.getByRole("heading").first()).toBeInViewport();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
 });

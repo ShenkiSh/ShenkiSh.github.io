@@ -390,42 +390,40 @@ the public GitHub Pages site remains on the previously published version.
 
 ### TENKI case study
 
-`/#/tenki` implements the revised Figma case-study frame `1247:12166` in Portfolio
-file `NNjB6Gey6DtLbO1ZzQV51g`. The original `/#/ikko` link remains compatible.
-The app is named **TENKI**; Ikko Tanaka is credited as the artist whose work informed
-the concept. The page follows the approved research → seasonal culture → product
-flow → visual translation → final interface → custom graphic language → prototype
-sequence, using complete phone screens and original numerals/icons from Figma.
+`/#/tenki` presents the seasonal weather app in five chapters: The idea, App flow,
+Visual design, Graphic language and Try it. `/#/ikko` and the existing concept,
+seasons and final-interface anchors remain compatible. Ikko Tanaka is credited as
+the artist whose work informed the concept; the app is named **TENKI**.
 
-The hero leads with TENKI, one sentence, **Try the app**, a concise role line and the
-supplied animated demo instead of the pink mockup and metadata block. The demonstration
-appears once; the later **Explore the Map**
-section retains the draggable map without repeating the video.
+The introduction matches NUMI and Happily: title and project type on the left,
+short description, contribution and actions on the right, then Shani’s pink phone
+mockup at its complete 16:9 proportions. **Explore the app** leads to the demo and
+prototype area. The original mockup and picnic collage come from Portfolio Figma
+file `NNjB6Gey6DtLbO1ZzQV51g`, slides `429:888` and `557:1306`. Export-only copies
+omitted presentation text and navigation; originals remain intact and the temporary
+copies were removed. Both artworks open enlarged with keyboard access, Escape,
+visible close controls and focus restoration. Asset provenance is in
+`frontend/public/assets/README.md`.
 
-TENKI follows NUMI’s 1680px container, 4/8 column split, column gaps and section
-spacing. Research text sits on the left, with artist references on the right;
-the five-screen flow, demo and map align with the same media column. Sections
-stack below 1024px, with 20px side margins at 760px and below. The full phone
-screens retain their proportions; the product-flow row scrolls within its own
-column on phones.
+The artist references and 24-season concept form one introduction. Five complete
+screens appear once, each with a nearby action caption. Three focused visual-design
+examples connect geometry, color and navigation to the interface. Custom numerals
+and a forecast row lead into the picnic mockups, showing the same identity across
+screens and physical-product concepts. There are no numbered chapters or section
+rules. The shared 1680px container, Anta/Satoshi type, black/lavender palette and
+rounded imagery match the other refined cases. The flow scrolls within its own
+row on narrow screens; the rest of the content stacks.
 
-After the hero, TENKI uses the same chapter navigation as NUMI: Research, Concept,
-User Flow, Visual Design, Final UI, Graphic Language and Map. The bar sticks below
-the main header, follows the current section, supports direct section links and
-scrolls horizontally on narrow screens while keeping the active link visible.
+Try it groups the existing silent app demonstration and draggable map at equal
+preview heights. The demo plays only when visible, pauses in background tabs,
+respects reduced motion/data saving and retains explicit play/pause. The map keeps
+touch, arrow-key navigation and reset. **Try the app** and **Open the map prototype**
+open their original Figma prototypes in new tabs. The shared project footer links
+to Hop! It’s the Chef!.
 
-The supplied animated demo is delivered as a silent, lightweight MP4. It plays only
-when visible, pauses in background tabs, respects reduced motion/data saving, and
-has an explicit play/pause control. The map is a bounded, draggable preview with
-touch, arrow-key navigation and a reset button. **Try the app** opens the final
-`TENKI - App` Figma prototype in a new tab; the preview does not replicate its full
-application flow. The live prototype and its interactions remain unchanged.
-
-At narrow widths, sections stack and the five-screen product flow scrolls within
-its own row. Large headings use `#C3BCCB`, and copy keeps its final word pair together.
-The shared project footer links onward to Hop! It’s the Chef!.
-Asset provenance is in `frontend/public/assets/README.md`; this work is local and
-does not deploy the website.
+The work lives on `codex/tenki-case-study-refinement`, based on commit `f4ffc16` of
+`codex/happily-case-study-refinement`, preserving the completed NUMI/Happily version.
+Feature pushes do not deploy the public site.
 
 ### Hop! It’s the Chef! case study
 

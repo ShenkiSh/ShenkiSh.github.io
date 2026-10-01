@@ -18,6 +18,14 @@ Earlier `ikko-*` filenames below remain for historical homepage media compatibil
 the application's public name is TENKI.
 
 - `hero.jpg`: frame `1303:12457`, complete composition, 2208×808.
+- `seasonal-app-mockup.jpg`: the full 1920×1080 artwork from slide `429:888`.
+  Export excludes only presentation text `535:12960` and navigation `663:541`;
+  the photo, phone screen and all graphic details retain their original placement.
+- `brand-applications.jpg`: the full 1920×1080 collage from slide `557:1306`.
+  Export excludes only presentation arrows `630:2009` and navigation `663:545`.
+  These exports were made from temporary artwork-only frames, downloaded through
+  Figma MCP, then encoded as quality-90 JPEGs with dimensions unchanged. The
+  temporary frames were removed and both source slides remain unchanged.
 - `screen-1.png` through `screen-5.png`: complete 412:917 phone viewports from
   product-flow group `1303:12605`, exported at 2×. Source app screens are
   `1333:30894`, `1345:44023`, `1333:32633`, `1333:38247`, and `1333:33062`.
