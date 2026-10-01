@@ -36,11 +36,11 @@ export const chapters = [
   ["game-ui", "Visual language"], ["try-it", "Try it"],
 ] as const;
 export const conflicts = [
-  ["Personal Space", personalSpaceMedia.gameplay, "“Get out of my room.” / “That’s my side.”"],
+  ["Personal Space", personalSpaceMedia.gameplay, "“Get out of my room.” “That’s my side.”"],
   ["Objects", "conflict-objects.png", "“You took my toy, clothes or food.”"],
-  ["Fairness", "fairness-cauldron.png", "“I do more.” / “You get more.”"],
+  ["Fairness", "fairness-cauldron.png", "“I do more.” “You get more.”"],
   ["Hurt", "hurt-bridge.png", "Insults, teasing and embarrassment."],
-  ["Competition", "competition-roots.png", "“I’m better.” / “I go first.”"],
+  ["Competition", "competition-roots.png", "“I’m better.” “I go first.”"],
 ] as const;
 export const familyFlow = [
   { title: "Choose & invite", role: "Parent", file: "setup-screen.png", size: [412, 917], caption: "Choose the children and the conflict to send a relevant game invitation." },
