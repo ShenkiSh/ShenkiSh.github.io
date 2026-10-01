@@ -183,7 +183,7 @@ test("the event image enlarges and the next project returns to a real case study
   await expect(page.getByRole("dialog").getByRole("img")).toHaveAttribute("src", /event-01\.jpg$/);
   await page.getByRole("button", { name: "Close media" }).click();
   await expect(opener).toBeFocused();
-  await expect(page.getByRole("link", { name: "Channel 10 interview", exact: false })).toHaveAttribute("href", "https://youtu.be/jpuC4LFZNx4");
+  await expect(page.getByRole("link", { name: "Watch on YouTube with English subtitles", exact: true })).toHaveAttribute("href", "https://youtu.be/jpuC4LFZNx4");
   await page.getByRole("link", { name: "Next project: We Live Happily Here", exact: true }).click();
   await expect(page).toHaveURL(/#\/we-live-happily-here$/);
   await expect(page.locator("main h1")).toBeVisible();

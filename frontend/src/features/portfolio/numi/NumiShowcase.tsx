@@ -11,7 +11,7 @@ export function NumiShowcase({ onOpenGallery }: { onOpenGallery: (index: number)
         <h2 id="players-heading">NUMI on Channel 10.</h2>
         <p>The personal story behind NUMI, and how memory became a playable world.</p>
         <p className={caseStyles.small}>TV interview · Hebrew</p>
-        <a className={caseStyles.textLink} href="https://youtu.be/jpuC4LFZNx4" target="_blank" rel="noreferrer">Channel 10 interview on YouTube</a>
+        <a className={caseStyles.textLink} href="https://youtu.be/jpuC4LFZNx4" target="_blank" rel="noreferrer">Watch on YouTube with English subtitles</a>
       </div>
       <NumiVideo film={films.interview} posterLabel="Watch the interview" defaultMuted={false} />
     </div>
