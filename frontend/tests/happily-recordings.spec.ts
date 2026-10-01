@@ -57,7 +57,7 @@ test("a failed game recording retries and keeps the playable game action availab
   const player = game.getByRole("group", { name: "Objects — Gameplay Recording video player" });
   await player.getByRole("button", { name: "Play Objects — Gameplay Recording", exact: true }).click();
   await expect(player.getByRole("alert")).toContainText("This video could not load.");
-  await expect(game.getByRole("button", { name: "Play Game 02", exact: true })).toBeEnabled();
+  await expect(game.getByRole("button", { name: "Play Objects", exact: true })).toBeEnabled();
   fail = false;
   await player.getByRole("button", { name: "Try again", exact: true }).click();
   await expect(player.getByRole("alert")).toHaveCount(0);

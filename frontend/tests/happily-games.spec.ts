@@ -18,7 +18,7 @@ for (const { number, slug, title } of games) {
     await page.route("**/games/happily/*/Build/test.loader.js", route => route.fulfill({ contentType: "application/javascript", body: loader }));
     await page.goto("/#/we-live-happily-here");
     expect(requests).toHaveLength(0);
-    const opener = page.getByRole("button", { name: `Play Game ${number}` });
+    const opener = page.getByRole("button", { name: `Play ${title}`, exact: true });
     await opener.focus();
     const before = await page.evaluate(() => scrollY);
     await page.keyboard.press("Enter");
@@ -66,7 +66,7 @@ failureTest("Family game retry preserves mute and returns to the same game", asy
   });
   await page.route("**/games/happily/objects/Build/test.loader.js", route => route.fulfill({ contentType: "application/javascript", body: loader }));
   await page.goto("/#/we-live-happily-here");
-  await page.getByRole("button", { name: "Play Game 02" }).click();
+  await page.getByRole("button", { name: "Play Objects", exact: true }).click();
   const game = page.frameLocator('iframe[title="Play Objects in Unity"]');
   await expect(game.getByRole("alert")).toContainText("The game couldn’t load.");
   await page.getByRole("button", { name: "Mute game", exact: true }).click();
@@ -83,7 +83,7 @@ test("Phone tilt permission is requested from the game frame and denied access k
   await page.route("**/games/happily/personal-space/build.json", route => route.fulfill({ json: manifest }));
   await page.route("**/games/happily/personal-space/Build/test.loader.js", route => route.fulfill({ contentType: "application/javascript", body: loader }));
   await page.goto("/#/we-live-happily-here");
-  await page.getByRole("button", { name: "Play Game 01" }).click();
+  await page.getByRole("button", { name: "Play Personal Space", exact: true }).click();
   const game = page.frameLocator('iframe[title="Play Personal Space in Unity"]');
   await expect(game.locator("body")).toHaveAttribute("data-state", "ready");
   await game.locator("body").evaluate(() => {

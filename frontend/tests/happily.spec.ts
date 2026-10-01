@@ -1,20 +1,25 @@
 import { expect, test } from "./fixtures";
 
-test("Happily opens the app directly and keeps keyboard links to both Unity games", async ({ page }) => {
+test("Happily opens the app directly and keeps its game actions reachable by keyboard", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/we-live-happily-here");
   await expect(page.getByRole("heading", { name: "We Live Happily Here", exact: true })).toBeVisible();
   await expect(page).toHaveTitle("We Live Happily Here | Shani Shlomov");
-  for (const number of ["01", "02"]) {
-    const link = page.getByRole("link", { name: `Unity Game ${number}`, exact: false });
-    await link.focus();
-    await page.keyboard.press("Enter");
+  await page.getByRole("link", { name: "Explore the games", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#try-it")).toBeFocused();
+  for (const [number, title] of [["01", "Personal Space"], ["02", "Objects"]]) {
     const slot = page.locator(`#unity-game-${number}`);
-    await expect(slot).toBeFocused();
+    const launch = slot.getByRole("button", { name: `Play ${title}`, exact: true });
+    await launch.focus();
+    await expect(launch).toBeFocused();
     await expect(slot).toBeInViewport();
-    await expect(slot.getByRole("button", { name: `Play Game ${number}` })).toBeVisible();
+    await expect(launch).toBeVisible();
     await expect(slot.getByRole("link")).toHaveCount(0);
   }
+  await page.getByRole("link", { name: "Explore the Personal Space prototype", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#unity-game-01")).toBeFocused();
   const heroLaunch = page.locator("article > header").getByRole("button", { name: "Try the App", exact: true });
   await heroLaunch.focus();
   const scrollBefore = await page.evaluate(() => scrollY);

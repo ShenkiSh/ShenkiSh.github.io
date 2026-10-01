@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { appPrototype, unityGames } from "./happilyMedia";
 import type { FamilyGame } from "./happilyMedia";
-import { PortfolioLink } from "../PortfolioLink";
 import { CaseVideo } from "../CaseVideo";
 import { HappilyGameDialog } from "./HappilyGameDialog";
 import actions from "../CaseActions.module.scss";
@@ -12,12 +11,12 @@ export function HappilyExperience({ onOpenApp }: { onOpenApp: () => void }) {
   return <section className={styles.chapter} id="try-it" aria-labelledby="try-title">
     <div className={styles.chapterHeading}>
       <div className={styles.copy}><p className={styles.label}>Explore the prototypes</p><h2 id="try-title">From the app<br />into the game.</h2></div>
-      <div className={styles.copy}><p>Explore the family flow, then play Personal Space and Objects. These browser demos use a simulated partner.</p><div className={styles.gameLinks}><PortfolioLink className={actions.secondary} href="#unity-game-01">Unity Game 01</PortfolioLink><PortfolioLink className={actions.secondary} href="#unity-game-02">Unity Game 02</PortfolioLink></div></div>
+      <p>Explore the family flow, then play Personal Space and Objects. These browser demos use a simulated partner.</p>
     </div>
     <div className={styles.experienceBody}>
       <div className={styles.appExperience} id="app-prototype" tabIndex={-1}>
         <div className={styles.copy}>
-          <span className={styles.label}>Interactive App</span><h3>Try the App</h3>
+          <h3>Explore the family app</h3>
           <p>Choose the players, send a game invitation and explore the family’s activity.</p>
         </div>
         <div className={styles.appActions}>
@@ -26,13 +25,13 @@ export function HappilyExperience({ onOpenApp }: { onOpenApp: () => void }) {
         </div>
       </div>
       <div className={styles.gamePlayers}>
-        {unityGames.map((game, i) => <section key={game.id} className={styles.gamePlayer} id={game.id} tabIndex={-1} aria-labelledby={`${game.id}-title`}>
-          <span className={styles.label}>Game 0{i + 1} · Unity</span><h3 id={`${game.id}-title`}>{game.title}</h3>
-          <p>{game.description}</p>
-          <div className={styles.gameViewport}>
-            <div className={styles.gameRecording}><CaseVideo film={game.recording} aspectRatio="498 / 1079" posterLabel="Watch gameplay" defaultMuted={false} /></div>
+        {unityGames.map(game => <section key={game.id} className={styles.gamePlayer} id={game.id} tabIndex={-1} aria-labelledby={`${game.id}-title`}>
+          <div className={styles.gameCopy}>
+            <h3 id={`${game.id}-title`}>{game.title}</h3>
+            <p>{game.description}</p>
+            <button type="button" className={`${actions.primary} ${styles.gameLaunch}`} onClick={() => setActiveGame(game)}>Play {game.title}</button>
           </div>
-          <button type="button" className={`${actions.primary} ${styles.gameLaunch}`} onClick={() => setActiveGame(game)}>Play Game 0{i + 1}</button>
+          <div className={styles.gameRecording}><CaseVideo film={game.recording} aspectRatio="498 / 1079" posterLabel="Watch gameplay" defaultMuted={false} /></div>
         </section>)}
       </div>
     </div>

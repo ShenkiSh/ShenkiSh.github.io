@@ -164,6 +164,9 @@ button opens the complete 4:24 recording in a keyboard-accessible dialog, with s
 seeking, fullscreen and retry. The film is not mounted or requested before opening;
 closing removes it and restores focus without scrolling. The app and two equally
 prominent Unity players close the case, followed by a brief systems-design reflection.
+Try it groups the app actions in a quiet inset and pairs each complete portrait recording
+with its game title, short description and named Play button. The game previews sit
+directly on the page, without oversized colored panels or duplicate jump buttons.
 The existing `two-users`, `cooperation`, `game-ui` and game anchors remain available.
 The emotional reset is presented as design intent, not a validated therapeutic result.
 

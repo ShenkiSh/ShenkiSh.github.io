@@ -25,7 +25,7 @@ export const unityGames: readonly FamilyGame[] = [
     recording: { src: happilyAsset("personal-space-recording.mp4"), poster: happilyAsset("personal-space-recording.jpg"), title: "Personal Space — Gameplay Recording", duration: "2:33" },
   },
   {
-    id: "unity-game-02", title: "Objects", description: "Jump, collect your pinecones and finish with your simulated partner.",
+    id: "unity-game-02", title: "Objects", description: "Collect pinecones and reach the finish together.",
     href: asset("games/happily/index.html?game=objects"), controls: "← → to move · Space to jump · Touch controls",
     recording: { src: happilyAsset("objects-recording.mp4"), poster: happilyAsset("objects-recording.jpg"), title: "Objects — Gameplay Recording", duration: "2:11" },
   },
