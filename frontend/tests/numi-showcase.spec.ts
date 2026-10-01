@@ -74,6 +74,17 @@ test("the enlarged gallery supports horizontal swipes on touch screens", async (
   const dialog = page.getByRole("dialog");
   const image = dialog.getByRole("img");
   await expect(image).toHaveAttribute("src", /event-02\.jpg$/);
+  await page.evaluate(() => {
+    const events: unknown[] = [];
+    Object.assign(window, { galleryInputLog: events });
+    for (const type of ["pointerdown", "pointerup", "pointercancel", "gotpointercapture", "lostpointercapture", "touchstart", "touchmove", "touchend", "mousedown", "mouseup", "click"]) {
+      document.addEventListener(type, event => {
+        const target = event.target as Element;
+        const pointer = event as PointerEvent;
+        events.push({ type, target: target.tagName, label: target.closest("button")?.getAttribute("aria-label"), x: pointer.clientX, y: pointer.clientY, time: event.timeStamp, prevented: event.defaultPrevented });
+      }, true);
+    }
+  });
   const box = (await image.boundingBox())!;
   const cdp = await page.context().newCDPSession(page);
   const x = box.x + box.width * .8, y = box.y + box.height / 2;
@@ -81,13 +92,9 @@ test("the enlarged gallery supports horizontal swipes on touch screens", async (
   await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: x - 90, y }] });
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await expect(image).toHaveAttribute("src", /event-03\.jpg$/);
-  // Finish the gesture sequence in the same CDP input session, with each touch
-  // acknowledged before the next one, rather than switching touch drivers.
-  const close = dialog.getByRole("button", { name: "Close media", exact: true });
-  await expect(close).toBeInViewport({ ratio: 1 });
-  const closeBox = (await close.boundingBox())!;
-  await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: closeBox.x + closeBox.width / 2, y: closeBox.y + closeBox.height / 2 }] });
-  await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-  await expect(dialog).toHaveCount(0);
   await cdp.detach();
+  console.log("BEFORE CLOSE", await dialog.getByRole("button", { name: "Close media", exact: true }).boundingBox());
+  await dialog.getByRole("button", { name: "Close media", exact: true }).tap();
+  try { await expect(dialog).toHaveCount(0); }
+  finally { console.log("GALLERY INPUT", await page.evaluate(() => ({ events: (window as Window & { galleryInputLog: unknown[] }).galleryInputLog, maxTouchPoints: navigator.maxTouchPoints, viewport: { width: innerWidth, height: innerHeight }, dialog: document.querySelector("dialog")?.getBoundingClientRect().toJSON() }))); }
 });

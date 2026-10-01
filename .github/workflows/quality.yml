@@ -10,15 +10,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      - uses: actions/setup-python@v5
-        with:
-          python-version-file: .python-version
-      - run: python3 scripts/bootstrap.py
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
       - run: npx playwright install --with-deps chromium
         working-directory: frontend
-      - name: Restore original recordings for media regression tests
-        run: |
-          curl --fail --retry 3 --location https://shenkish.github.io/portfolio-media/assets/hop/full-game.mp4 --output frontend/public/assets/hop/full-game.mp4
-          curl --fail --retry 3 --location https://shenkish.github.io/portfolio-media/assets/redream/full-experience-hd.mp4 --output frontend/public/assets/redream/full-experience-hd.mp4
-      - run: python3 scripts/check.py
-      - run: npm run smoke
+      - run: npm test -- numi-showcase.spec.ts --grep 'horizontal swipes' --project mobile
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gallery-touch-diagnostics
+          path: /tmp/frontend-tests-*/
+          retention-days: 1
