@@ -20,7 +20,18 @@ Consumes: existing `CaseVideo`, chapter navigation, portfolio anchor links, app/
 - [x] Export existing photo/phone layers without presentation controls; remove temporary Figma export frame after download.
 - [x] Implement the five-part structure and concise grounded copy, preserving original visuals and functional app/game entry points.
 - [x] Adapt existing layout assertions to the approved structure while retaining image-fit, caption alignment, video playback/retry, keyboard and responsive coverage.
-- [ ] Inspect actual screenshots at desktop and narrow widths, test tablet and meaningful loading/error states, run focused tests and `python3 scripts/check.py`.
-- [ ] Update documentation, review scoped diff, commit. Obtain one fresh whole-branch review, address important findings, then push the feature branch.
+- [x] Inspect actual screenshots at desktop and narrow widths, test tablet and meaningful loading/error states, run focused tests and `python3 scripts/check.py`.
+- [x] Update documentation, review scoped diff, commit. Obtain one fresh whole-branch review, address important findings, then push the feature branch.
 
 Review focus: original asset fidelity, coherent visual hierarchy, no duplicated story blocks, honest concept/prototype distinction, media only loaded on intent, dialog focus/scroll behavior, intact prototype interactions, untouched NUMI/homepage.
+
+## Verification record
+
+- Focused Playwright: 21 passed, 1 inapplicable mobile caption-alignment check skipped.
+- `python3 scripts/check.py`: passed; 39 backend tests and 170 browser tests passed,
+  with 10 expected device/layout-specific skips. Lint, type checks, structure checks,
+  script tests and production build passed.
+- Desktop/tablet/phone visual inspection completed; independent review confirmed
+  no horizontal overflow at 320, 390, 768 and 1024px and correct dialog focus/scroll behavior.
+- Fresh read-only review of `f898c40..cb8ca2d`: no actionable findings or declined behaviors.
+- Homepage, NUMI, prototype internals and Unity builds have no changes in this branch diff.
