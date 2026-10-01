@@ -23,12 +23,11 @@ export function NumiCase() {
         <div className={styles.identity}><h1>NUMI</h1><p>2D Narrative Puzzle-Platformer</p></div>
         <div className={styles.heroCopy}>
           <p className={styles.heroDescription}>Five memories from Naomi’s life become playable worlds.</p>
-          <p className={styles.heroRole}><span>My role</span>Game &amp; Level Design · Narrative · UX/UI<br />Visual Development · Unity Implementation</p>
+          <p className={styles.heroRole}>I designed the story, levels, UX/UI and visual world, then brought the game to life in Unity.</p>
           <div className={styles.heroActions}>
             <PortfolioLink className={actions.primary} href="#first-memory">Play the Childhood demo</PortfolioLink>
             <PortfolioLink className={actions.secondary} href="index.html#work"><img src={numiAsset("imgArrowLeft.svg")} alt="" />Back to Work</PortfolioLink>
           </div>
-          <p className={styles.small}>Unity · PC · Keyboard or controller</p>
         </div>
         <figure className={styles.heroFilm}><NumiVideo film={films.trailer} posterLabel="Play trailer" /><figcaption>From a fragment of identity to a world you can explore.</figcaption></figure>
       </div>

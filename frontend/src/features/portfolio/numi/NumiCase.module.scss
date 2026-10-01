@@ -20,15 +20,14 @@
 }
 .container { width: min(1680px, 87.5%); margin-inline: auto; }
 .hero { padding-block: 32px 48px; }
-.heroGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px var(--numi-gap); align-items: center; }
+.heroGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px var(--numi-gap); align-items: start; }
 .heroGrid > * { min-width: 0; }
-.heroCopy { display: grid; gap: 20px; justify-items: start; max-width: 58ch; }
+.heroCopy { display: grid; gap: 20px; max-width: 58ch; }
 .identity { display: grid; gap: 16px; }
 .identity h1 { font: 400 clamp(48px, 4.167vw, 80px)/1.083 Anta, Arial, sans-serif; letter-spacing: 0; color: var(--home-heading); }
 .identity p { color: var(--home-footer-muted); font-size: clamp(12px, .833vw, 16px); line-height: 1.5; letter-spacing: .04em; text-transform: uppercase; }
 .heroDescription { font-size: clamp(22px, 1.66vw, 32px); line-height: 1.4; text-wrap: balance; }
 .heroRole { color: var(--home-footer-muted); line-height: 1.6; }
-.heroRole > span { display: block; margin-bottom: 6px; color: var(--home-footer-muted); }
 .heroActions { display: flex; flex-wrap: wrap; gap: 16px; }
 .heroFilm { grid-column: 1 / -1; }
 .heroFilm figcaption { font-size: clamp(12px, .833vw, 16px); }

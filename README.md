@@ -315,8 +315,10 @@ It retains the black/lavender palette, Anta/Satoshi fonts, rounded media and the
 shared project footer. The homepage and other project pages are unchanged.
 
 The introduction uses the Happily hero layout: title and project type on the left,
-description, role and actions on the right, then the paused 48-second trailer across
-the full width below. On phones these groups stack in reading order. **Back to Work**
+description, a short first-person contribution paragraph and actions on the right,
+then the paused 48-second trailer across the full width below. The short NUMI title
+aligns to the top of the introduction; desktop/control details appear beside the demo.
+On phones these groups stack in reading order. **Back to Work**
 sits beside **Play the Childhood demo**; the demo link still scrolls to the compact
 entry without downloading Unity. The five memory previews are inline gameplay videos
 with their existing posters, play badges and durations. They form one labeled strip;
