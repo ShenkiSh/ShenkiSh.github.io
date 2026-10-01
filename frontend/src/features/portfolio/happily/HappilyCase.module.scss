@@ -47,7 +47,7 @@
 .duration { flex-shrink: 0; font-size: 13px; color: var(--home-heading); font-variant-numeric: tabular-nums; }
 .conflicts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
 .conflicts figure { min-width: 0; display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 20px; }
-.conflictMedia { aspect-ratio: 9 / 16; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); justify-items: center; }
+.conflictMedia { aspect-ratio: 9 / 16; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); justify-items: start; }
 .conflictMedia img { width: auto; height: 100%; min-width: 0; min-height: 0; object-fit: contain; border-radius: 16px; }
 .conflicts figcaption { display: grid; grid-template-rows: auto 1fr auto; gap: 10px; }
 .conflicts h3 { font-size: clamp(18px, 1.25vw, 24px); }
