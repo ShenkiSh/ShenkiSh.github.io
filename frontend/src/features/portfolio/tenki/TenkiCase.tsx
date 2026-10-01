@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { CaseChapterNavigation } from "../CaseChapterNavigation";
 import { PortfolioLink } from "../PortfolioLink";
-import { tenkiAsset, tenkiArtwork, tenkiMapPrototype, tenkiPrototype, tenkiScreens, type TenkiArtwork } from "./tenkiAssets";
+import { tenkiAsset, tenkiArtwork, tenkiPrototype, tenkiScreens, type TenkiArtwork } from "./tenkiAssets";
 import { TenkiDemo } from "./TenkiDemo";
-import { TenkiMap } from "./TenkiMap";
 import { TenkiArtworkDialog } from "./TenkiArtworkDialog";
 import styles from "./TenkiCase.module.scss";
 import actions from "../CaseActions.module.scss";
@@ -127,21 +126,13 @@ export function TenkiCase() {
         </figure>
       </section>
 
-      <section className={styles.chapter} id="prototype" aria-labelledby="prototype-heading">
-        <div className={styles.chapterHeading}>
+      <section className={`${styles.chapter} ${styles.tryApp}`} id="prototype" aria-labelledby="prototype-heading">
+        <div className={styles.tryCopy}>
           <h2 id="prototype-heading">See the idea in motion.</h2>
-          <p>Watch the app flow and explore the map here. Open the Figma prototype to try the full journey.</p>
+          <p>Follow the complete journey, from checking the forecast to exploring the map and planning an outing.</p>
+          <a className={actions.primary} href={tenkiPrototype} target="_blank" rel="noreferrer">Try the app</a>
         </div>
-        <div className={styles.tryGrid}>
-          <div className={styles.tryItem}>
-            <div className={styles.tryCopy}><h3>Follow the app flow</h3><p>See how weather, seasonal places and outing plans connect.</p><a className={actions.primary} href={tenkiPrototype} target="_blank" rel="noreferrer">Try the app</a></div>
-            <div className={styles.tryMedia}><TenkiDemo /></div>
-          </div>
-          <div className={styles.tryItem}>
-            <div className={styles.tryCopy}><h3>Explore the map</h3><p>Drag the illustrated map to discover its places and details.</p><a className={actions.secondary} href={tenkiMapPrototype} target="_blank" rel="noreferrer">Open the map prototype</a></div>
-            <div className={`${styles.tryMedia} ${styles.mapPreview}`}><TenkiMap /></div>
-          </div>
-        </div>
+        <div className={styles.tryMedia}><TenkiDemo /></div>
       </section>
     </div>
     {artwork && <TenkiArtworkDialog artwork={artwork} onClose={() => setArtwork(null)} />}

@@ -69,26 +69,20 @@
 .rowArtwork img { width: 100%; object-fit: contain; }
 .originalRow img { width: 95.2%; }
 .brandWorld { margin-top: 48px; }
-.tryGrid { --tenki-preview-height: 550px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tenki-gap); }
-.tryItem { display: grid; grid-template-columns: minmax(0, calc(var(--tenki-preview-height) * 560 / 1186)) minmax(0, 1fr); gap: 24px; align-items: start; }
-.tryMedia { grid-column: 1; grid-row: 1; width: min(100%, calc(var(--tenki-preview-height) * 560 / 1186)); --tenki-demo-width: 100%; }
-.mapPreview { width: min(100%, calc(var(--tenki-preview-height) * 412 / 917)); }
-.tryCopy { grid-column: 2; grid-row: 1; display: grid; gap: 12px; justify-items: start; padding-top: 12px; }
-.tryCopy p { max-width: 30ch; color: var(--home-footer-muted); font-size: clamp(14px, .833vw, 16px); }
-.tryCopy a { margin-top: 4px; }
-.tryCopy a { max-width: 100%; text-align: center; }
+.tryApp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tenki-gap); align-items: start; }
+.tryMedia { width: min(100%, 280px); --tenki-demo-width: 100%; }
+.tryCopy { display: grid; gap: 16px; justify-items: start; max-width: 48ch; }
+.tryCopy p { max-width: 43ch; color: var(--home-footer-muted); }
+.tryCopy a { margin-top: 4px; max-width: 100%; text-align: center; }
 @media (max-width: 1100px) {
   .graphicLanguage { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .selectionComparison { height: auto; }
   .flow { grid-template-columns: repeat(5, minmax(220px, 1fr)); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; }
   .flow li { scroll-snap-align: start; }
-  .tryItem { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .tryCopy, .tryMedia { grid-column: auto; grid-row: auto; }
-  .tryCopy { padding-top: 0; }
 }
 @media (max-width: 760px) {
   .container { width: calc(100% - 40px); }
-  .hero, .ideaGrid, .concept { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .hero, .ideaGrid, .concept, .tryApp { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .hero { padding-top: 28px; }
   .identity h1 { font-size: clamp(46px, 9.5vw, 64px); }
   .heroArtwork { margin-top: 8px; }
@@ -105,7 +99,4 @@
   .selectionComparison { height: auto; grid-template-columns: minmax(0, 1fr); }
   .rowArtwork { max-width: 364px; }
   .brandWorld { margin-top: 36px; }
-}
-@media (max-width: 700px) {
-  .tryGrid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
 }

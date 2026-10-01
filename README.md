@@ -430,12 +430,13 @@ The forecast comparison uses actual material from the `איקו מקורי` and 
 pages in Portfolio: the original row and the updated selected-day highlight.
 It explains the visible change without claiming user testing or measured results.
 
-Try it groups the existing silent app demonstration and draggable map at equal
-preview heights. The demo plays only when visible, pauses in background tabs,
-respects reduced motion/data saving and retains explicit play/pause. The map keeps
-touch, arrow-key navigation and reset. **Try the app** and **Open the map prototype**
-open their original Figma prototypes in new tabs. The shared project footer links
-to Hop! It’s the Chef!.
+Try it presents one complete app journey, including the map, with the silent app
+demonstration beside a short introduction and one **Try the app** button. The
+button opens the original full Figma prototype in a new tab. The demo plays only
+when visible, pauses in background tabs, respects reduced motion/data saving and
+retains explicit play/pause. The separate draggable map preview and its second
+prototype entry point are removed; the map artwork remains in Visual design and
+the five-screen flow. The shared project footer links to Hop! It’s the Chef!.
 
 The work lives on `codex/tenki-case-study-refinement`, based on commit `f4ffc16` of
 `codex/happily-case-study-refinement`, preserving the completed NUMI/Happily version.

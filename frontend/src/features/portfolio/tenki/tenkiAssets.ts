@@ -9,7 +9,6 @@ export const tenkiArtwork = {
 } satisfies Record<string, TenkiArtwork>;
 
 export const tenkiPrototype = "https://www.figma.com/proto/NNjB6Gey6DtLbO1ZzQV51g/Portfolio?page-id=545%3A468&node-id=1333-30894&scaling=scale-down&starting-point-node-id=1333%3A30894";
-export const tenkiMapPrototype = "https://www.figma.com/proto/NNjB6Gey6DtLbO1ZzQV51g/Portfolio?page-id=545%3A468&node-id=1333-38247&scaling=scale-down&starting-point-node-id=1333%3A38247";
 
 export const tenkiScreens = [
   ["screen-1.png", "Check weather", "TENKI home screen with custom temperature numerals and a Sakura illustration"],
