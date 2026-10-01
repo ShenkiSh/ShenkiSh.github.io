@@ -11,9 +11,12 @@ import styles from "./HopContent.module.scss";
 const HopGameDialog = lazy(() => import("./HopGameDialog").then(module => ({ default: module.HopGameDialog })));
 
 function Still({ name }: { name: HopImageName }) {
-  return <img className={styles.still} data-hop-image={name} src={asset(`assets/hop/${name}.webp`)}
-    alt={hopImages[name]} width={name === "refined" ? 1672 : 1920} height={name === "refined" ? 941 : 1080}
-    loading="lazy" decoding="async" />;
+  const earlier = name === "old";
+  return <div className={styles.stillFrame}><img className={styles.still} data-hop-image={name}
+    src={asset(`assets/hop/${earlier ? "earlier-gameplay.jpg" : `${name}.webp`}`)}
+    alt={hopImages[name]} width={earlier ? 1918 : name === "refined" ? 1672 : 1920}
+    height={earlier ? 968 : name === "refined" ? 941 : 1080}
+    loading="lazy" decoding="async" /></div>;
 }
 
 function Card({ image, title, copy }: HopCard) {

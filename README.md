@@ -461,6 +461,8 @@ three figures stack, keeping each explanation attached to its footage.
 The original drawings, refined artwork, earlier/current comparison and Unity
 Timeline remain visible. Legacy story, level-design, chef, hazards, safety,
 feedback, iteration and unity anchors remain usable within the consolidated page.
+The earlier-game comparison uses a clear frame from 1:23 in the original recording,
+preserving the complete image and keeping its caption aligned with the rebuilt version.
 
 The source captures and illustrations are self-hosted as lossless WebP in
 `assets/hop/`; original files remain available even where repeated examples

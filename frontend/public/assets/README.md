@@ -618,3 +618,13 @@ The Home hero retains its established pause/resume, keyboard, reduced-motion and
 background-tab behavior; only the frog media, poster, accessible project title
 and its old media zoom adjustment change. The revision is the first ten characters
 of the MP4 SHA-256. The prior clip is retained for restoration.
+
+### Earlier-game comparison still — October 1, 2026
+
+`hop/earlier-gameplay.jpg` replaces the diagnostic hit-effect screenshot in the
+Earlier version comparison. It is the complete frame at 1:23 from Shani's original
+`סרטונים של פרוקטים/מה שהוגש, יוניטי משחק מחשב 3D&2D.mov`, extracted as JPEG
+at native 1918×968, quality 2, without cropping, retouching or resizing. Robert,
+Gaspard, health and the kitchen remain visible without a foreground hit effect.
+The previous `old.webp` is preserved. A shared 16:9 media area keeps comparison
+captions aligned while each image retains its own proportions and rounded corners.

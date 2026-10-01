@@ -31,7 +31,8 @@
 .story { padding-top: 24px; }
 .storyFrames { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .storyFrames h3 { font-size: clamp(14px, .833vw, 16px); font-weight: 400; color: var(--home-footer-muted); }
-.still { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; border-radius: var(--home-radius); }
+.stillFrame { display: grid; align-content: start; aspect-ratio: 16 / 9; }
+.still { display: block; width: 100%; height: auto; object-fit: contain; border-radius: var(--home-radius); }
 .section { padding-block: var(--hop-space); }
 .section, .story, .introduction, .introduction p, .moment, .twoColumns, .development, .production { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
 .introduction { display: grid; gap: 12px; max-width: 720px; margin-bottom: 32px; }

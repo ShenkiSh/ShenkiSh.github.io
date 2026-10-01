@@ -26,7 +26,7 @@ export const hopImages = {
   prompt: "The interactive tutorial explains how to press E to use the hanging towel",
   drawing: "Shani's original illustration of Robert's family in the swamp",
   refined: "The refined swamp illustration preserves the original frogs, lily pads and parasol",
-  old: "The earlier kitchen game with its original health bar, food obstacles and chef attack",
+  old: "Robert and Gaspard in the original kitchen, with the green health bar, potion inventory and food obstacles clearly visible",
   unity: "The actual Unity project showing story, subtitle and audio tracks in Timeline",
 } as const;
 export type HopImageName = keyof typeof hopImages;
