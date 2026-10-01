@@ -150,7 +150,9 @@ start paused when reduced motion is enabled. Anta is self-hosted with its OFL li
 `/#/we-live-happily-here` uses the shared Anta/Satoshi typography, content widths,
 chapter navigation and buttons. The case is organized into five chapters: The idea,
 Family flow, Game design, Visual language and Try it. A clean original photographic
-phone mockup leads the hero; clicking it opens an enlarged view. Four complete screens
+phone mockup leads the hero; clicking it opens an enlarged view. The project type sits
+below the title. NUMI follows the same two-column introduction and full-width media
+layout, with matching typography, actions and mobile stacking. Four complete screens
 connect the parent invitation, child lobby, shared gameplay and parent feedback.
 The five conflict concepts occupy the full content width, with Personal Space and
 Objects clearly identified as the two playable Unity prototypes. A focused Personal
@@ -304,8 +306,10 @@ together directly above the related media; comparisons group clips and captions.
 It retains the black/lavender palette, Anta/Satoshi fonts, rounded media and the
 shared project footer. The homepage and other project pages are unchanged.
 
-The introduction groups the title, description, role and **Play the Childhood demo**
-link alongside the paused 48-second trailer. The link scrolls to the compact demo
+The introduction uses the Happily hero layout: title and project type on the left,
+description, role and actions on the right, then the paused 48-second trailer across
+the full width below. On phones these groups stack in reading order. **Back to Work**
+sits beside **Play the Childhood demo**; the demo link still scrolls to the compact
 entry without downloading Unity. The five memory previews are inline gameplay videos
 with their existing posters, play badges and durations. They form one labeled strip;
 on narrow screens it scrolls horizontally, keeping each player's controls usable.
@@ -330,7 +334,7 @@ of their artwork; on phones each small asset sits beside its label in a single r
 A prominent **Watch the full Childhood playthrough**
 button with its 7:33 duration sits alongside **Play in browser** in the demo area.
 Decorative diagonal arrows have been removed from NUMI's images and actions;
-the approved hero layout and its existing navigation remain unchanged.
+the full-width hero preserves trailer playback and the existing navigation targets.
 The closing section leads with **NUMI on Channel 10**, a large native player with
 the genuine interview poster and an explicit **Watch the interview** control. The
 complete 8:28 Hebrew interview loads only on play and starts with sound; YouTube
@@ -364,8 +368,10 @@ previously uncommitted homepage refinements and original NUMI page. It is pushed
 GitHub. The original `Portfolio website` working folder remains on that branch;
 its preview remains at `http://127.0.0.1:5173/#/numi`.
 
-The NUMI redesign lives on `codex/numi-case-study-refinement` in the sibling
-`Portfolio website-numi-refinement` worktree. Start its preview from `frontend/`
+The completed NUMI redesign is preserved on `codex/numi-case-study-refinement`. The
+sibling `Portfolio website-numi-refinement` worktree now uses
+`codex/happily-case-study-refinement`, including the refined Happily page and the
+matching NUMI hero. Start its preview from `frontend/`
 with `npm run dev -- --port 5174 --strictPort`, then open
 `http://127.0.0.1:5174/#/numi`. Reopen the original folder/preview to return to the
 saved design without discarding the new work. The backup remains available as a

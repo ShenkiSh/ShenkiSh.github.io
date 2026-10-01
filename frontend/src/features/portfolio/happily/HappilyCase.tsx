@@ -18,12 +18,12 @@ export function HappilyCase() {
   return <article className={styles.page}>
     <header className={`${styles.container} ${styles.hero}`}>
       <div className={styles.identity}>
-        <p className={styles.label}>Cooperative Family Game System</p>
         <h1>We Live <br />Happily Here</h1>
+        <p className={styles.label}>Cooperative Family Game System</p>
       </div>
       <div className={styles.heroCopy}>
         <p className={styles.lead}>Turning everyday sibling conflicts into a moment of playing together.</p>
-        <p className={styles.muted}>I designed the concept, parent and child journeys, visual language and cooperative games — connecting the app experience to two Unity prototypes.</p>
+        <p className={styles.muted}>I designed the concept, parent and child journeys, visual language and cooperative games, connecting the app experience to two Unity prototypes.</p>
         <div className={styles.heroActions}>
           <button type="button" className={actions.primary} onClick={() => setAppOpen(true)}>Try the App</button>
           <PortfolioLink className={actions.secondary} href="#try-it">Explore the games</PortfolioLink>

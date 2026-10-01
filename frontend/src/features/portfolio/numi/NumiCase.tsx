@@ -10,6 +10,7 @@ import { NumiVideo } from "./NumiVideo";
 import { useExclusiveCaseMedia } from "../useExclusiveCaseMedia";
 import { NumiMediaDialog, type NumiOverlay } from "./NumiMediaDialog";
 import { films, numiAsset } from "./numiMedia";
+import actions from "../CaseActions.module.scss";
 import styles from "./NumiCase.module.scss";
 
 export function NumiCase() {
@@ -18,13 +19,15 @@ export function NumiCase() {
   function watchPlaythrough() { setMedia({ kind: "film", film: films.childhood }); }
   return <article className={styles.page}>
     <header className={`${styles.container} ${styles.hero}`}>
-      <PortfolioLink className={styles.back} href="index.html#work"><img className={styles.actionIcon} src={numiAsset("imgArrowLeft.svg")} alt="" />Back to Work</PortfolioLink>
       <div className={styles.heroGrid}>
+        <div className={styles.identity}><h1>NUMI</h1><p>2D Narrative Puzzle-Platformer</p></div>
         <div className={styles.heroCopy}>
-          <div className={styles.identity}><h1>NUMI</h1><p>2D Narrative Puzzle-Platformer</p></div>
           <p className={styles.heroDescription}>Five memories from Naomi’s life become playable worlds.</p>
           <p className={styles.heroRole}><span>My role</span>Game &amp; Level Design · Narrative · UX/UI<br />Visual Development · Unity Implementation</p>
-          <PortfolioLink className={styles.primary} href="#first-memory">Play the Childhood demo <span aria-hidden="true">↓</span></PortfolioLink>
+          <div className={styles.heroActions}>
+            <PortfolioLink className={actions.primary} href="#first-memory">Play the Childhood demo</PortfolioLink>
+            <PortfolioLink className={actions.secondary} href="index.html#work"><img src={numiAsset("imgArrowLeft.svg")} alt="" />Back to Work</PortfolioLink>
+          </div>
           <p className={styles.small}>Unity · PC · Keyboard or controller</p>
         </div>
         <figure className={styles.heroFilm}><NumiVideo film={films.trailer} posterLabel="Play trailer" /><figcaption>From a fragment of identity to a world you can explore.</figcaption></figure>

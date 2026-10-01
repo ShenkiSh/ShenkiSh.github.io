@@ -19,23 +19,22 @@
   img { max-width: 100%; }
 }
 .container { width: min(1680px, 87.5%); margin-inline: auto; }
-.hero { padding-block: var(--numi-gap); display: grid; gap: 32px; }
-.heroGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); gap: var(--numi-gap); align-items: center; }
+.hero { padding-block: 32px 48px; }
+.heroGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px var(--numi-gap); align-items: center; }
 .heroGrid > * { min-width: 0; }
-.heroCopy { display: grid; gap: 22px; justify-items: start; }
-.identity { display: grid; gap: 12px; }
-.identity h1 { font-family: Anta, Arial, sans-serif; font-size: clamp(80px, 7.083vw, 136px); font-weight: 400; line-height: 1.06; letter-spacing: 0; color: var(--home-heading); }
-.identity p { font-size: clamp(18px, 1.25vw, 24px); font-weight: 500; }
-.heroDescription { max-width: 31ch; font-size: clamp(19px, 1.25vw, 24px); line-height: 1.5; }
-.heroRole { font-size: clamp(13px, .938vw, 18px); line-height: 1.6; }
+.heroCopy { display: grid; gap: 20px; justify-items: start; max-width: 58ch; }
+.identity { display: grid; gap: 16px; }
+.identity h1 { font: 400 clamp(48px, 4.167vw, 80px)/1.083 Anta, Arial, sans-serif; letter-spacing: 0; color: var(--home-heading); }
+.identity p { color: var(--home-footer-muted); font-size: clamp(12px, .833vw, 16px); line-height: 1.5; letter-spacing: .04em; text-transform: uppercase; }
+.heroDescription { font-size: clamp(22px, 1.66vw, 32px); line-height: 1.4; text-wrap: balance; }
+.heroRole { color: var(--home-footer-muted); line-height: 1.6; }
 .heroRole > span { display: block; margin-bottom: 6px; color: var(--home-footer-muted); }
+.heroActions { display: flex; flex-wrap: wrap; gap: 16px; }
+.heroFilm { grid-column: 1 / -1; }
 .heroFilm figcaption { font-size: clamp(12px, .833vw, 16px); }
-.primary, .back { display: inline-flex; justify-content: center; align-items: center; gap: 16px; width: fit-content; border: 1px solid var(--home-heading); border-radius: 8px; padding: 14px 20px; font-size: clamp(14px, .938vw, 18px); line-height: 1.55; text-decoration: none; transition: background 160ms ease; }
+.primary { display: inline-flex; justify-content: center; align-items: center; gap: 16px; width: fit-content; border: 1px solid var(--home-heading); border-radius: 8px; padding: 14px 20px; font-size: clamp(14px, .938vw, 18px); line-height: 1.55; text-decoration: none; transition: background 160ms ease; }
 .primary { background: var(--home-heading); color: var(--home-background); }
 .primary:hover { background: var(--home-text); }
-.back { padding: 8px 12px; background: transparent; color: var(--home-text); font-size: 14px; }
-.back:hover { background: var(--home-panel); }
-.actionIcon { display: block; width: 22px; height: 22px; flex: 0 0 22px; }
 .copy { display: grid; justify-items: start; align-content: start; gap: 16px; }
 .small { font-size: clamp(14px, .938vw, 18px); line-height: 1.6; color: var(--home-footer-muted); }
 .section { padding-block: var(--numi-section); border-bottom: 1px solid var(--numi-rule); }
@@ -101,18 +100,18 @@
 .close { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; padding: 0; border: 1px solid var(--home-rule); background: transparent; color: var(--home-text); border-radius: 50%; }
 .close:hover { background: var(--home-panel); }
 @media (max-width: 1023px) {
-  .heroGrid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .heroCopy { max-width: 60ch; }
-  .heroDescription { max-width: 40ch; }
   .memories { grid-template-columns: repeat(5, minmax(260px, 1fr)); }
   .hudRow { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .hudSequence { max-width: 640px; }
 }
 @media (max-width: 760px) {
   .container { width: calc(100% - 40px); }
-  .hero { padding-block: 24px 32px; gap: 24px; }
-  .heroCopy { gap: 20px; }
-  .identity h1 { font-size: 80px; }
+  .hero { padding-top: 28px; }
+  .heroGrid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .heroFilm { margin-top: 8px; }
+  .heroActions { gap: 12px; }
+  .heroActions a { padding-inline: 16px; }
+  .identity h1 { font-size: clamp(46px, 9.5vw, 64px); }
   .sectionIntro { margin-bottom: 24px; }
   .twoMedia, .threeMedia { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .playStrip { padding: 20px; }
@@ -137,5 +136,5 @@
   .dialogHeader { gap: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .primary, .back, .disclosure > summary > span { transition: none; }
+  .primary, .disclosure > summary > span { transition: none; }
 }

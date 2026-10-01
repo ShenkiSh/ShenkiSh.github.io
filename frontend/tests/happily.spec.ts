@@ -204,3 +204,23 @@ test("Happily visual language captions share a baseline on desktop", async ({ pa
   const tops = await titles.evaluateAll(elements => elements.map(el => el.getBoundingClientRect().top));
   expect(tops[0]).toBeCloseTo(tops[1], 0);
 });
+
+test("a delayed weekly reward image preserves the height above the playable games", async ({ page }) => {
+  let releaseImage!: () => void;
+  const pendingImage = new Promise<void>(resolve => { releaseImage = resolve; });
+  await page.route("**/assets/happily/weekly-achievement.png", async route => {
+    await pendingImage;
+    await route.continue();
+  });
+  await page.goto("/#/we-live-happily-here");
+  await page.getByRole("heading", { name: "We Live Happily Here", exact: true }).waitFor();
+  await page.evaluate(() => document.fonts.ready);
+  await page.locator("#try-it").scrollIntoViewIfNeeded();
+  const reward = page.getByAltText("Weekly shared achievement and parent feedback");
+  await expect(reward).toHaveJSProperty("complete", false);
+  const before = await page.locator("#game-ui").evaluate(el => el.getBoundingClientRect().height);
+  releaseImage();
+  await expect.poll(() => reward.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+  const after = await page.locator("#game-ui").evaluate(el => el.getBoundingClientRect().height);
+  expect(after).toBeCloseTo(before, 0);
+});
