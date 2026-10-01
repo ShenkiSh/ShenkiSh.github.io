@@ -16,7 +16,7 @@ jobs:
         working-directory: frontend
       - run: npx playwright install --with-deps chromium
         working-directory: frontend
-      - run: npm test -- numi-showcase.spec.ts --grep 'horizontal swipes' --project mobile
+      - run: npm test -- numi-showcase.spec.ts --grep 'horizontal swipes|closes on touch' --project mobile
         working-directory: frontend
       - uses: actions/upload-artifact@v4
         if: always()

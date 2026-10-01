@@ -93,8 +93,18 @@ test("the enlarged gallery supports horizontal swipes on touch screens", async (
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await expect(image).toHaveAttribute("src", /event-03\.jpg$/);
   await cdp.detach();
+  await page.waitForTimeout(500);
   console.log("BEFORE CLOSE", await dialog.getByRole("button", { name: "Close media", exact: true }).boundingBox());
   await dialog.getByRole("button", { name: "Close media", exact: true }).tap();
   try { await expect(dialog).toHaveCount(0); }
   finally { console.log("GALLERY INPUT", await page.evaluate(() => ({ events: (window as Window & { galleryInputLog: unknown[] }).galleryInputLog, maxTouchPoints: navigator.maxTouchPoints, viewport: { width: innerWidth, height: innerHeight }, dialog: document.querySelector("dialog")?.getBoundingClientRect().toJSON() }))); }
+});
+
+test("the gallery closes on touch without a swipe", async ({ page }) => {
+  await page.goto("/#/numi#players");
+  await expect(page.locator("#players")).toBeFocused();
+  await page.getByRole("button", { name: "Open event photo 2 of 5", exact: true }).tap();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByRole("button", { name: "Close media", exact: true }).tap();
+  await expect(dialog).toHaveCount(0);
 });
