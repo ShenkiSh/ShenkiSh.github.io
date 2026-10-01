@@ -58,9 +58,12 @@ export function HappilyCase() {
             <figcaption><span className={styles.label}>0{index + 1} {role}</span><h3>{title}</h3><p>{caption}</p></figcaption>
           </figure>)}
         </div>
-        <div className={styles.flowWatch} id="two-users">
-          <p className={styles.muted}>See how the invitation, game and feedback connect.</p>
-          <button type="button" className={actions.secondary} aria-label="Watch the full app flow" onClick={() => setMedia("film")}>Watch the full app flow<span className={styles.duration}>4:24</span></button>
+        <div className={styles.flowWatch} id="two-users" role="region" aria-labelledby="flow-watch-title">
+          <div className={styles.flowWatchCopy}>
+            <h3 id="flow-watch-title">Follow the family journey</h3>
+            <p>See how the invitation, game and feedback connect.</p>
+          </div>
+          <button type="button" className={styles.flowWatchButton} aria-label="Watch the full app flow" onClick={() => setMedia("film")}>Watch the full app flow<span className={styles.duration}>4:24</span></button>
         </div>
       </section>
       <section className={styles.chapter} id="conflicts" aria-labelledby="conflicts-title">
