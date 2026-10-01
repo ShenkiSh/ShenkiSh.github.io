@@ -1,3 +1,5 @@
+@use "../../styles/abstracts/case-hero" as caseHero;
+
 .page {
   --redream-gap: clamp(20px, 1.667vw, 32px);
   --redream-stack: clamp(18px, 1.25vw, 24px);
@@ -17,16 +19,17 @@
   :focus-visible { outline-color: var(--home-heading); }
 }
 .container { width: min(1680px, 87.5%); margin-inline: auto; }
-.hero, .section, .revealContent, .takeaway { display: grid; grid-template-columns: var(--redream-columns); gap: var(--redream-column-gap); align-items: start; }
+.section, .revealContent, .takeaway { display: grid; grid-template-columns: var(--redream-columns); gap: var(--redream-column-gap); align-items: start; }
 .hero > *, .section > *, .revealContent > * { min-width: 0; }
-.hero { padding-block: var(--redream-column-gap) var(--redream-space); }
-.identity { display: grid; align-content: start; gap: var(--redream-stack); }
+.hero { @include caseHero.layout; padding-block: 32px 48px; }
+.identity { @include caseHero.copy; align-content: start; }
 .identity h1 { font: 600 clamp(38px, 3.125vw, 60px)/1.467 Manrope, Arial, sans-serif; }
 .format { color: var(--home-footer-muted); font-size: clamp(16px, 1.146vw, 22px); }
 .tagline { font-size: clamp(24px, 1.98vw, 38px); line-height: 1.447; }
+.hero > .content { margin-top: 8px; }
 .film { display: grid; gap: 16px; width: 100%; min-width: 0; }
 .label { color: var(--home-footer-muted); font-size: 13px; line-height: 1.462; }
-.hook { max-width: 1480px; font-size: clamp(18px, 1.25vw, 24px); line-height: 1.458; }
+.hook { padding-top: 8px; max-width: 760px; font-size: clamp(18px, 1.25vw, 24px); line-height: 1.458; }
 .facts, .researchSteps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--redream-gap); }
 .facts > div { display: grid; align-content: start; gap: 16px; }
 .facts dt { color: var(--home-footer-muted); font-size: 13px; line-height: 1.462; }
@@ -78,7 +81,7 @@
 }
 @media (max-width: 1023px) {
   .page { --redream-columns: minmax(0, 1fr); }
-  .identity, .copy { max-width: 60ch; }
+  .copy { max-width: 60ch; }
   .takeaway > p { grid-column: 1; }
 }
 @media (max-width: 760px) {

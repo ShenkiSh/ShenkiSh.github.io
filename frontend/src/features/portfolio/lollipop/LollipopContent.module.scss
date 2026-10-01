@@ -1,3 +1,5 @@
+@use "../../../styles/abstracts/case-hero" as caseHero;
+
 .page {
   --lollipop-gap: clamp(20px, 1.667vw, 32px);
   --lollipop-detail-gap: clamp(12px, .834vw, 16px);
@@ -17,13 +19,14 @@
   figcaption { margin-top: var(--lollipop-detail-gap); font-size: clamp(14px, .938vw, 18px); line-height: 1.556; }
 }
 .container { width: min(1680px, 87.5%); margin-inline: auto; }
-.hero, .section { display: grid; grid-template-columns: var(--lollipop-columns); gap: var(--lollipop-column-gap); align-items: start; }
+.section { display: grid; grid-template-columns: var(--lollipop-columns); gap: var(--lollipop-column-gap); align-items: start; }
 .hero > *, .section > * { min-width: 0; }
-.hero { padding-block: var(--lollipop-column-gap) var(--lollipop-space); }
-.introduction { display: grid; gap: var(--lollipop-detail-gap); }
+.hero { @include caseHero.layout; padding-block: 32px 48px; }
+.introduction { @include caseHero.copy; }
 .introduction h1 { font-size: clamp(56px, 5vw, 96px); line-height: 1.22; color: var(--home-text); }
 .subtitle { font-size: clamp(22px, 1.563vw, 30px); line-height: 1.4; color: var(--home-text); }
-.intro { max-width: 60ch; font-size: clamp(18px, 1.25vw, 24px); }
+.intro { padding-top: 8px; max-width: 60ch; font-size: clamp(18px, 1.25vw, 24px); }
+.hero > .content { margin-top: 8px; }
 .heroArtwork, .artwork { display: block; width: 100%; height: auto; border-radius: var(--home-radius); }
 .credits { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; color: var(--home-text); }
 .credits > div { display: grid; align-content: start; gap: var(--lollipop-detail-gap); }
@@ -74,7 +77,7 @@
 }
 @media (max-width: 1023px) {
   .page { --lollipop-columns: minmax(0, 1fr); }
-  .copy, .introduction { max-width: 60ch; }
+  .copy { max-width: 60ch; }
 }
 @media (max-width: 760px) {
   .container { width: calc(100% - 40px); }

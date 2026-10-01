@@ -1,3 +1,5 @@
+@use "../../../styles/abstracts/case-hero" as caseHero;
+
 .page {
   --happily-gap: clamp(24px, 3.333vw, 64px);
   --happily-space: clamp(56px, 5.833vw, 112px);
@@ -14,15 +16,15 @@
   :focus-visible { outline-color: var(--home-heading); }
 }
 .container { width: min(1680px, 87.5%); margin-inline: auto; }
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px var(--happily-gap); padding-block: 32px 48px; align-items: center; }
+.hero { @include caseHero.layout; padding-block: 32px 48px; }
 .identity { display: grid; gap: 16px; }
 .identity h1 { font: 400 clamp(48px, 4.167vw, 80px)/1.083 Anta, Arial, sans-serif; color: var(--home-heading); }
-.heroCopy { display: grid; gap: 20px; max-width: 58ch; }
+.heroCopy { @include caseHero.copy; }
 .lead { font-size: clamp(22px, 1.66vw, 32px); line-height: 1.4; text-wrap: balance; }
 .label { color: var(--home-footer-muted); font-size: clamp(12px, .833vw, 16px); line-height: 1.5; letter-spacing: .04em; text-transform: uppercase; }
 .muted { color: var(--home-footer-muted); }
 .heroActions { display: flex; flex-wrap: wrap; gap: 16px; }
-.heroImage { grid-column: 1 / -1; width: 100%; padding: 0; border: 0; border-radius: var(--home-radius); background: transparent; overflow: hidden; cursor: zoom-in; }
+.heroImage { margin-top: 8px; grid-column: 1 / -1; width: 100%; padding: 0; border: 0; border-radius: var(--home-radius); background: transparent; overflow: hidden; cursor: zoom-in; }
 .heroImage img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
 .section, .chapter { padding-block: var(--happily-space); }
 .section, .chapter, .cooperation, .flowWatch, .appExperience, .gamePlayer, .film { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }

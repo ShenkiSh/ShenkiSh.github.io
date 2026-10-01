@@ -21,6 +21,12 @@ Play navigation route.
 The September 16 Figma sync includes Anta header/footer branding, the updated purple
 and lavender carousel indicators, and the footer’s centered copyright line.
 
+All eight project heroes use one left-aligned column: project name and type,
+then the description and available actions, followed by full-width media.
+The shared `styles/abstracts/_case-hero.scss` mixins keep the layout and copy
+spacing consistent, with a 760px maximum text width. Project typography and
+media retain their own identity. This layout applies on desktop, tablet and phone.
+
 All project pages share one compact black ending: secondary **Back to Work**
 on the left, **Next Project** and the destination title on the right, followed by a
 quiet signature/copyright row. The layout stacks on phones and keeps safe side
@@ -450,7 +456,7 @@ Feature pushes do not deploy the public site.
 and current kitchen capture; TENKI/Ikko's next-project link carries the same title.
 The Home hero frog slot now uses the rebuilt game recording.
 
-The refined case uses the same 1680px container, paired hero introduction, Anta
+The refined case uses the same 1680px container, stacked hero introduction, Anta
 project title and restrained Satoshi text hierarchy as the other refined projects.
 The opening joins a current 20-second gameplay preview to four original story
 illustrations. Four chapters follow: gameplay decisions, learning the game,
@@ -519,8 +525,9 @@ spatial storytelling, narrative reveal, production and recorded-playthrough sect
 The layout retains Figma's Manrope typography, black/lavender colors, original media,
 and the shared site header, sticky chapter navigation and project footer.
 
-ReDream follows NUMI’s 1680px container, 4/8 column split, column gaps and section
-spacing. Titles and introductions align on the left; the preview, scene gallery,
+ReDream uses the shared stacked hero introduction above a full-width preview.
+Its body sections retain the 1680px container, 4/8 column split, column gaps and
+section spacing. Titles and introductions align on the left; the scene gallery,
 production examples and full recording align on the right. The four scenes use
 two rows so each landscape image stays readable. The colored narrative section
 keeps the same inner grid. Columns stack below 1024px, with 20px side margins at
