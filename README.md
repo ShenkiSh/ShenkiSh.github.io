@@ -455,7 +455,9 @@ project title and restrained Satoshi text hierarchy as the other refined project
 The opening joins a current 20-second gameplay preview to four original story
 illustrations. Four chapters follow: gameplay decisions, learning the game,
 art/iteration, and playing/watching. Three short recordings show warning/attack,
-plate destruction and shelter. Each sits beside the design decision it illustrates.
+plate destruction and shelter. They share one equal-width row on desktop, with a
+short title and explanation directly below each video. On tablets and phones the
+three figures stack, keeping each explanation attached to its footage.
 The original drawings, refined artwork, earlier/current comparison and Unity
 Timeline remain visible. Legacy story, level-design, chef, hazards, safety,
 feedback, iteration and unity anchors remain usable within the consolidated page.

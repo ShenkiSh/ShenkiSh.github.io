@@ -33,15 +33,13 @@
 .storyFrames h3 { font-size: clamp(14px, .833vw, 16px); font-weight: 400; color: var(--home-footer-muted); }
 .still { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; border-radius: var(--home-radius); }
 .section { padding-block: var(--hop-space); }
-.section, .story, .introduction, .moment, .twoColumns, .development, .production, .footnote { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
+.section, .story, .introduction, .introduction p, .moment, .twoColumns, .development, .production { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
 .introduction { display: grid; gap: 12px; max-width: 720px; margin-bottom: 32px; }
 .introduction p { max-width: 58ch; color: var(--home-footer-muted); }
-.moments { display: grid; gap: 48px; }
-.moment, .production, .playArea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); align-items: start; gap: var(--hop-gap); }
+.moments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; align-items: start; }
+.moment { min-width: 0; }
+.production, .playArea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); align-items: start; gap: var(--hop-gap); }
 .moment > *, .production > *, .playArea > * { min-width: 0; }
-.momentCopy { display: grid; gap: 12px; max-width: 42ch; }
-.momentCopy p { color: var(--home-footer-muted); }
-.footnote { margin-top: 24px; max-width: 76ch; color: var(--home-footer-muted); font-size: clamp(14px, .833vw, 16px); }
 .twoColumns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--hop-gap); }
 .development { margin-top: 48px; }
 .production { margin-top: 48px; }
@@ -51,9 +49,9 @@
 .playCopy > p { color: var(--home-footer-muted); }
 .loading { position: fixed; inset: auto 20px 20px; z-index: 100; padding: 16px 24px; border: 1px solid var(--home-rule); background: var(--home-background); color: var(--home-text); }
 @media (max-width: 1023px) {
-  .moment, .production, .playArea { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .momentCopy, .productionCopy, .playCopy { max-width: 60ch; }
-  .momentCopy { gap: 8px; }
+  .moments { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .production, .playArea { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .productionCopy, .playCopy { max-width: 60ch; }
   .storyFrames { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
@@ -67,6 +65,5 @@
   .storyFrames { gap: 24px 16px; }
   .introduction { gap: 10px; margin-bottom: 24px; }
   .twoColumns { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .moments { gap: 36px; }
   .development, .production { margin-top: 36px; }
 }

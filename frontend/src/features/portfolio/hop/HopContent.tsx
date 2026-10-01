@@ -58,16 +58,15 @@ export function HopContent() {
     <div className={styles.container}>
       <section id="gameplay" className={styles.section} aria-labelledby="gameplay-heading">
         <div id="level-design" className={styles.introduction}>
-          <h2 id="gameplay-heading">Designing the rhythm of the chase.</h2>
-          <p>Movement, danger and recovery shape one continuous kitchen. I introduce the basic actions first, then bring new obstacles into the player’s path.</p>
+          <h2 id="gameplay-heading">Designing the chase.</h2>
+          <p id="hazards">I introduce new hazards through three connected moments: a warning, a changing route and a place to recover.</p>
         </div>
         <div className={styles.moments}>
-          {chaseMoments.map(moment => <div key={moment.id} id={moment.id} className={styles.moment}>
-            <div className={styles.momentCopy}><h3>{moment.title}</h3><p>{moment.copy}</p></div>
+          {chaseMoments.map(moment => <figure key={moment.id} id={moment.id} className={styles.moment}>
             <CaseVideo film={{ src: asset(`assets/hop/${moment.file}.mp4`), poster: asset(`assets/hop/${moment.file}.jpg`), title: moment.videoTitle, duration: moment.duration }} defaultMuted={false} />
-          </div>)}
+            <figcaption><h3>{moment.title}</h3><p>{moment.copy}</p></figcaption>
+          </figure>)}
         </div>
-        <p id="hazards" className={styles.footnote}>Steam, spilled soup, banana peels and rolling bottles add new obstacles as the chase continues toward the hanging towel.</p>
       </section>
       <section id="onboarding" className={styles.section} aria-labelledby="onboarding-heading">
         <div className={styles.introduction}>

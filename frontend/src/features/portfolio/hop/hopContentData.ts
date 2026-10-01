@@ -43,9 +43,9 @@ export const storyCards: readonly HopCard[] = [
 
 export const chaseMoments = [
   { id: "chef", file: "warning-demo", title: "A warning before the strike", videoTitle: "Hop warning and attack", duration: "0:08",
-    copy: "I show where the chef will strike before the hand lands. The warning gives the player a cue to move while keeping the chase in motion." },
+    copy: "I signal the chef’s next strike so the player has time to react." },
   { id: "destruction", file: "destruction-demo", title: "A threat that changes the route", videoTitle: "Hop changing the route", duration: "0:10",
-    copy: "The chef can break the plates that block the worktable. An attack changes the space, giving the player a new route through the kitchen." },
+    copy: "The chef’s attack breaks plates and opens a route, making the threat part of the level design." },
   { id: "safety", file: "shelter-demo", title: "A pause inside the chase", videoTitle: "Hop shelter and recovery", duration: "0:08",
-    copy: "Each new strainer is a hiding place and a checkpoint that refills hearts. Transparent cover keeps Robert visible while the player takes a moment to recover." },
+    copy: "Each new strainer saves progress and refills hearts. Transparent cover keeps Robert visible while the player recovers." },
 ] as const;
