@@ -556,30 +556,41 @@ Media provenance is recorded in `frontend/public/assets/README.md`.
 
 ### Lollipop case study
 
-`/#/lollipop` implements Figma frame `1574:5285` in Portfolio, using the shared
-Satoshi/Anta typography, header, eight chapter links and project footer. The Home
-carousel opens this route directly. The story covers the concept, brand world,
-identity, edible fashion collection, campaign posters, extensions and brand website.
-The website link opens Shani's supplied Figma prototype in a separate tab; the
-project footer leads to ReDream Lab.
+`/#/lollipop` presents the original artwork from Portfolio Figma frame `1574:5285`
+as five connected areas: introduction, idea and visual language, collection and
+campaign, digital and motion, and brand applications with credits. The October 1
+refinement lives on `codex/lollipop-case-study-refinement`; the previous complete
+site remains on `codex/redream-case-study-refinement` at `8bd4ff1`.
 
-Lollipop uses NUMI’s 1680px container, 4/8 column split, column gaps and section
-spacing. The hero, concept, brand galleries, website and social reel share the same
-text/media alignment. Columns stack below 1024px, with 20px side margins at 760px
-and below. The portrait reel is capped at 400px and keeps its complete frame;
-the original campaign artwork, detail crops and brand typography are retained.
+The shared left-stacked hero puts the premise, personal contribution and prototype
+button before the large campaign image. Satoshi typography, section spacing and
+the 1680px container match the other refined cases. Four chapter links replace
+eight separate topics, without numbering or divider rules. Previous `#world`,
+`#identity`, `#posters` and `#social` links still reach the corresponding content.
+The Home carousel enters the page directly; the project footer leads to ReDream Lab.
 
-Social Campaign contains one playable portrait campaign reel,
-replacing the three-frame Figma storyboard per Shani's September 28 instruction.
-The full 19.53-second original recording retains its 1080 × 1920 resolution,
-30 fps and original audio, with no re-encoding. The shared `CaseVideo` player keeps
-the portrait frame complete and offers play/pause, sound, seek, fullscreen and retry.
-It loads only after Play, starts with sound and pauses offscreen or in a background tab.
+Each of the three candy families pairs its fashion concept with the matching
+campaign poster in the same order. All six images retain their complete frames.
+Below 1024px the families stack with each concept/poster pair side by side. The
+original hero, illustration sheet, collection and application artwork can open
+in a native modal with keyboard dismissal, focus restoration and page-scroll
+preservation. The flower preview shows the sheet's top strip; enlargement shows
+the complete original. The bag and body product receive more space than the candle.
 
-Original Figma artwork is self-hosted in `assets/lollipop/`, with lazy loading below
-the hero. Page text remains real Satoshi text; only the two brand type specimens
-are exported artwork. Desktop columns stack on phones; deep links, keyboard chapter
-navigation and the reel's playback controls and retry are covered by Playwright.
+Digital and motion brings together the complete 31.25-second website recording,
+the supplied Figma prototype button and the original 19.53-second portrait reel.
+The website retains 1442 × 914 at 12 fps; the reel retains 1080 × 1920 at 30 fps
+with its original audio. Shared `CaseVideo` controls load media on Play, preserve
+the complete frame, pause offscreen and prevent simultaneous playback. The reel
+starts with sound and is capped at 360px. Digital columns stack below 1024px;
+phone layouts use 20px side margins.
+
+Original artwork is self-hosted in `assets/lollipop/`, with lazy loading below
+the hero. Only the logo and two brand type specimens use exported lettering.
+Credits distinguish Shani's concept, art direction, illustration, identity,
+campaign, motion and digital design from AI-assisted character and fashion
+visualization. Playwright covers original media playback and retry, the full
+website recording, prototype links, chapter navigation and artwork enlargement.
 
 ### HeadEase case study
 

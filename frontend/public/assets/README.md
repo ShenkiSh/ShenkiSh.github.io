@@ -447,7 +447,8 @@ existing Satoshi font, with the following artwork exceptions:
 - `chewy-specimen.webp`, `fredoka-specimen.webp`: brand type specimens
   `1580:5394` and `1580:5398`, 374 × 50 and 540 × 55.
 - `world-flowers.webp`: original transparent illustration sheet from `1580:5367`.
-  World details reuse this sheet and the original posters with Figma's crop positions.
+  The refined page previews its top flower strip; the artwork dialog shows the
+  complete original sheet, including the remaining drips and logo details.
 - `product-*.webp`: original 1024 × 1536 fashion imagery from
   `1581:5296`, `1581:5301`, `1581:5306`.
 - `poster-*.webp`: original campaign posters from `1581:5317–5319`;
@@ -466,6 +467,19 @@ existing Satoshi font, with the following artwork exceptions:
   Approximately 24 MB, loaded only on Play. The full portrait frame and soundtrack
   replace the pending preview; the original file on the external drive is unchanged.
 
+### Lollipop refinement — October 1, 2026
+
+- `website-walkthrough.mp4`: the complete 31.25-second recording from Shani's
+  `דברים לאתר לתיק עבודות /עמוד בית/הירו/לוליפופ האתר המלא.mp4`.
+  Encoded with FFmpeg `libx264`, CRF 18, preset fast, yuv420p and MP4 faststart.
+  It retains the source's 1442 × 914 frame and 12 fps, with no cropping, upscaling
+  or frame interpolation. The source contains no audio. The web copy is
+  10,799,399 bytes; it loads only on Play and reuses `website-hero.jpg` as its poster.
+- The original collection, posters, applications and campaign hero are unchanged.
+  Product/poster pairs now follow gummy, sour and marshmallow order. Full original
+  files are reused in the enlargement dialog, with no new generated artwork.
+- The two additional website stills remain available in the asset directory;
+  the complete walkthrough replaces that static three-image sequence on the page.
 
 ## HeadEase case-study artwork — September 28, 2026
 
