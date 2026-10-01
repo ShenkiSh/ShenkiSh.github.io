@@ -69,20 +69,22 @@ export function NumiMediaDialog({ media, onClose }: { media: NumiOverlay; onClos
       </div>
       {media.kind === "film" ? <NumiVideo film={media.film} autoPlay /> : <>
         <figure className={galleryStyles.galleryFigure}>
-          <div className={galleryStyles.galleryCanvas} onPointerDown={startSwipe} onPointerUp={endSwipe} onPointerCancel={() => { swipeStart.current = null; }}>
-            {failed ? <div className={galleryStyles.galleryError} role="alert"><p>This photo could not load.</p><button type="button" onClick={() => setFailed(false)}>Try again</button></div>
-              : <img src={numiAsset(photo.file)} alt={photo.caption} draggable={false} onError={() => setFailed(true)} />}
+          <div className={galleryStyles.galleryStage}>
+            <div className={galleryStyles.galleryCanvas} onPointerDown={startSwipe} onPointerUp={endSwipe} onPointerCancel={() => { swipeStart.current = null; }}>
+              {failed ? <div className={galleryStyles.galleryError} role="alert"><p>This photo could not load.</p><button type="button" onClick={() => setFailed(false)}>Try again</button></div>
+                : <img src={numiAsset(photo.file)} alt={photo.caption} draggable={false} onError={() => setFailed(true)} />}
+            </div>
+            <button type="button" className={`${galleryStyles.galleryStep} ${galleryStyles.previous}`} aria-label="Previous photo" onClick={() => selectPhoto(photoIndex - 1)}><NumiMediaIcon name="previous" /></button>
+            <button type="button" className={`${galleryStyles.galleryStep} ${galleryStyles.next}`} aria-label="Next photo" onClick={() => selectPhoto(photoIndex + 1)}><NumiMediaIcon name="next" /></button>
           </div>
-          <figcaption className={galleryStyles.galleryCaption} aria-live="polite">{photo.caption}<span>{photoIndex + 1} / {eventPhotos.length}</span></figcaption>
+          <figcaption className={galleryStyles.galleryCount} aria-live="polite">{photoIndex + 1} / {eventPhotos.length}</figcaption>
         </figure>
         <div className={galleryStyles.galleryNavigation}>
-          <button type="button" className={galleryStyles.galleryStep} aria-label="Previous photo" onClick={() => selectPhoto(photoIndex - 1)}>‹</button>
           <div className={galleryStyles.thumbnails} aria-label="Choose an event photo">
             {eventPhotos.map((item, index) => <button type="button" key={item.file} ref={element => { thumbnails.current[index] = element; }} aria-label={`Show event photo ${index + 1} of ${eventPhotos.length}`} aria-current={index === photoIndex ? "true" : undefined} onClick={() => selectPhoto(index)}>
               <img src={numiAsset(item.thumb)} alt="" width="320" height="200" />
             </button>)}
           </div>
-          <button type="button" className={galleryStyles.galleryStep} aria-label="Next photo" onClick={() => selectPhoto(photoIndex + 1)}>›</button>
         </div>
       </>}
     </div>

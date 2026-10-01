@@ -1,4 +1,4 @@
-type MediaIconName = "play" | "pause" | "sound" | "muted" | "expand" | "collapse" | "close";
+type MediaIconName = "play" | "pause" | "sound" | "muted" | "expand" | "collapse" | "close" | "previous" | "next";
 
 export function NumiMediaIcon({ name }: { name: MediaIconName }) {
   return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
@@ -8,5 +8,7 @@ export function NumiMediaIcon({ name }: { name: MediaIconName }) {
     {name === "expand" && <path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6" />}
     {name === "collapse" && <path d="M3 9h6V3m6 0v6h6M9 21v-6H3m18 0h-6v6" />}
     {name === "close" && <path d="m6 6 12 12M18 6 6 18" />}
+    {name === "previous" && <path d="m15 6-6 6 6 6" />}
+    {name === "next" && <path d="m9 6 6 6-6 6" />}
   </svg>;
 }

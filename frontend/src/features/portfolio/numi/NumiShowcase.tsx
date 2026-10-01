@@ -23,7 +23,6 @@ export function NumiShowcase({ onOpenGallery }: { onOpenGallery: (index: number)
       <div className={styles.eventGallery}>
         <button type="button" className={styles.cover} onClick={() => onOpenGallery(0)} aria-label="Enlarge public playtesting photo">
           <img src={numiAsset("imgSourceArtworkGroup1100.png")} alt="Visitors playing NUMI with a controller at the public showcase" loading="lazy" width="1104" height="548" />
-          <span>View {eventPhotos.length} photos</span>
         </button>
         <div className={styles.thumbnails} aria-label="Event photo previews">
           {eventPhotos.map((photo, index) => <button type="button" key={photo.file} onClick={() => onOpenGallery(index)} aria-label={`Open event photo ${index + 1} of ${eventPhotos.length}`}>
