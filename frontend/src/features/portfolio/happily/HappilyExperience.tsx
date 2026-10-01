@@ -11,7 +11,7 @@ export function HappilyExperience({ onOpenApp }: { onOpenApp: () => void }) {
   const [activeGame, setActiveGame] = useState<FamilyGame | null>(null);
   return <section className={styles.chapter} id="try-it" aria-labelledby="try-title">
     <div className={styles.chapterHeading}>
-      <div className={styles.copy}><p className={styles.label}>05 Explore the prototypes</p><h2 id="try-title">From the app<br />into the game.</h2></div>
+      <div className={styles.copy}><p className={styles.label}>Explore the prototypes</p><h2 id="try-title">From the app<br />into the game.</h2></div>
       <div className={styles.copy}><p>Explore the family flow, then play Personal Space and Objects. These browser demos use a simulated partner.</p><div className={styles.gameLinks}><PortfolioLink className={actions.secondary} href="#unity-game-01">Unity Game 01</PortfolioLink><PortfolioLink className={actions.secondary} href="#unity-game-02">Unity Game 02</PortfolioLink></div></div>
     </div>
     <div className={styles.experienceBody}>

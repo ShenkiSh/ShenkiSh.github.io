@@ -37,7 +37,7 @@ export function HappilyCase() {
     <div className={styles.container}>
       <section className={styles.section} id="overview" aria-labelledby="overview-title">
         <div className={styles.copy}>
-          <p className={styles.label}>01 The idea</p>
+          <p className={styles.label}>The idea</p>
           <h2 id="overview-title">A small pause.<br />A shared goal.</h2>
           <p>Growing up with six siblings, I knew how quickly a small argument could become overwhelming.</p>
           <p>My starting question: could a short cooperative game help siblings step away from an argument and coordinate again?</p>
@@ -49,7 +49,7 @@ export function HappilyCase() {
       </section>
       <section className={styles.chapter} id="how-it-works" aria-labelledby="how-title">
         <div className={styles.chapterHeading}>
-          <div className={styles.copy}><p className={styles.label}>02 The family flow</p><h2 id="how-title">Two roles.<br />One connected experience.</h2></div>
+          <div className={styles.copy}><p className={styles.label}>The family flow</p><h2 id="how-title">Two roles.<br />One connected experience.</h2></div>
           <p>The parent starts the invitation. The children take over through play. A shared result closes the loop and brings the parent back in.</p>
         </div>
         <div className={styles.flow}>
@@ -68,7 +68,7 @@ export function HappilyCase() {
       </section>
       <section className={styles.chapter} id="conflicts" aria-labelledby="conflicts-title">
         <div className={styles.chapterHeading}>
-          <div className={styles.copy}><p className={styles.label}>03 Game design</p><h2 id="conflicts-title">A familiar conflict.<br />A different way to play.</h2></div>
+          <div className={styles.copy}><p className={styles.label}>Game design</p><h2 id="conflicts-title">A familiar conflict.<br />A different way to play.</h2></div>
           <p>Five everyday conflicts became five game concepts. Personal Space and Objects were developed into playable Unity prototypes.</p>
         </div>
         <div className={styles.conflicts}>{conflicts.map(([title, file, caption], index) => <figure key={title}>
@@ -91,7 +91,7 @@ export function HappilyCase() {
       </section>
       <section className={styles.chapter} id="game-ui" aria-labelledby="visual-title">
         <div className={styles.chapterHeading}>
-          <div className={styles.copy}><p className={styles.label}>04 Visual language</p><h2 id="visual-title">A world that feels<br />like theirs.</h2></div>
+          <div className={styles.copy}><p className={styles.label}>Visual language</p><h2 id="visual-title">A world that feels<br />like theirs.</h2></div>
           <p>Soft blue app screens lead into warm woodland games. Familiar avatars, playful objects and shared rewards connect each part of the experience.</p>
         </div>
         <div className={styles.visualBoard}>
