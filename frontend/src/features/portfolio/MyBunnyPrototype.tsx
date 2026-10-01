@@ -1,6 +1,7 @@
 import type { Ref } from "react";
 import { asset } from "@/shared/utils/asset";
 import { CaseVideo, type CaseVideoHandle } from "./CaseVideo";
+import actions from "./CaseActions.module.scss";
 import styles from "./MyBunnyPrototype.module.scss";
 
 const film = {
@@ -10,18 +11,17 @@ const film = {
   duration: "1:08",
 };
 
-export function MyBunnyPrototype({ ref }: { ref?: Ref<CaseVideoHandle> }) {
+export function MyBunnyPrototype({ ref, onPlay }: { ref?: Ref<CaseVideoHandle>; onPlay: () => void }) {
   return <div className={styles.prototype}>
-    <div className={styles.player}>
-      <CaseVideo ref={ref} film={film} aspectRatio="9 / 16" defaultMuted={false} />
+    <div className={styles.copy} id="app-game">
+      <h2 id="prototype-heading">Play, care and try again.</h2>
+      <p>I built the three care stages in Unity, connecting drag-and-match interactions, character reactions and explanatory feedback.</p>
+      <button className={actions.primary} type="button" onClick={onPlay}>Play My Bunny</button>
+      <p className={styles.caption}>Mouse or touch · Sound available</p>
     </div>
-    <div className={styles.details}>
-      <ul className={styles.features}>
-        <li>Three care stages</li>
-        <li>Drag-and-match interactions</li>
-        <li>Explanatory player feedback</li>
-      </ul>
-      <p className={styles.caption}>Original Unity gameplay · 1:08<br />Feed · Clean · Play</p>
-    </div>
+    <figure className={styles.player}>
+      <CaseVideo ref={ref} film={film} aspectRatio="9 / 16" posterLabel="Watch full gameplay" defaultMuted={false} />
+      <figcaption>Full gameplay · 1:08</figcaption>
+    </figure>
   </div>;
 }

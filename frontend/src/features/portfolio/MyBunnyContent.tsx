@@ -1,162 +1,122 @@
 import { useRef, useState } from "react";
 import { asset } from "@/shared/utils/asset";
-import { keepLastWordsTogether as wrap } from "@/shared/utils/keepLastWordsTogether";
 import { CaseChapterNavigation } from "./CaseChapterNavigation";
 import { CaseVideo, type CaseVideoHandle } from "./CaseVideo";
+import { PortfolioLink } from "./PortfolioLink";
 import { MyBunnyGameDialog } from "./MyBunnyGameDialog";
+import { MyBunnyArtworkDialog } from "./MyBunnyArtworkDialog";
 import { MyBunnyPrototype } from "./MyBunnyPrototype";
 import { useExclusiveCaseMedia } from "./useExclusiveCaseMedia";
 import actions from "./CaseActions.module.scss";
 import styles from "./MyBunnyContent.module.scss";
 
 const chapters = [
-  ["idea", "Idea"], ["stages", "Care Stages"], ["interaction", "Interaction"],
-  ["feedback", "Feedback"], ["app-game", "App + Game"], ["prototype", "Unity"],
+  ["stages", "Care stages"], ["feedback", "Feedback"],
+  ["visual-ui", "Visual design"], ["prototype", "Try it"],
 ] as const;
-
 const stages = [
-  { file: "feeding", title: "Feeding", copy: "Choose the right food for Bunny.", duration: "0:18" },
-  { file: "cleaning", title: "Cleaning", copy: "Choose the correct item to keep Bunny clean.", duration: "0:12" },
-  { file: "playtime", title: "Playtime", copy: "Choose the right toy and learn how to play safely.", duration: "0:12" },
+  { file: "feeding", title: "Feeding", copy: "Choose what to feed Bunny.", duration: "0:18" },
+  { file: "cleaning", title: "Cleaning", copy: "Find the item that helps Bunny stay clean.", duration: "0:12" },
+  { file: "playtime", title: "Playtime", copy: "Choose a suitable toy for Bunny.", duration: "0:12" },
 ] as const;
-
-function Screen({ file, alt, eager = false }: { file: string; alt: string; eager?: boolean }) {
-  return <img className={styles.screen} src={asset(`assets/my-bunny/${file}.jpg`)} alt={alt}
-    width={720} height={1280} loading={eager ? "eager" : "lazy"} decoding="async" />;
-}
-
-function Flow({ steps }: { steps: readonly string[] }) {
-  return <ol className={styles.flow}>
-    {steps.map((step, index) => <li key={step}>
-      {index > 0 && <span className={styles.flowArrow} aria-hidden="true">→</span>}
-      <span>{wrap(step)}</span>
-    </li>)}
-  </ol>;
-}
+const expressions = [
+  ["character-happy", "Bunny with upright ears and an open smile", 355],
+  ["character-sad", "Bunny with lowered ears and a worried expression", 340],
+  ["character-smile", "Bunny smiling with a different eye expression", 355],
+  ["character-blink", "Bunny with closed eyes", 355],
+] as const;
+const objects = [
+  ["care-food", "Feeding choices", "Illustrated food choices with star shapes", 396, 398],
+  ["care-cleaning", "Cleaning choices", "Illustrated cleaning items with bubbles", 287, 257],
+  ["care-play", "Playtime choices", "Illustrated toys with flower shapes", 271, 301],
+] as const;
 
 export function MyBunnyContent() {
   useExclusiveCaseMedia();
   const player = useRef<CaseVideoHandle>(null);
   const [playing, setPlaying] = useState(false);
+  const [artworkOpen, setArtworkOpen] = useState(false);
   return <article className={styles.page}>
     <header className={`${styles.container} ${styles.hero}`} aria-label="My Bunny introduction">
       <div className={styles.identity}>
         <h1>My Bunny</h1>
-        <p className={styles.subtitle}>Rabbit Adoption App &amp; Educational&nbsp;Mini-Game</p>
-        <p className={styles.hook}>{wrap("A rabbit adoption app with a short interactive game that teaches children how to feed, clean and play with their rabbit — before or after adoption.")}</p>
+        <p className={styles.subtitle}>Educational Care Game</p>
+      </div>
+      <div className={styles.heroCopy}>
+        <p className={styles.hook}>Learning rabbit care through play.</p>
+        <p className={styles.muted}>I designed and built a short game where children explore feeding, cleaning and play through Bunny’s reactions.</p>
+        <p className={styles.role}>Game design · UX/UI · Illustration · Unity</p>
         <div className={styles.heroActions}>
-          <button className={actions.primary} type="button" onClick={() => setPlaying(true)}>
-            Play My Bunny <img src={asset("assets/my-bunny/arrow-right-dark.svg")} alt="" width={24} height={24} />
-          </button>
-          <button className={actions.secondary} type="button" onClick={() => player.current?.playFrom(0)}>
-            Watch Gameplay <img src={asset("assets/my-bunny/arrow-right-light.svg")} alt="" width={24} height={24} />
-          </button>
+          <PortfolioLink className={actions.primary} href="#prototype">Explore the game</PortfolioLink>
+          <button className={actions.secondary} type="button" onClick={() => player.current?.playFrom(0)}>Watch Gameplay</button>
         </div>
-        <p className={styles.label}>UX/UI · Game Design · Interaction Design<br />Unity · Visual Design</p>
       </div>
-      <div className={styles.heroMedia}>
-        <figure className={styles.appPreview}>
-          <Screen file="app-entry" alt="My Bunny app entry with a Start playing button" eager />
-          <figcaption className={styles.label}>The adoption app</figcaption>
-        </figure>
-        <figure className={styles.gamePreview}>
-          <Screen file="feeding" alt="The rabbit-care game inside the app" eager />
-          <figcaption className={styles.label}>The game inside</figcaption>
-        </figure>
-      </div>
+      <button type="button" className={styles.heroArtwork} aria-label="Enlarge the My Bunny mockup" onClick={() => setArtworkOpen(true)}>
+        <img src={asset("assets/my-bunny/desk-mockup.png")} width={1920} height={1080} fetchPriority="high" alt="My Bunny on a phone beside a rabbit doll and pencils on a wooden desk" />
+      </button>
     </header>
     <CaseChapterNavigation label="My Bunny sections" chapters={chapters} showDivider={false} />
     <div className={styles.container}>
-      <section className={styles.section} id="idea" aria-labelledby="idea-heading">
-        <div className={styles.copy}>
-          <h2 id="idea-heading">Why My Bunny?</h2>
-          <p>{wrap("Rabbit care can feel unfamiliar. I designed an adoption app where children learn everyday care through play — before and after bringing a rabbit home.")}</p>
-        </div>
-        <div className={`${styles.panel} ${styles.learningPath}`}>
-          <Flow steps={["Adoption App", "Learn About Rabbit Care", "Play Anytime"]} />
-          <p className={styles.label}>Before &amp; after adoption</p>
-        </div>
-      </section>
       <section className={styles.section} id="stages" aria-labelledby="stages-heading">
-        <div className={styles.sectionIntro}>
-          <h2 id="stages-heading">Learn by Caring for Bunny</h2>
-          <p>{wrap("The mini-game is divided into three simple stages, each focused on one part of everyday rabbit care.")}</p>
+        <div className={styles.sectionIntro} id="idea">
+          <h2 id="stages-heading">Three small ways to care.</h2>
+          <p>Designed as a repeatable game within an adoption app, each stage introduces one everyday care task.</p>
         </div>
-        <div className={styles.stages}>
-          {stages.map(({ file, title, copy, duration }, index) => <figure key={file}>
+        <div className={styles.stages} role="group" aria-label="The three care stages" tabIndex={0}>
+          {stages.map(({ file, title, copy, duration }) => <figure key={file}>
             <CaseVideo film={{ src: asset(`assets/videos/my-bunny-${file}-demo.mp4`), poster: asset(`assets/my-bunny/${file}.jpg`), title: `My Bunny — ${title}`, duration }} aspectRatio="9 / 16" posterLabel={`Watch ${title}`} defaultMuted={false} />
-            <figcaption><h3>0{index + 1} — {title}</h3><p>{wrap(copy)}</p></figcaption>
+            <figcaption><h3>{title}</h3><p>{copy}</p></figcaption>
           </figure>)}
         </div>
       </section>
-      <section className={styles.section} id="interaction" aria-labelledby="interaction-heading">
-        <div className={styles.copy}>
-          <h2 id="interaction-heading">One Simple Interaction,<br />Three Learning Moments</h2>
-          <p className={styles.muted}>{wrap("Children make a choice, see its effect and learn why it helps — or does not help — Bunny.")}</p>
-        </div>
-        <div className={styles.panel}>
-          <Flow steps={["Choose / Drag an item", "Bunny reacts", "Get feedback", "Learn why"]} />
-        </div>
-      </section>
       <section className={styles.section} id="feedback" aria-labelledby="feedback-heading">
-        <div className={styles.copy}>
-          <h2 id="feedback-heading">Learning Through Feedback</h2>
-          <p>{wrap("Children see how their choice affects Bunny. The character’s expression and the explanatory popup work together to turn mistakes into learning moments.")}</p>
-          <p className={styles.muted}>{wrap("The popup explains why the item is unsuitable and invites the child to try again.")}</p>
+        <div className={styles.sectionIntro} id="interaction">
+          <h2 id="feedback-heading">A choice becomes a learning moment.</h2>
+          <p>I paired Bunny’s reaction with an explanation, so an unsuitable choice gives the child a reason to try again.</p>
         </div>
-        <div className={styles.feedbackMedia}>
+        <div className={styles.feedback}>
           <div className={styles.feedbackScreen}>
             <CaseVideo film={{ src: asset("assets/videos/my-bunny-feedback-demo.mp4"), poster: asset("assets/my-bunny/feedback-video.jpg"), title: "My Bunny — Feedback", duration: "0:06" }} aspectRatio="9 / 16" posterLabel="Watch Feedback" defaultMuted={false} />
           </div>
-          <figure className={styles.reaction}>
-            <img src={asset("assets/my-bunny/bunny-sad.png")} width={296} height={385} loading="lazy" decoding="async" alt="Bunny reacts to an unsuitable choice with lowered ears and a sad expression" />
-            <figcaption>
-              <h3>Bunny reacts</h3>
-              <p>{wrap("An unsuitable choice makes Bunny look sad. A suitable one makes Bunny look happy.")}</p>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-      <section className={styles.section} id="app-game" aria-labelledby="app-game-heading">
-        <div className={styles.sectionIntro}>
-          <h2 id="app-game-heading">A Game Inside the Adoption Experience</h2>
-          <p>{wrap("Children open the care game with Start playing and return with Back to the app. The game stays available to revisit before or after adoption.")}</p>
-        </div>
-        <div className={styles.appSystem}>
-          <figure>
-            <Screen file="app-entry" alt="Enter the care game from the My Bunny app" />
-            <figcaption><h3>Start playing</h3><p>{wrap("Open the care game from the app.")}</p></figcaption>
-          </figure>
-          <figure>
-            <Screen file="completion" alt="Great job! The completion screen offers Back to the app" />
-            <figcaption><h3>Back to the app</h3><p>{wrap("Return to the app and play again whenever you want.")}</p></figcaption>
-          </figure>
+          <div className={styles.feedbackCopy}>
+            <div><h3>Make a choice</h3><p>A short prompt and a small set of illustrated items keep attention on the current task.</p></div>
+            <div><h3>See Bunny’s reaction</h3><p>Dragging an item to Bunny triggers a response. The expression connects the choice to the character.</p></div>
+            <div><h3>Understand and try again</h3><p>The feedback explains why the item is unsuitable, then returns the child to the same task.</p></div>
+          </div>
         </div>
       </section>
       <section className={styles.section} id="visual-ui" aria-labelledby="visual-ui-heading">
         <div className={styles.sectionIntro}>
-          <h2 id="visual-ui-heading">Visual &amp; UI System</h2>
-          <p>{wrap("A friendly character, clear prompts and consistent feedback keep each care task easy to follow.")}</p>
+          <h2 id="visual-ui-heading">A character and a world to care for.</h2>
+          <p>I illustrated Bunny, the care items and the controls as one visual family, with distinct colors and motifs for each stage.</p>
         </div>
-        <div className={`${styles.panel} ${styles.visualSystem}`}>
-          <div className={styles.interfaceStates}>
-            <figure><Screen file="feeding" alt="A short feeding prompt and illustrated food choices in context" /><figcaption className={styles.label}>01 / Make a choice</figcaption></figure>
-            <figure><Screen file="correct-choice" alt="That’s right! Positive playtime feedback explains the suitable toy" /><figcaption className={styles.label}>02 / Understand why</figcaption></figure>
-          </div>
-          <div className={styles.copy}>
-            <div className={styles.principle}><h3>One task at a time</h3><p>{wrap("A short prompt and a small set of illustrated items focus attention on the current care task.")}</p></div>
-            <div className={styles.principle}><h3>A familiar rhythm</h3><p>{wrap("The same character, action area and feedback pattern connect feeding, cleaning and playtime.")}</p></div>
-          </div>
+        <div className={styles.visualSystem}>
+          <figure>
+            <div className={`${styles.artPanel} ${styles.expressions}`}>
+              {expressions.map(([file, alt, height]) => <img key={file} src={asset(`assets/my-bunny/${file}.png`)} alt={alt} width={174} height={height} loading="lazy" decoding="async" />)}
+            </div>
+            <figcaption><h3>Expressions that give Bunny a voice</h3><p>Changes in the ears, eyes and mouth make the character’s reactions visible.</p></figcaption>
+          </figure>
+          <figure>
+            <div className={`${styles.artPanel} ${styles.buttonStates}`}>
+              <figure><img src={asset("assets/my-bunny/button-default.png")} alt="The light purple default button artwork" width={634} height={210} loading="lazy" decoding="async" /><figcaption>Default</figcaption></figure>
+              <figure><img src={asset("assets/my-bunny/button-pressed.png")} alt="The darker pressed button artwork" width={634} height={210} loading="lazy" decoding="async" /><figcaption>Pressed</figcaption></figure>
+            </div>
+            <figcaption><h3>Controls with a visible response</h3><p>Light and dark button states show when a control is pressed.</p></figcaption>
+          </figure>
+        </div>
+        <div className={styles.careArtwork}>
+          {objects.map(([file, title, alt, width, height]) => <figure key={file}>
+            <div className={styles.objectArt}><img src={asset(`assets/my-bunny/${file}.png`)} alt={alt} width={width} height={height} loading="lazy" decoding="async" /></div>
+            <figcaption>{title}</figcaption>
+          </figure>)}
         </div>
       </section>
       <section className={styles.section} id="prototype" aria-labelledby="prototype-heading">
-        <div className={styles.sectionIntro}>
-          <h2 id="prototype-heading">Built in Unity</h2>
-          <p>{wrap("Built in Unity, the playable mini-game brings together three care stages, drag-and-match interactions and explanatory feedback.")}</p>
-        </div>
-        <MyBunnyPrototype ref={player} />
+        <MyBunnyPrototype ref={player} onPlay={() => setPlaying(true)} />
       </section>
     </div>
     {playing && <MyBunnyGameDialog onClose={() => setPlaying(false)} />}
+    {artworkOpen && <MyBunnyArtworkDialog onClose={() => setArtworkOpen(false)} />}
   </article>;
 }

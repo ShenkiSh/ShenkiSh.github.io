@@ -289,6 +289,30 @@ recording. Play My Bunny opens the separate, actual Unity browser export documen
 in `../games/my-bunny/README.md`. The shared back arrow is reused from
 `numi/imgArrowLeft.svg`.
 
+### My Bunny refinement — October 1, 2026
+
+These additional assets are original exports from Portfolio Figma
+`NNjB6Gey6DtLbO1ZzQV51g`, page `970:590` (`תיק עבודות חדש - אתר`).
+No artwork was generated or redrawn.
+
+| Local file under `my-bunny/` | Original node | Source |
+| --- | --- | --- |
+| `desk-mockup.png` | `970:994` | Complete 1920×1080 slide 23 artwork; presentation arrows and Back to Summary hidden in a temporary export copy |
+| `character-happy.png` | `970:2823` | Original character artwork from slide 21 |
+| `character-sad.png` | `970:2748` | Original lowered-ear expression |
+| `character-smile.png` | `970:2708` | Original smiling expression |
+| `character-blink.png` | `970:2795` | Original closed-eye expression |
+| `care-food.png` | `970:2392` | Original grouped food illustrations and motif |
+| `care-cleaning.png` | `970:2453` | Original grouped cleaning illustrations and motif |
+| `care-play.png` | `970:2589` | Original grouped toy illustrations and motif |
+| `button-default.png` | `970:2856` | Original 634×210 button image |
+| `button-pressed.png` | `970:2857` | Original 634×210 pressed button image |
+
+All PNG bytes are saved from Figma without cropping or recoloring. Temporary mockup
+copies `1683:5325` and `1683:5343` were removed after export; source slide 23 and
+all its original children remain visible and unchanged. Existing films, game
+builds and earlier image assets are preserved.
+
 ## Complete family-app and gameplay recordings — September 24
 
 The following are full-length web copies of Shani's explicitly selected Desktop

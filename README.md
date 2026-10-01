@@ -580,46 +580,43 @@ footer retains the shared top divider; the original app artwork is unchanged.
 
 ### My Bunny case study
 
-`/#/my-bunny` implements the approved Figma frame `1399:5086` in the Portfolio
-file. It presents a rabbit adoption app with a reusable educational care game,
-following the idea → three care stages → interaction loop → explanatory feedback →
-app/game relationship → UI in context → Unity recording sequence. The existing
-`my-bunny.html` link remains compatible.
+`/#/my-bunny` presents an educational rabbit-care game, with the adoption app as
+context. The refined page follows Shani’s approved sequence: original desk mockup,
+three care clips, one interaction/feedback example, original visual artwork and a
+single area for the full recording and playable Unity game. The existing
+`my-bunny.html` link and the `idea`, `interaction` and `app-game` anchors still work.
+The four chapter links are Care stages, Feedback, Visual design and Try it.
 
-The case study shares the site header, chapter navigation, action styles and compact
-signature with the completed case studies. It uses Satoshi/Anta and NUMI’s 1680px
-container, 4/8 column split, column gaps and section spacing. Headings and copy sit
-on the left; care clips, feedback, app screens and the Unity recording align on
-the right. Sections stack below 1024px, with 20px side margins at 760px and below.
-Original Figma media and phone recordings remain complete on desktop and mobile.
-HeadEase closes the page as a compact link to the headache-support app with a
-connected smartwatch.
+The title/contribution layout, 1680px container, Satoshi/Anta type, restrained
+captions and rounded media follow NUMI, Happily and TENKI. The hero uses the complete
+16:9 mockup from Portfolio Figma slide 23 (`970:994`) on `תיק עבודות חדש - אתר`.
+Only presentation navigation was omitted from an export-only copy; the original
+remains unchanged. The mockup opens enlarged with keyboard access, Escape, a
+visible close control and focus restoration. Original character expressions,
+care-item groups and button states from slide 21 (`970:2338`) appear in the visual
+section. Provenance is in `frontend/public/assets/README.md`.
 
 The three care stages use 18-, 12- and 12-second clips from the original recording.
-A six-second feedback clip shows the drag, Bunny's sad expression, the explanatory
-popup and return to the task. Each portrait player starts on request with the original
-soundtrack, supports pause/seeking/mute/fullscreen/retry, and pauses offscreen.
-Only one film plays at a time; the same playback coordination is shared with NUMI.
-The original sad-character illustration also remains beside the feedback explanation.
-The app/game connection uses the actual **Start playing** and **Back to the app**
-screens with captions. My Bunny's chapter navigation has no horizontal divider;
-its active-section indication and keyboard focus remain available.
+The feedback example pairs its six-second clip with concise explanations of the
+choice, character reaction and retry. Repeated flow diagrams, entry screens and
+separate interaction/UI explanations are consolidated. Portrait films keep their
+full frames; the care row scrolls horizontally on phones. Each player starts on
+request with original sound, supports pause/seeking/mute/fullscreen/retry and
+pauses offscreen. Only one film plays at a time.
 
-The hero pairs **Play My Bunny** with **Watch Gameplay**. Play opens the actual Unity
-game in a portrait dialog, downloaded only on request, with mouse/touch input,
-loading/retry, sound, fullscreen and close controls. Escape returns to the case study;
-Tab from the canvas reaches the close control. Closing restores focus and position.
-The source game includes the seven original After Effects soundtrack clips, triggered
-by player actions, and thin black outlines on white instructions and headings.
-The game export comes from a separate `MyBunnyWebExport` workspace, leaving the
-original platform settings and the independently open NUMI editor unchanged. Rebuild instructions
-are in `frontend/public/games/my-bunny/README.md`.
+**Explore the game** leads to Try it. **Watch Gameplay** brings the 1:08 recording
+into view and starts at 0:00 with sound. **Play My Bunny**, beside that recording,
+opens the actual Unity game in a portrait dialog, downloaded only on request,
+with mouse/touch input, loading/retry, sound, fullscreen and close controls.
+Escape returns to the case study and Tab leaves the canvas for the close control.
+Closing restores focus and position. The source game retains its seven original
+After Effects soundtrack clips and thin black outlines on white instructions.
+The separate export workspace and rebuild instructions remain documented in
+`frontend/public/games/my-bunny/README.md`. HeadEase is the next project.
 
-**Watch Gameplay** brings the 1:08 recording into view and starts from 0:00 with
-sound enabled. The Unity section contains the shared `CaseVideo` player
-without repeated launch/watch buttons. It starts paused, loads on request, and
-supports seeking, mute, fullscreen, offscreen/background pausing and retry.
-Project-specific visual redesign remains deferred.
+The refinement is on `codex/my-bunny-case-study-refinement`, starting from `994c0a4`
+on `codex/tenki-case-study-refinement`. The prior site remains available on that
+branch. Feature pushes do not deploy the public site.
 
 ## Structure
 

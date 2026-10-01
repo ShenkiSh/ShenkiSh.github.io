@@ -1,23 +1,32 @@
 import { expect, test } from "./fixtures";
 
-test("My Bunny presents the adoption app and care game with complete original media", async ({ page }) => {
+test("My Bunny presents the care game with original mockup and visual artwork", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/my-bunny");
   await expect(page).toHaveTitle("My Bunny | Shani Shlomov");
   await expect(page.getByRole("heading", { name: "My Bunny", exact: true })).toBeVisible();
-  await expect(page.getByText("Rabbit Adoption App & Educational Mini-Game", { exact: true })).toBeVisible();
+  await expect(page.getByText("Educational Care Game", { exact: true })).toBeVisible();
   await expect(page.getByText(/placeholder|Mobile Game|Characters \/ Assets/i)).toHaveCount(0);
   await expect(page.locator("#stages figure")).toHaveCount(3);
   for (const image of await page.locator("article img").all()) {
     await image.scrollIntoViewIfNeeded();
     await expect.poll(() => image.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   }
-  const heroImages = page.locator('header[aria-label="My Bunny introduction"] figure img');
-  const app = (await heroImages.nth(0).boundingBox())!;
-  const game = (await heroImages.nth(1).boundingBox())!;
-  expect(Math.abs(app.width - game.width)).toBeLessThan(1);
-  expect(Math.abs(app.height - game.height)).toBeLessThan(1);
-  expect(Math.abs(app.y - game.y)).toBeLessThan(1);
+  const mockup = page.getByRole("button", { name: "Enlarge the My Bunny mockup", exact: true });
+  const image = mockup.getByRole("img");
+  const box = (await image.boundingBox())!;
+  expect(box.width / box.height).toBeCloseTo(16 / 9, 2);
+  expect(await image.evaluate(el => getComputedStyle(el).objectFit)).toBe("contain");
+  await mockup.focus();
+  const scroll = await page.evaluate(() => scrollY);
+  await page.keyboard.press("Enter");
+  const dialog = page.getByRole("dialog", { name: "My Bunny", exact: true });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("button", { name: "Close artwork" })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toHaveCount(0);
+  await expect(mockup).toBeFocused();
+  expect(await page.evaluate(() => scrollY)).toBeCloseTo(scroll, 0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole("link", { name: "HeadEase", exact: false }).click();
   await expect(page).toHaveURL(/#\/headease$/);
@@ -29,7 +38,7 @@ test("chapter links work with the keyboard and legacy/deep links retain the righ
   await page.goto("/my-bunny.html#feedback");
   const nav = page.getByRole("navigation", { name: "My Bunny sections" });
   await expect(nav.getByRole("link", { name: "Feedback", exact: true })).toHaveAttribute("aria-current", "location");
-  for (const [label, id] of [["Idea", "idea"], ["Care Stages", "stages"], ["Interaction", "interaction"], ["Feedback", "feedback"], ["App + Game", "app-game"], ["Unity", "prototype"]]) {
+  for (const [label, id] of [["Care stages", "stages"], ["Feedback", "feedback"], ["Visual design", "visual-ui"], ["Try it", "prototype"]]) {
     const link = nav.getByRole("link", { name: label, exact: true });
     await link.focus();
     await page.keyboard.press("Enter");
@@ -42,6 +51,11 @@ test("chapter links work with the keyboard and legacy/deep links retain the righ
   }
   await page.reload();
   await expect(page.locator("#prototype")).toBeFocused();
+  for (const id of ["idea", "interaction", "app-game"]) {
+    await page.goto(`/#/my-bunny#${id}`);
+    await expect(page.locator(`#${id}`)).toBeFocused();
+    await expect(page.locator(`#${id}`).getByRole("heading").first()).toBeInViewport();
+  }
   await page.getByRole("link", { name: "Back to Work", exact: true }).click();
   await expect(page).toHaveURL(/#\/#work$/);
   await expect(page.locator("#work")).toBeInViewport();
@@ -51,7 +65,8 @@ test("the hero gameplay action starts the full film with sound and retains acces
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/my-bunny");
   const hero = page.locator('header[aria-label="My Bunny introduction"]');
-  await expect(hero.getByRole("button", { name: "Play My Bunny", exact: true })).toBeVisible();
+  await expect(hero.getByRole("link", { name: "Explore the game", exact: true })).toHaveAttribute("href", /#prototype$/);
+  await expect(page.locator("#prototype").getByRole("button", { name: "Play My Bunny", exact: true })).toHaveCount(1);
   await expect(hero.getByRole("button", { name: "Watch Gameplay", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Watch Full Prototype" })).toHaveCount(0);
   await expect(page.locator("#prototype").getByRole("button", { name: "Watch Gameplay" })).toHaveCount(0);
