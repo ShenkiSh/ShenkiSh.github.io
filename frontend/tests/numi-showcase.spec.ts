@@ -89,11 +89,13 @@ test("the enlarged gallery supports horizontal swipes on touch screens", async (
   const cdp = await page.context().newCDPSession(page);
   const x = box.x + box.width * .8, y = box.y + box.height / 2;
   await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x, y }] });
-  await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: x - 90, y }] });
+  for (let step = 1; step <= 6; step++) {
+    await page.waitForTimeout(35);
+    await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: x - step * 15, y }] });
+  }
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await expect(image).toHaveAttribute("src", /event-03\.jpg$/);
   await cdp.detach();
-  await page.waitForTimeout(500);
   console.log("BEFORE CLOSE", await dialog.getByRole("button", { name: "Close media", exact: true }).boundingBox());
   await dialog.getByRole("button", { name: "Close media", exact: true }).tap();
   try { await expect(dialog).toHaveCount(0); }
