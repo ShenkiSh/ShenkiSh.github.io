@@ -10,6 +10,7 @@ export interface NumiFilm {
 }
 
 export const films = {
+  interview: { id: "interview", title: "NUMI — Channel 10 interview", duration: "8:28", poster: "imgNumiActualCaptureInterview.png" },
   trailer: { id: "trailer", title: "NUMI — Gameplay Trailer", duration: "0:48", poster: "trailer.jpg" },
   childhood: { id: "childhood-full", title: "Childhood — Story & Full Playthrough", duration: "7:33", poster: "imgNumiChildhoodPlayableEntryPoster.png" },
   teenage: { id: "memory-teenage", title: "Teenage Years — gameplay preview", duration: "0:09", poster: "memory-2.jpg" },

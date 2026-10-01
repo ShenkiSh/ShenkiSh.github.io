@@ -180,7 +180,7 @@ test("the event image enlarges and the next project returns to a real case study
   await page.goto("/#/numi");
   const opener = page.getByRole("button", { name: "Enlarge public playtesting photo" });
   await opener.click();
-  await expect(page.getByRole("dialog").getByRole("img")).toHaveAttribute("src", /imgSourceArtworkGroup1100\.png$/);
+  await expect(page.getByRole("dialog").getByRole("img")).toHaveAttribute("src", /event-01\.jpg$/);
   await page.getByRole("button", { name: "Close media" }).click();
   await expect(opener).toBeFocused();
   await expect(page.getByRole("link", { name: "Channel 10 interview", exact: false })).toHaveAttribute("href", "https://youtu.be/jpuC4LFZNx4");

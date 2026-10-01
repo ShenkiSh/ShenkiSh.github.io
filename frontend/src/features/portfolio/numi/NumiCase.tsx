@@ -5,6 +5,7 @@ import { NumiMemories } from "./NumiMemories";
 import { NumiLevelDesign } from "./NumiLevelDesign";
 import { NumiFeedback } from "./NumiFeedback";
 import { NumiVisualDevelopment } from "./NumiVisualDevelopment";
+import { NumiShowcase } from "./NumiShowcase";
 import { NumiVideo } from "./NumiVideo";
 import { useExclusiveCaseMedia } from "../useExclusiveCaseMedia";
 import { NumiMediaDialog, type NumiOverlay } from "./NumiMediaDialog";
@@ -41,18 +42,7 @@ export function NumiCase() {
       <NumiVisualDevelopment />
       <NumiLevelDesign onWatch={watchPlaythrough} />
       <NumiFeedback />
-      <section className={`${styles.section} ${styles.closing}`} id="players" aria-labelledby="players-heading">
-        <div className={styles.playersGrid}>
-          <div className={styles.copy}><h2 id="players-heading">From screen to players.</h2><p>Players of different ages completed all five memories at Animatheque, Tel Aviv Cinematheque.</p>
-            <a className={styles.textLink} href="https://youtu.be/jpuC4LFZNx4" target="_blank" rel="noreferrer">Channel 10 interview</a>
-          </div>
-          <figure><button className={styles.photoButton} onClick={() => setMedia({ kind: "image", file: "imgSourceArtworkGroup1100.png", title: "NUMI at Animatheque, Tel Aviv Cinematheque" })} aria-label="Enlarge public playtesting photo"><img src={numiAsset("imgSourceArtworkGroup1100.png")} alt="Visitors playing NUMI with a controller at the public showcase" loading="lazy" width="1104" height="548" /></button><figcaption>NUMI at Animatheque, Tel Aviv Cinematheque.</figcaption></figure>
-        </div>
-        <dl className={styles.credits}>
-          <div><dt>My contribution</dt><dd>Game &amp; Level Design · Narrative Design · Game UX/UI · Visual Development · Unity Implementation</dd></div>
-          <div><dt>Collaborators</dt><dd>Freelance Programmer · Music Composer</dd></div>
-        </dl>
-      </section>
+      <NumiShowcase onOpenGallery={index => setMedia({ kind: "gallery", index })} />
     </div>
     {media ? <NumiMediaDialog media={media} onClose={() => setMedia(null)} /> : null}
   </article>;

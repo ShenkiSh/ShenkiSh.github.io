@@ -333,7 +333,7 @@ the original simultaneous prompts before playback. This documents the design cha
 no unverified playtest metrics or improved outcomes are claimed.
 
 Five sticky chapter links lead to the idea, visual design, level design, UX/UI
-and players/credits. The previous section anchors remain available. The visual
+and Press & Players. The previous section anchors remain available. The visual
 section is always visible, with character, environment, object and narrative
 studies, rather than a collapsed appendix. Character/environment studies and
 comparisons stack on phones. Visual-study captions use a consistent smaller type
@@ -343,11 +343,20 @@ A prominent **Watch the full Childhood playthrough**
 button with its 7:33 duration sits alongside **Play in browser** in the demo area.
 Decorative diagonal arrows have been removed from NUMI's images and actions;
 the approved hero layout and its existing navigation remain unchanged.
-The public showcase image still enlarges, and the Channel 10 interview is retained.
+The closing section leads with **NUMI on Channel 10**, a large native player with
+the genuine interview poster and an explicit **Watch the interview** control. The
+complete 8:28 Hebrew interview loads only on play and starts with sound; YouTube
+remains a secondary link. Below it, the event cover and five thumbnails open an
+enlarged gallery of genuine Cinematheque photos. Full photos retain their framing;
+the thumbnail strip uses crops. The gallery supports previous/next controls,
+Left/Right/Home/End keys, touch swipes, photo-load retry, Escape/close and restoration
+of the opener's focus and page position. Thumbnail navigation scrolls only its
+horizontal strip, keeping the dialog's close control visible in short viewports.
 The project footer returns to Work or continues to We Live Happily Here.
 
 Shared video controls retain seek, play/pause, sound and fullscreen, keyboard/touch
-access, loading/retry and reduced-motion behavior. Films start paused and muted;
+access, loading/retry and reduced-motion behavior. Films start paused and muted
+except the interview, whose sound starts on the visitor's play action;
 only one plays at a time, and offscreen/background players pause. The full film
 opens a dialog with Escape/close, focus restoration and preserved page position.
 

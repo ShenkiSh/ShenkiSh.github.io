@@ -526,3 +526,27 @@ static reduced-motion/touch fallback. The original three-film Home hero is uncha
 so the before/after comparison is understandable before playing either clip.
 It is a JPEG frame extraction without cropping or artwork changes; the original
 video and existing posters are preserved.
+
+## NUMI interview and exhibition gallery — October 1, 2026
+
+`numi/interview.mp4` is the complete 508.52-second recording from Shani's supplied
+`סרטונים של פרוקטים/Shani TV10 - Figma Ready - Trimmed.mp4`. The source is unchanged.
+This web copy uses H.264 at 1280 × 720, the original 25 fps, CRF 24, yuv420p,
+AAC audio at 128 kbps, and fast-start metadata. It is 47,821,752 bytes, down from
+the 152,345,561-byte source; no interview content or audio has been removed.
+The existing `imgNumiActualCaptureInterview.png` supplies the genuine studio
+poster. Playback starts on request, with sound. The available English subtitle
+file belongs to a separate short teaser, so it is not attached to this full film.
+
+Five photos come from Shani's `תמונות מהסנימטק` folder. Full JPEGs fit within
+1920 × 1920 without upscaling, preserve the complete source frame and omit embedded
+metadata. The corresponding `-thumb.jpg` files are 320 × 200 crops used only in
+the thumbnail strips. The original event cover remains on the page.
+
+| Output in `numi/` | Supplied photo |
+| --- | --- |
+| `event-01.jpg` | `Group 1.png` |
+| `event-02.jpg` | `IMG-20260804-WA0013 1.png` |
+| `event-03.jpg` | `IMG-20260804-WA0053 1.png` |
+| `event-04.jpg` | `IMG-20260804-WA0315 1.png` |
+| `event-05.jpg` | `IMG_2964 1.png` |
