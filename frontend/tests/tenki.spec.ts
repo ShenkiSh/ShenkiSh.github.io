@@ -194,3 +194,44 @@ test("consolidated chapters preserve earlier concept and interface deep links", 
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
+
+test("each app screen opens at reading size and closes back to its place in the flow", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/#/tenki#product-flow");
+  const flow = page.getByRole("list", { name: "The five screens of the TENKI app" });
+  const screens = flow.getByRole("button");
+  await expect(screens).toHaveCount(5);
+  for (const launch of await screens.all()) {
+    await launch.scrollIntoViewIfNeeded();
+    await launch.focus();
+    const source = await launch.getByRole("img").getAttribute("src");
+    const scroll = await page.evaluate(() => scrollY);
+    const flowScroll = await flow.evaluate(el => el.scrollLeft);
+    await page.keyboard.press("Enter");
+    const dialog = page.getByRole("dialog");
+    const close = dialog.getByRole("button", { name: "Close artwork" });
+    await expect(close).toBeFocused();
+    const image = dialog.getByRole("img");
+    await expect(image).toHaveAttribute("src", source!);
+    await expect.poll(() => image.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)).toBe(true);
+    const imageBox = (await image.boundingBox())!;
+    expect(imageBox.width).toBeGreaterThanOrEqual(300);
+    expect(imageBox.width / imageBox.height).toBeCloseTo(412 / 917, 2);
+    await dialog.evaluate(el => { el.scrollTop = el.scrollHeight; });
+    await expect(close).toBeInViewport();
+    expect(await close.evaluate(el => {
+      const box = el.getBoundingClientRect();
+      return el.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2));
+    })).toBe(true);
+    await close.click();
+    await expect(dialog).toHaveCount(0);
+    await expect(launch).toBeFocused();
+    expect(await page.evaluate(() => scrollY)).toBeCloseTo(scroll, 0);
+    expect(await flow.evaluate(el => el.scrollLeft)).toBeCloseTo(flowScroll, 0);
+  }
+  await screens.first().scrollIntoViewIfNeeded();
+  await screens.first().click();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(screens.first()).toBeFocused();
+});

@@ -11,12 +11,12 @@ export function TenkiArtworkDialog({ artwork, onClose }: { artwork: TenkiArtwork
     dialog?.showModal();
     return () => { dialog?.close(); opener?.focus({ preventScroll: true }); };
   }, []);
-  return <dialog ref={ref} className={styles.dialog} aria-labelledby="tenki-artwork-title" onCancel={onClose}
+  return <dialog ref={ref} className={styles.dialog} data-portrait={artwork.height > artwork.width} aria-labelledby="tenki-artwork-title" onCancel={onClose}
     onClick={event => { if (event.target === event.currentTarget) onClose(); }}>
     <div className={styles.heading}>
       <h2 id="tenki-artwork-title">{artwork.title}</h2>
       <button type="button" onClick={onClose} aria-label="Close artwork">Close</button>
     </div>
-    <img src={tenkiAsset(artwork.file)} width="1920" height="1080" alt={artwork.alt} />
+    <img src={tenkiAsset(artwork.file)} width={artwork.width} height={artwork.height} alt={artwork.alt} />
   </dialog>;
 }

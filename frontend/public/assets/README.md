@@ -29,6 +29,12 @@ the application's public name is TENKI.
 - `screen-1.png` through `screen-5.png`: complete 412:917 phone viewports from
   product-flow group `1303:12605`, exported at 2×. Source app screens are
   `1333:30894`, `1345:44023`, `1333:32633`, `1333:38247`, and `1333:33062`.
+- `weekly-row-original.png`: complete row `1333:21726`, 347×120, from
+  `איקו מקורי` (`1333:21142`). The website restores its original parent frame's
+  `#e0d0b2` background behind the transparent export.
+- `weekly-row-selected.png`: complete selected-day row `1360:46392`, 364×155,
+  from `TENKI - App` (`545:468`). Both rows were downloaded with Figma's export
+  defaults and preserve the original typography and artwork without modification.
 - `nihon-buyo.png` / `botanical-garden.png`: reference nodes `1303:21030` /
   `1303:21032`, with artist attribution retained on the page.
 - `sun.svg`, `sakura.svg`, `location-icon.svg`, `picnic-icon.png`: original nodes

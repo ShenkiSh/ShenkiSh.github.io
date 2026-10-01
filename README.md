@@ -406,13 +406,22 @@ visible close controls and focus restoration. Asset provenance is in
 `frontend/public/assets/README.md`.
 
 The artist references and 24-season concept form one introduction. Five complete
-screens appear once, each with a nearby action caption. Three focused visual-design
-examples connect geometry, color and navigation to the interface. Custom numerals
-and a forecast row lead into the picnic mockups, showing the same identity across
+screens appear once, with captions explaining the home-screen picnic suggestion
+and the shared weather/map context. Each opens at phone reading width in a
+scrollable portrait dialog with a sticky close control and focus restoration.
+The introduction leads with the user benefit: checking weather and finding a
+seasonal reason to go outside. Three focused visual-design examples explain the
+reused sun symbol, location labels and familiar navigation meanings.
+Custom numerals and an original/selected forecast-row comparison lead into the
+picnic mockups, showing the same identity across
 screens and physical-product concepts. There are no numbered chapters or section
 rules. The shared 1680px container, Anta/Satoshi type, black/lavender palette and
 rounded imagery match the other refined cases. The flow scrolls within its own
 row on narrow screens; the rest of the content stacks.
+
+The forecast comparison uses actual material from the `איקו מקורי` and `TENKI - App`
+pages in Portfolio: the original row and the updated selected-day highlight.
+It explains the visible change without claiming user testing or measured results.
 
 Try it groups the existing silent app demonstration and draggable map at equal
 preview heights. The demo plays only when visible, pauses in background tabs,

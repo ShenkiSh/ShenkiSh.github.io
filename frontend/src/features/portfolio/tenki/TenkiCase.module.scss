@@ -1,6 +1,7 @@
 .page {
   --tenki-gap: clamp(24px, 3.333vw, 64px);
   --tenki-section-space: clamp(56px, 5.833vw, 112px);
+  --tenki-forecast-paper: #e0d0b2;
   font-family: Satoshi, Arial, sans-serif;
   font-size: clamp(16px, 1.042vw, 20px);
   line-height: 1.6;
@@ -25,7 +26,7 @@
 .muted { color: var(--home-footer-muted); }
 .heroActions { display: flex; flex-wrap: wrap; gap: 16px; }
 .heroArtwork { grid-column: 1 / -1; }
-.artworkButton { display: block; width: 100%; padding: 0; border: 0; border-radius: var(--home-radius); overflow: hidden; background: transparent; cursor: zoom-in; }
+.artworkButton, .screenButton { display: block; width: 100%; padding: 0; border: 0; border-radius: var(--home-radius); overflow: hidden; background: transparent; cursor: zoom-in; }
 .artworkButton img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
 .chapter { padding-block: var(--tenki-section-space); }
 .chapter, .concept, .chapterHeading { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
@@ -57,9 +58,13 @@
 .principleArt { height: clamp(200px, 15.625vw, 300px); display: grid; grid-template-rows: minmax(0, 1fr); place-items: center; }
 .principleArt img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
 .graphicLanguage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tenki-gap); }
-.numerals, .forecast { height: clamp(200px, 15.625vw, 300px); display: flex; align-items: center; gap: 24px; }
+.numerals { height: clamp(200px, 15.625vw, 300px); display: flex; align-items: center; gap: 24px; }
 .numerals img { min-width: 0; flex: 1 1 0; max-width: calc((100% - 48px) / 3); max-height: 100%; object-fit: contain; }
-.forecast img { max-height: 100%; object-fit: contain; }
+.selectionComparison { height: clamp(200px, 15.625vw, 300px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-content: center; }
+.selectionComparison figcaption { padding-top: 12px; font-size: 14px; }
+.rowArtwork { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 364 / 155; background: var(--tenki-forecast-paper); }
+.rowArtwork img { width: 100%; object-fit: contain; }
+.originalRow img { width: 95.2%; }
 .brandWorld { margin-top: 48px; }
 .tryGrid { --tenki-preview-height: 550px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tenki-gap); }
 .tryItem { display: grid; grid-template-columns: minmax(0, calc(var(--tenki-preview-height) * 560 / 1186)) minmax(0, 1fr); gap: 24px; align-items: start; }
@@ -69,6 +74,7 @@
 .tryCopy p { color: var(--home-footer-muted); font-size: clamp(15px, .938vw, 18px); }
 .tryCopy a { max-width: 100%; text-align: center; }
 @media (max-width: 1100px) {
+  .graphicLanguage { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .flow { grid-template-columns: repeat(5, minmax(220px, 1fr)); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; }
   .flow li { scroll-snap-align: start; }
   .tryItem { grid-template-columns: minmax(0, 1fr); gap: 20px; }
@@ -90,8 +96,9 @@
   .principles { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .principleArt { height: 200px; justify-items: start; }
   .principleArt img { max-width: min(100%, 400px); object-position: left center; }
-  .graphicLanguage { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .numerals, .forecast { height: 180px; }
+  .numerals { height: 180px; }
+  .selectionComparison { height: auto; grid-template-columns: minmax(0, 1fr); }
+  .rowArtwork { max-width: 364px; }
   .brandWorld { margin-top: 36px; }
 }
 @media (max-width: 700px) {
