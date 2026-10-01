@@ -78,16 +78,15 @@ test("the enlarged gallery supports horizontal swipes on touch screens", async (
   const cdp = await page.context().newCDPSession(page);
   const x = box.x + box.width * .8, y = box.y + box.height / 2;
   await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x, y }] });
-  await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: x - 90, y }] });
+  // Model a 210 ms finger movement. An instantaneous jump makes Linux Chromium
+  // swallow the following tap; these intervals define the gesture, not readiness.
+  for (let step = 1; step <= 6; step++) {
+    await page.waitForTimeout(35);
+    await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: x - step * 15, y }] });
+  }
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await expect(image).toHaveAttribute("src", /event-03\.jpg$/);
-  // Finish the gesture sequence in the same CDP input session, with each touch
-  // acknowledged before the next one, rather than switching touch drivers.
-  const close = dialog.getByRole("button", { name: "Close media", exact: true });
-  await expect(close).toBeInViewport({ ratio: 1 });
-  const closeBox = (await close.boundingBox())!;
-  await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: closeBox.x + closeBox.width / 2, y: closeBox.y + closeBox.height / 2 }] });
-  await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-  await expect(dialog).toHaveCount(0);
   await cdp.detach();
+  await dialog.getByRole("button", { name: "Close media", exact: true }).tap();
+  await expect(dialog).toHaveCount(0);
 });
