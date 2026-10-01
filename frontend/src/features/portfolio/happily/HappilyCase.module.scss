@@ -27,7 +27,6 @@
 .section, .chapter { padding-block: var(--happily-space); }
 .section, .chapter, .cooperation, .flowWatch, .appExperience, .gamePlayer, .film { scroll-margin-top: calc(var(--home-header-height) + var(--case-chapter-height, 74px) + 24px); }
 .section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: var(--happily-gap); align-items: center; }
-.chapter { border-top: 1px solid var(--home-rule); }
 .chapterHeading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--happily-gap); align-items: end; margin-bottom: 40px; }
 .chapterHeading > p { max-width: 55ch; color: var(--home-footer-muted); }
 .copy { display: grid; gap: 20px; align-content: start; min-width: 0; }
