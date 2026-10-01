@@ -160,14 +160,17 @@ Space example explains the split-control design and shared result. Characters,
 customization and weekly rewards appear together once, with aligned captions.
 
 The 20-second overview stays inline. A clearly labeled **Watch the full app flow**
-button opens the complete 4:24 recording in a keyboard-accessible dialog, with sound,
-seeking, fullscreen and retry. The film is not mounted or requested before opening;
-closing removes it and restores focus without scrolling. The app and two equally
+button leads to the complete 4:24 recording in Try it, including the game and shared
+result. Its original landscape frame is visible beside the app description and
+**Try the App** button, with sound, seeking, fullscreen and retry. The video uses
+`preload="none"` and is requested only on play; opening the app pauses playback.
+The app and two equally
 prominent Unity players close the case, followed by a short closing reflection with
 its heading and first-person summary grouped in one column.
-Try it groups the app actions in a quiet inset and pairs each complete portrait recording
-with its game title, short description and named Play button. The game previews sit
-directly on the page, without oversized colored panels or duplicate jump buttons.
+Try it uses the same media, description and action treatment for the app and both
+games. The complete landscape app recording leads the group, with the two portrait
+game recordings below. All previews sit directly on the page, without colored panels
+or duplicate jump buttons; their original aspect ratios are preserved.
 The existing `two-users`, `cooperation`, `game-ui` and game anchors remain available.
 The emotional reset is presented as design intent, not a validated therapeutic result.
 
@@ -175,8 +178,9 @@ The refinement lives on `codex/happily-case-study-refinement`, based on the comp
 NUMI branch. The NUMI branch and `backup/portfolio-before-numi-2026-09-30` remain intact;
 feature pushes do not deploy the public site.
 
-**Try the App**, in both the hero and the interactive-app section, opens the same
-coded React prototype directly inside the case study. Parent and child appear
+The hero's **Try the App** button leads to the app preview in Try it, alongside the
+two Unity games. **Try the App** within that preview opens the coded React prototype
+directly inside the case study. Parent and child appear
 side by side at equal heights on desktop, with independent navigation. At widths
 up to 700px, compact אמא / הילד controls switch between the two views. Sending an
 invitation returns the parent to the family screen and delivers a notification

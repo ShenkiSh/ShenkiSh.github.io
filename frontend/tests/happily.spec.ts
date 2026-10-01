@@ -1,6 +1,6 @@
 import { expect, test } from "./fixtures";
 
-test("Happily opens the app directly and keeps its game actions reachable by keyboard", async ({ page }) => {
+test("Happily groups the app and games in Try it and keeps their actions reachable by keyboard", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/we-live-happily-here");
   await expect(page.getByRole("heading", { name: "We Live Happily Here", exact: true })).toBeVisible();
@@ -20,8 +20,14 @@ test("Happily opens the app directly and keeps its game actions reachable by key
   await page.getByRole("link", { name: "Explore the Personal Space prototype", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.locator("#unity-game-01")).toBeFocused();
-  const heroLaunch = page.locator("article > header").getByRole("button", { name: "Try the App", exact: true });
+  const heroLaunch = page.locator("article > header").getByRole("link", { name: "Try the App", exact: true });
   await heroLaunch.focus();
+  await page.keyboard.press("Enter");
+  const app = page.locator("#try-it #app-prototype");
+  await expect(app).toBeFocused();
+  await expect(app.getByRole("group", { name: "We Live Happily Here — Full App Flow video player" })).toBeVisible();
+  const appLaunch = app.getByRole("button", { name: "Try the App", exact: true });
+  await appLaunch.focus();
   const scrollBefore = await page.evaluate(() => scrollY);
   await page.keyboard.press("Enter");
   const dialog = page.getByRole("dialog", { name: "App Prototype" });
@@ -30,9 +36,8 @@ test("Happily opens the app directly and keeps its game actions reachable by key
   expect(await page.evaluate(() => scrollY)).toBeCloseTo(scrollBefore, 0);
   await dialog.getByRole("button", { name: "Close app prototype" }).click();
   await expect(dialog).toHaveCount(0);
-  await expect(heroLaunch).toBeFocused();
+  await expect(appLaunch).toBeFocused();
   expect(await page.evaluate(() => scrollY)).toBeCloseTo(scrollBefore, 0);
-  const app = page.locator("#app-prototype");
   await expect(app.getByRole("button", { name: "Try the App" })).toBeVisible();
   await expect(app.getByRole("link", { name: "Original Figma prototype" })).toHaveAttribute("href", /figma\.com\/proto\/NNjB6Gey6DtLbO1ZzQV51g\/Portfolio\?page-id=1457-5110/);
   await expect(app.getByRole("link", { name: "Original Figma prototype" })).toHaveAttribute("target", "_blank");
@@ -98,13 +103,16 @@ test("Happily shows the complete original mockup and equally prominent previews 
     expect(boxes[1].top).toBeCloseTo(boxes[0].top, 0);
     expect(boxes[1].left).toBeGreaterThan(boxes[0].left + boxes[0].width);
     await page.setViewportSize({ width: 768, height: 1024 });
-    const tablet = await page.locator("#try-it video").evaluateAll(videos => videos.map(video => {
+    const tablet = await page.locator('#try-it [id^="unity-game-"] video').evaluateAll(videos => videos.map(video => {
       const box = video.getBoundingClientRect();
       return { top: box.top, height: box.height };
     }));
     expect(tablet).toHaveLength(2);
     expect(tablet[0].top).toBeCloseTo(tablet[1].top, 0);
     expect(tablet[0].height).toBeCloseTo(tablet[1].height, 0);
+    const appFilm = await page.locator("#app-prototype video").boundingBox();
+    expect(appFilm!.width).toBeGreaterThan(500);
+    expect(appFilm!.width / appFilm!.height).toBeCloseTo(16 / 9, 2);
   }
 });
 

@@ -5,7 +5,7 @@ import { PortfolioLink } from "../PortfolioLink";
 import { useExclusiveCaseMedia } from "../useExclusiveCaseMedia";
 import { HappilyCharacters } from "./HappilyCharacters";
 import { HappilyExperience } from "./HappilyExperience";
-import { HappilyMediaDialog, type HappilyMedia } from "./HappilyMediaDialog";
+import { HappilyMediaDialog } from "./HappilyMediaDialog";
 import { HappilyAppDialog } from "./prototype/HappilyAppDialog";
 import { chapters, conflicts, familyFlow, happilyAsset, personalSpaceMedia, projectOverviewFilm } from "./happilyMedia";
 import actions from "../CaseActions.module.scss";
@@ -13,7 +13,7 @@ import styles from "./HappilyCase.module.scss";
 
 export function HappilyCase() {
   const [appOpen, setAppOpen] = useState(false);
-  const [media, setMedia] = useState<HappilyMedia | null>(null);
+  const [mediaOpen, setMediaOpen] = useState(false);
   useExclusiveCaseMedia();
   return <article className={styles.page}>
     <header className={`${styles.container} ${styles.hero}`}>
@@ -25,11 +25,11 @@ export function HappilyCase() {
         <p className={styles.lead}>Turning everyday sibling conflicts into a moment of playing together.</p>
         <p className={styles.muted}>I designed the concept, parent and child journeys, visual language and cooperative games, connecting the app experience to two Unity prototypes.</p>
         <div className={styles.heroActions}>
-          <button type="button" className={actions.primary} onClick={() => setAppOpen(true)}>Try the App</button>
+          <PortfolioLink className={actions.primary} href="#app-prototype">Try the App</PortfolioLink>
           <PortfolioLink className={actions.secondary} href="#try-it">Explore the games</PortfolioLink>
         </div>
       </div>
-      <button type="button" className={styles.heroImage} aria-label="Enlarge the family app mockup" onClick={() => setMedia("photo")}>
+      <button type="button" className={styles.heroImage} aria-label="Enlarge the family app mockup" onClick={() => setMediaOpen(true)}>
         <img src={happilyAsset("family-app-mockup.webp")} width="1920" height="1080" alt="The family app in use: a parent choosing players on a phone" fetchPriority="high" />
       </button>
     </header>
@@ -63,7 +63,7 @@ export function HappilyCase() {
             <h3 id="flow-watch-title">Follow the family journey</h3>
             <p>See how the invitation, game and feedback connect.</p>
           </div>
-          <button type="button" className={styles.flowWatchButton} aria-label="Watch the full app flow" onClick={() => setMedia("film")}>Watch the full app flow<span className={styles.duration}>4:24</span></button>
+          <PortfolioLink className={styles.flowWatchButton} href="#app-prototype">Watch the full app flow<span className={styles.duration}>4:24</span></PortfolioLink>
         </div>
       </section>
       <section className={styles.chapter} id="conflicts" aria-labelledby="conflicts-title">
@@ -111,7 +111,7 @@ export function HappilyCase() {
         <p>I connected the parent’s invitation, the children’s game and the shared feedback into one experience.</p>
       </section>
     </div>
-    {media && <HappilyMediaDialog media={media} onClose={() => setMedia(null)} />}
+    {mediaOpen && <HappilyMediaDialog onClose={() => setMediaOpen(false)} />}
     {appOpen && <HappilyAppDialog onClose={gameId => {
       setAppOpen(false);
       if (gameId) requestAnimationFrame(() => {

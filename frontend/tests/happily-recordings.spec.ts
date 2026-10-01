@@ -2,6 +2,7 @@ import { expect, test } from "./fixtures";
 
 const recordings = [
   { section: "project-overview", title: "How We Live Happily Here works", file: "we-live-happily-here-full", duration: 19.967 },
+  { section: "app-prototype", title: "We Live Happily Here — Full App Flow", file: "app-full-flow", duration: 263.6 },
   { section: "unity-game-01", title: "Personal Space — Gameplay Recording", file: "personal-space-recording", duration: 153.033 },
   { section: "unity-game-02", title: "Objects — Gameplay Recording", file: "objects-recording", duration: 130.867 },
 ] as const;

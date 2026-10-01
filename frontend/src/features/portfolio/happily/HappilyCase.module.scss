@@ -41,7 +41,7 @@
 .flowWatchCopy { display: grid; gap: 8px; }
 .flowWatchCopy h3 { font-weight: 500; line-height: 1.385; }
 .flowWatchCopy p { font-size: clamp(14px, .938vw, 18px); line-height: 1.6; color: var(--home-footer-muted); }
-.flowWatchButton { display: inline-flex; align-items: center; justify-content: center; gap: 18px; width: fit-content; max-width: 100%; min-height: 54px; padding: 14px 20px; border: 1px solid var(--home-heading); border-radius: 8px; background: transparent; color: var(--home-text); font: inherit; font-size: clamp(15px, 1.042vw, 20px); line-height: 1.5; text-align: left; }
+.flowWatchButton { display: inline-flex; align-items: center; justify-content: center; gap: 18px; width: fit-content; max-width: 100%; min-height: 54px; padding: 14px 20px; border: 1px solid var(--home-heading); border-radius: 8px; background: transparent; color: var(--home-text); font: inherit; font-size: clamp(15px, 1.042vw, 20px); line-height: 1.5; text-align: left; text-decoration: none; }
 .flowWatchButton:hover { background: var(--home-panel); }
 .duration { flex-shrink: 0; font-size: 13px; color: var(--home-heading); font-variant-numeric: tabular-nums; }
 .conflicts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
@@ -68,11 +68,8 @@
 .rewardMedia { min-height: 340px; display: grid; place-items: center; padding: 24px; border-radius: var(--home-radius); background: var(--home-panel); }
 .rewardMedia img { width: 200px; max-height: 340px; object-fit: contain; }
 .caption { display: grid; gap: 12px; max-width: 58ch; }
-.experienceBody { display: grid; gap: 40px; }
-.appExperience { display: grid; gap: 20px; border-radius: var(--home-radius); background: var(--home-feature); padding: 24px; }
-.appExperience .copy { gap: 8px; }
-.appExperience h3, .gameCopy h3 { font-weight: 500; line-height: 1.385; }
-.appExperience p, .gameCopy p { font-size: clamp(15px, .938vw, 18px); color: var(--home-footer-muted); }
+.gameCopy h3 { font-weight: 500; line-height: 1.385; }
+.gameCopy p { font-size: clamp(15px, .938vw, 18px); color: var(--home-footer-muted); }
 .appActions { display: flex; flex-wrap: wrap; gap: 12px; }
 .appActions button { cursor: pointer; }
 .gamePlayers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--happily-gap); }
@@ -81,6 +78,8 @@
 .gameCopy { grid-column: 2; grid-row: 1; display: grid; justify-items: start; align-content: start; gap: 16px; padding-top: 20px; min-width: 0; }
 .gameCopy p { max-width: 32ch; min-height: 3.2em; }
 .gameLaunch { justify-self: start; max-width: 100%; text-align: center; }
+.appExperience { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--happily-gap); }
+.appExperience p { max-width: 45ch; min-height: 0; }
 .reflection { display: grid; gap: 12px; max-width: 60ch; padding-bottom: 48px; }
 .reflection h2 { font-size: clamp(20px, 1.355vw, 26px); font-weight: 500; line-height: 1.385; letter-spacing: normal; }
 .reflection p { color: var(--home-footer-muted); }
@@ -96,6 +95,7 @@
   .gamePlayer { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .gameRecording { grid-column: auto; grid-row: auto; width: min(100%, calc(var(--game-recording-height) * 498 / 1079)); }
   .gameCopy { grid-column: auto; grid-row: auto; padding-top: 0; }
+  .appExperience .gameRecording { width: 100%; }
 }
 @media (max-width: 760px) {
   .container { width: calc(100% - 40px); }
@@ -116,7 +116,6 @@
   .customization { width: 100%; }
   .rewardMedia { min-height: 300px; }
   .rewardMedia img { height: 280px; }
-  .appExperience { padding: 20px; }
 }
 @media (max-width: 700px) {
   .gamePlayers { grid-template-columns: minmax(0, 1fr); gap: 40px; }

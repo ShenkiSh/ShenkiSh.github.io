@@ -1,40 +1,58 @@
 import { expect, test } from "./fixtures";
 
-test("full app film opens on request, plays exclusively and restores keyboard focus", async ({ page }) => {
+test("full app film is visible beside its prototype, plays on request and pauses for the app", async ({ page }) => {
   const requests: string[] = [];
   page.on("request", request => { if (request.url().endsWith("/app-full-flow.mp4")) requests.push(request.url()); });
   await page.goto("/#/we-live-happily-here");
   await expect(page.getByRole("heading", { name: "We Live Happily Here", exact: true })).toBeVisible();
-  await expect(page.locator('video[src$="app-full-flow.mp4"]')).toHaveCount(0);
+  const app = page.locator("#try-it #app-prototype");
+  const player = app.getByRole("group", { name: "We Live Happily Here — Full App Flow video player" });
+  const video = player.locator("video");
+  await expect(video).toHaveAttribute("preload", "none");
+  await expect(video).toHaveJSProperty("paused", true);
   expect(requests).toEqual([]);
   const overview = page.getByRole("group", { name: "How We Live Happily Here works video player" });
   await overview.getByRole("button", { name: "Play How We Live Happily Here works", exact: true }).click();
   await expect.poll(() => overview.locator("video").evaluate((el: HTMLVideoElement) => el.currentTime)).toBeGreaterThan(0);
-  const launch = page.getByRole("button", { name: "Watch the full app flow", exact: true });
+  const launch = page.locator("#two-users").getByRole("link", { name: /Watch the full app flow/ });
   await launch.focus();
-  const scroll = await page.evaluate(() => scrollY);
   await page.keyboard.press("Enter");
-  const dialog = page.getByRole("dialog", { name: "The full app flow" });
-  await expect(dialog).toBeVisible();
-  const video = dialog.locator("video");
+  await expect(app).toBeFocused();
+  await expect(player).toBeInViewport();
+  expect(requests).toEqual([]);
+  await player.getByRole("button", { name: "Play We Live Happily Here — Full App Flow", exact: true }).focus();
+  await page.keyboard.press("Enter");
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.currentTime)).toBeGreaterThan(.1);
   await expect(video).toHaveJSProperty("muted", false);
   expect(await video.evaluate((el: HTMLVideoElement) => el.duration)).toBeCloseTo(263.6, 0);
-  await dialog.getByRole("button", { name: "Mute", exact: true }).focus();
+  await player.getByRole("button", { name: "Mute", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(video).toHaveJSProperty("muted", true);
-  await dialog.getByRole("button", { name: "Pause", exact: true }).focus();
+  await player.getByRole("button", { name: "Pause", exact: true }).focus();
   await page.keyboard.press("Enter");
-  await dialog.getByRole("slider", { name: "Seek video" }).focus();
+  const seek = player.getByRole("slider", { name: "Seek video" });
+  await seek.focus();
   await page.keyboard.press("End");
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.currentTime)).toBeGreaterThan(262);
 
   await expect(overview.locator("video")).toHaveJSProperty("paused", true);
+  await page.keyboard.press("Home");
+  await player.getByRole("button", { name: "Play", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await expect(video).toHaveJSProperty("paused", false);
+  const appLaunch = app.getByRole("button", { name: "Try the App", exact: true });
+  await appLaunch.focus();
+  const scroll = await page.evaluate(() => scrollY);
+  await page.keyboard.press("Enter");
+  const dialog = page.getByRole("dialog", { name: "App Prototype" });
+  await expect(dialog).toBeVisible();
+  await expect(video).toHaveJSProperty("paused", true);
   await page.keyboard.press("Escape");
   await expect(dialog).toHaveCount(0);
-  await expect(launch).toBeFocused();
+  await expect(appLaunch).toBeFocused();
   expect(await page.evaluate(() => scrollY)).toBeCloseTo(scroll, 0);
-  await expect(page.locator('video[src$="app-full-flow.mp4"]')).toHaveCount(0);
+  await expect(video).toBeVisible();
+  await expect(video).toHaveJSProperty("paused", true);
 });
 
 test("the original photographic mockup enlarges without losing the reader's place", async ({ page }) => {
