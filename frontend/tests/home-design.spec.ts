@@ -12,7 +12,7 @@ test("Figma homepage uses the supplied compositions and keeps the three-project 
   await expect(page.getByRole("heading", { name: "Game UI & Visual Playground" })).toHaveCount(0);
   const gallery = page.locator("#more-work");
   await gallery.scrollIntoViewIfNeeded();
-  const names = ["HeadEase", "ReDream Lab", "Lollipop"];
+  const names = ["HeadEase", "ReDream Labs", "Lollipop"];
   await expect(gallery.getByRole("button", { name: /^Go to / })).toHaveCount(3);
   await expect(gallery).not.toContainText("Amberlia");
   for (const [index, name] of names.entries()) {
@@ -42,10 +42,10 @@ test("carousel advances automatically and holds the project while its preview is
   await gallery.scrollIntoViewIfNeeded();
   await page.mouse.move(0, 0);
   const active = gallery.locator('[data-position="current"]');
-  await expect(active).toContainText("ReDream Lab", { timeout: 6500 });
+  await expect(active).toContainText("ReDream Labs", { timeout: 6500 });
   await active.locator("[data-project-preview]").hover();
   await page.waitForTimeout(4200);
-  await expect(active).toContainText("ReDream Lab");
+  await expect(active).toContainText("ReDream Labs");
   await page.mouse.move(0, 0);
   await expect(active).toContainText("Lollipop", { timeout: 6500 });
 });

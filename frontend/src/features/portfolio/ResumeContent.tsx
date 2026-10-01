@@ -5,7 +5,7 @@ export function ResumeContent() {
   return (<>
 
 <div className={c("container utility-page")}>
-<header className={c("page-hero")}><PortfolioLink className={c("back-link")} href="index.html">← Home</PortfolioLink><h1>Resume</h1><p className={c("page-intro")}>Shani Shlomov · Game &amp; UI Designer</p></header>
+<header className={c("page-hero")}><PortfolioLink className={c("back-link")} href="index.html">← Home</PortfolioLink><h1>Resume</h1><p className={c("page-intro")}>Shani Shlomov · Game &amp; UX/UI Designer</p></header>
 <div className={c("resume-layout")}>
 <div><div className={c("placeholder")}>
 <span className={c("placeholder-name")}>Resume PDF</span>

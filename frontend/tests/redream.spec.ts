@@ -3,8 +3,8 @@ import { expect, test } from "./fixtures";
 test("ReDream opens directly from More Projects and presents the confirmed After Effects work", async ({ page, isMobile }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/#/");
-  await page.getByRole("button", { name: "Go to ReDream Lab", exact: true }).click();
-  const project = page.getByRole("link", { name: "View ReDream Lab project", exact: true });
+  await page.getByRole("button", { name: "Go to ReDream Labs", exact: true }).click();
+  const project = page.getByRole("link", { name: "View ReDream Labs project", exact: true });
   await expect(project).toHaveAttribute("href", "#/redream");
   if (isMobile) await project.tap();
   else { await project.focus(); await page.keyboard.press("Enter"); }
@@ -25,8 +25,8 @@ test("ReDream opens directly from More Projects and presents the confirmed After
     await expect.poll(() => img.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true);
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.getByRole("link", { name: "Next project: NUMI", exact: true }).click();
-  await expect(page).toHaveURL(/#\/numi$/);
+  await page.getByRole("link", { name: "Next project: Lollipop", exact: true }).click();
+  await expect(page).toHaveURL(/#\/lollipop$/);
 });
 
 test("the concise chapters and earlier deep links support keyboard navigation and browser back", async ({ page }) => {

@@ -26,10 +26,10 @@ test("the updated frog project opens from Work with complete current artwork", a
   }
   await expect(page.locator("#watch")).toContainText("Full playthrough · 12:19");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  const next = page.getByRole("link", { name: "Next project: ReDream Labs", exact: true });
+  const next = page.getByRole("link", { name: "Next project: My Bunny", exact: true });
   await next.click();
-  await expect(page).toHaveURL(/#\/redream$/);
-  await expect(page.locator("main h1")).toHaveText("ReDream Labs™");
+  await expect(page).toHaveURL(/#\/my-bunny$/);
+  await expect(page.locator("main h1")).toHaveText("My Bunny");
 });
 
 test("frog chapter navigation supports keyboard, deep links and return to Work", async ({ page }) => {

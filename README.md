@@ -39,8 +39,10 @@ on the left, **Next Project** and the destination title on the right, followed b
 quiet signature/copyright row. The layout stacks on phones and keeps safe side
 margins. Every project, including HeadEase's compact footer, has the same thin
 lavender-gray divider above this navigation, spanning the footer content width.
-The TENKI/Ikko alias is preserved. Next-project destinations follow the approved cases;
-Hop! It’s the Chef! now leads to ReDream Labs.
+The TENKI/Ikko alias is preserved. Next-project destinations follow Home's order:
+NUMI, We Live Happily Here, TENKI, Hop! It’s the Chef!, My Bunny, HeadEase,
+ReDream Labs, Lollipop, then back to NUMI. A keyboard/touch regression test follows
+the complete sequence so no project is trapped in a shorter loop.
 The shared ending replaces the older thumbnails and placeholder site footers.
 
 The Home hero opens on NUMI as shown in the Figma frame. Its original three-video
@@ -62,26 +64,34 @@ Hero indicators follow the updated Figma export: solid purple for the current vi
 27%-opacity lavender for the other two, no black outline, and the smaller dot size
 and tighter spacing from frame `1051:4863`. Touch targets remain larger than the dots.
 The Home About heading reads “Hi, I’m Shani.” and its paragraph reads:
-“Game UX/UI & Game Designer turning visual ideas into playable experiences
+“Game & UX/UI Designer turning visual ideas into playable experiences
 from interface and interaction to Unity.” A **More about me →** button below the
 paragraph opens the About page.
 Its smaller fluid type, relaxed line height and wider text measure sit beside the
 waving character on desktop and stack below it on mobile; the section grows with text.
 
 The project grid is We Live Happily Here, Tenki (the existing Ikko case study),
-Hop! It’s the Chef! (formerly Le Frogette) and My Bunny. The carousel contains HeadEase, ReDream Lab and Lollipop,
+Hop! It’s the Chef! (formerly Le Frogette) and My Bunny. The carousel contains HeadEase, ReDream Labs and Lollipop,
 with captions, arrows, three centered indicators, keyboard/swipe navigation and
 image previews. It advances every four seconds while visible, and pauses on hover,
 focus or a manual selection. The extra Play/Pause button has been removed to match
 the supplied design; reduced motion disables automatic advancement. Active cards
-for HeadEase, ReDream Lab and Lollipop open their project page directly,
+for HeadEase, ReDream Labs and Lollipop open their project page directly,
 with the same hover preview and keyboard/touch navigation.
+The four grid cards and the active carousel card have a short muted description
+below their image. NUMI retains its existing featured description. The carousel
+remains secondary, as requested; descriptions have reserved space above its
+controls on desktop and phones. The role is consistently **Game & UX/UI Designer**
+in the hero, About, footer, Resume introduction and document metadata.
+Resume content and PDF are deferred until Shani supplies the completed CV.
+These refinements are on `codex/portfolio-navigation-and-copy`; the prior complete
+site remains on `codex/lollipop-case-study-refinement` at `e5590e4`.
 Project media frames grow by 2.5% on desktop hover/keyboard focus without changing
 layout. Rounded media clips follow each Figma source frame: 14 px for featured/grid
 projects and 46.737 px for carousel images at their source dimensions. Radii scale
 with each frame, including the smaller carousel neighbors; posters and videos share
 one clip during enlargement.
-NUMI, We Live Happily Here, Tenki, Hop! It’s the Chef!, My Bunny, HeadEase, ReDream Lab and Lollipop crossfade into muted
+NUMI, We Live Happily Here, Tenki, Hop! It’s the Chef!, My Bunny, HeadEase, ReDream Labs and Lollipop crossfade into muted
 looping previews, loaded only on interaction. Leaving pauses/resets the clip
 and restores the poster. Touch, reduced-motion and data-saving modes keep the static
 poster and normal links. Hover does not underline project titles. HeadEase’s preview
@@ -551,7 +561,7 @@ All five films retain 2560 × 1440 playback and load only when requested. Shared
 controls support sound, seeking, retry, exclusive playback and offscreen pausing.
 The hero action scrolls to the full player and starts from the beginning with sound.
 Its original 4:27 audio and separately hosted source remain unchanged. The footer
-leads to NUMI; Home's More Projects card still enters this page directly.
+leads to Lollipop; Home's More Projects card still enters this page directly.
 Media provenance is recorded in `frontend/public/assets/README.md`.
 
 ### Lollipop case study
@@ -567,7 +577,7 @@ button before the large campaign image. Satoshi typography, section spacing and
 the 1680px container match the other refined cases. Four chapter links replace
 eight separate topics, without numbering or divider rules. Previous `#world`,
 `#identity`, `#posters` and `#social` links still reach the corresponding content.
-The Home carousel enters the page directly; the project footer leads to ReDream Lab.
+The Home carousel enters the page directly; the project footer leads back to NUMI.
 
 Each of the three candy families pairs its fashion concept with the matching
 campaign poster in the same order. All six images retain their complete frames.

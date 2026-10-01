@@ -12,7 +12,7 @@ export function HomeFooter() {
         <PortfolioLink href="resume.html">Resume</PortfolioLink>
       </nav>
       <div className={styles.bottom}>
-        <div><PortfolioLink className={styles.brand} href="index.html">SHANI SHLOMOV</PortfolioLink><p className={styles.role}>Game &amp; UI Designer</p></div>
+        <div><PortfolioLink className={styles.brand} href="index.html">SHANI SHLOMOV</PortfolioLink><p className={styles.role}>Game &amp; UX/UI Designer</p></div>
         <p className={styles.copyright}>© 2026 Shani Shlomov</p>
         <nav aria-label="Footer navigation"><PortfolioLink href="index.html#work">Work</PortfolioLink><PortfolioLink href="about.html">About</PortfolioLink><PortfolioLink href="contact.html">Contact</PortfolioLink></nav>
       </div>

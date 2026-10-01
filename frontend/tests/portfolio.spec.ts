@@ -70,7 +70,7 @@ test("hero clips use the current frog game and retain order, pause position, and
 
 test("carousel projects open directly and project routes preserve their content", async ({ page, isMobile }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  for (const [name, slug, heading] of [["HeadEase", "headease", "HeadEase"], ["ReDream Lab", "redream", "ReDream Labs™"], ["Lollipop", "lollipop", "Lollipop"]]) {
+  for (const [name, slug, heading] of [["HeadEase", "headease", "HeadEase"], ["ReDream Labs", "redream", "ReDream Labs™"], ["Lollipop", "lollipop", "Lollipop"]]) {
     await page.goto("/");
     await page.getByRole("button", { name: `Go to ${name}`, exact: true }).click();
     const link = page.getByRole("link", { name: `View ${name} project`, exact: true });
@@ -99,9 +99,28 @@ test("carousel projects open directly and project routes preserve their content"
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
   await page.goto("/#/le-frogette");
-  await expect(page.getByRole("link", { name: "Next project: ReDream Labs", exact: true })).toHaveAttribute("href", "#/redream");
+  await expect(page.getByRole("link", { name: "Next project: My Bunny", exact: true })).toHaveAttribute("href", "#/my-bunny");
   await page.goto("/#/play");
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
+});
+
+test("Next Project visits every project in Home order before returning to NUMI", async ({ page, isMobile }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/#/numi");
+  await expect(page.getByRole("heading", { name: "NUMI", exact: true })).toBeVisible();
+  for (const [title, slug] of [
+    ["We Live Happily Here", "we-live-happily-here"], ["TENKI", "tenki"],
+    ["Hop! It’s the Chef!", "le-frogette"], ["My Bunny", "my-bunny"],
+    ["HeadEase", "headease"], ["ReDream Labs", "redream"],
+    ["Lollipop", "lollipop"], ["NUMI", "numi"],
+  ]) {
+    const next = page.getByRole("link", { name: `Next project: ${title}`, exact: true });
+    await expect(next).toHaveAttribute("href", `#/${slug}`);
+    if (isMobile) await next.tap();
+    else { await next.focus(); await page.keyboard.press("Enter"); }
+    await expect(page).toHaveURL(new RegExp(`#/${slug}$`));
+    await expect(page.locator("main h1")).toContainText(title);
+  }
 });
 
 test("mobile menu closes with Escape and navigation", async ({ page, isMobile }) => {

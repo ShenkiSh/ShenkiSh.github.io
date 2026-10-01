@@ -107,7 +107,7 @@ export function Hero() {
     <div className={c("reel-overlay")} aria-hidden="true" />
     <div className={c("reel-copy container")}><div className={c("reel-identity")}>
       <h1 id="home-title">SHANI<br />SHLOMOV</h1>
-      <p className={c("reel-role")}>Game UX/UI &amp; Game Designer</p>
+      <p className={c("reel-role")}>Game &amp; UX/UI Designer</p>
       <div className={c("reel-actions")}><PortfolioLink href="#work"><span>View Work</span><img src={asset("assets/icons/hero/arrow.svg")} width="29" height="15" alt="" /></PortfolioLink></div>
     </div></div>
     <button id="reel-toggle" type="button" className={c("reel-playback")} disabled={unavailable}

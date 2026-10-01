@@ -28,8 +28,8 @@ test("Lollipop loads its artwork, brand website and single social reel", async (
   await expect(popup).toHaveURL(href!);
   await popup.close();
   await expect(page).toHaveURL(/#\/lollipop$/);
-  await page.getByRole("link", { name: "Next project: ReDream Lab", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "ReDream Labs™", exact: true })).toBeVisible();
+  await page.getByRole("link", { name: "Next project: NUMI", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "NUMI", exact: true })).toBeVisible();
 });
 
 test("the original portrait reel loads on Play and supports sound, seeking, fullscreen and offscreen pause", async ({ page, isMobile }) => {

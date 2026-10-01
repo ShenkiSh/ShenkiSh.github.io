@@ -16,11 +16,11 @@ const nextProjects: Partial<Record<string, ProjectDestination>> = {
   "/we-live-happily-here": { title: "TENKI", href: "tenki" },
   "/tenki": { title: "Hop! It’s the Chef!", href: "le-frogette.html" },
   "/ikko": { title: "Hop! It’s the Chef!", href: "le-frogette.html" },
-  "/le-frogette": { title: "ReDream Labs", href: "redream" },
+  "/le-frogette": { title: "My Bunny", href: "my-bunny.html" },
   "/my-bunny": { title: "HeadEase", href: "headease.html" },
-  "/headease": { title: "My Bunny", href: "my-bunny.html" },
-  "/redream": { title: "NUMI", href: "numi.html" },
-  "/lollipop": { title: "ReDream Lab", href: "redream" },
+  "/headease": { title: "ReDream Labs", href: "redream" },
+  "/redream": { title: "Lollipop", href: "lollipop" },
+  "/lollipop": { title: "NUMI", href: "numi.html" },
 };
 
 function SiteHeader({ numi = false }: { numi?: boolean }) {
@@ -76,7 +76,7 @@ export function PortfolioShell({ children }: PortfolioShellProps) {
       }
       else window.scrollTo({ top: 0, behavior: "instant" });
       const title = document.querySelector("main h1")?.textContent?.trim();
-      document.title = home ? "Game & UI Designer | Shani Shlomov" : `${title ?? "Portfolio"} | Shani Shlomov`;
+      document.title = home ? "Game & UX/UI Designer | Shani Shlomov" : `${title ?? "Portfolio"} | Shani Shlomov`;
     });
     return () => { cancelled = true; cancelAnimationFrame(frame); };
   }, [location.pathname, location.hash, home]);

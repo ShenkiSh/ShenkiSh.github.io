@@ -5,9 +5,9 @@ import { ProjectPreview } from "./ProjectPreview";
 import styles from "./MoreWork.module.scss";
 
 const projects = [
-  { title: "HeadEase", tags: "UX/UI · Product Design", image: "headease", page: "headease.html", video: "assets/videos/headease-hover-clean.mp4", fit: "contain", background: "#f4f3ec" },
-  { title: "ReDream Lab", tags: "Unity · VR Interaction", image: "redream", page: "redream", video: "assets/videos/redream-hover.mp4", fit: "cover", background: "#251f2f" },
-  { title: "Lollipop", tags: "Art Direction · Branding", image: "lollipop", page: "lollipop", video: "assets/videos/lollipop-hover-20260916.mp4", fit: "contain", background: "#e25a85" },
+  { title: "HeadEase", tags: "UX/UI · Product Design", description: "A wearable and app concept connecting readings, symptom check-ins and next steps.", image: "headease", page: "headease.html", video: "assets/videos/headease-hover-clean.mp4", fit: "contain", background: "#f4f3ec" },
+  { title: "ReDream Labs", tags: "Unity · VR Interaction", description: "A narrative VR experience that turns a reconstructed dream into an unsettling journey.", image: "redream", page: "redream", video: "assets/videos/redream-hover.mp4", fit: "cover", background: "#251f2f" },
+  { title: "Lollipop", tags: "Art Direction · Branding", description: "An edible fashion brand concept spanning identity, campaigns and motion.", image: "lollipop", page: "lollipop", video: "assets/videos/lollipop-hover-20260916.mp4", fit: "contain", background: "#e25a85" },
 ] as const;
 const wrap = (index: number) => (index + projects.length) % projects.length;
 
@@ -77,6 +77,7 @@ export function MoreWork() {
               : <button className={styles.imageButton} type="button" onClick={() => select(index)} tabIndex={-1} aria-label={`Show ${project.title}`}>
                 <ProjectPreview image={src} alt="" />
               </button>}
+            {position === "current" && <p className={styles.summary}>{project.description}</p>}
           </article>;
         })}
       </div>

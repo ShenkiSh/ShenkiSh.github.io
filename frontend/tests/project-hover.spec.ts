@@ -42,7 +42,7 @@ test("carousel previews keep captions and controls usable while enlarging", asyn
   await page.goto("/");
   const gallery = page.locator("#more-work");
   const frame = gallery.locator('[data-position="current"] [data-project-preview]');
-  for (const [title, clip] of [["HeadEase", "headease-hover-clean"], ["ReDream Lab", "redream-hover"], ["Lollipop", "lollipop-hover-20260916"]]) {
+  for (const [title, clip] of [["HeadEase", "headease-hover-clean"], ["ReDream Labs", "redream-hover"], ["Lollipop", "lollipop-hover-20260916"]]) {
     await gallery.getByRole("button", { name: `Go to ${title}` }).click();
     await frame.hover();
     const video = frame.locator("video");

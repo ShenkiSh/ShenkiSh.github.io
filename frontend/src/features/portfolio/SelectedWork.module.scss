@@ -16,8 +16,9 @@
 .projectGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: calc(122 * var(--home-unit)); row-gap: calc(110 * var(--home-unit)); margin-top: calc(101 * var(--home-unit)); }
 .card { display: block; text-decoration: none; }
 .card h3 { font-size: clamp(25px, 2.60417vw, 62px); font-weight: 700; line-height: 1; letter-spacing: -.023em; }
-.card p { margin-top: calc(8 * var(--home-unit)); font-size: clamp(17px, 1.66667vw, 36px); line-height: 1.05; }
+.cardTags { margin-top: calc(8 * var(--home-unit)); font-size: clamp(17px, 1.66667vw, 36px); line-height: 1.05; }
 .cardMedia { margin-top: calc(16 * var(--home-unit)); }
+.cardDescription { margin-top: 12px; max-width: 58ch; color: var(--home-footer-muted); font-size: clamp(14px, 1.111vw, 18px); line-height: 1.55; text-wrap: pretty; }
 @media (max-width: 1000px) {
   .featureCopy { top: 0; gap: 12px; }
   .featureGrid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
@@ -36,6 +37,7 @@
   .projectButton { padding: 10px 16px; }
   .projectGrid { grid-template-columns: 1fr; gap: 44px; margin-top: 44px; }
   .card h3 { font-size: clamp(27px, 6.8vw, 38px); }
-  .card p { font-size: 18px; margin-top: 10px; }
+  .cardTags { font-size: 18px; margin-top: 10px; }
+  .cardDescription { font-size: 16px; }
   .cardMedia { margin-top: 16px; }
 }

@@ -1,11 +1,12 @@
 .section { margin-top: calc(144 * var(--home-unit)); padding-bottom: calc(206 * var(--home-unit)); }
 .section > h2 { margin-inline: var(--home-gutter); color: var(--home-heading); font-size: clamp(32px, 2.8515625vw, 65.7px); font-weight: 400; line-height: 1.082; letter-spacing: -.026em; }
 .carousel { margin-top: calc(142 * var(--home-unit)); }
-.stage { position: relative; height: calc(603 * var(--home-unit)); overflow: hidden; touch-action: pan-y; }
+.stage { position: relative; height: calc(603 * var(--home-unit) + 80px); overflow: hidden; touch-action: pan-y; }
 .slide { position: absolute; top: 0; left: 50%; width: 42.45%; transform-origin: top center; transform: translateX(-50%); transition: transform 480ms ease, opacity 480ms ease; z-index: 2; }
 .caption { height: calc(103 * var(--home-unit)); padding-bottom: calc(18 * var(--home-unit)); }
 .caption h3 { font-size: clamp(22px, 2.60417vw, 62px); font-weight: 700; line-height: 1.06; letter-spacing: -.023em; }
 .caption p { margin-top: calc(8 * var(--home-unit)); font-size: clamp(14px, 1.66667vw, 36px); line-height: 1.15; }
+.summary { margin-top: 12px; color: var(--home-footer-muted); font-size: clamp(14px, 1.111vw, 18px); line-height: 1.55; text-wrap: pretty; }
 .imageButton { --preview-corners: var(--home-carousel-corners); display: block; width: 100%; padding: 0; background: transparent; border: 0; text-align: left; border-radius: var(--preview-corners); }
 .slide:not([data-position="current"]) .imageButton { --preview-corners: var(--home-carousel-side-corners); }
 .slide[data-position="previous"] { transform: translateX(-92%) translateY(calc(60 * var(--home-unit))) scale(.8); z-index: 1; }
@@ -23,11 +24,12 @@
   .section { margin-top: 64px; padding-bottom: 80px; }
   .section > h2 { font-size: clamp(30px, 7.1vw, 46px); }
   .carousel { margin-top: 38px; }
-  .stage { height: calc(78vw * .5625 + 90px); }
+  .stage { height: calc(78vw * .5625 + 170px); }
   .slide { width: 78%; }
   .caption { height: 72px; padding-bottom: 16px; }
   .caption h3 { font-size: 27px; }
   .caption p { font-size: 16px; margin-top: 8px; }
+  .summary { font-size: 16px; }
   .controls { margin-top: 20px; min-height: 44px; }
   .controls button { width: 36px; }
 }

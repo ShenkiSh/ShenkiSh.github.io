@@ -72,8 +72,8 @@ test("the carousel enters HeadEase directly, and its prototype and next-project 
   await expect(popup).toHaveURL(href);
   await popup.close();
   await expect(page).toHaveURL(/#\/headease$/);
-  await page.getByRole("link", { name: "Next project: My Bunny", exact: true }).click();
-  await expect(page).toHaveURL(/#\/my-bunny$/);
+  await page.getByRole("link", { name: "Next project: ReDream Labs", exact: true }).click();
+  await expect(page).toHaveURL(/#\/redream$/);
 });
 
 
