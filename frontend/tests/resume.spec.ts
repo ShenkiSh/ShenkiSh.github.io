@@ -1,55 +1,87 @@
-import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { expect, test } from "./fixtures";
 
-test("Resume shows the supplied CV with the portfolio typography and no unfinished content", async ({ page, isMobile }) => {
-  await page.goto("/resume.html");
-  await expect(page).toHaveURL(/#\/resume$/);
-  await expect(page).toHaveTitle("Resume | Shani Shlomov");
-  await expect(page.getByRole("heading", { name: "Resume", exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Experience", exact: true })).toBeVisible();
-  await expect(page.getByText("Volunteer Product & UX/UI Designer", { exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Education", exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Skills", exact: true })).toBeVisible();
-  await expect(page.getByText(/placeholder|not been supplied|to be supplied|wireframe/i)).toHaveCount(0);
-  await expect(page.locator("main article").first()).toHaveCSS("font-family", /Satoshi/);
-  await expect(page.getByRole("link", { name: "shanishlomov@gmail.com", exact: true })).toHaveAttribute("href", "mailto:shanishlomov@gmail.com");
+const pdfPath = "/assets/resume/ResumeSHANI.pdf";
+
+test("Resume is a secondary PDF action beside View Work and the navigation has three items", async ({ page, isMobile }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const hero = page.locator("#home");
+  const resume = hero.getByRole("link", { name: "Resume", exact: true });
+  const work = hero.getByRole("link", { name: "View Work", exact: true });
+  await expect(resume).toBeVisible();
+  await expect(resume).toHaveText("Resume");
+  await expect(resume).toHaveAttribute("href", pdfPath);
+  await expect(resume).toHaveAttribute("target", "_blank");
+  await expect(resume).not.toHaveCSS("box-shadow", "none");
+  await expect(work).not.toHaveCSS("box-shadow", "none");
+  const [workBox, resumeBox] = await Promise.all([work.boundingBox(), resume.boundingBox()]);
+  expect(Math.abs(workBox!.y - resumeBox!.y)).toBeLessThan(2);
+  expect(resumeBox!.x).toBeGreaterThan(workBox!.x + workBox!.width);
   if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
-  await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Resume", exact: true })).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link")).toHaveText(["Work", "About", "Contact"]);
+  await expect(page.locator('a[href*="#/resume"]')).toHaveCount(0);
+  if (isMobile) await page.getByRole("button", { name: "Close", exact: true }).click();
+  await work.click();
+  await expect(page).toHaveURL(/#work$/);
+  await expect(page.locator("#work")).toBeInViewport();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test("Download PDF saves the actual complete resume and Open PDF opens that same document", async ({ page }) => {
-  await page.goto("/#/resume");
-  const downloadLink = page.getByRole("link", { name: "Download PDF", exact: true });
-  await downloadLink.focus();
-  const downloadEvent = page.waitForEvent("download");
-  await page.keyboard.press("Enter");
-  const download = await downloadEvent;
-  expect(download.suggestedFilename()).toBe("ResumeSHANI.pdf");
-  expect(await download.failure()).toBeNull();
-  const downloaded = await readFile(await download.path());
+test("Home and About open the same supplied PDF in a new tab without duplicating the CV", async ({ page, context }) => {
   const original = await readFile(new URL("../public/assets/resume/ResumeSHANI.pdf", import.meta.url));
-  expect(downloaded.subarray(0, 5).toString()).toBe("%PDF-");
-  expect(createHash("sha256").update(downloaded).digest("hex")).toBe(createHash("sha256").update(original).digest("hex"));
-  await expect(page).toHaveURL(/#\/resume$/);
-
-  const openLink = page.getByRole("link", { name: "Open PDF", exact: true });
-  await expect(openLink).toHaveAttribute("href", await downloadLink.getAttribute("href") ?? "");
-  await expect(openLink).toHaveAttribute("target", "_blank");
-  const response = await page.request.get((await openLink.getAttribute("href"))!);
+  const response = await page.request.get(pdfPath);
   expect(response.ok()).toBe(true);
   expect(response.headers()["content-type"]).toContain("application/pdf");
   expect(await response.body()).toEqual(original);
+  // Exercise the anchor's tab behavior independently of headless Chromium's PDF download mode.
+  // The real PDF response above is checked byte-for-byte; native PDF viewing is checked in Chrome.
+  await context.route(`**${pdfPath}`, route => route.fulfill({ contentType: "text/html", body: "<title>Resume PDF destination</title>" }));
+  for (const [path, name] of [["/", "Resume"], ["/#/about", "View Resume"]]) {
+    await page.goto(path);
+    const link = page.locator("main").getByRole("link", { name, exact: true });
+    await expect(link).toHaveText(name);
+    await expect(link).toHaveAttribute("href", pdfPath);
+    await expect(link).toHaveAttribute("target", "_blank");
+    const pageUrl = page.url();
+    await link.focus();
+    const popupEvent = page.waitForEvent("popup");
+    await page.keyboard.press("Enter");
+    const popup = await popupEvent;
+    await expect(popup).toHaveURL(new RegExp(`${pdfPath}$`));
+    await expect(page).toHaveURL(pageUrl);
+    await popup.close();
+    await expect(page.getByRole("heading", { name: "Experience", exact: true })).toHaveCount(0);
+    await expect(page.locator('nav a[href*="resume"]')).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
 });
 
-test("Resume case-study links open the projects and returning restores the resume", async ({ page }) => {
-  await page.goto("/#/resume");
-  await page.getByRole("link", { name: "View NUMI case study", exact: true }).click();
-  await expect(page).toHaveURL(/#\/numi$/);
-  await expect(page.getByRole("heading", { name: "NUMI", exact: true })).toBeVisible();
-  await page.goBack();
-  await page.getByRole("link", { name: "View We Live Happily Here case study", exact: true }).click();
-  await expect(page).toHaveURL(/#\/we-live-happily-here$/);
-  await expect(page.getByRole("heading", { name: "We Live Happily Here", exact: true })).toBeVisible();
+test("old Resume bookmarks go directly to the PDF and Contact keeps its existing link working", async ({ page, context }) => {
+  await context.route(`**${pdfPath}`, route => route.fulfill({ contentType: "text/html", body: "<title>Resume PDF destination</title>" }));
+  for (const path of ["/#/resume", "/resume.html"]) {
+    await page.goto(path);
+    await expect(page).toHaveURL(new RegExp(`${pdfPath}$`));
+  }
+  await page.goto("/");
+  await page.locator("#home").waitFor();
+  await page.evaluate(() => { window.location.hash = "/resume"; });
+  await expect(page).toHaveURL(new RegExp(`${pdfPath}$`));
+  await page.goto("/#/contact");
+  const link = page.locator("#contact-resume a");
+  await expect(link).toContainText("View Resume");
+  await expect(link).toHaveAttribute("href", pdfPath);
+  await expect(link).toHaveAttribute("target", "_blank");
+});
+
+test("the hero keeps its primary and secondary actions together on tablet", async ({ page, isMobile }) => {
+  test.skip(isMobile, "This check sets a tablet viewport explicitly");
+  await page.setViewportSize({ width: 768, height: 1024 });
+  await page.goto("/");
+  const actions = page.locator("#home").getByRole("link");
+  await expect(actions).toHaveCount(2);
+  const [work, resume] = await Promise.all([actions.nth(0).boundingBox(), actions.nth(1).boundingBox()]);
+  expect(Math.abs(work!.y - resume!.y)).toBeLessThan(2);
+  expect(resume!.x + resume!.width).toBeLessThan(768);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

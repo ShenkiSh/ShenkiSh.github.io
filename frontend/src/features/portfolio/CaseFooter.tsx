@@ -12,7 +12,7 @@ export function CaseFooter({ compact = false }: { compact?: boolean }) {
 <div className={c("footer-top")}>
 <PortfolioLink className={c("brand")} href="index.html">SHANI SHLOMOV</PortfolioLink>
 <nav className={c("footer-links")} aria-label="Contact links">
-<PortfolioLink href="contact.html#email">Email</PortfolioLink><PortfolioLink href={contactDetails.linkedIn} target="_blank" rel="noopener noreferrer">LinkedIn</PortfolioLink><PortfolioLink href="resume.html">Resume</PortfolioLink>
+<PortfolioLink href="contact.html#email">Email</PortfolioLink><PortfolioLink href={contactDetails.linkedIn} target="_blank" rel="noopener noreferrer">LinkedIn</PortfolioLink>
 </nav>
 </div>
 <div className={c("footer-bottom")}>

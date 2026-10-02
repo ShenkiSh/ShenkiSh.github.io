@@ -4,6 +4,12 @@ const portfolioFilename = portfolioUrl.pathname.split("/").pop();
 if (portfolioFilename?.endsWith(".html")) {
   const project = portfolioFilename.slice(0, -5);
   portfolioUrl.pathname = portfolioUrl.pathname.slice(0, -portfolioFilename.length);
-  portfolioUrl.hash = `/${project}${portfolioUrl.hash}`;
+  if (project === "resume") {
+    portfolioUrl.pathname += "assets/resume/ResumeSHANI.pdf";
+    portfolioUrl.hash = "";
+    portfolioUrl.search = "";
+  } else {
+    portfolioUrl.hash = `/${project}${portfolioUrl.hash}`;
+  }
   window.location.replace(portfolioUrl.href);
 }

@@ -1,5 +1,6 @@
 import { AnimatedCharacter } from "./AnimatedCharacter";
 import { PortfolioLink } from "./PortfolioLink";
+import { resumePdfPath } from "@/shared/config/resume";
 import actions from "./CaseActions.module.scss";
 import styles from "./AboutContent.module.scss";
 
@@ -23,7 +24,7 @@ export function AboutContent() {
           <div><dt>Focus</dt><dd>Game Design · Game UX/UI · Visual Design</dd></div>
           <div><dt>Tools</dt><dd>Unity · Figma · Adobe Creative Suite</dd></div>
         </dl>
-        <PortfolioLink className={actions.primary} href="resume.html">View Resume <span aria-hidden="true">→</span></PortfolioLink>
+        <PortfolioLink className={`${actions.secondary} ${styles.resume}`} href={resumePdfPath} target="_blank" rel="noopener noreferrer">View Resume</PortfolioLink>
       </div>
     </div>
   </article>;

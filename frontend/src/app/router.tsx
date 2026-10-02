@@ -21,7 +21,6 @@ export const router = createHashRouter([{
     { path: "redream", lazy: async () => ({ Component: (await import("@/pages/redream/RedreamPage")).RedreamPage }) },
     { path: "lollipop", lazy: async () => ({ Component: (await import("@/pages/lollipop/LollipopPage")).LollipopPage }) },
     { path: "about", lazy: async () => ({ Component: (await import("@/pages/about/AboutPage")).AboutPage }) },
-    { path: "resume", lazy: async () => ({ Component: (await import("@/pages/resume/ResumePage")).ResumePage }) },
     { path: "contact", lazy: async () => ({ Component: (await import("@/pages/contact/ContactPage")).ContactPage }) },
     { path: "health", lazy: async () => ({ Component: (await import("@/pages/health/HealthPage")).HealthPage }) },
     { path: "*", lazy: async () => ({ Component: (await import("@/pages/not-found/NotFoundPage")).NotFoundPage }) },

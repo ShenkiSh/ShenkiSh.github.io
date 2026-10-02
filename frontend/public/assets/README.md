@@ -699,6 +699,7 @@ URI token was changed in the PDF; padding preserves the original byte offsets.
 PDFKit verification confirmed identical text, page dimensions, all five other
 links and rendered pixels. The Desktop original is untouched. The supplied
 artwork, embedded fonts and project links are preserved.
-The Resume page offers direct PDF viewing and a same-origin download with the
-original filename. Its responsive HTML content is transcribed from this document;
-email and phone links in the HTML use `mailto:` and `tel:` destinations.
+Home’s secondary Resume action and About’s View Resume button open this PDF directly
+in a new tab. There is no standalone Resume page or duplicated HTML CV. The existing
+Contact link and old Resume bookmarks also resolve to this document. Visitors can
+save it with the browser PDF viewer’s download control.

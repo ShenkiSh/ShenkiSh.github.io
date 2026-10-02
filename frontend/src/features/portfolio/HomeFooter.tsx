@@ -9,7 +9,6 @@ export function HomeFooter() {
       <nav className={styles.contactLinks} aria-label="Contact links">
         <PortfolioLink href="contact.html#email">Email</PortfolioLink>
         <PortfolioLink href={contactDetails.linkedIn} target="_blank" rel="noopener noreferrer">LinkedIn</PortfolioLink>
-        <PortfolioLink href="resume.html">Resume</PortfolioLink>
       </nav>
       <div className={styles.bottom}>
         <div><PortfolioLink className={styles.brand} href="index.html">SHANI SHLOMOV</PortfolioLink><p className={styles.role}>Game &amp; UX/UI Designer</p></div>

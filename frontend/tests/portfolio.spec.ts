@@ -93,7 +93,7 @@ test("carousel projects open directly and project routes preserve their content"
   await expect(chapters.getByRole("link", { name: "Level Design", exact: true })).toHaveAttribute("aria-current", "location");
   await page.reload();
   await expect(page.getByRole("heading", { name: "NUMI", exact: true })).toBeVisible();
-  for (const slug of ["we-live-happily-here", "ikko", "le-frogette", "my-bunny", "headease", "about", "resume", "contact"]) {
+  for (const slug of ["we-live-happily-here", "ikko", "le-frogette", "my-bunny", "headease", "about", "contact"]) {
     await page.goto(`/#/${slug}`);
     await expect(page.locator("main h1")).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

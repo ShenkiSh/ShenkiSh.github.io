@@ -24,23 +24,23 @@
 .portrait { width: min(100%, 360px); justify-self: center; }
 .copy {
   display: grid;
-  align-self: stretch;
-  align-content: space-between;
+  align-self: start;
+  align-content: start;
   justify-items: start;
-  gap: clamp(40px, 4.167vw, 80px);
+  gap: clamp(24px, 2.083vw, 40px);
   min-width: 0;
   width: 100%;
   font-size: clamp(20px, 1.25vw, 24px);
   line-height: 1.65;
 }
-.bio { display: grid; gap: 32px; max-width: 48ch; text-wrap: pretty; }
-.details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px clamp(24px, 2.083vw, 40px); width: 100%; margin: 0; font-size: clamp(17px, 1.042vw, 20px); }
+.bio { display: grid; gap: 20px; max-width: 48ch; text-wrap: pretty; }
+.details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px clamp(24px, 2.083vw, 40px); width: 100%; margin: 0; font-size: clamp(17px, 1.042vw, 20px); }
 .details > div { display: grid; align-content: start; gap: 14px; }
 .details dt { color: var(--home-heading); font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; }
 .details dd { margin: 0; text-wrap: pretty; }
+.resume { padding: 10px 16px; }
 @media (max-width: 1100px) {
   .details { grid-template-columns: minmax(0, 1fr); }
-  .copy { align-content: start; }
 }
 @media (max-width: 900px) {
   .layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
@@ -52,6 +52,5 @@
   .heading h1 { font-size: clamp(32px, 8.5vw, 44px); }
   .layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .portrait { width: min(58vw, 230px); }
-  .copy { gap: 40px; }
-  .bio { gap: 28px; }
+  .copy { gap: 28px; }
 }

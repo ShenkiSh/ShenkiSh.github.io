@@ -10,9 +10,9 @@ The Home page implements Figma **Slide 16:9 - 118** (`1063:5042`) in the Portfol
 on the page **תיק עבודות חדש - אתר**. Its black/lavender palette, Anta title, Satoshi
 type, featured NUMI band, four project compositions, More Projects carousel, animated
 Shani portrait and footer follow that frame. Desktop proportions adapt to a single
-column on mobile. The existing project pages, About, Resume and Contact remain;
+column on mobile. The existing project pages, About and Contact remain;
 case studies stay grayscale where final content/design has not been supplied.
-The public navigation is Work, About, Resume and Contact. The current page is
+The public navigation is Work, About and Contact. The current page is
 marked by white text and a 2px lavender underline, including in the mobile menu.
 Work remains selected inside project case studies. All inner pages use the same
 dark header so their active link stays legible. Unknown routes select no item.
@@ -82,8 +82,8 @@ The four grid cards and the active carousel card have a short muted description
 below their image. NUMI retains its existing featured description. The carousel
 remains secondary, as requested; descriptions have reserved space above its
 controls on desktop and phones. The role is consistently **Game & UX/UI Designer**
-in the hero, About, footer, Resume introduction and document metadata.
-Resume now presents Shani’s supplied CV with working case-study links and PDF viewing/download.
+in the hero, About, footer and document metadata.
+Resume is available directly as a PDF, without a standalone page or duplicated CV content.
 These refinements are on `codex/portfolio-navigation-and-copy`; the prior complete
 site remains on `codex/lollipop-case-study-refinement` at `e5590e4`.
 Project media frames grow by 2.5% on desktop hover/keyboard focus without changing
@@ -146,36 +146,38 @@ visitor’s default email handler (such as Apple Mail), while Gmail in browser
 opens Google’s web compose page in a new tab with the recipient prefilled.
 Gmail may require sign-in. LinkedIn links on Contact and the site footers open
 Shani’s supplied profile (`https://www.linkedin.com/in/shani-shlomov-927556363/`)
-in a new tab. View Resume opens the completed Resume page with PDF viewing and download.
+in a new tab. The existing Contact View Resume link opens the supplied PDF in a new tab;
+Contact’s content and layout are unchanged.
 
 The About page (`/#/about`) uses Shani’s supplied September 28 introduction,
 Game & UX/UI Designer title, HIT B.Des (2026), focus and tools. It follows the
 site’s black/lavender styling: the animated character sits to the left of a wide
-biography and three-column facts on desktop. Paragraphs, facts and the resume link
-have generous vertical separation; facts stack on tablets, with the character
+biography and three-column facts on desktop. Paragraphs are separated by 20px;
+the biography, facts and resume action use compact 24–40px gaps instead of
+stretching to the portrait’s height. Facts stack on tablets, with the character
 above the text on phones. About uses the September 28 pointing animation from
 `Desktop/Shani - Transparent Background/Shani - Transparent.mov`, converted to a
 silent 512 × 846 VP9 video with alpha (145 frames at 24 fps). Its matching transparent
 poster uses the pointing pose at two seconds. The existing portrait size, aspect
 ratio and alignment remain; Home retains its waving animation. The shared character
 keeps its pause control, reduced-motion poster, failure fallback and offscreen pausing.
-View Resume opens the completed Resume page. About ends with the shared compact signature.
+The small secondary View Resume button opens the supplied PDF in a new tab, without an arrow.
+About ends with the shared compact signature.
 
-The Resume page (`/#/resume`, also reachable through `resume.html`) presents the
-October 2 `ResumeSHANI.pdf` as readable HTML using the portfolio’s Satoshi type,
-black/lavender palette and shared content grid. Experience and selected projects
-sit beside education, skills and languages on desktop, then stack on phones.
-Dates and secondary details use the muted type color. No placeholder sections or
-wireframe footer remain. The supplied NUMI, Happily and System 811 prototype links
-are preserved; email and phone actions use `mailto:` and `tel:` links.
-**Download PDF** saves `ResumeSHANI.pdf` directly, while **Open PDF** opens the same
-one-page document in a separate tab. The download is the supplied PDF, preserving
-its artwork, fonts and embedded project links; it is not a browser printout of
-the page. With Shani’s approval, its email annotation now opens
-`mailto:shanishlomov@gmail.com` instead of the visitor’s Gmail inbox. The original
-Desktop PDF is untouched; rendered appearance and all other links are unchanged.
-Regression checks cover desktop/mobile download bytes and filename,
-PDF content type, direct/legacy navigation and both case-study destinations.
+Resume access uses the existing `assets/resume/ResumeSHANI.pdf`. The Home hero has
+a compact outlined **Resume** button beside **View Work**, sharing its typography,
+dark background, height, radius and hover treatment. Its narrower width and thinner
+gray border keep it secondary while making the action clearly visible. About’s compact
+**View Resume** button uses the existing secondary button style. Neither Resume
+CTA has an arrow; both open the PDF in a new tab and keep the portfolio tab open.
+The standalone Resume React route, HTML CV content and navigation entries are removed.
+Old `/#/resume` and `resume.html` bookmarks redirect directly to the PDF instead of
+rendering a page. The existing Contact link also resolves directly to the PDF.
+The document can be saved using the PDF viewer’s download control. Its artwork,
+fonts and embedded project links remain unchanged, including the approved email-link
+correction to `mailto:shanishlomov@gmail.com`; the Desktop original is untouched.
+Regression checks cover the three-item navigation, desktop/mobile new-tab actions,
+PDF response bytes, legacy redirects, working View Work scroll and tablet alignment.
 
 Figma-composed artwork and exported icons live in `frontend/public/assets/home/`.
 The Home character uses a 247 KB VP9 alpha video converted from Shani’s clean

@@ -30,6 +30,8 @@
   box-shadow: inset 0 0 0 calc(1.5 * var(--hero-unit)) var(--home-heading);
   color: var(--home-text); font-size: calc(16 * var(--hero-unit)); font-weight: 400; line-height: 1.6; text-decoration: none; }
 .home-page .reel-hero .reel-actions a span { position: absolute; left: calc(13.85 * var(--hero-unit)); top: calc(8.79 * var(--hero-unit)); font-size: inherit; line-height: inherit; }
+.home-page .reel-hero .reel-actions a.reel-resume { display: inline-flex; align-items: center; width: auto; margin-left: 0;
+  padding-inline: calc(16 * var(--hero-unit)); box-shadow: inset 0 0 0 max(1px, var(--hero-unit)) var(--home-muted); }
 .home-page .reel-hero .reel-actions a:is(:hover, :focus-visible) { background: var(--home-action-hover); }
 .home-page .reel-hero .reel-actions img { position: absolute; left: calc(99.94 * var(--hero-unit)); top: calc(14.426 * var(--hero-unit));
   display: block; width: calc(28.5894 * var(--hero-unit)); height: calc(14.7279 * var(--hero-unit)); }

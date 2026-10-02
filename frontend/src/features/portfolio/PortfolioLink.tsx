@@ -2,6 +2,7 @@ import { scrollToSection } from "./scrollToSection";
 import type { AnchorHTMLAttributes, MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { asset } from "@/shared/utils/asset";
+import { resumePdfPath } from "@/shared/config/resume";
 
 interface PortfolioLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href?: string;
@@ -10,6 +11,8 @@ interface PortfolioLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 
 export function PortfolioLink({ href = "", onClick, children, ...props }: PortfolioLinkProps) {
   const location = useLocation();
+  // Preserve existing static Resume links without bringing back a portfolio page.
+  if (href === "resume.html") return <a {...props} href={asset(resumePdfPath)} target="_blank" rel="noopener noreferrer" onClick={onClick}>{children}</a>;
   if (href.startsWith("assets/")) return <a {...props} href={asset(href)}>{children}</a>;
   if (/^(https?:|mailto:|tel:)/.test(href)) return <a {...props} href={href} onClick={onClick}>{children}</a>;
   const [page = "", anchor] = href.split("#");
