@@ -174,8 +174,9 @@ The standalone Resume React route, HTML CV content and navigation entries are re
 Old `/#/resume` and `resume.html` bookmarks redirect directly to the PDF instead of
 rendering a page. The existing Contact link also resolves directly to the PDF.
 The document can be saved using the PDF viewer’s download control. Its artwork,
-fonts and embedded project links remain unchanged, including the approved email-link
-correction to `mailto:shanishlomov@gmail.com`; the Desktop original is untouched.
+fonts and embedded project links remain unchanged. The PDF email link now opens the
+same Gmail compose URL as Contact’s **Gmail in browser** action, with
+`shanishlomov@gmail.com` prefilled as the recipient; the Desktop original is untouched.
 Regression checks cover the three-item navigation, desktop/mobile new-tab actions,
 PDF response bytes, legacy redirects, working View Work scroll and tablet alignment.
 
