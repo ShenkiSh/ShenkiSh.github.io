@@ -386,8 +386,10 @@ only one plays at a time, and offscreen/background players pause. The full film
 opens a dialog with Escape/close, focus restoration and preserved page position.
 
 **Play in browser** opens the existing Unity browser export on desktop. It downloads
-only on request, with loading/retry, fullscreen, mouse close and Shift+X to return
-to the case study. Touch-only visitors receive a desktop-play note and the full
+only on request, with loading/retry, fullscreen and a close button to return
+to the case study. Escape exits fullscreen without closing the game; its hint appears
+only in fullscreen. Outside fullscreen, Escape remains available to Unity.
+Touch-only visitors receive a desktop-play note and the full
 Childhood film instead. The export and its controls are unchanged: original menu,
 opening story with hold-to-skip, Childhood scene, bicycle memory and completion
 screen. Later stages remain in the full Unity project. See

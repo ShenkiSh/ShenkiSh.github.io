@@ -6,12 +6,12 @@
   const progress = document.getElementById("progress");
   let instance;
   let failed = false;
-  // Unity owns Escape for pause. Provide a separate way out of its keyboard canvas.
+  // Leave fullscreen before handing Escape back to Unity's own menus.
   window.addEventListener("keydown", event => {
-    if (event.code !== "KeyX" || !event.shiftKey || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (event.key !== "Escape" || !window.parent.document.fullscreenElement) return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    window.parent.postMessage({ type: "numi-close" }, location.origin);
+    window.parent.postMessage({ type: "numi-exit-fullscreen" }, location.origin);
   }, true);
   const fail = error => {
     failed = true;

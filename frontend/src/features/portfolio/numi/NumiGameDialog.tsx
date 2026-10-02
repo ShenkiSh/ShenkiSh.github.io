@@ -17,14 +17,15 @@ export function NumiGameDialog({ onClose, onWatch }: NumiGameDialogProps) {
   const [fullscreenError, setFullscreenError] = useState(false);
 
   useEffect(() => {
-    const closeFromGame = (event: MessageEvent<unknown>) => {
+    const exitFullscreenFromGame = (event: MessageEvent<unknown>) => {
       if (event.origin !== location.origin || event.source !== frame.current?.contentWindow) return;
       const data = event.data;
-      if (typeof data === "object" && data !== null && "type" in data && data.type === "numi-close") onClose();
+      if (typeof data !== "object" || data === null || !("type" in data) || data.type !== "numi-exit-fullscreen") return;
+      if (document.fullscreenElement === surface.current) void document.exitFullscreen().catch(() => setFullscreenError(true));
     };
-    window.addEventListener("message", closeFromGame);
-    return () => window.removeEventListener("message", closeFromGame);
-  }, [onClose]);
+    window.addEventListener("message", exitFullscreenFromGame);
+    return () => window.removeEventListener("message", exitFullscreenFromGame);
+  }, []);
 
   useEffect(() => {
     const element = dialog.current;
@@ -71,7 +72,7 @@ export function NumiGameDialog({ onClose, onWatch }: NumiGameDialogProps) {
     </div> : <iframe ref={frame} className={styles.frame} src={asset("games/numi/index.html")} title="Play NUMI — First Memory" allow="autoplay; fullscreen; gamepad" />}
     <footer className={styles.footer}>
       <span>{fullscreenError ? "Fullscreen is unavailable. You can keep playing here." : "Keyboard or controller · Headphones recommended"}</span>
-      <span>{touchOnly ? "Close to return to the case study" : "Esc: pause · Shift + X: close"}</span>
+      {fullscreen && <span>Esc to exit fullscreen</span>}
     </footer>
     </div>
   </dialog>;

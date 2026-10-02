@@ -42,7 +42,13 @@ test("NUMI loads the game only on request and closing restores the case study", 
     expect(await page.evaluate(() => document.body.style.overflow)).not.toBe("hidden");
     await opener.click();
     await expect(game.locator("body")).toHaveAttribute("data-state", "ready");
-    await game.locator("canvas").press("Shift+KeyX");
+    await dialog.getByRole("button", { name: "Game fullscreen", exact: true }).click();
+    await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement))).toBe(true);
+    await game.locator("canvas").press("Escape");
+    await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement))).toBe(false);
+    await expect(dialog).toBeVisible();
+    await expect(game.locator("canvas")).toBeFocused();
+    await dialog.getByRole("button", { name: "Close game", exact: true }).click();
     await expect(dialog).toHaveCount(0);
     await expect(opener).toBeFocused();
   }
