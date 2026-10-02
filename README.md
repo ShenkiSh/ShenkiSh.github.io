@@ -171,7 +171,10 @@ are preserved; email and phone actions use `mailto:` and `tel:` links.
 **Download PDF** saves `ResumeSHANI.pdf` directly, while **Open PDF** opens the same
 one-page document in a separate tab. The download is the supplied PDF, preserving
 its artwork, fonts and embedded project links; it is not a browser printout of
-the page. Regression checks cover desktop/mobile download bytes and filename,
+the page. With Shani’s approval, its email annotation now opens
+`mailto:shanishlomov@gmail.com` instead of the visitor’s Gmail inbox. The original
+Desktop PDF is untouched; rendered appearance and all other links are unchanged.
+Regression checks cover desktop/mobile download bytes and filename,
 PDF content type, direct/legacy navigation and both case-study destinations.
 
 Figma-composed artwork and exported icons live in `frontend/public/assets/home/`.

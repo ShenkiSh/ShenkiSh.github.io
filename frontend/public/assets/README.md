@@ -692,9 +692,13 @@ and behavior are unchanged. All original screen and component PNGs are retained.
 
 ## Resume — October 2, 2026
 
-`resume/ResumeSHANI.pdf` is a byte-for-byte copy of Shani’s completed
-`Desktop/ResumeSHANI.pdf` (one 1000×1643-point page). The original Desktop file
-is unchanged. It retains the supplied artwork, embedded fonts and project links.
+`resume/ResumeSHANI.pdf` is Shani’s completed `Desktop/ResumeSHANI.pdf`
+(one 1000×1643-point page), with her approved email-link correction:
+`mailto:shanishlomov@gmail.com` replaces the Gmail inbox destination. Only that
+URI token was changed in the PDF; padding preserves the original byte offsets.
+PDFKit verification confirmed identical text, page dimensions, all five other
+links and rendered pixels. The Desktop original is untouched. The supplied
+artwork, embedded fonts and project links are preserved.
 The Resume page offers direct PDF viewing and a same-origin download with the
 original filename. Its responsive HTML content is transcribed from this document;
 email and phone links in the HTML use `mailto:` and `tel:` destinations.
