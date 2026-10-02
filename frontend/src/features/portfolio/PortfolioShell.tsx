@@ -66,7 +66,7 @@ export function PortfolioShell({ children }: PortfolioShellProps) {
   const home = location.pathname === "/";
   const nextProject = nextProjects[location.pathname];
   const numi = location.pathname === "/numi";
-  const designedPage = numi || ["/tenki", "/ikko", "/my-bunny", "/we-live-happily-here", "/redream", "/lollipop", "/headease", "/le-frogette", "/about", "/contact"].includes(location.pathname);
+  const designedPage = numi || ["/tenki", "/ikko", "/my-bunny", "/we-live-happily-here", "/redream", "/lollipop", "/headease", "/le-frogette", "/about", "/contact", "/resume"].includes(location.pathname);
   useEffect(() => {
     let cancelled = false;
     const frame = requestAnimationFrame(() => {
@@ -84,6 +84,6 @@ export function PortfolioShell({ children }: PortfolioShellProps) {
     <a className={c("skip-link")} href="#main" onClick={event => { event.preventDefault(); document.getElementById("main")?.focus({ preventScroll: true }); }}>Skip to main content</a>
     <SiteHeader key={location.pathname} numi={!home} />
     <main id="main" tabIndex={-1}>{children}</main>
-    {home ? <HomeFooter /> : location.pathname === "/contact" ? <ContactFooter /> : nextProject ? <ProjectFooter next={nextProject} minimal={location.pathname === "/headease"} /> : <CaseFooter compact={location.pathname === "/about"} />}
+    {home ? <HomeFooter /> : location.pathname === "/contact" ? <ContactFooter /> : nextProject ? <ProjectFooter next={nextProject} minimal={location.pathname === "/headease"} /> : <CaseFooter compact={["/about", "/resume"].includes(location.pathname)} />}
   </div>;
 }

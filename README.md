@@ -83,7 +83,7 @@ below their image. NUMI retains its existing featured description. The carousel
 remains secondary, as requested; descriptions have reserved space above its
 controls on desktop and phones. The role is consistently **Game & UX/UI Designer**
 in the hero, About, footer, Resume introduction and document metadata.
-Resume content and PDF are deferred until Shani supplies the completed CV.
+Resume now presents Shani’s supplied CV with working case-study links and PDF viewing/download.
 These refinements are on `codex/portfolio-navigation-and-copy`; the prior complete
 site remains on `codex/lollipop-case-study-refinement` at `e5590e4`.
 Project media frames grow by 2.5% on desktop hover/keyboard focus without changing
@@ -146,8 +146,7 @@ visitor’s default email handler (such as Apple Mail), while Gmail in browser
 opens Google’s web compose page in a new tab with the recipient prefilled.
 Gmail may require sign-in. LinkedIn links on Contact and the site footers open
 Shani’s supplied profile (`https://www.linkedin.com/in/shani-shlomov-927556363/`)
-in a new tab. View Resume opens the existing Resume route; the final CV has
-not yet been supplied.
+in a new tab. View Resume opens the completed Resume page with PDF viewing and download.
 
 The About page (`/#/about`) uses Shani’s supplied September 28 introduction,
 Game & UX/UI Designer title, HIT B.Des (2026), focus and tools. It follows the
@@ -160,8 +159,20 @@ silent 512 × 846 VP9 video with alpha (145 frames at 24 fps). Its matching tran
 poster uses the pointing pose at two seconds. The existing portrait size, aspect
 ratio and alignment remain; Home retains its waving animation. The shared character
 keeps its pause control, reduced-motion poster, failure fallback and offscreen pausing.
-View Resume opens the existing Resume page; no downloadable CV is claimed until
-the final file is supplied. About ends with the shared compact signature.
+View Resume opens the completed Resume page. About ends with the shared compact signature.
+
+The Resume page (`/#/resume`, also reachable through `resume.html`) presents the
+October 2 `ResumeSHANI.pdf` as readable HTML using the portfolio’s Satoshi type,
+black/lavender palette and shared content grid. Experience and selected projects
+sit beside education, skills and languages on desktop, then stack on phones.
+Dates and secondary details use the muted type color. No placeholder sections or
+wireframe footer remain. The supplied NUMI, Happily and System 811 prototype links
+are preserved; email and phone actions use `mailto:` and `tel:` links.
+**Download PDF** saves `ResumeSHANI.pdf` directly, while **Open PDF** opens the same
+one-page document in a separate tab. The download is the supplied PDF, preserving
+its artwork, fonts and embedded project links; it is not a browser printout of
+the page. Regression checks cover desktop/mobile download bytes and filename,
+PDF content type, direct/legacy navigation and both case-study destinations.
 
 Figma-composed artwork and exported icons live in `frontend/public/assets/home/`.
 The Home character uses a 247 KB VP9 alpha video converted from Shani’s clean
