@@ -164,7 +164,8 @@ keeps its pause control, reduced-motion poster, failure fallback and offscreen p
 The small secondary View Resume button opens the supplied PDF in a new tab, without an arrow.
 About ends with the shared compact signature.
 
-Resume access uses the existing `assets/resume/ResumeSHANI.pdf`. The Home hero has
+Resume access uses `Desktop/ResumeShaniSh.pdf` (supplied October 10, 2026), copied
+byte-for-byte to the stable `assets/resume/ResumeSHANI.pdf` URL. The Home hero has
 a compact outlined **Resume** button beside **View Work**, sharing its typography,
 dark background, height, radius and hover treatment. Its narrower width and thinner
 gray border keep it secondary while making the action clearly visible. About’s compact
@@ -174,9 +175,8 @@ The standalone Resume React route, HTML CV content and navigation entries are re
 Old `/#/resume` and `resume.html` bookmarks redirect directly to the PDF instead of
 rendering a page. The existing Contact link also resolves directly to the PDF.
 The document can be saved using the PDF viewer’s download control. Its artwork,
-fonts and embedded project links remain unchanged. The PDF email link now opens the
-same Gmail compose URL as Contact’s **Gmail in browser** action, with
-`shanishlomov@gmail.com` prefilled as the recipient; the Desktop original is untouched.
+fonts, wording and embedded links remain exactly as supplied. This version replaces
+the earlier CV and its email-link modification; the Desktop original is untouched.
 Regression checks cover the three-item navigation, desktop/mobile new-tab actions,
 PDF response bytes, legacy redirects, working View Work scroll and tablet alignment.
 

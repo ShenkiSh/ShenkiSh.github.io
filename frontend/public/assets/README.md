@@ -690,18 +690,15 @@ The case reuses `videos/headease-hover-clean.mp4`, derived from the user's
 and behavior are unchanged. All original screen and component PNGs are retained.
 
 
-## Resume — October 2, 2026
+## Resume — October 10, 2026
 
-`resume/ResumeSHANI.pdf` is Shani’s completed `Desktop/ResumeSHANI.pdf`
-(one 1000×1643-point page), with her approved email-link correction:
-the email annotation opens
-`https://mail.google.com/mail/?view=cm&fs=1&to=shanishlomov%40gmail.com`, matching
-Contact’s **Gmail in browser** action. This supersedes the earlier `mailto:` fix
-and opens a new message addressed to Shani. Only that URI and its surrounding
-whitespace changed; padding preserves the original byte offsets.
-PDFKit verification confirmed identical text, page dimensions, all five other
-links and rendered pixels. The Desktop original is untouched. The supplied
-artwork, embedded fonts and project links are preserved.
+`resume/ResumeSHANI.pdf` is an exact copy of Shani’s supplied
+`Desktop/ResumeShaniSh.pdf` (2,026,707 bytes), kept at the existing URL so all
+Resume links and old bookmarks continue to work. Its SHA-256 is
+`0f50bb310d13eb1e686727b2c0091e5e7712599a9bfafdd2f4fc1adace39321e`.
+The supplied artwork, embedded fonts, wording and links are unchanged; this file
+supersedes the earlier CV and its email-link modification. The Desktop original
+is untouched.
 Home’s secondary Resume action and About’s View Resume button open this PDF directly
 in a new tab. There is no standalone Resume page or duplicated HTML CV. The existing
 Contact link and old Resume bookmarks also resolve to this document. Visitors can
