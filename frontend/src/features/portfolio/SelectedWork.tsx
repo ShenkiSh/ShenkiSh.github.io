@@ -1,6 +1,7 @@
 import { asset } from "@/shared/utils/asset";
 import { PortfolioLink } from "./PortfolioLink";
 import { ProjectPreview } from "./ProjectPreview";
+import { NumiAward } from "./numi/NumiAward";
 import styles from "./SelectedWork.module.scss";
 
 const projects = [
@@ -22,6 +23,7 @@ export function SelectedWork() {
           <div className={styles.featureCopy}>
             <h3>NUMI</h3>
             <p className={styles.tags}>Game Design · Level Design · Unity</p>
+            <NumiAward />
             <p className={styles.description}>A narrative puzzle-platformer about <br />memory, identity and Alzheimer’s, <br />built in Unity and refined through <br />player testing.</p>
             <p className={styles.credit}>Playable at Animix · Channel 10</p>
             <PortfolioLink href="numi.html" className={styles.projectButton}>View Project<img src={asset("assets/home/arrow.svg")} width="36" height="19" alt="" /></PortfolioLink>

@@ -347,6 +347,11 @@ gameplay media. Provenance and encoding details are in `frontend/public/assets/R
 
 ### NUMI case study
 
+The Home feature and NUMI introduction show the supplied recognition beside the
+title and description: **Indie Game Award 2027 — Finalist**, *Best Social Impact ·
+Best Student Game*, and *Taipei Game Show*. They share one compact text block
+and retain the existing game description and press credits.
+
 `/#/numi` groups Shani's introduction and trailer, personal origin and five memory
 worlds, visible visual development, Childhood level, HUD/prompt iteration, and
 public presentation with credits. Section titles and their explanations sit

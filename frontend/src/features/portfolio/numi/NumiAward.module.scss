@@ -1,0 +1,15 @@
+.award {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-inline-start: 14px;
+  border-inline-start: 2px solid var(--case-numi-accent, var(--home-heading));
+  color: var(--home-heading);
+  font-size: var(--case-label-size, .875rem);
+  line-height: 1.5;
+  font-synthesis: style;
+  text-wrap: pretty;
+}
+
+.award strong { color: var(--home-text); font-weight: 700; }
+.award em { font-weight: 400; }

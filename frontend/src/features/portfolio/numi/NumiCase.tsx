@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PortfolioLink } from "../PortfolioLink";
 import { NumiChapterNavigation } from "./NumiChapterNavigation";
+import { NumiAward } from "./NumiAward";
 import { NumiMemories } from "./NumiMemories";
 import { NumiLevelDesign } from "./NumiLevelDesign";
 import { NumiFeedback } from "./NumiFeedback";
@@ -22,6 +23,7 @@ export function NumiCase() {
       <div className={styles.heroGrid}>
         <div className={styles.identity}><h1>NUMI</h1><p>2D Narrative Puzzle-Platformer</p></div>
         <div className={styles.heroCopy}>
+          <NumiAward />
           <p className={styles.heroDescription}>Five memories from Naomi’s life become playable worlds.</p>
           <p className={styles.heroRole}>I designed the story, levels, UX/UI and visual world, then brought the game to life in Unity.</p>
           <div className={styles.heroActions}>
